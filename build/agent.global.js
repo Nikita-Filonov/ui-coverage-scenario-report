@@ -409,7 +409,7 @@ var agent = (() => {
       var isArrayImpl = Array.isArray;
       var ReactSharedInternals = { H: null, A: null, T: null, S: null, V: null };
       var hasOwnProperty = Object.prototype.hasOwnProperty;
-      function ReactElement(type, key, self2, source, owner, props) {
+      function ReactElement2(type, key, self2, source, owner, props) {
         self2 = props.ref;
         return {
           $$typeof: REACT_ELEMENT_TYPE,
@@ -420,7 +420,7 @@ var agent = (() => {
         };
       }
       function cloneAndReplaceKey(oldElement, newKey) {
-        return ReactElement(
+        return ReactElement2(
           oldElement.type,
           newKey,
           void 0,
@@ -429,7 +429,7 @@ var agent = (() => {
           oldElement.props
         );
       }
-      function isValidElement8(object) {
+      function isValidElement9(object) {
         return "object" === typeof object && null !== object && object.$$typeof === REACT_ELEMENT_TYPE;
       }
       function escape(key) {
@@ -498,7 +498,7 @@ var agent = (() => {
         if (invokeCallback)
           return callback = callback(children), invokeCallback = "" === nameSoFar ? "." + getElementKey(children, 0) : nameSoFar, isArrayImpl(callback) ? (escapedPrefix = "", null != invokeCallback && (escapedPrefix = invokeCallback.replace(userProvidedKeyEscapeRegex, "$&/") + "/"), mapIntoArray(callback, array, escapedPrefix, "", function(c) {
             return c;
-          })) : null != callback && (isValidElement8(callback) && (callback = cloneAndReplaceKey(
+          })) : null != callback && (isValidElement9(callback) && (callback = cloneAndReplaceKey(
             callback,
             escapedPrefix + (null == callback.key || children && children.key === callback.key ? "" : ("" + callback.key).replace(
               userProvidedKeyEscapeRegex,
@@ -609,7 +609,7 @@ var agent = (() => {
           }) || [];
         },
         only: function(children) {
-          if (!isValidElement8(children))
+          if (!isValidElement9(children))
             throw Error(
               "React.Children.only expected to receive a single React element child."
             );
@@ -650,7 +650,7 @@ var agent = (() => {
             childArray[i] = arguments[i + 2];
           props.children = childArray;
         }
-        return ReactElement(element.type, key, void 0, void 0, owner, props);
+        return ReactElement2(element.type, key, void 0, void 0, owner, props);
       };
       exports.createContext = function(defaultValue) {
         defaultValue = {
@@ -683,7 +683,7 @@ var agent = (() => {
         if (type && type.defaultProps)
           for (propName in childrenLength = type.defaultProps, childrenLength)
             void 0 === props[propName] && (props[propName] = childrenLength[propName]);
-        return ReactElement(type, key, void 0, void 0, null, props);
+        return ReactElement2(type, key, void 0, void 0, null, props);
       };
       exports.createRef = function() {
         return { current: null };
@@ -691,7 +691,7 @@ var agent = (() => {
       exports.forwardRef = function(render) {
         return { $$typeof: REACT_FORWARD_REF_TYPE, render };
       };
-      exports.isValidElement = isValidElement8;
+      exports.isValidElement = isValidElement9;
       exports.lazy = function(ctor) {
         return {
           $$typeof: REACT_LAZY_TYPE,
@@ -804,7 +804,7 @@ var agent = (() => {
   var require_react_dom_production = __commonJS({
     "node_modules/react-dom/cjs/react-dom.production.js"(exports) {
       "use strict";
-      var React141 = require_react();
+      var React195 = require_react();
       function formatProdErrorMessage(code) {
         var url = "https://react.dev/errors/" + code;
         if (1 < arguments.length) {
@@ -844,7 +844,7 @@ var agent = (() => {
           implementation
         };
       }
-      var ReactSharedInternals = React141.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+      var ReactSharedInternals = React195.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
       function getCrossOriginStringAs(as, input) {
         if ("font" === as) return "";
         if ("string" === typeof input)
@@ -980,7 +980,7 @@ var agent = (() => {
     "node_modules/react-dom/cjs/react-dom-client.production.js"(exports) {
       "use strict";
       var Scheduler = require_scheduler();
-      var React141 = require_react();
+      var React195 = require_react();
       var ReactDOM3 = require_react_dom();
       function formatProdErrorMessage(code) {
         var url = "https://react.dev/errors/" + code;
@@ -1168,7 +1168,7 @@ var agent = (() => {
         return null;
       }
       var isArrayImpl = Array.isArray;
-      var ReactSharedInternals = React141.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+      var ReactSharedInternals = React195.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
       var ReactDOMSharedInternals = ReactDOM3.__DOM_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
       var sharedNotPendingObject = {
         pending: false,
@@ -1826,7 +1826,7 @@ var agent = (() => {
         node2 = value;
         return node2 !== lastValue ? (tracker.setValue(node2), true) : false;
       }
-      function getActiveElement(doc) {
+      function getActiveElement2(doc) {
         doc = doc || ("undefined" !== typeof document ? document : void 0);
         if ("undefined" === typeof doc) return null;
         try {
@@ -1877,7 +1877,7 @@ var agent = (() => {
         null != name && "function" !== typeof name && "symbol" !== typeof name && "boolean" !== typeof name && (element.name = name);
       }
       function setDefaultValue(node2, type, value) {
-        "number" === type && getActiveElement(node2.ownerDocument) === node2 || node2.defaultValue === "" + value || (node2.defaultValue = "" + value);
+        "number" === type && getActiveElement2(node2.ownerDocument) === node2 || node2.defaultValue === "" + value || (node2.defaultValue = "" + value);
       }
       function updateOptions(node2, multiple, propValue, setDefaultSelected) {
         node2 = node2.options;
@@ -1945,18 +1945,18 @@ var agent = (() => {
         var isCustomProperty3 = 0 === styleName.indexOf("--");
         null == value || "boolean" === typeof value || "" === value ? isCustomProperty3 ? style5.setProperty(styleName, "") : "float" === styleName ? style5.cssFloat = "" : style5[styleName] = "" : isCustomProperty3 ? style5.setProperty(styleName, value) : "number" !== typeof value || 0 === value || unitlessNumbers.has(styleName) ? "float" === styleName ? style5.cssFloat = value : style5[styleName] = ("" + value).trim() : style5[styleName] = value + "px";
       }
-      function setValueForStyles(node2, styles2, prevStyles) {
-        if (null != styles2 && "object" !== typeof styles2)
+      function setValueForStyles(node2, styles4, prevStyles) {
+        if (null != styles4 && "object" !== typeof styles4)
           throw Error(formatProdErrorMessage(62));
         node2 = node2.style;
         if (null != prevStyles) {
           for (var styleName in prevStyles)
-            !prevStyles.hasOwnProperty(styleName) || null != styles2 && styles2.hasOwnProperty(styleName) || (0 === styleName.indexOf("--") ? node2.setProperty(styleName, "") : "float" === styleName ? node2.cssFloat = "" : node2[styleName] = "");
-          for (var styleName$16 in styles2)
-            styleName = styles2[styleName$16], styles2.hasOwnProperty(styleName$16) && prevStyles[styleName$16] !== styleName && setValueForStyle(node2, styleName$16, styleName);
+            !prevStyles.hasOwnProperty(styleName) || null != styles4 && styles4.hasOwnProperty(styleName) || (0 === styleName.indexOf("--") ? node2.setProperty(styleName, "") : "float" === styleName ? node2.cssFloat = "" : node2[styleName] = "");
+          for (var styleName$16 in styles4)
+            styleName = styles4[styleName$16], styles4.hasOwnProperty(styleName$16) && prevStyles[styleName$16] !== styleName && setValueForStyle(node2, styleName$16, styleName);
         } else
-          for (var styleName$17 in styles2)
-            styles2.hasOwnProperty(styleName$17) && setValueForStyle(node2, styleName$17, styles2[styleName$17]);
+          for (var styleName$17 in styles4)
+            styles4.hasOwnProperty(styleName$17) && setValueForStyle(node2, styleName$17, styles4[styleName$17]);
       }
       function isCustomElement(tagName) {
         if (-1 === tagName.indexOf("-")) return false;
@@ -2631,7 +2631,7 @@ var agent = (() => {
       }
       function getActiveElementDeep(containerInfo) {
         containerInfo = null != containerInfo && null != containerInfo.ownerDocument && null != containerInfo.ownerDocument.defaultView ? containerInfo.ownerDocument.defaultView : window;
-        for (var element = getActiveElement(containerInfo.document); element instanceof containerInfo.HTMLIFrameElement; ) {
+        for (var element = getActiveElement2(containerInfo.document); element instanceof containerInfo.HTMLIFrameElement; ) {
           try {
             var JSCompiler_inline_result = "string" === typeof element.contentWindow.location.href;
           } catch (err) {
@@ -2639,7 +2639,7 @@ var agent = (() => {
           }
           if (JSCompiler_inline_result) containerInfo = element.contentWindow;
           else break;
-          element = getActiveElement(containerInfo.document);
+          element = getActiveElement2(containerInfo.document);
         }
         return element;
       }
@@ -2654,7 +2654,7 @@ var agent = (() => {
       var mouseDown = false;
       function constructSelectEvent(dispatchQueue, nativeEvent, nativeEventTarget) {
         var doc = nativeEventTarget.window === nativeEventTarget ? nativeEventTarget.document : 9 === nativeEventTarget.nodeType ? nativeEventTarget : nativeEventTarget.ownerDocument;
-        mouseDown || null == activeElement || activeElement !== getActiveElement(doc) || (doc = activeElement, "selectionStart" in doc && hasSelectionCapabilities(doc) ? doc = { start: doc.selectionStart, end: doc.selectionEnd } : (doc = (doc.ownerDocument && doc.ownerDocument.defaultView || window).getSelection(), doc = {
+        mouseDown || null == activeElement || activeElement !== getActiveElement2(doc) || (doc = activeElement, "selectionStart" in doc && hasSelectionCapabilities(doc) ? doc = { start: doc.selectionStart, end: doc.selectionEnd } : (doc = (doc.ownerDocument && doc.ownerDocument.defaultView || window).getSelection(), doc = {
           anchorNode: doc.anchorNode,
           anchorOffset: doc.anchorOffset,
           focusNode: doc.focusNode,
@@ -9706,8 +9706,8 @@ var agent = (() => {
           allNativeEvents.forEach(function(domEventName) {
             "selectionchange" !== domEventName && (nonDelegatedEvents.has(domEventName) || listenToNativeEvent(domEventName, false, rootContainerElement), listenToNativeEvent(domEventName, true, rootContainerElement));
           });
-          var ownerDocument3 = 9 === rootContainerElement.nodeType ? rootContainerElement : rootContainerElement.ownerDocument;
-          null === ownerDocument3 || ownerDocument3[listeningMarker] || (ownerDocument3[listeningMarker] = true, listenToNativeEvent("selectionchange", false, ownerDocument3));
+          var ownerDocument4 = 9 === rootContainerElement.nodeType ? rootContainerElement : rootContainerElement.ownerDocument;
+          null === ownerDocument4 || ownerDocument4[listeningMarker] || (ownerDocument4[listeningMarker] = true, listenToNativeEvent("selectionchange", false, ownerDocument4));
         }
       }
       function addTrappedEventListener(targetContainer, domEventName, eventSystemFlags, isCapturePhaseListener) {
@@ -10930,14 +10930,14 @@ var agent = (() => {
             if (node2 = nextNode.data, "/$" === node2) {
               if (0 < possiblePreambleContribution && 8 > possiblePreambleContribution) {
                 node2 = possiblePreambleContribution;
-                var ownerDocument3 = parentInstance.ownerDocument;
-                node2 & 1 && releaseSingletonInstance(ownerDocument3.documentElement);
-                node2 & 2 && releaseSingletonInstance(ownerDocument3.body);
+                var ownerDocument4 = parentInstance.ownerDocument;
+                node2 & 1 && releaseSingletonInstance(ownerDocument4.documentElement);
+                node2 & 2 && releaseSingletonInstance(ownerDocument4.body);
                 if (node2 & 4)
-                  for (node2 = ownerDocument3.head, releaseSingletonInstance(node2), ownerDocument3 = node2.firstChild; ownerDocument3; ) {
-                    var nextNode$jscomp$0 = ownerDocument3.nextSibling, nodeName = ownerDocument3.nodeName;
-                    ownerDocument3[internalHoistableMarker] || "SCRIPT" === nodeName || "STYLE" === nodeName || "LINK" === nodeName && "stylesheet" === ownerDocument3.rel.toLowerCase() || node2.removeChild(ownerDocument3);
-                    ownerDocument3 = nextNode$jscomp$0;
+                  for (node2 = ownerDocument4.head, releaseSingletonInstance(node2), ownerDocument4 = node2.firstChild; ownerDocument4; ) {
+                    var nextNode$jscomp$0 = ownerDocument4.nextSibling, nodeName = ownerDocument4.nodeName;
+                    ownerDocument4[internalHoistableMarker] || "SCRIPT" === nodeName || "STYLE" === nodeName || "LINK" === nodeName && "stylesheet" === ownerDocument4.rel.toLowerCase() || node2.removeChild(ownerDocument4);
+                    ownerDocument4 = nextNode$jscomp$0;
                   }
               }
               if (0 === depth) {
@@ -11029,15 +11029,15 @@ var agent = (() => {
         return "$!" === instance2.data || "$?" === instance2.data && "complete" === instance2.ownerDocument.readyState;
       }
       function registerSuspenseInstanceRetry(instance2, callback) {
-        var ownerDocument3 = instance2.ownerDocument;
-        if ("$?" !== instance2.data || "complete" === ownerDocument3.readyState)
+        var ownerDocument4 = instance2.ownerDocument;
+        if ("$?" !== instance2.data || "complete" === ownerDocument4.readyState)
           callback();
         else {
           var listener = function() {
             callback();
-            ownerDocument3.removeEventListener("DOMContentLoaded", listener);
+            ownerDocument4.removeEventListener("DOMContentLoaded", listener);
           };
-          ownerDocument3.addEventListener("DOMContentLoaded", listener);
+          ownerDocument4.addEventListener("DOMContentLoaded", listener);
           instance2._reactRetry = listener;
         }
       }
@@ -11120,12 +11120,12 @@ var agent = (() => {
       }
       var globalDocument = "undefined" === typeof document ? null : document;
       function preconnectAs(rel, href, crossOrigin) {
-        var ownerDocument3 = globalDocument;
-        if (ownerDocument3 && "string" === typeof href && href) {
+        var ownerDocument4 = globalDocument;
+        if (ownerDocument4 && "string" === typeof href && href) {
           var limitedEscapedHref = escapeSelectorAttributeValueInsideDoubleQuotes(href);
           limitedEscapedHref = 'link[rel="' + rel + '"][href="' + limitedEscapedHref + '"]';
           "string" === typeof crossOrigin && (limitedEscapedHref += '[crossorigin="' + crossOrigin + '"]');
-          preconnectsSet.has(limitedEscapedHref) || (preconnectsSet.add(limitedEscapedHref), rel = { rel, crossOrigin, href }, null === ownerDocument3.querySelector(limitedEscapedHref) && (href = ownerDocument3.createElement("link"), setInitialProperties(href, "link", rel), markNodeAsHoistable(href), ownerDocument3.head.appendChild(href)));
+          preconnectsSet.has(limitedEscapedHref) || (preconnectsSet.add(limitedEscapedHref), rel = { rel, crossOrigin, href }, null === ownerDocument4.querySelector(limitedEscapedHref) && (href = ownerDocument4.createElement("link"), setInitialProperties(href, "link", rel), markNodeAsHoistable(href), ownerDocument4.head.appendChild(href)));
         }
       }
       function prefetchDNS(href) {
@@ -11138,8 +11138,8 @@ var agent = (() => {
       }
       function preload(href, as, options2) {
         previousDispatcher.L(href, as, options2);
-        var ownerDocument3 = globalDocument;
-        if (ownerDocument3 && href && as) {
+        var ownerDocument4 = globalDocument;
+        if (ownerDocument4 && href && as) {
           var preloadSelector = 'link[rel="preload"][as="' + escapeSelectorAttributeValueInsideDoubleQuotes(as) + '"]';
           "image" === as ? options2 && options2.imageSrcSet ? (preloadSelector += '[imagesrcset="' + escapeSelectorAttributeValueInsideDoubleQuotes(
             options2.imageSrcSet
@@ -11161,13 +11161,13 @@ var agent = (() => {
               as
             },
             options2
-          ), preloadPropsMap.set(key, href), null !== ownerDocument3.querySelector(preloadSelector) || "style" === as && ownerDocument3.querySelector(getStylesheetSelectorFromKey(key)) || "script" === as && ownerDocument3.querySelector(getScriptSelectorFromKey(key)) || (as = ownerDocument3.createElement("link"), setInitialProperties(as, "link", href), markNodeAsHoistable(as), ownerDocument3.head.appendChild(as)));
+          ), preloadPropsMap.set(key, href), null !== ownerDocument4.querySelector(preloadSelector) || "style" === as && ownerDocument4.querySelector(getStylesheetSelectorFromKey(key)) || "script" === as && ownerDocument4.querySelector(getScriptSelectorFromKey(key)) || (as = ownerDocument4.createElement("link"), setInitialProperties(as, "link", href), markNodeAsHoistable(as), ownerDocument4.head.appendChild(as)));
         }
       }
       function preloadModule(href, options2) {
         previousDispatcher.m(href, options2);
-        var ownerDocument3 = globalDocument;
-        if (ownerDocument3 && href) {
+        var ownerDocument4 = globalDocument;
+        if (ownerDocument4 && href) {
           var as = options2 && "string" === typeof options2.as ? options2.as : "script", preloadSelector = 'link[rel="modulepreload"][as="' + escapeSelectorAttributeValueInsideDoubleQuotes(as) + '"][href="' + escapeSelectorAttributeValueInsideDoubleQuotes(href) + '"]', key = preloadSelector;
           switch (as) {
             case "audioworklet":
@@ -11178,7 +11178,7 @@ var agent = (() => {
             case "script":
               key = getScriptKey(href);
           }
-          if (!preloadPropsMap.has(key) && (href = assign3({ rel: "modulepreload", href }, options2), preloadPropsMap.set(key, href), null === ownerDocument3.querySelector(preloadSelector))) {
+          if (!preloadPropsMap.has(key) && (href = assign3({ rel: "modulepreload", href }, options2), preloadPropsMap.set(key, href), null === ownerDocument4.querySelector(preloadSelector))) {
             switch (as) {
               case "audioworklet":
               case "paintworklet":
@@ -11186,26 +11186,26 @@ var agent = (() => {
               case "sharedworker":
               case "worker":
               case "script":
-                if (ownerDocument3.querySelector(getScriptSelectorFromKey(key)))
+                if (ownerDocument4.querySelector(getScriptSelectorFromKey(key)))
                   return;
             }
-            as = ownerDocument3.createElement("link");
+            as = ownerDocument4.createElement("link");
             setInitialProperties(as, "link", href);
             markNodeAsHoistable(as);
-            ownerDocument3.head.appendChild(as);
+            ownerDocument4.head.appendChild(as);
           }
         }
       }
       function preinitStyle(href, precedence, options2) {
         previousDispatcher.S(href, precedence, options2);
-        var ownerDocument3 = globalDocument;
-        if (ownerDocument3 && href) {
-          var styles2 = getResourcesFromRoot(ownerDocument3).hoistableStyles, key = getStyleKey(href);
+        var ownerDocument4 = globalDocument;
+        if (ownerDocument4 && href) {
+          var styles4 = getResourcesFromRoot(ownerDocument4).hoistableStyles, key = getStyleKey(href);
           precedence = precedence || "default";
-          var resource = styles2.get(key);
+          var resource = styles4.get(key);
           if (!resource) {
             var state = { loading: 0, preload: null };
-            if (resource = ownerDocument3.querySelector(
+            if (resource = ownerDocument4.querySelector(
               getStylesheetSelectorFromKey(key)
             ))
               state.loading = 5;
@@ -11215,7 +11215,7 @@ var agent = (() => {
                 options2
               );
               (options2 = preloadPropsMap.get(key)) && adoptPreloadPropsForStylesheet(href, options2);
-              var link = resource = ownerDocument3.createElement("link");
+              var link = resource = ownerDocument4.createElement("link");
               markNodeAsHoistable(link);
               setInitialProperties(link, "link", href);
               link._p = new Promise(function(resolve, reject) {
@@ -11229,7 +11229,7 @@ var agent = (() => {
                 state.loading |= 2;
               });
               state.loading |= 4;
-              insertStylesheet(resource, precedence, ownerDocument3);
+              insertStylesheet(resource, precedence, ownerDocument4);
             }
             resource = {
               type: "stylesheet",
@@ -11237,16 +11237,16 @@ var agent = (() => {
               count: 1,
               state
             };
-            styles2.set(key, resource);
+            styles4.set(key, resource);
           }
         }
       }
       function preinitScript(src, options2) {
         previousDispatcher.X(src, options2);
-        var ownerDocument3 = globalDocument;
-        if (ownerDocument3 && src) {
-          var scripts = getResourcesFromRoot(ownerDocument3).hoistableScripts, key = getScriptKey(src), resource = scripts.get(key);
-          resource || (resource = ownerDocument3.querySelector(getScriptSelectorFromKey(key)), resource || (src = assign3({ src, async: true }, options2), (options2 = preloadPropsMap.get(key)) && adoptPreloadPropsForScript(src, options2), resource = ownerDocument3.createElement("script"), markNodeAsHoistable(resource), setInitialProperties(resource, "link", src), ownerDocument3.head.appendChild(resource)), resource = {
+        var ownerDocument4 = globalDocument;
+        if (ownerDocument4 && src) {
+          var scripts = getResourcesFromRoot(ownerDocument4).hoistableScripts, key = getScriptKey(src), resource = scripts.get(key);
+          resource || (resource = ownerDocument4.querySelector(getScriptSelectorFromKey(key)), resource || (src = assign3({ src, async: true }, options2), (options2 = preloadPropsMap.get(key)) && adoptPreloadPropsForScript(src, options2), resource = ownerDocument4.createElement("script"), markNodeAsHoistable(resource), setInitialProperties(resource, "link", src), ownerDocument4.head.appendChild(resource)), resource = {
             type: "script",
             instance: resource,
             count: 1,
@@ -11256,10 +11256,10 @@ var agent = (() => {
       }
       function preinitModuleScript(src, options2) {
         previousDispatcher.M(src, options2);
-        var ownerDocument3 = globalDocument;
-        if (ownerDocument3 && src) {
-          var scripts = getResourcesFromRoot(ownerDocument3).hoistableScripts, key = getScriptKey(src), resource = scripts.get(key);
-          resource || (resource = ownerDocument3.querySelector(getScriptSelectorFromKey(key)), resource || (src = assign3({ src, async: true, type: "module" }, options2), (options2 = preloadPropsMap.get(key)) && adoptPreloadPropsForScript(src, options2), resource = ownerDocument3.createElement("script"), markNodeAsHoistable(resource), setInitialProperties(resource, "link", src), ownerDocument3.head.appendChild(resource)), resource = {
+        var ownerDocument4 = globalDocument;
+        if (ownerDocument4 && src) {
+          var scripts = getResourcesFromRoot(ownerDocument4).hoistableScripts, key = getScriptKey(src), resource = scripts.get(key);
+          resource || (resource = ownerDocument4.querySelector(getScriptSelectorFromKey(key)), resource || (src = assign3({ src, async: true, type: "module" }, options2), (options2 = preloadPropsMap.get(key)) && adoptPreloadPropsForScript(src, options2), resource = ownerDocument4.createElement("script"), markNodeAsHoistable(resource), setInitialProperties(resource, "link", src), ownerDocument4.head.appendChild(resource)), resource = {
             type: "script",
             instance: resource,
             count: 1,
@@ -11343,12 +11343,12 @@ var agent = (() => {
           precedence: null
         });
       }
-      function preloadStylesheet(ownerDocument3, key, preloadProps, state) {
-        ownerDocument3.querySelector('link[rel="preload"][as="style"][' + key + "]") ? state.loading = 1 : (key = ownerDocument3.createElement("link"), state.preload = key, key.addEventListener("load", function() {
+      function preloadStylesheet(ownerDocument4, key, preloadProps, state) {
+        ownerDocument4.querySelector('link[rel="preload"][as="style"][' + key + "]") ? state.loading = 1 : (key = ownerDocument4.createElement("link"), state.preload = key, key.addEventListener("load", function() {
           return state.loading |= 1;
         }), key.addEventListener("error", function() {
           return state.loading |= 2;
-        }), setInitialProperties(key, "link", preloadProps), markNodeAsHoistable(key), ownerDocument3.head.appendChild(key));
+        }), setInitialProperties(key, "link", preloadProps), markNodeAsHoistable(key), ownerDocument4.head.appendChild(key));
       }
       function getScriptKey(src) {
         return '[src="' + escapeSelectorAttributeValueInsideDoubleQuotes(src) + '"]';
@@ -11444,18 +11444,18 @@ var agent = (() => {
         null == scriptProps.integrity && (scriptProps.integrity = preloadProps.integrity);
       }
       var tagCaches = null;
-      function getHydratableHoistableCache(type, keyAttribute, ownerDocument3) {
+      function getHydratableHoistableCache(type, keyAttribute, ownerDocument4) {
         if (null === tagCaches) {
           var cache = /* @__PURE__ */ new Map();
           var caches = tagCaches = /* @__PURE__ */ new Map();
-          caches.set(ownerDocument3, cache);
+          caches.set(ownerDocument4, cache);
         } else
-          caches = tagCaches, cache = caches.get(ownerDocument3), cache || (cache = /* @__PURE__ */ new Map(), caches.set(ownerDocument3, cache));
+          caches = tagCaches, cache = caches.get(ownerDocument4), cache || (cache = /* @__PURE__ */ new Map(), caches.set(ownerDocument4, cache));
         if (cache.has(type)) return cache;
         cache.set(type, null);
-        ownerDocument3 = ownerDocument3.getElementsByTagName(type);
-        for (caches = 0; caches < ownerDocument3.length; caches++) {
-          var node2 = ownerDocument3[caches];
+        ownerDocument4 = ownerDocument4.getElementsByTagName(type);
+        for (caches = 0; caches < ownerDocument4.length; caches++) {
+          var node2 = ownerDocument4[caches];
           if (!(node2[internalHoistableMarker] || node2[internalInstanceKey] || "link" === type && "stylesheet" === node2.getAttribute("rel")) && "http://www.w3.org/2000/svg" !== node2.namespaceURI) {
             var nodeKey = node2.getAttribute(keyAttribute) || "";
             nodeKey = type + nodeKey;
@@ -12160,7 +12160,7 @@ var agent = (() => {
           0 === i && attemptExplicitHydrationTarget(target);
         }
       };
-      var isomorphicReactPackageVersion$jscomp$inline_1785 = React141.version;
+      var isomorphicReactPackageVersion$jscomp$inline_1785 = React195.version;
       if ("19.1.0" !== isomorphicReactPackageVersion$jscomp$inline_1785)
         throw Error(
           formatProdErrorMessage(
@@ -12557,6 +12557,87 @@ var agent = (() => {
     }
   });
 
+  // node_modules/prop-types/lib/ReactPropTypesSecret.js
+  var require_ReactPropTypesSecret = __commonJS({
+    "node_modules/prop-types/lib/ReactPropTypesSecret.js"(exports, module) {
+      "use strict";
+      var ReactPropTypesSecret = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
+      module.exports = ReactPropTypesSecret;
+    }
+  });
+
+  // node_modules/prop-types/factoryWithThrowingShims.js
+  var require_factoryWithThrowingShims = __commonJS({
+    "node_modules/prop-types/factoryWithThrowingShims.js"(exports, module) {
+      "use strict";
+      var ReactPropTypesSecret = require_ReactPropTypesSecret();
+      function emptyFunction() {
+      }
+      function emptyFunctionWithReset() {
+      }
+      emptyFunctionWithReset.resetWarningCache = emptyFunction;
+      module.exports = function() {
+        function shim(props, propName, componentName, location2, propFullName, secret) {
+          if (secret === ReactPropTypesSecret) {
+            return;
+          }
+          var err = new Error(
+            "Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types"
+          );
+          err.name = "Invariant Violation";
+          throw err;
+        }
+        ;
+        shim.isRequired = shim;
+        function getShim() {
+          return shim;
+        }
+        ;
+        var ReactPropTypes = {
+          array: shim,
+          bigint: shim,
+          bool: shim,
+          func: shim,
+          number: shim,
+          object: shim,
+          string: shim,
+          symbol: shim,
+          any: shim,
+          arrayOf: getShim,
+          element: shim,
+          elementType: shim,
+          instanceOf: getShim,
+          node: shim,
+          objectOf: getShim,
+          oneOf: getShim,
+          oneOfType: getShim,
+          shape: getShim,
+          exact: getShim,
+          checkPropTypes: emptyFunctionWithReset,
+          resetWarningCache: emptyFunction
+        };
+        ReactPropTypes.PropTypes = ReactPropTypes;
+        return ReactPropTypes;
+      };
+    }
+  });
+
+  // node_modules/prop-types/index.js
+  var require_prop_types = __commonJS({
+    "node_modules/prop-types/index.js"(exports, module) {
+      "use strict";
+      if (false) {
+        ReactIs = null;
+        throwOnDirectAccess = true;
+        module.exports = null(ReactIs.isElement, throwOnDirectAccess);
+      } else {
+        module.exports = require_factoryWithThrowingShims()();
+      }
+      var ReactIs;
+      var throwOnDirectAccess;
+    }
+  });
+
   // node_modules/react-is/cjs/react-is.production.js
   var require_react_is_production = __commonJS({
     "node_modules/react-is/cjs/react-is.production.js"(exports) {
@@ -12671,287 +12752,6 @@ var agent = (() => {
       } else {
         module.exports = null;
       }
-    }
-  });
-
-  // node_modules/dayjs/dayjs.min.js
-  var require_dayjs_min = __commonJS({
-    "node_modules/dayjs/dayjs.min.js"(exports, module) {
-      "use strict";
-      !function(t, e) {
-        "object" == typeof exports && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : (t = "undefined" != typeof globalThis ? globalThis : t || self).dayjs = e();
-      }(exports, function() {
-        "use strict";
-        var t = 1e3, e = 6e4, n = 36e5, r2 = "millisecond", i = "second", s = "minute", u = "hour", a = "day", o = "week", c = "month", f = "quarter", h = "year", d = "date", l = "Invalid Date", $ = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, y = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, M = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_"), ordinal: function(t2) {
-          var e3 = ["th", "st", "nd", "rd"], n2 = t2 % 100;
-          return "[" + t2 + (e3[(n2 - 20) % 10] || e3[n2] || e3[0]) + "]";
-        } }, m = function(t2, e3, n2) {
-          var r3 = String(t2);
-          return !r3 || r3.length >= e3 ? t2 : "" + Array(e3 + 1 - r3.length).join(n2) + t2;
-        }, v = { s: m, z: function(t2) {
-          var e3 = -t2.utcOffset(), n2 = Math.abs(e3), r3 = Math.floor(n2 / 60), i2 = n2 % 60;
-          return (e3 <= 0 ? "+" : "-") + m(r3, 2, "0") + ":" + m(i2, 2, "0");
-        }, m: function t2(e3, n2) {
-          if (e3.date() < n2.date()) return -t2(n2, e3);
-          var r3 = 12 * (n2.year() - e3.year()) + (n2.month() - e3.month()), i2 = e3.clone().add(r3, c), s2 = n2 - i2 < 0, u2 = e3.clone().add(r3 + (s2 ? -1 : 1), c);
-          return +(-(r3 + (n2 - i2) / (s2 ? i2 - u2 : u2 - i2)) || 0);
-        }, a: function(t2) {
-          return t2 < 0 ? Math.ceil(t2) || 0 : Math.floor(t2);
-        }, p: function(t2) {
-          return { M: c, y: h, w: o, d: a, D: d, h: u, m: s, s: i, ms: r2, Q: f }[t2] || String(t2 || "").toLowerCase().replace(/s$/, "");
-        }, u: function(t2) {
-          return void 0 === t2;
-        } }, g = "en", D = {};
-        D[g] = M;
-        var p = "$isDayjsObject", S = function(t2) {
-          return t2 instanceof _2 || !(!t2 || !t2[p]);
-        }, w = function t2(e3, n2, r3) {
-          var i2;
-          if (!e3) return g;
-          if ("string" == typeof e3) {
-            var s2 = e3.toLowerCase();
-            D[s2] && (i2 = s2), n2 && (D[s2] = n2, i2 = s2);
-            var u2 = e3.split("-");
-            if (!i2 && u2.length > 1) return t2(u2[0]);
-          } else {
-            var a2 = e3.name;
-            D[a2] = e3, i2 = a2;
-          }
-          return !r3 && i2 && (g = i2), i2 || !r3 && g;
-        }, O = function(t2, e3) {
-          if (S(t2)) return t2.clone();
-          var n2 = "object" == typeof e3 ? e3 : {};
-          return n2.date = t2, n2.args = arguments, new _2(n2);
-        }, b = v;
-        b.l = w, b.i = S, b.w = function(t2, e3) {
-          return O(t2, { locale: e3.$L, utc: e3.$u, x: e3.$x, $offset: e3.$offset });
-        };
-        var _2 = function() {
-          function M2(t2) {
-            this.$L = w(t2.locale, null, true), this.parse(t2), this.$x = this.$x || t2.x || {}, this[p] = true;
-          }
-          var m2 = M2.prototype;
-          return m2.parse = function(t2) {
-            this.$d = function(t3) {
-              var e3 = t3.date, n2 = t3.utc;
-              if (null === e3) return /* @__PURE__ */ new Date(NaN);
-              if (b.u(e3)) return /* @__PURE__ */ new Date();
-              if (e3 instanceof Date) return new Date(e3);
-              if ("string" == typeof e3 && !/Z$/i.test(e3)) {
-                var r3 = e3.match($);
-                if (r3) {
-                  var i2 = r3[2] - 1 || 0, s2 = (r3[7] || "0").substring(0, 3);
-                  return n2 ? new Date(Date.UTC(r3[1], i2, r3[3] || 1, r3[4] || 0, r3[5] || 0, r3[6] || 0, s2)) : new Date(r3[1], i2, r3[3] || 1, r3[4] || 0, r3[5] || 0, r3[6] || 0, s2);
-                }
-              }
-              return new Date(e3);
-            }(t2), this.init();
-          }, m2.init = function() {
-            var t2 = this.$d;
-            this.$y = t2.getFullYear(), this.$M = t2.getMonth(), this.$D = t2.getDate(), this.$W = t2.getDay(), this.$H = t2.getHours(), this.$m = t2.getMinutes(), this.$s = t2.getSeconds(), this.$ms = t2.getMilliseconds();
-          }, m2.$utils = function() {
-            return b;
-          }, m2.isValid = function() {
-            return !(this.$d.toString() === l);
-          }, m2.isSame = function(t2, e3) {
-            var n2 = O(t2);
-            return this.startOf(e3) <= n2 && n2 <= this.endOf(e3);
-          }, m2.isAfter = function(t2, e3) {
-            return O(t2) < this.startOf(e3);
-          }, m2.isBefore = function(t2, e3) {
-            return this.endOf(e3) < O(t2);
-          }, m2.$g = function(t2, e3, n2) {
-            return b.u(t2) ? this[e3] : this.set(n2, t2);
-          }, m2.unix = function() {
-            return Math.floor(this.valueOf() / 1e3);
-          }, m2.valueOf = function() {
-            return this.$d.getTime();
-          }, m2.startOf = function(t2, e3) {
-            var n2 = this, r3 = !!b.u(e3) || e3, f2 = b.p(t2), l2 = function(t3, e4) {
-              var i2 = b.w(n2.$u ? Date.UTC(n2.$y, e4, t3) : new Date(n2.$y, e4, t3), n2);
-              return r3 ? i2 : i2.endOf(a);
-            }, $2 = function(t3, e4) {
-              return b.w(n2.toDate()[t3].apply(n2.toDate("s"), (r3 ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(e4)), n2);
-            }, y2 = this.$W, M3 = this.$M, m3 = this.$D, v2 = "set" + (this.$u ? "UTC" : "");
-            switch (f2) {
-              case h:
-                return r3 ? l2(1, 0) : l2(31, 11);
-              case c:
-                return r3 ? l2(1, M3) : l2(0, M3 + 1);
-              case o:
-                var g2 = this.$locale().weekStart || 0, D2 = (y2 < g2 ? y2 + 7 : y2) - g2;
-                return l2(r3 ? m3 - D2 : m3 + (6 - D2), M3);
-              case a:
-              case d:
-                return $2(v2 + "Hours", 0);
-              case u:
-                return $2(v2 + "Minutes", 1);
-              case s:
-                return $2(v2 + "Seconds", 2);
-              case i:
-                return $2(v2 + "Milliseconds", 3);
-              default:
-                return this.clone();
-            }
-          }, m2.endOf = function(t2) {
-            return this.startOf(t2, false);
-          }, m2.$set = function(t2, e3) {
-            var n2, o2 = b.p(t2), f2 = "set" + (this.$u ? "UTC" : ""), l2 = (n2 = {}, n2[a] = f2 + "Date", n2[d] = f2 + "Date", n2[c] = f2 + "Month", n2[h] = f2 + "FullYear", n2[u] = f2 + "Hours", n2[s] = f2 + "Minutes", n2[i] = f2 + "Seconds", n2[r2] = f2 + "Milliseconds", n2)[o2], $2 = o2 === a ? this.$D + (e3 - this.$W) : e3;
-            if (o2 === c || o2 === h) {
-              var y2 = this.clone().set(d, 1);
-              y2.$d[l2]($2), y2.init(), this.$d = y2.set(d, Math.min(this.$D, y2.daysInMonth())).$d;
-            } else l2 && this.$d[l2]($2);
-            return this.init(), this;
-          }, m2.set = function(t2, e3) {
-            return this.clone().$set(t2, e3);
-          }, m2.get = function(t2) {
-            return this[b.p(t2)]();
-          }, m2.add = function(r3, f2) {
-            var d2, l2 = this;
-            r3 = Number(r3);
-            var $2 = b.p(f2), y2 = function(t2) {
-              var e3 = O(l2);
-              return b.w(e3.date(e3.date() + Math.round(t2 * r3)), l2);
-            };
-            if ($2 === c) return this.set(c, this.$M + r3);
-            if ($2 === h) return this.set(h, this.$y + r3);
-            if ($2 === a) return y2(1);
-            if ($2 === o) return y2(7);
-            var M3 = (d2 = {}, d2[s] = e, d2[u] = n, d2[i] = t, d2)[$2] || 1, m3 = this.$d.getTime() + r3 * M3;
-            return b.w(m3, this);
-          }, m2.subtract = function(t2, e3) {
-            return this.add(-1 * t2, e3);
-          }, m2.format = function(t2) {
-            var e3 = this, n2 = this.$locale();
-            if (!this.isValid()) return n2.invalidDate || l;
-            var r3 = t2 || "YYYY-MM-DDTHH:mm:ssZ", i2 = b.z(this), s2 = this.$H, u2 = this.$m, a2 = this.$M, o2 = n2.weekdays, c6 = n2.months, f2 = n2.meridiem, h2 = function(t3, n3, i3, s3) {
-              return t3 && (t3[n3] || t3(e3, r3)) || i3[n3].slice(0, s3);
-            }, d2 = function(t3) {
-              return b.s(s2 % 12 || 12, t3, "0");
-            }, $2 = f2 || function(t3, e4, n3) {
-              var r4 = t3 < 12 ? "AM" : "PM";
-              return n3 ? r4.toLowerCase() : r4;
-            };
-            return r3.replace(y, function(t3, r4) {
-              return r4 || function(t4) {
-                switch (t4) {
-                  case "YY":
-                    return String(e3.$y).slice(-2);
-                  case "YYYY":
-                    return b.s(e3.$y, 4, "0");
-                  case "M":
-                    return a2 + 1;
-                  case "MM":
-                    return b.s(a2 + 1, 2, "0");
-                  case "MMM":
-                    return h2(n2.monthsShort, a2, c6, 3);
-                  case "MMMM":
-                    return h2(c6, a2);
-                  case "D":
-                    return e3.$D;
-                  case "DD":
-                    return b.s(e3.$D, 2, "0");
-                  case "d":
-                    return String(e3.$W);
-                  case "dd":
-                    return h2(n2.weekdaysMin, e3.$W, o2, 2);
-                  case "ddd":
-                    return h2(n2.weekdaysShort, e3.$W, o2, 3);
-                  case "dddd":
-                    return o2[e3.$W];
-                  case "H":
-                    return String(s2);
-                  case "HH":
-                    return b.s(s2, 2, "0");
-                  case "h":
-                    return d2(1);
-                  case "hh":
-                    return d2(2);
-                  case "a":
-                    return $2(s2, u2, true);
-                  case "A":
-                    return $2(s2, u2, false);
-                  case "m":
-                    return String(u2);
-                  case "mm":
-                    return b.s(u2, 2, "0");
-                  case "s":
-                    return String(e3.$s);
-                  case "ss":
-                    return b.s(e3.$s, 2, "0");
-                  case "SSS":
-                    return b.s(e3.$ms, 3, "0");
-                  case "Z":
-                    return i2;
-                }
-                return null;
-              }(t3) || i2.replace(":", "");
-            });
-          }, m2.utcOffset = function() {
-            return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
-          }, m2.diff = function(r3, d2, l2) {
-            var $2, y2 = this, M3 = b.p(d2), m3 = O(r3), v2 = (m3.utcOffset() - this.utcOffset()) * e, g2 = this - m3, D2 = function() {
-              return b.m(y2, m3);
-            };
-            switch (M3) {
-              case h:
-                $2 = D2() / 12;
-                break;
-              case c:
-                $2 = D2();
-                break;
-              case f:
-                $2 = D2() / 3;
-                break;
-              case o:
-                $2 = (g2 - v2) / 6048e5;
-                break;
-              case a:
-                $2 = (g2 - v2) / 864e5;
-                break;
-              case u:
-                $2 = g2 / n;
-                break;
-              case s:
-                $2 = g2 / e;
-                break;
-              case i:
-                $2 = g2 / t;
-                break;
-              default:
-                $2 = g2;
-            }
-            return l2 ? $2 : b.a($2);
-          }, m2.daysInMonth = function() {
-            return this.endOf(c).$D;
-          }, m2.$locale = function() {
-            return D[this.$L];
-          }, m2.locale = function(t2, e3) {
-            if (!t2) return this.$L;
-            var n2 = this.clone(), r3 = w(t2, e3, true);
-            return r3 && (n2.$L = r3), n2;
-          }, m2.clone = function() {
-            return b.w(this.$d, this);
-          }, m2.toDate = function() {
-            return new Date(this.valueOf());
-          }, m2.toJSON = function() {
-            return this.isValid() ? this.toISOString() : null;
-          }, m2.toISOString = function() {
-            return this.$d.toISOString();
-          }, m2.toString = function() {
-            return this.$d.toUTCString();
-          }, M2;
-        }(), k = _2.prototype;
-        return O.prototype = k, [["$ms", r2], ["$s", i], ["$m", s], ["$H", u], ["$W", a], ["$M", c], ["$y", h], ["$D", d]].forEach(function(t2) {
-          k[t2[1]] = function(e3) {
-            return this.$g(e3, t2[0], t2[1]);
-          };
-        }), O.extend = function(t2, e3) {
-          return t2.$i || (t2(e3, _2, O), t2.$i = true), O;
-        }, O.locale = w, O.isDayjs = S, O.unix = function(t2) {
-          return O(1e3 * t2);
-        }, O.en = D[g], O.Ls = D, O.p = {}, O;
-      });
     }
   });
 
@@ -16774,7 +16574,7 @@ var agent = (() => {
             result2.placeholder = curryRight.placeholder;
             return result2;
           }
-          function debounce2(func, wait, options) {
+          function debounce3(func, wait, options) {
             var lastArgs, lastThis, maxWait, result2, timerId, lastCallTime, lastInvokeTime = 0, leading = false, maxing = false, trailing = true;
             if (typeof func != "function") {
               throw new TypeError2(FUNC_ERROR_TEXT);
@@ -16954,7 +16754,7 @@ var agent = (() => {
               leading = "leading" in options ? !!options.leading : leading;
               trailing = "trailing" in options ? !!options.trailing : trailing;
             }
-            return debounce2(func, wait, {
+            return debounce3(func, wait, {
               "leading": leading,
               "maxWait": wait,
               "trailing": trailing
@@ -17018,7 +16818,7 @@ var agent = (() => {
           function isElement2(value) {
             return isObjectLike(value) && value.nodeType === 1 && !isPlainObject2(value);
           }
-          function isEmpty2(value) {
+          function isEmpty3(value) {
             if (value == null) {
               return true;
             }
@@ -17935,7 +17735,7 @@ var agent = (() => {
           var multiply = createMathOperation(function(multiplier, multiplicand) {
             return multiplier * multiplicand;
           }, 1);
-          var round3 = createRound("round");
+          var round4 = createRound("round");
           var subtract = createMathOperation(function(minuend, subtrahend) {
             return minuend - subtrahend;
           }, 0);
@@ -17968,7 +17768,7 @@ var agent = (() => {
           lodash.create = create;
           lodash.curry = curry;
           lodash.curryRight = curryRight;
-          lodash.debounce = debounce2;
+          lodash.debounce = debounce3;
           lodash.defaults = defaults2;
           lodash.defaultsDeep = defaultsDeep;
           lodash.defer = defer;
@@ -18151,7 +17951,7 @@ var agent = (() => {
           lodash.isBuffer = isBuffer;
           lodash.isDate = isDate;
           lodash.isElement = isElement2;
-          lodash.isEmpty = isEmpty2;
+          lodash.isEmpty = isEmpty3;
           lodash.isEqual = isEqual2;
           lodash.isEqualWith = isEqualWith;
           lodash.isError = isError;
@@ -18213,7 +18013,7 @@ var agent = (() => {
           lodash.repeat = repeat;
           lodash.replace = replace2;
           lodash.result = result;
-          lodash.round = round3;
+          lodash.round = round4;
           lodash.runInContext = runInContext2;
           lodash.sample = sample;
           lodash.size = size;
@@ -18436,6 +18236,287 @@ var agent = (() => {
     }
   });
 
+  // node_modules/dayjs/dayjs.min.js
+  var require_dayjs_min = __commonJS({
+    "node_modules/dayjs/dayjs.min.js"(exports, module) {
+      "use strict";
+      !function(t, e) {
+        "object" == typeof exports && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : (t = "undefined" != typeof globalThis ? globalThis : t || self).dayjs = e();
+      }(exports, function() {
+        "use strict";
+        var t = 1e3, e = 6e4, n = 36e5, r2 = "millisecond", i = "second", s = "minute", u = "hour", a = "day", o = "week", c = "month", f = "quarter", h = "year", d = "date", l = "Invalid Date", $ = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, y = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, M = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_"), ordinal: function(t2) {
+          var e3 = ["th", "st", "nd", "rd"], n2 = t2 % 100;
+          return "[" + t2 + (e3[(n2 - 20) % 10] || e3[n2] || e3[0]) + "]";
+        } }, m = function(t2, e3, n2) {
+          var r3 = String(t2);
+          return !r3 || r3.length >= e3 ? t2 : "" + Array(e3 + 1 - r3.length).join(n2) + t2;
+        }, v = { s: m, z: function(t2) {
+          var e3 = -t2.utcOffset(), n2 = Math.abs(e3), r3 = Math.floor(n2 / 60), i2 = n2 % 60;
+          return (e3 <= 0 ? "+" : "-") + m(r3, 2, "0") + ":" + m(i2, 2, "0");
+        }, m: function t2(e3, n2) {
+          if (e3.date() < n2.date()) return -t2(n2, e3);
+          var r3 = 12 * (n2.year() - e3.year()) + (n2.month() - e3.month()), i2 = e3.clone().add(r3, c), s2 = n2 - i2 < 0, u2 = e3.clone().add(r3 + (s2 ? -1 : 1), c);
+          return +(-(r3 + (n2 - i2) / (s2 ? i2 - u2 : u2 - i2)) || 0);
+        }, a: function(t2) {
+          return t2 < 0 ? Math.ceil(t2) || 0 : Math.floor(t2);
+        }, p: function(t2) {
+          return { M: c, y: h, w: o, d: a, D: d, h: u, m: s, s: i, ms: r2, Q: f }[t2] || String(t2 || "").toLowerCase().replace(/s$/, "");
+        }, u: function(t2) {
+          return void 0 === t2;
+        } }, g = "en", D = {};
+        D[g] = M;
+        var p = "$isDayjsObject", S = function(t2) {
+          return t2 instanceof _2 || !(!t2 || !t2[p]);
+        }, w = function t2(e3, n2, r3) {
+          var i2;
+          if (!e3) return g;
+          if ("string" == typeof e3) {
+            var s2 = e3.toLowerCase();
+            D[s2] && (i2 = s2), n2 && (D[s2] = n2, i2 = s2);
+            var u2 = e3.split("-");
+            if (!i2 && u2.length > 1) return t2(u2[0]);
+          } else {
+            var a2 = e3.name;
+            D[a2] = e3, i2 = a2;
+          }
+          return !r3 && i2 && (g = i2), i2 || !r3 && g;
+        }, O = function(t2, e3) {
+          if (S(t2)) return t2.clone();
+          var n2 = "object" == typeof e3 ? e3 : {};
+          return n2.date = t2, n2.args = arguments, new _2(n2);
+        }, b = v;
+        b.l = w, b.i = S, b.w = function(t2, e3) {
+          return O(t2, { locale: e3.$L, utc: e3.$u, x: e3.$x, $offset: e3.$offset });
+        };
+        var _2 = function() {
+          function M2(t2) {
+            this.$L = w(t2.locale, null, true), this.parse(t2), this.$x = this.$x || t2.x || {}, this[p] = true;
+          }
+          var m2 = M2.prototype;
+          return m2.parse = function(t2) {
+            this.$d = function(t3) {
+              var e3 = t3.date, n2 = t3.utc;
+              if (null === e3) return /* @__PURE__ */ new Date(NaN);
+              if (b.u(e3)) return /* @__PURE__ */ new Date();
+              if (e3 instanceof Date) return new Date(e3);
+              if ("string" == typeof e3 && !/Z$/i.test(e3)) {
+                var r3 = e3.match($);
+                if (r3) {
+                  var i2 = r3[2] - 1 || 0, s2 = (r3[7] || "0").substring(0, 3);
+                  return n2 ? new Date(Date.UTC(r3[1], i2, r3[3] || 1, r3[4] || 0, r3[5] || 0, r3[6] || 0, s2)) : new Date(r3[1], i2, r3[3] || 1, r3[4] || 0, r3[5] || 0, r3[6] || 0, s2);
+                }
+              }
+              return new Date(e3);
+            }(t2), this.init();
+          }, m2.init = function() {
+            var t2 = this.$d;
+            this.$y = t2.getFullYear(), this.$M = t2.getMonth(), this.$D = t2.getDate(), this.$W = t2.getDay(), this.$H = t2.getHours(), this.$m = t2.getMinutes(), this.$s = t2.getSeconds(), this.$ms = t2.getMilliseconds();
+          }, m2.$utils = function() {
+            return b;
+          }, m2.isValid = function() {
+            return !(this.$d.toString() === l);
+          }, m2.isSame = function(t2, e3) {
+            var n2 = O(t2);
+            return this.startOf(e3) <= n2 && n2 <= this.endOf(e3);
+          }, m2.isAfter = function(t2, e3) {
+            return O(t2) < this.startOf(e3);
+          }, m2.isBefore = function(t2, e3) {
+            return this.endOf(e3) < O(t2);
+          }, m2.$g = function(t2, e3, n2) {
+            return b.u(t2) ? this[e3] : this.set(n2, t2);
+          }, m2.unix = function() {
+            return Math.floor(this.valueOf() / 1e3);
+          }, m2.valueOf = function() {
+            return this.$d.getTime();
+          }, m2.startOf = function(t2, e3) {
+            var n2 = this, r3 = !!b.u(e3) || e3, f2 = b.p(t2), l2 = function(t3, e4) {
+              var i2 = b.w(n2.$u ? Date.UTC(n2.$y, e4, t3) : new Date(n2.$y, e4, t3), n2);
+              return r3 ? i2 : i2.endOf(a);
+            }, $2 = function(t3, e4) {
+              return b.w(n2.toDate()[t3].apply(n2.toDate("s"), (r3 ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(e4)), n2);
+            }, y2 = this.$W, M3 = this.$M, m3 = this.$D, v2 = "set" + (this.$u ? "UTC" : "");
+            switch (f2) {
+              case h:
+                return r3 ? l2(1, 0) : l2(31, 11);
+              case c:
+                return r3 ? l2(1, M3) : l2(0, M3 + 1);
+              case o:
+                var g2 = this.$locale().weekStart || 0, D2 = (y2 < g2 ? y2 + 7 : y2) - g2;
+                return l2(r3 ? m3 - D2 : m3 + (6 - D2), M3);
+              case a:
+              case d:
+                return $2(v2 + "Hours", 0);
+              case u:
+                return $2(v2 + "Minutes", 1);
+              case s:
+                return $2(v2 + "Seconds", 2);
+              case i:
+                return $2(v2 + "Milliseconds", 3);
+              default:
+                return this.clone();
+            }
+          }, m2.endOf = function(t2) {
+            return this.startOf(t2, false);
+          }, m2.$set = function(t2, e3) {
+            var n2, o2 = b.p(t2), f2 = "set" + (this.$u ? "UTC" : ""), l2 = (n2 = {}, n2[a] = f2 + "Date", n2[d] = f2 + "Date", n2[c] = f2 + "Month", n2[h] = f2 + "FullYear", n2[u] = f2 + "Hours", n2[s] = f2 + "Minutes", n2[i] = f2 + "Seconds", n2[r2] = f2 + "Milliseconds", n2)[o2], $2 = o2 === a ? this.$D + (e3 - this.$W) : e3;
+            if (o2 === c || o2 === h) {
+              var y2 = this.clone().set(d, 1);
+              y2.$d[l2]($2), y2.init(), this.$d = y2.set(d, Math.min(this.$D, y2.daysInMonth())).$d;
+            } else l2 && this.$d[l2]($2);
+            return this.init(), this;
+          }, m2.set = function(t2, e3) {
+            return this.clone().$set(t2, e3);
+          }, m2.get = function(t2) {
+            return this[b.p(t2)]();
+          }, m2.add = function(r3, f2) {
+            var d2, l2 = this;
+            r3 = Number(r3);
+            var $2 = b.p(f2), y2 = function(t2) {
+              var e3 = O(l2);
+              return b.w(e3.date(e3.date() + Math.round(t2 * r3)), l2);
+            };
+            if ($2 === c) return this.set(c, this.$M + r3);
+            if ($2 === h) return this.set(h, this.$y + r3);
+            if ($2 === a) return y2(1);
+            if ($2 === o) return y2(7);
+            var M3 = (d2 = {}, d2[s] = e, d2[u] = n, d2[i] = t, d2)[$2] || 1, m3 = this.$d.getTime() + r3 * M3;
+            return b.w(m3, this);
+          }, m2.subtract = function(t2, e3) {
+            return this.add(-1 * t2, e3);
+          }, m2.format = function(t2) {
+            var e3 = this, n2 = this.$locale();
+            if (!this.isValid()) return n2.invalidDate || l;
+            var r3 = t2 || "YYYY-MM-DDTHH:mm:ssZ", i2 = b.z(this), s2 = this.$H, u2 = this.$m, a2 = this.$M, o2 = n2.weekdays, c6 = n2.months, f2 = n2.meridiem, h2 = function(t3, n3, i3, s3) {
+              return t3 && (t3[n3] || t3(e3, r3)) || i3[n3].slice(0, s3);
+            }, d2 = function(t3) {
+              return b.s(s2 % 12 || 12, t3, "0");
+            }, $2 = f2 || function(t3, e4, n3) {
+              var r4 = t3 < 12 ? "AM" : "PM";
+              return n3 ? r4.toLowerCase() : r4;
+            };
+            return r3.replace(y, function(t3, r4) {
+              return r4 || function(t4) {
+                switch (t4) {
+                  case "YY":
+                    return String(e3.$y).slice(-2);
+                  case "YYYY":
+                    return b.s(e3.$y, 4, "0");
+                  case "M":
+                    return a2 + 1;
+                  case "MM":
+                    return b.s(a2 + 1, 2, "0");
+                  case "MMM":
+                    return h2(n2.monthsShort, a2, c6, 3);
+                  case "MMMM":
+                    return h2(c6, a2);
+                  case "D":
+                    return e3.$D;
+                  case "DD":
+                    return b.s(e3.$D, 2, "0");
+                  case "d":
+                    return String(e3.$W);
+                  case "dd":
+                    return h2(n2.weekdaysMin, e3.$W, o2, 2);
+                  case "ddd":
+                    return h2(n2.weekdaysShort, e3.$W, o2, 3);
+                  case "dddd":
+                    return o2[e3.$W];
+                  case "H":
+                    return String(s2);
+                  case "HH":
+                    return b.s(s2, 2, "0");
+                  case "h":
+                    return d2(1);
+                  case "hh":
+                    return d2(2);
+                  case "a":
+                    return $2(s2, u2, true);
+                  case "A":
+                    return $2(s2, u2, false);
+                  case "m":
+                    return String(u2);
+                  case "mm":
+                    return b.s(u2, 2, "0");
+                  case "s":
+                    return String(e3.$s);
+                  case "ss":
+                    return b.s(e3.$s, 2, "0");
+                  case "SSS":
+                    return b.s(e3.$ms, 3, "0");
+                  case "Z":
+                    return i2;
+                }
+                return null;
+              }(t3) || i2.replace(":", "");
+            });
+          }, m2.utcOffset = function() {
+            return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
+          }, m2.diff = function(r3, d2, l2) {
+            var $2, y2 = this, M3 = b.p(d2), m3 = O(r3), v2 = (m3.utcOffset() - this.utcOffset()) * e, g2 = this - m3, D2 = function() {
+              return b.m(y2, m3);
+            };
+            switch (M3) {
+              case h:
+                $2 = D2() / 12;
+                break;
+              case c:
+                $2 = D2();
+                break;
+              case f:
+                $2 = D2() / 3;
+                break;
+              case o:
+                $2 = (g2 - v2) / 6048e5;
+                break;
+              case a:
+                $2 = (g2 - v2) / 864e5;
+                break;
+              case u:
+                $2 = g2 / n;
+                break;
+              case s:
+                $2 = g2 / e;
+                break;
+              case i:
+                $2 = g2 / t;
+                break;
+              default:
+                $2 = g2;
+            }
+            return l2 ? $2 : b.a($2);
+          }, m2.daysInMonth = function() {
+            return this.endOf(c).$D;
+          }, m2.$locale = function() {
+            return D[this.$L];
+          }, m2.locale = function(t2, e3) {
+            if (!t2) return this.$L;
+            var n2 = this.clone(), r3 = w(t2, e3, true);
+            return r3 && (n2.$L = r3), n2;
+          }, m2.clone = function() {
+            return b.w(this.$d, this);
+          }, m2.toDate = function() {
+            return new Date(this.valueOf());
+          }, m2.toJSON = function() {
+            return this.isValid() ? this.toISOString() : null;
+          }, m2.toISOString = function() {
+            return this.$d.toISOString();
+          }, m2.toString = function() {
+            return this.$d.toUTCString();
+          }, M2;
+        }(), k = _2.prototype;
+        return O.prototype = k, [["$ms", r2], ["$s", i], ["$m", s], ["$H", u], ["$W", a], ["$M", c], ["$y", h], ["$D", d]].forEach(function(t2) {
+          k[t2[1]] = function(e3) {
+            return this.$g(e3, t2[0], t2[1]);
+          };
+        }), O.extend = function(t2, e3) {
+          return t2.$i || (t2(e3, _2, O), t2.$i = true), O;
+        }, O.locale = w, O.isDayjs = S, O.unix = function(t2) {
+          return O(1e3 * t2);
+        }, O.en = D[g], O.Ls = D, O.p = {}, O;
+      });
+    }
+  });
+
   // src/Services/Frame/Root.ts
   var import_client = __toESM(require_client());
   var root = null;
@@ -18501,7 +18582,7 @@ var agent = (() => {
     initFrame();
   };
 
-  // src/Providers/AgentInitialStateProvider.tsx
+  // src/Providers/Agent/AgentInitialStateProvider.tsx
   var import_react = __toESM(require_react());
   var import_jsx_runtime = __toESM(require_jsx_runtime());
   var AgentInitialStateContext = (0, import_react.createContext)(null);
@@ -18528,11 +18609,11 @@ var agent = (() => {
     return event;
   };
 
-  // src/Views/Agent/Elements/ElementsView.tsx
-  var import_react33 = __toESM(require_react());
+  // src/Views/Agent/Elements/AgentElementsCoverageView.tsx
+  var import_react37 = __toESM(require_react());
 
-  // src/Views/Agent/Elements/ElementView.tsx
-  var import_react32 = __toESM(require_react());
+  // src/Views/Agent/Elements/AgentElementCoverageView.tsx
+  var import_react36 = __toESM(require_react());
 
   // src/Services/Frame/Element.ts
   var import_react2 = __toESM(require_react());
@@ -19556,8 +19637,8 @@ var agent = (() => {
         currentSheet.insert(rule);
       })];
       var serializer = middleware(omnipresentPlugins.concat(stylisPlugins, finalizingPlugins));
-      var stylis = function stylis2(styles2) {
-        return serialize(compile(styles2), serializer);
+      var stylis = function stylis2(styles4) {
+        return serialize(compile(styles4), serializer);
       };
       _insert = function insert(selector, serialized, sheet, shouldCache) {
         currentSheet = sheet;
@@ -19569,8 +19650,8 @@ var agent = (() => {
     } else {
       var _finalizingPlugins = [stringify];
       var _serializer = middleware(omnipresentPlugins.concat(stylisPlugins, _finalizingPlugins));
-      var _stylis = function _stylis2(styles2) {
-        return serialize(compile(styles2), _serializer);
+      var _stylis = function _stylis2(styles4) {
+        return serialize(compile(styles4), _serializer);
       };
       var serverStylisCache = getServerStylisCache(stylisPlugins)(key);
       var getRules3 = function getRules4(selector, serialized) {
@@ -19817,8 +19898,8 @@ var agent = (() => {
               next2 = next2.next;
             }
           }
-          var styles2 = serializedStyles.styles + ";";
-          return styles2;
+          var styles4 = serializedStyles.styles + ";";
+          return styles4;
         }
         return createStringFromObject(mergedProps, registered, interpolation);
       }
@@ -19890,33 +19971,33 @@ var agent = (() => {
       return args[0];
     }
     var stringMode = true;
-    var styles2 = "";
+    var styles4 = "";
     cursor = void 0;
     var strings = args[0];
     if (strings == null || strings.raw === void 0) {
       stringMode = false;
-      styles2 += handleInterpolation(mergedProps, registered, strings);
+      styles4 += handleInterpolation(mergedProps, registered, strings);
     } else {
       var asTemplateStringsArr = strings;
-      styles2 += asTemplateStringsArr[0];
+      styles4 += asTemplateStringsArr[0];
     }
     for (var i = 1; i < args.length; i++) {
-      styles2 += handleInterpolation(mergedProps, registered, args[i]);
+      styles4 += handleInterpolation(mergedProps, registered, args[i]);
       if (stringMode) {
         var templateStringsArr = strings;
-        styles2 += templateStringsArr[i];
+        styles4 += templateStringsArr[i];
       }
     }
     labelPattern.lastIndex = 0;
     var identifierName = "";
     var match2;
-    while ((match2 = labelPattern.exec(styles2)) !== null) {
+    while ((match2 = labelPattern.exec(styles4)) !== null) {
       identifierName += "-" + match2[1];
     }
-    var name = murmur2(styles2) + identifierName;
+    var name = murmur2(styles4) + identifierName;
     return {
       name,
-      styles: styles2,
+      styles: styles4,
       next: cursor
     };
   }
@@ -20053,14 +20134,14 @@ var agent = (() => {
     }
     return React3.createElement.apply(null, createElementArgArray);
   };
-  (function(_jsx88) {
+  (function(_jsx135) {
     var JSX;
     /* @__PURE__ */ (function(_JSX) {
-    })(JSX || (JSX = _jsx88.JSX || (_jsx88.JSX = {})));
+    })(JSX || (JSX = _jsx135.JSX || (_jsx135.JSX = {})));
   })(jsx2 || (jsx2 = {}));
   var Global = /* @__PURE__ */ withEmotionCache(function(props, cache) {
-    var styles2 = props.styles;
-    var serialized = serializeStyles([styles2], void 0, React3.useContext(ThemeContext));
+    var styles4 = props.styles;
+    var serialized = serializeStyles([styles4], void 0, React3.useContext(ThemeContext));
     if (!isBrowser4) {
       var _ref;
       var serializedNames = serialized.name;
@@ -20217,19 +20298,19 @@ var agent = (() => {
     var shouldUseAs = !defaultShouldForwardProp("as");
     return function() {
       var args = arguments;
-      var styles2 = isReal && tag.__emotion_styles !== void 0 ? tag.__emotion_styles.slice(0) : [];
+      var styles4 = isReal && tag.__emotion_styles !== void 0 ? tag.__emotion_styles.slice(0) : [];
       if (identifierName !== void 0) {
-        styles2.push("label:" + identifierName + ";");
+        styles4.push("label:" + identifierName + ";");
       }
       if (args[0] == null || args[0].raw === void 0) {
-        styles2.push.apply(styles2, args);
+        styles4.push.apply(styles4, args);
       } else {
         var templateStringsArr = args[0];
-        styles2.push(templateStringsArr[0]);
+        styles4.push(templateStringsArr[0]);
         var len = args.length;
         var i = 1;
         for (; i < len; i++) {
-          styles2.push(args[i], templateStringsArr[i]);
+          styles4.push(args[i], templateStringsArr[i]);
         }
       }
       var Styled = withEmotionCache(function(props, cache, ref) {
@@ -20249,7 +20330,7 @@ var agent = (() => {
         } else if (props.className != null) {
           className = props.className + " ";
         }
-        var serialized = serializeStyles(styles2.concat(classInterpolations), cache.registered, mergedProps);
+        var serialized = serializeStyles(styles4.concat(classInterpolations), cache.registered, mergedProps);
         className += cache.key + "-" + serialized.name;
         if (targetClassName !== void 0) {
           className += " " + targetClassName;
@@ -20276,7 +20357,7 @@ var agent = (() => {
       Styled.defaultProps = tag.defaultProps;
       Styled.__emotion_real = Styled;
       Styled.__emotion_base = baseTag;
-      Styled.__emotion_styles = styles2;
+      Styled.__emotion_styles = styles4;
       Styled.__emotion_forwardProp = shouldForwardProp2;
       Object.defineProperty(Styled, "toString", {
         value: function value() {
@@ -20290,7 +20371,7 @@ var agent = (() => {
         var newStyled2 = createStyled2(nextTag, _extends({}, options, nextOptions, {
           shouldForwardProp: composeShouldForwardProps(Styled, nextOptions, true)
         }));
-        return newStyled2.apply(void 0, styles2);
+        return newStyled2.apply(void 0, styles4);
       };
       return Styled;
     };
@@ -20449,10 +20530,10 @@ var agent = (() => {
   }
   function GlobalStyles(props) {
     const {
-      styles: styles2,
+      styles: styles4,
       defaultTheme: defaultTheme5 = {}
     } = props;
-    const globalStyles = typeof styles2 === "function" ? (themeInput) => styles2(isEmpty(themeInput) ? defaultTheme5 : themeInput) : styles2;
+    const globalStyles = typeof styles4 === "function" ? (themeInput) => styles4(isEmpty(themeInput) ? defaultTheme5 : themeInput) : styles4;
     return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Global, {
       styles: globalStyles
     });
@@ -20466,14 +20547,14 @@ var agent = (() => {
   function styled(tag, options) {
     const stylesFactory = newStyled(tag, options);
     if (false) {
-      return (...styles2) => {
+      return (...styles4) => {
         const component = typeof tag === "string" ? `"${tag}"` : "component";
-        if (styles2.length === 0) {
+        if (styles4.length === 0) {
           console.error([`MUI: Seems like you called \`styled(${component})()\` without a \`style\` argument.`, 'You must provide a `styles` argument: `styled("div")(styleYouForgotToPass)`.'].join("\n"));
-        } else if (styles2.some((style4) => style4 === void 0)) {
+        } else if (styles4.some((style4) => style4 === void 0)) {
           console.error(`MUI: the styled(${component})(...args) API requires all its args to be defined.`);
         }
-        return stylesFactory(...styles2);
+        return stylesFactory(...styles4);
       };
     }
     return stylesFactory;
@@ -20484,10 +20565,13 @@ var agent = (() => {
     }
   }
   var wrapper = [];
-  function internal_serializeStyles(styles2) {
-    wrapper[0] = styles2;
+  function internal_serializeStyles(styles4) {
+    wrapper[0] = styles4;
     return serializeStyles(wrapper);
   }
+
+  // node_modules/@mui/system/esm/GlobalStyles/GlobalStyles.js
+  var React8 = __toESM(require_react());
 
   // node_modules/@mui/utils/esm/deepmerge/deepmerge.js
   var React6 = __toESM(require_react());
@@ -20767,9 +20851,9 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
       return acc;
     }, style4);
   }
-  function mergeBreakpointsInOrder(breakpointsInput, ...styles2) {
+  function mergeBreakpointsInOrder(breakpointsInput, ...styles4) {
     const emptyBreakpoints = createEmptyBreakpointObject(breakpointsInput);
-    const mergedOutput = [emptyBreakpoints, ...styles2].reduce((prev2, next2) => deepmerge(prev2, next2), {});
+    const mergedOutput = [emptyBreakpoints, ...styles4].reduce((prev2, next2) => deepmerge(prev2, next2), {});
     return removeUnusedBreakpoints(Object.keys(emptyBreakpoints), mergedOutput);
   }
   function computeBreakpointsBase(breakpointValues, themeBreakpoints) {
@@ -21067,8 +21151,8 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
   }
 
   // node_modules/@mui/system/esm/compose/compose.js
-  function compose(...styles2) {
-    const handlers = styles2.reduce((acc, style4) => {
+  function compose(...styles4) {
+    const handlers = styles4.reduce((acc, style4) => {
       style4.filterProps.forEach((prop) => {
         acc[prop] = style4;
       });
@@ -21082,8 +21166,8 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
         return acc;
       }, {});
     };
-    fn2.propTypes = false ? styles2.reduce((acc, style4) => Object.assign(acc, style4.propTypes), {}) : {};
-    fn2.filterProps = styles2.reduce((acc, style4) => acc.concat(style4.filterProps), []);
+    fn2.propTypes = false ? styles4.reduce((acc, style4) => Object.assign(acc, style4.propTypes), {}) : {};
+    fn2.filterProps = styles4.reduce((acc, style4) => acc.concat(style4.filterProps), []);
     return fn2;
   }
   var compose_default = compose;
@@ -21694,7 +21778,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
   var styleFunctionSx_default = styleFunctionSx;
 
   // node_modules/@mui/system/esm/createTheme/applyStyles.js
-  function applyStyles(key, styles2) {
+  function applyStyles(key, styles4) {
     var _a;
     const theme = this;
     if (theme.vars) {
@@ -21703,17 +21787,17 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
       }
       let selector = theme.getColorSchemeSelector(key);
       if (selector === "&") {
-        return styles2;
+        return styles4;
       }
       if (selector.includes("data-") || selector.includes(".")) {
         selector = `*:where(${selector.replace(/\s*&$/, "")}) &`;
       }
       return {
-        [selector]: styles2
+        [selector]: styles4
       };
     }
     if (theme.palette.mode === key) {
-      return styles2;
+      return styles4;
     }
     return {};
   }
@@ -21775,6 +21859,39 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
     return useThemeWithoutDefault_default(defaultTheme5);
   }
   var useTheme_default = useTheme3;
+
+  // node_modules/@mui/system/esm/GlobalStyles/GlobalStyles.js
+  var import_jsx_runtime3 = __toESM(require_jsx_runtime());
+  function GlobalStyles2({
+    styles: styles4,
+    themeId,
+    defaultTheme: defaultTheme5 = {}
+  }) {
+    const upperTheme = useTheme_default(defaultTheme5);
+    const globalStyles = typeof styles4 === "function" ? styles4(themeId ? upperTheme[themeId] || upperTheme : upperTheme) : styles4;
+    return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(GlobalStyles, {
+      styles: globalStyles
+    });
+  }
+  false ? GlobalStyles2.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │ To update them, edit the TypeScript types and run `pnpm proptypes`. │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * @ignore
+     */
+    defaultTheme: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    styles: import_prop_types.default.oneOfType([import_prop_types.default.array, import_prop_types.default.func, import_prop_types.default.number, import_prop_types.default.object, import_prop_types.default.string, import_prop_types.default.bool]),
+    /**
+     * @ignore
+     */
+    themeId: import_prop_types.default.string
+  } : void 0;
+  var GlobalStyles_default = GlobalStyles2;
 
   // node_modules/@mui/system/esm/styleFunctionSx/extendSxProp.js
   var splitProps = (props) => {
@@ -21842,7 +21959,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
   var ClassNameGenerator_default = ClassNameGenerator;
 
   // node_modules/@mui/system/esm/createBox/createBox.js
-  var React8 = __toESM(require_react());
+  var React9 = __toESM(require_react());
 
   // node_modules/clsx/dist/clsx.mjs
   function r(e) {
@@ -21861,7 +21978,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
   var clsx_default = clsx;
 
   // node_modules/@mui/system/esm/createBox/createBox.js
-  var import_jsx_runtime3 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime4 = __toESM(require_jsx_runtime());
   function createBox(options = {}) {
     const {
       themeId,
@@ -21872,7 +21989,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
     const BoxRoot = styled("div", {
       shouldForwardProp: (prop) => prop !== "theme" && prop !== "sx" && prop !== "as"
     })(styleFunctionSx_default);
-    const Box2 = /* @__PURE__ */ React8.forwardRef(function Box3(inProps, ref) {
+    const Box2 = /* @__PURE__ */ React9.forwardRef(function Box3(inProps, ref) {
       const theme = useTheme_default(defaultTheme5);
       const _a = extendSxProp(inProps), {
         className,
@@ -21881,7 +21998,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
         "className",
         "component"
       ]);
-      return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(BoxRoot, __spreadValues({
+      return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(BoxRoot, __spreadValues({
         as: component,
         ref,
         className: clsx_default(className, generateClassName ? generateClassName(defaultClassName) : defaultClassName),
@@ -21954,7 +22071,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
     if (!slot) {
       return null;
     }
-    return (_props, styles2) => styles2[slot];
+    return (_props, styles4) => styles4[slot];
   }
   function attachTheme(props, themeId, defaultTheme5) {
     props.theme = isObjectEmpty2(props.theme) ? defaultTheme5 : props.theme[themeId] || props.theme;
@@ -22024,13 +22141,13 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
       attachTheme(props, themeId, defaultTheme5);
     }
     const styled4 = (tag, inputOptions = {}) => {
-      internal_mutateStyles(tag, (styles2) => styles2.filter((style4) => style4 !== styleFunctionSx_default));
+      internal_mutateStyles(tag, (styles4) => styles4.filter((style4) => style4 !== styleFunctionSx_default));
       const _a = inputOptions, {
         name: componentName,
         slot: componentSlot,
         skipVariantsResolver: inputSkipVariantsResolver,
         skipSx: inputSkipSx,
-        overridesResolver: overridesResolver = defaultOverridesResolver(lowercaseFirstLetter(componentSlot))
+        overridesResolver: overridesResolver4 = defaultOverridesResolver(lowercaseFirstLetter(componentSlot))
       } = _a, options = __objRest(_a, [
         "name",
         "slot",
@@ -22080,7 +22197,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
         const expressionsBody = expressionsInput.map(transformStyle);
         const expressionsTail = [];
         expressionsHead.push(styleAttachTheme);
-        if (componentName && overridesResolver) {
+        if (componentName && overridesResolver4) {
           expressionsTail.push(function styleThemeOverrides(props) {
             var _a2, _b;
             const theme = props.theme;
@@ -22092,7 +22209,7 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
             for (const slotKey in styleOverrides) {
               resolvedStyleOverrides[slotKey] = processStyle(props, styleOverrides[slotKey]);
             }
-            return overridesResolver(props, resolvedStyleOverrides);
+            return overridesResolver4(props, resolvedStyleOverrides);
           });
         }
         if (componentName && !skipVariantsResolver) {
@@ -22233,8 +22350,8 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
   }
 
   // node_modules/@mui/utils/esm/useEnhancedEffect/useEnhancedEffect.js
-  var React9 = __toESM(require_react());
-  var useEnhancedEffect = typeof window !== "undefined" ? React9.useLayoutEffect : React9.useEffect;
+  var React10 = __toESM(require_react());
+  var useEnhancedEffect = typeof window !== "undefined" ? React10.useLayoutEffect : React10.useEffect;
   var useEnhancedEffect_default = useEnhancedEffect;
 
   // node_modules/@mui/utils/esm/clamp/clamp.js
@@ -22461,10 +22578,10 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   }
 
   // node_modules/@mui/system/esm/ThemeProvider/ThemeProvider.js
-  var React23 = __toESM(require_react());
+  var React25 = __toESM(require_react());
 
   // node_modules/@mui/private-theming/ThemeProvider/ThemeProvider.js
-  var React20 = __toESM(require_react());
+  var React22 = __toESM(require_react());
 
   // node_modules/@mui/utils/esm/createChainedFunction/createChainedFunction.js
   function createChainedFunction(...funcs) {
@@ -22480,11 +22597,27 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
     });
   }
 
+  // node_modules/@mui/utils/esm/debounce/debounce.js
+  function debounce(func, wait = 166) {
+    let timeout2;
+    function debounced(...args) {
+      const later = () => {
+        func.apply(this, args);
+      };
+      clearTimeout(timeout2);
+      timeout2 = setTimeout(later, wait);
+    }
+    debounced.clear = () => {
+      clearTimeout(timeout2);
+    };
+    return debounced;
+  }
+
   // node_modules/@mui/utils/esm/isMuiElement/isMuiElement.js
-  var React10 = __toESM(require_react());
+  var React11 = __toESM(require_react());
   function isMuiElement(element, muiNames) {
     var _a, _b, _c, _d;
-    return /* @__PURE__ */ React10.isValidElement(element) && muiNames.indexOf(
+    return /* @__PURE__ */ React11.isValidElement(element) && muiNames.indexOf(
       // For server components `muiName` is avaialble in element.type._payload.value.muiName
       // relevant info - https://github.com/facebook/react/blob/2807d781a08db8e9873687fccc25c0f12b4fb3d4/packages/react/src/ReactLazy.js#L45
       // eslint-disable-next-line no-underscore-dangle
@@ -22513,12 +22646,12 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   }
 
   // node_modules/@mui/utils/esm/useId/useId.js
-  var React11 = __toESM(require_react());
+  var React12 = __toESM(require_react());
   var globalId = 0;
   function useGlobalId(idOverride) {
-    const [defaultId, setDefaultId] = React11.useState(idOverride);
+    const [defaultId, setDefaultId] = React12.useState(idOverride);
     const id = idOverride || defaultId;
-    React11.useEffect(() => {
+    React12.useEffect(() => {
       if (defaultId == null) {
         globalId += 1;
         setDefaultId(`mui-${globalId}`);
@@ -22526,7 +22659,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
     }, [defaultId]);
     return id;
   }
-  var safeReact = __spreadValues({}, React11);
+  var safeReact = __spreadValues({}, React12);
   var maybeReactUseId = safeReact.useId;
   function useId(idOverride) {
     if (maybeReactUseId !== void 0) {
@@ -22536,14 +22669,50 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
     return useGlobalId(idOverride);
   }
 
+  // node_modules/@mui/utils/esm/useControlled/useControlled.js
+  var React13 = __toESM(require_react());
+  function useControlled({
+    controlled,
+    default: defaultProp,
+    name,
+    state = "value"
+  }) {
+    const {
+      current: isControlled
+    } = React13.useRef(controlled !== void 0);
+    const [valueState, setValue] = React13.useState(defaultProp);
+    const value = isControlled ? controlled : valueState;
+    if (false) {
+      React13.useEffect(() => {
+        if (isControlled !== (controlled !== void 0)) {
+          console.error([`MUI: A component is changing the ${isControlled ? "" : "un"}controlled ${state} state of ${name} to be ${isControlled ? "un" : ""}controlled.`, "Elements should not switch from uncontrolled to controlled (or vice versa).", `Decide between using a controlled or uncontrolled ${name} element for the lifetime of the component.`, "The nature of the state is determined during the first render. It's considered controlled if the value is not `undefined`.", "More info: https://fb.me/react-controlled-components"].join("\n"));
+        }
+      }, [state, name, controlled]);
+      const {
+        current: defaultValue
+      } = React13.useRef(defaultProp);
+      React13.useEffect(() => {
+        if (!isControlled && !Object.is(defaultValue, defaultProp)) {
+          console.error([`MUI: A component is changing the default ${state} state of an uncontrolled ${name} after being initialized. To suppress this warning opt to use a controlled ${name}.`].join("\n"));
+        }
+      }, [JSON.stringify(defaultProp)]);
+    }
+    const setValueIfUncontrolled = React13.useCallback((newValue) => {
+      if (!isControlled) {
+        setValue(newValue);
+      }
+    }, []);
+    return [value, setValueIfUncontrolled];
+  }
+
   // node_modules/@mui/utils/esm/useEventCallback/useEventCallback.js
-  var React12 = __toESM(require_react());
+  var React14 = __toESM(require_react());
   function useEventCallback(fn2) {
-    const ref = React12.useRef(fn2);
+    const ref = React14.useRef(fn2);
     useEnhancedEffect_default(() => {
       ref.current = fn2;
     });
-    return React12.useRef((...args) => (
+    return React14.useRef((...args) => (
       // @ts-expect-error hide `this`
       (0, ref.current)(...args)
     )).current;
@@ -22551,10 +22720,10 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   var useEventCallback_default = useEventCallback;
 
   // node_modules/@mui/utils/esm/useForkRef/useForkRef.js
-  var React13 = __toESM(require_react());
+  var React15 = __toESM(require_react());
   function useForkRef(...refs) {
-    const cleanupRef = React13.useRef(void 0);
-    const refEffect = React13.useCallback((instance2) => {
+    const cleanupRef = React15.useRef(void 0);
+    const refEffect = React15.useCallback((instance2) => {
       const cleanups = refs.map((ref) => {
         if (ref == null) {
           return null;
@@ -22575,7 +22744,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
         cleanups.forEach((refCleanup) => refCleanup == null ? void 0 : refCleanup());
       };
     }, refs);
-    return React13.useMemo(() => {
+    return React15.useMemo(() => {
       if (refs.every((ref) => ref == null)) {
         return null;
       }
@@ -22592,10 +22761,10 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   }
 
   // node_modules/@mui/utils/esm/useLazyRef/useLazyRef.js
-  var React14 = __toESM(require_react());
+  var React16 = __toESM(require_react());
   var UNINITIALIZED = {};
   function useLazyRef(init, initArg) {
-    const ref = React14.useRef(UNINITIALIZED);
+    const ref = React16.useRef(UNINITIALIZED);
     if (ref.current === UNINITIALIZED) {
       ref.current = init(initArg);
     }
@@ -22603,10 +22772,10 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   }
 
   // node_modules/@mui/utils/esm/useOnMount/useOnMount.js
-  var React15 = __toESM(require_react());
+  var React17 = __toESM(require_react());
   var EMPTY = [];
   function useOnMount(fn2) {
-    React15.useEffect(fn2, EMPTY);
+    React17.useEffect(fn2, EMPTY);
   }
 
   // node_modules/@mui/utils/esm/useTimeout/useTimeout.js
@@ -22662,10 +22831,10 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   }
 
   // node_modules/@mui/utils/esm/usePreviousProps/usePreviousProps.js
-  var React16 = __toESM(require_react());
+  var React18 = __toESM(require_react());
   var usePreviousProps = (value) => {
-    const ref = React16.useRef({});
-    React16.useEffect(() => {
+    const ref = React18.useRef({});
+    React18.useEffect(() => {
       ref.current = value;
     });
     return ref.current;
@@ -22820,29 +22989,29 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   var useSlotProps_default = useSlotProps;
 
   // node_modules/@mui/utils/esm/getReactElementRef/getReactElementRef.js
-  var React17 = __toESM(require_react());
+  var React19 = __toESM(require_react());
   function getReactElementRef(element) {
     var _a;
-    if (parseInt(React17.version, 10) >= 19) {
+    if (parseInt(React19.version, 10) >= 19) {
       return ((_a = element == null ? void 0 : element.props) == null ? void 0 : _a.ref) || null;
     }
     return (element == null ? void 0 : element.ref) || null;
   }
 
   // node_modules/@mui/private-theming/useTheme/ThemeContext.js
-  var React18 = __toESM(require_react());
-  var ThemeContext2 = /* @__PURE__ */ React18.createContext(null);
+  var React20 = __toESM(require_react());
+  var ThemeContext2 = /* @__PURE__ */ React20.createContext(null);
   if (false) {
     ThemeContext2.displayName = "ThemeContext";
   }
   var ThemeContext_default = ThemeContext2;
 
   // node_modules/@mui/private-theming/useTheme/useTheme.js
-  var React19 = __toESM(require_react());
+  var React21 = __toESM(require_react());
   function useTheme4() {
-    const theme = React19.useContext(ThemeContext_default);
+    const theme = React21.useContext(ThemeContext_default);
     if (false) {
-      React19.useDebugValue(theme);
+      React21.useDebugValue(theme);
     }
     return theme;
   }
@@ -22852,7 +23021,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   var nested_default = hasSymbol ? Symbol.for("mui.nested") : "__THEME_NESTED__";
 
   // node_modules/@mui/private-theming/ThemeProvider/ThemeProvider.js
-  var import_jsx_runtime4 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime5 = __toESM(require_jsx_runtime());
   function mergeOuterLocalTheme(outerTheme, localTheme) {
     if (typeof localTheme === "function") {
       const mergedTheme = localTheme(outerTheme);
@@ -22876,14 +23045,14 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
         console.error(["MUI: You are providing a theme function prop to the ThemeProvider component:", "<ThemeProvider theme={outerTheme => outerTheme} />", "", "However, no outer theme is present.", "Make sure a theme is already injected higher in the React tree or provide a theme object."].join("\n"));
       }
     }
-    const theme = React20.useMemo(() => {
+    const theme = React22.useMemo(() => {
       const output = outerTheme === null ? __spreadValues({}, localTheme) : mergeOuterLocalTheme(outerTheme, localTheme);
       if (output != null) {
         output[nested_default] = outerTheme !== null;
       }
       return output;
     }, [localTheme, outerTheme]);
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(ThemeContext_default.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(ThemeContext_default.Provider, {
       value: theme,
       children
     });
@@ -22904,16 +23073,16 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   var ThemeProvider_default = ThemeProvider2;
 
   // node_modules/@mui/system/esm/RtlProvider/index.js
-  var React21 = __toESM(require_react());
-  var import_jsx_runtime5 = __toESM(require_jsx_runtime());
-  var RtlContext = /* @__PURE__ */ React21.createContext();
+  var React23 = __toESM(require_react());
+  var import_jsx_runtime6 = __toESM(require_jsx_runtime());
+  var RtlContext = /* @__PURE__ */ React23.createContext();
   function RtlProvider(_a) {
     var _b = _a, {
       value
     } = _b, props = __objRest(_b, [
       "value"
     ]);
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(RtlContext.Provider, __spreadValues({
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(RtlContext.Provider, __spreadValues({
       value: value != null ? value : true
     }, props));
   }
@@ -22922,20 +23091,20 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
     value: import_prop_types.default.bool
   } : void 0;
   var useRtl = () => {
-    const value = React21.useContext(RtlContext);
+    const value = React23.useContext(RtlContext);
     return value != null ? value : false;
   };
   var RtlProvider_default = RtlProvider;
 
   // node_modules/@mui/system/esm/DefaultPropsProvider/DefaultPropsProvider.js
-  var React22 = __toESM(require_react());
-  var import_jsx_runtime6 = __toESM(require_jsx_runtime());
-  var PropsContext = /* @__PURE__ */ React22.createContext(void 0);
+  var React24 = __toESM(require_react());
+  var import_jsx_runtime7 = __toESM(require_jsx_runtime());
+  var PropsContext = /* @__PURE__ */ React24.createContext(void 0);
   function DefaultPropsProvider({
     value,
     children
   }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(PropsContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(PropsContext.Provider, {
       value,
       children
     });
@@ -22976,7 +23145,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
     props,
     name
   }) {
-    const ctx2 = React22.useContext(PropsContext);
+    const ctx2 = React24.useContext(PropsContext);
     return getThemeProps2({
       props,
       name,
@@ -22988,10 +23157,10 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   var DefaultPropsProvider_default = DefaultPropsProvider;
 
   // node_modules/@mui/system/esm/ThemeProvider/ThemeProvider.js
-  var import_jsx_runtime7 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime8 = __toESM(require_jsx_runtime());
   var EMPTY_THEME = {};
   function useThemeScoping(themeId, upperTheme, localTheme, isPrivate = false) {
-    return React23.useMemo(() => {
+    return React25.useMemo(() => {
       const resolvedTheme = themeId ? upperTheme[themeId] || upperTheme : upperTheme;
       if (typeof localTheme === "function") {
         const mergedTheme = localTheme(resolvedTheme);
@@ -23024,13 +23193,13 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
     const engineTheme = useThemeScoping(themeId, upperTheme, localTheme);
     const privateTheme = useThemeScoping(themeId, upperPrivateTheme, localTheme, true);
     const rtlValue = (themeId ? engineTheme[themeId] : engineTheme).direction === "rtl";
-    return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ThemeProvider_default, {
+    return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ThemeProvider_default, {
       theme: privateTheme,
-      children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(ThemeContext.Provider, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ThemeContext.Provider, {
         value: engineTheme,
-        children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(RtlProvider_default, {
+        children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(RtlProvider_default, {
           value: rtlValue,
-          children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(DefaultPropsProvider_default, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(DefaultPropsProvider_default, {
             value: themeId ? engineTheme[themeId].components : engineTheme.components,
             children
           })
@@ -23081,11 +23250,11 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   }
 
   // node_modules/@mui/system/esm/cssVars/createCssVarsProvider.js
-  var React26 = __toESM(require_react());
+  var React28 = __toESM(require_react());
 
   // node_modules/@mui/system/esm/InitColorSchemeScript/InitColorSchemeScript.js
-  var React24 = __toESM(require_react());
-  var import_jsx_runtime8 = __toESM(require_jsx_runtime());
+  var React26 = __toESM(require_react());
+  var import_jsx_runtime9 = __toESM(require_jsx_runtime());
   var DEFAULT_MODE_STORAGE_KEY = "mode";
   var DEFAULT_COLOR_SCHEME_STORAGE_KEY = "color-scheme";
   var DEFAULT_ATTRIBUTE = "data-color-scheme";
@@ -23125,7 +23294,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
     } else {
       setter += `${colorSchemeNode}.setAttribute('${attribute}', colorScheme);`;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("script", {
+    return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("script", {
       suppressHydrationWarning: true,
       nonce: typeof window === "undefined" ? nonce : "",
       dangerouslySetInnerHTML: {
@@ -23159,7 +23328,7 @@ try {
   }
 
   // node_modules/@mui/system/esm/cssVars/useCurrentColorScheme.js
-  var React25 = __toESM(require_react());
+  var React27 = __toESM(require_react());
 
   // node_modules/@mui/system/esm/cssVars/localStorageManager.js
   function noop() {
@@ -23260,19 +23429,19 @@ try {
     } = options;
     const joinedColorSchemes = supportedColorSchemes.join(",");
     const isMultiSchemes = supportedColorSchemes.length > 1;
-    const modeStorage = React25.useMemo(() => storageManager == null ? void 0 : storageManager({
+    const modeStorage = React27.useMemo(() => storageManager == null ? void 0 : storageManager({
       key: modeStorageKey,
       storageWindow
     }), [storageManager, modeStorageKey, storageWindow]);
-    const lightStorage = React25.useMemo(() => storageManager == null ? void 0 : storageManager({
+    const lightStorage = React27.useMemo(() => storageManager == null ? void 0 : storageManager({
       key: `${colorSchemeStorageKey}-light`,
       storageWindow
     }), [storageManager, colorSchemeStorageKey, storageWindow]);
-    const darkStorage = React25.useMemo(() => storageManager == null ? void 0 : storageManager({
+    const darkStorage = React27.useMemo(() => storageManager == null ? void 0 : storageManager({
       key: `${colorSchemeStorageKey}-dark`,
       storageWindow
     }), [storageManager, colorSchemeStorageKey, storageWindow]);
-    const [state, setState] = React25.useState(() => {
+    const [state, setState] = React27.useState(() => {
       const initialMode = (modeStorage == null ? void 0 : modeStorage.get(defaultMode)) || defaultMode;
       const lightColorScheme = (lightStorage == null ? void 0 : lightStorage.get(defaultLightColorScheme)) || defaultLightColorScheme;
       const darkColorScheme = (darkStorage == null ? void 0 : darkStorage.get(defaultDarkColorScheme)) || defaultDarkColorScheme;
@@ -23283,12 +23452,12 @@ try {
         darkColorScheme
       };
     });
-    const [isClient, setIsClient] = React25.useState(noSsr || !isMultiSchemes);
-    React25.useEffect(() => {
+    const [isClient, setIsClient] = React27.useState(noSsr || !isMultiSchemes);
+    React27.useEffect(() => {
       setIsClient(true);
     }, []);
     const colorScheme = getColorScheme(state);
-    const setMode = React25.useCallback((mode) => {
+    const setMode = React27.useCallback((mode) => {
       setState((currentState) => {
         if (mode === currentState.mode) {
           return currentState;
@@ -23301,7 +23470,7 @@ try {
         });
       });
     }, [modeStorage, defaultMode]);
-    const setColorScheme = React25.useCallback((value) => {
+    const setColorScheme = React27.useCallback((value) => {
       if (!value) {
         setState((currentState) => {
           lightStorage == null ? void 0 : lightStorage.set(defaultLightColorScheme);
@@ -23355,7 +23524,7 @@ try {
         });
       }
     }, [joinedColorSchemes, lightStorage, darkStorage, defaultLightColorScheme, defaultDarkColorScheme]);
-    const handleMediaQuery = React25.useCallback((event) => {
+    const handleMediaQuery = React27.useCallback((event) => {
       if (state.mode === "system") {
         setState((currentState) => {
           const systemMode = (event == null ? void 0 : event.matches) ? "dark" : "light";
@@ -23368,9 +23537,9 @@ try {
         });
       }
     }, [state.mode]);
-    const mediaListener = React25.useRef(handleMediaQuery);
+    const mediaListener = React27.useRef(handleMediaQuery);
     mediaListener.current = handleMediaQuery;
-    React25.useEffect(() => {
+    React27.useEffect(() => {
       if (typeof window.matchMedia !== "function" || !isMultiSchemes) {
         return void 0;
       }
@@ -23382,7 +23551,7 @@ try {
         media.removeListener(handler);
       };
     }, [isMultiSchemes]);
-    React25.useEffect(() => {
+    React27.useEffect(() => {
       if (isMultiSchemes) {
         const unsubscribeMode = (modeStorage == null ? void 0 : modeStorage.subscribe((value) => {
           if (!value || ["light", "dark", "system"].includes(value)) {
@@ -23421,7 +23590,7 @@ try {
   }
 
   // node_modules/@mui/system/esm/cssVars/createCssVarsProvider.js
-  var import_jsx_runtime9 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime10 = __toESM(require_jsx_runtime());
   var DISABLE_CSS_TRANSITION = "*{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}";
   function createCssVarsProvider(options) {
     const {
@@ -23451,11 +23620,11 @@ try {
       },
       systemMode: void 0
     };
-    const ColorSchemeContext = /* @__PURE__ */ React26.createContext(void 0);
+    const ColorSchemeContext = /* @__PURE__ */ React28.createContext(void 0);
     if (false) {
       ColorSchemeContext.displayName = "ColorSchemeContext";
     }
-    const useColorScheme2 = () => React26.useContext(ColorSchemeContext) || defaultContext;
+    const useColorScheme2 = () => React28.useContext(ColorSchemeContext) || defaultContext;
     const defaultColorSchemes = {};
     const defaultComponents = {};
     function CssVarsProvider2(props) {
@@ -23475,11 +23644,11 @@ try {
         defaultMode: initialMode = "system",
         noSsr
       } = props;
-      const hasMounted = React26.useRef(false);
+      const hasMounted = React28.useRef(false);
       const upperTheme = useTheme4();
-      const ctx2 = React26.useContext(ColorSchemeContext);
+      const ctx2 = React28.useContext(ColorSchemeContext);
       const nested = !!ctx2 && !disableNestedContext;
-      const initialTheme = React26.useMemo(() => {
+      const initialTheme = React28.useMemo(() => {
         if (themeProp) {
           return themeProp;
         }
@@ -23493,7 +23662,7 @@ try {
         cssVarPrefix
       } = restThemeProp;
       const joinedColorSchemes = Object.keys(colorSchemes).filter((k) => !!colorSchemes[k]).join(",");
-      const allColorSchemes = React26.useMemo(() => joinedColorSchemes.split(","), [joinedColorSchemes]);
+      const allColorSchemes = React28.useMemo(() => joinedColorSchemes.split(","), [joinedColorSchemes]);
       const defaultLightColorScheme2 = typeof defaultColorScheme === "string" ? defaultColorScheme : defaultColorScheme.light;
       const defaultDarkColorScheme2 = typeof defaultColorScheme === "string" ? defaultColorScheme : defaultColorScheme.dark;
       const defaultMode = colorSchemes[defaultLightColorScheme2] && colorSchemes[defaultDarkColorScheme2] ? initialMode : ((_b = (_a = colorSchemes[restThemeProp.defaultColorScheme]) == null ? void 0 : _a.palette) == null ? void 0 : _b.mode) || ((_c = restThemeProp.palette) == null ? void 0 : _c.mode);
@@ -23522,7 +23691,7 @@ try {
         mode = ctx2.mode;
         colorScheme = ctx2.colorScheme;
       }
-      const memoTheme2 = React26.useMemo(() => {
+      const memoTheme2 = React28.useMemo(() => {
         var _a2;
         const calculatedColorScheme = colorScheme || restThemeProp.defaultColorScheme;
         const themeVars = ((_a2 = restThemeProp.generateThemeVars) == null ? void 0 : _a2.call(restThemeProp)) || restThemeProp.vars;
@@ -23582,7 +23751,7 @@ try {
           }
         }
       }, [colorScheme, colorSchemeSelector, colorSchemeNode, allColorSchemes]);
-      React26.useEffect(() => {
+      React28.useEffect(() => {
         let timer;
         if (disableTransitionOnChange && hasMounted.current && documentNode) {
           const css2 = documentNode.createElement("style");
@@ -23597,13 +23766,13 @@ try {
           clearTimeout(timer);
         };
       }, [colorScheme, disableTransitionOnChange, documentNode]);
-      React26.useEffect(() => {
+      React28.useEffect(() => {
         hasMounted.current = true;
         return () => {
           hasMounted.current = false;
         };
       }, []);
-      const contextValue = React26.useMemo(() => ({
+      const contextValue = React28.useMemo(() => ({
         allColorSchemes,
         colorScheme,
         darkColorScheme,
@@ -23622,19 +23791,19 @@ try {
       if (disableStyleSheetGeneration || restThemeProp.cssVariables === false || nested && (upperTheme == null ? void 0 : upperTheme.cssVarPrefix) === cssVarPrefix) {
         shouldGenerateStyleSheet = false;
       }
-      const element = /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(React26.Fragment, {
-        children: [/* @__PURE__ */ (0, import_jsx_runtime9.jsx)(ThemeProvider_default2, {
+      const element = /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(React28.Fragment, {
+        children: [/* @__PURE__ */ (0, import_jsx_runtime10.jsx)(ThemeProvider_default2, {
           themeId: scopedTheme ? themeId : void 0,
           theme: memoTheme2,
           children
-        }), shouldGenerateStyleSheet && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(GlobalStyles, {
+        }), shouldGenerateStyleSheet && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(GlobalStyles, {
           styles: ((_d = memoTheme2.generateStyleSheets) == null ? void 0 : _d.call(memoTheme2)) || []
         })]
       });
       if (nested) {
         return element;
       }
-      return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(ColorSchemeContext.Provider, {
+      return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(ColorSchemeContext.Provider, {
         value: contextValue,
         children: element
       });
@@ -23981,7 +24150,7 @@ try {
   }
 
   // node_modules/@mui/system/esm/Grid/createGrid.js
-  var React27 = __toESM(require_react());
+  var React29 = __toESM(require_react());
 
   // node_modules/@mui/system/esm/Grid/traverseBreakpoints.js
   var filterBreakpointKeys = (breakpointsKeys, responsiveKeys) => breakpointsKeys.filter((key) => responsiveKeys.includes(key));
@@ -24035,7 +24204,7 @@ try {
     theme,
     ownerState
   }) => {
-    const styles2 = {};
+    const styles4 = {};
     traverseBreakpoints(theme.breakpoints, ownerState.size, (appendStyle, value) => {
       let style4 = {};
       if (value === "grow") {
@@ -24061,15 +24230,15 @@ try {
           width: `calc(100% * ${value} / var(${parentColumnsVar}) - (var(${parentColumnsVar}) - ${value}) * (var(${getParentSpacingVar("column")}) / var(${parentColumnsVar})))`
         };
       }
-      appendStyle(styles2, style4);
+      appendStyle(styles4, style4);
     });
-    return styles2;
+    return styles4;
   };
   var generateGridOffsetStyles = ({
     theme,
     ownerState
   }) => {
-    const styles2 = {};
+    const styles4 = {};
     traverseBreakpoints(theme.breakpoints, ownerState.offset, (appendStyle, value) => {
       let style4 = {};
       if (value === "auto") {
@@ -24082,9 +24251,9 @@ try {
           marginLeft: value === 0 ? "0px" : `calc(100% * ${value} / var(${parentColumnsVar}) + var(${getParentSpacingVar("column")}) * ${value} / var(${parentColumnsVar}))`
         };
       }
-      appendStyle(styles2, style4);
+      appendStyle(styles4, style4);
     });
-    return styles2;
+    return styles4;
   };
   var generateGridColumnsStyles = ({
     theme,
@@ -24093,19 +24262,19 @@ try {
     if (!ownerState.container) {
       return {};
     }
-    const styles2 = {
+    const styles4 = {
       [selfColumnsVar]: 12
     };
     traverseBreakpoints(theme.breakpoints, ownerState.columns, (appendStyle, value) => {
       const columns = value != null ? value : 12;
-      appendStyle(styles2, {
+      appendStyle(styles4, {
         [selfColumnsVar]: columns,
         "> *": {
           [parentColumnsVar]: columns
         }
       });
     });
-    return styles2;
+    return styles4;
   };
   var generateGridRowSpacingStyles = ({
     theme,
@@ -24114,18 +24283,18 @@ try {
     if (!ownerState.container) {
       return {};
     }
-    const styles2 = {};
+    const styles4 = {};
     traverseBreakpoints(theme.breakpoints, ownerState.rowSpacing, (appendStyle, value) => {
       var _a;
       const spacing2 = typeof value === "string" ? value : (_a = theme.spacing) == null ? void 0 : _a.call(theme, value);
-      appendStyle(styles2, {
+      appendStyle(styles4, {
         [getSelfSpacingVar("row")]: spacing2,
         "> *": {
           [getParentSpacingVar("row")]: spacing2
         }
       });
     });
-    return styles2;
+    return styles4;
   };
   var generateGridColumnSpacingStyles = ({
     theme,
@@ -24134,18 +24303,18 @@ try {
     if (!ownerState.container) {
       return {};
     }
-    const styles2 = {};
+    const styles4 = {};
     traverseBreakpoints(theme.breakpoints, ownerState.columnSpacing, (appendStyle, value) => {
       var _a;
       const spacing2 = typeof value === "string" ? value : (_a = theme.spacing) == null ? void 0 : _a.call(theme, value);
-      appendStyle(styles2, {
+      appendStyle(styles4, {
         [getSelfSpacingVar("column")]: spacing2,
         "> *": {
           [getParentSpacingVar("column")]: spacing2
         }
       });
     });
-    return styles2;
+    return styles4;
   };
   var generateGridDirectionStyles = ({
     theme,
@@ -24154,13 +24323,13 @@ try {
     if (!ownerState.container) {
       return {};
     }
-    const styles2 = {};
+    const styles4 = {};
     traverseBreakpoints(theme.breakpoints, ownerState.direction, (appendStyle, value) => {
-      appendStyle(styles2, {
+      appendStyle(styles4, {
         flexDirection: value
       });
     });
-    return styles2;
+    return styles4;
   };
   var generateGridStyles = ({
     ownerState
@@ -24246,12 +24415,12 @@ try {
   }
 
   // node_modules/@mui/system/esm/Grid/createGrid.js
-  var import_jsx_runtime10 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime11 = __toESM(require_jsx_runtime());
   var defaultTheme = createTheme_default();
   var defaultCreateStyledComponent = styled_default("div", {
     name: "MuiGrid",
     slot: "Root",
-    overridesResolver: (props, styles2) => styles2.root
+    overridesResolver: (props, styles4) => styles4.root
   });
   function useThemePropsDefault(props) {
     return useThemeProps({
@@ -24264,11 +24433,11 @@ try {
     const {
       // This will allow adding custom styled fn (for example for custom sx style function)
       createStyledComponent = defaultCreateStyledComponent,
-      useThemeProps: useThemeProps3 = useThemePropsDefault,
+      useThemeProps: useThemeProps5 = useThemePropsDefault,
       useTheme: useTheme6 = useTheme_default,
       componentName = "MuiGrid"
     } = options;
-    const useUtilityClasses30 = (ownerState, theme) => {
+    const useUtilityClasses48 = (ownerState, theme) => {
       const {
         container: container2,
         direction,
@@ -24305,10 +24474,10 @@ try {
       return parsedProp;
     }
     const GridRoot2 = createStyledComponent(generateGridColumnsStyles, generateGridColumnSpacingStyles, generateGridRowSpacingStyles, generateGridSizeStyles, generateGridDirectionStyles, generateGridStyles, generateGridOffsetStyles);
-    const Grid = /* @__PURE__ */ React27.forwardRef(function Grid3(inProps, ref) {
+    const Grid = /* @__PURE__ */ React29.forwardRef(function Grid3(inProps, ref) {
       var _b, _c, _d, _e, _f, _g;
       const theme = useTheme6();
-      const themeProps = useThemeProps3(inProps);
+      const themeProps = useThemeProps5(inProps);
       const props = extendSxProp(themeProps);
       deleteLegacyGridProps(props, theme.breakpoints);
       const _a = props, {
@@ -24358,17 +24527,17 @@ try {
         size,
         offset: offset2
       });
-      const classes = useUtilityClasses30(ownerState, theme);
-      return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(GridRoot2, __spreadProps(__spreadValues({
+      const classes = useUtilityClasses48(ownerState, theme);
+      return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(GridRoot2, __spreadProps(__spreadValues({
         ref,
         as: component,
         ownerState,
         className: clsx_default(classes.root, className)
       }, other), {
-        children: React27.Children.map(children, (child) => {
+        children: React29.Children.map(children, (child) => {
           var _a2, _b2;
-          if (/* @__PURE__ */ React27.isValidElement(child) && isMuiElement(child, ["Grid"]) && container2 && child.props.container) {
-            return /* @__PURE__ */ React27.cloneElement(child, {
+          if (/* @__PURE__ */ React29.isValidElement(child) && isMuiElement(child, ["Grid"]) && container2 && child.props.container) {
+            return /* @__PURE__ */ React29.cloneElement(child, {
               unstable_level: (_b2 = (_a2 = child.props) == null ? void 0 : _a2.unstable_level) != null ? _b2 : level + 1
             });
           }
@@ -24396,13 +24565,13 @@ try {
   }
 
   // node_modules/@mui/system/esm/Stack/createStack.js
-  var React28 = __toESM(require_react());
-  var import_jsx_runtime11 = __toESM(require_jsx_runtime());
+  var React30 = __toESM(require_react());
+  var import_jsx_runtime12 = __toESM(require_jsx_runtime());
   var defaultTheme2 = createTheme_default();
   var defaultCreateStyledComponent2 = styled_default("div", {
     name: "MuiStack",
     slot: "Root",
-    overridesResolver: (props, styles2) => styles2.root
+    overridesResolver: (props, styles4) => styles4.root
   });
   function useThemePropsDefault2(props) {
     return useThemeProps({
@@ -24412,11 +24581,11 @@ try {
     });
   }
   function joinChildren(children, separator) {
-    const childrenArray = React28.Children.toArray(children).filter(Boolean);
+    const childrenArray = React30.Children.toArray(children).filter(Boolean);
     return childrenArray.reduce((output, child, index) => {
       output.push(child);
       if (index < childrenArray.length - 1) {
-        output.push(/* @__PURE__ */ React28.cloneElement(separator, {
+        output.push(/* @__PURE__ */ React30.cloneElement(separator, {
           key: `separator-${index}`
         }));
       }
@@ -24435,7 +24604,7 @@ try {
     ownerState,
     theme
   }) => {
-    let styles2 = __spreadValues({
+    let styles4 = __spreadValues({
       display: "flex",
       flexDirection: "column"
     }, handleBreakpoints({
@@ -24488,29 +24657,29 @@ try {
           }
         };
       };
-      styles2 = deepmerge(styles2, handleBreakpoints({
+      styles4 = deepmerge(styles4, handleBreakpoints({
         theme
       }, spacingValues, styleFromPropValue));
     }
-    styles2 = mergeBreakpointsInOrder(theme.breakpoints, styles2);
-    return styles2;
+    styles4 = mergeBreakpointsInOrder(theme.breakpoints, styles4);
+    return styles4;
   };
   function createStack(options = {}) {
     const {
       // This will allow adding custom styled fn (for example for custom sx style function)
       createStyledComponent = defaultCreateStyledComponent2,
-      useThemeProps: useThemeProps3 = useThemePropsDefault2,
+      useThemeProps: useThemeProps5 = useThemePropsDefault2,
       componentName = "MuiStack"
     } = options;
-    const useUtilityClasses30 = () => {
+    const useUtilityClasses48 = () => {
       const slots = {
         root: ["root"]
       };
       return composeClasses(slots, (slot) => generateUtilityClass(componentName, slot), {});
     };
     const StackRoot = createStyledComponent(style3);
-    const Stack2 = /* @__PURE__ */ React28.forwardRef(function Grid(inProps, ref) {
-      const themeProps = useThemeProps3(inProps);
+    const Stack2 = /* @__PURE__ */ React30.forwardRef(function Grid(inProps, ref) {
+      const themeProps = useThemeProps5(inProps);
       const props = extendSxProp(themeProps);
       const _a = props, {
         component = "div",
@@ -24534,8 +24703,8 @@ try {
         spacing: spacing2,
         useFlexGap
       };
-      const classes = useUtilityClasses30();
-      return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(StackRoot, __spreadProps(__spreadValues({
+      const classes = useUtilityClasses48();
+      return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(StackRoot, __spreadProps(__spreadValues({
         as: component,
         ownerState,
         ref,
@@ -25724,7 +25893,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/material/styles/useTheme.js
-  var React29 = __toESM(require_react());
+  var React31 = __toESM(require_react());
 
   // node_modules/@mui/material/styles/defaultTheme.js
   var defaultTheme3 = createTheme2();
@@ -25734,7 +25903,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function useTheme5() {
     const theme = useTheme_default(defaultTheme_default);
     if (false) {
-      React29.useDebugValue(theme);
+      React31.useDebugValue(theme);
     }
     return theme[identifier_default] || theme;
   }
@@ -25771,11 +25940,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var styled_default2 = styled3;
 
   // node_modules/@mui/material/styles/ThemeProvider.js
-  var React33 = __toESM(require_react());
+  var React35 = __toESM(require_react());
 
   // node_modules/@mui/material/styles/ThemeProviderNoVars.js
-  var React30 = __toESM(require_react());
-  var import_jsx_runtime12 = __toESM(require_jsx_runtime());
+  var React32 = __toESM(require_react());
+  var import_jsx_runtime13 = __toESM(require_jsx_runtime());
   function ThemeProviderNoVars(_a) {
     var _b = _a, {
       theme: themeInput
@@ -25783,18 +25952,18 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       "theme"
     ]);
     const scopedTheme = identifier_default in themeInput ? themeInput[identifier_default] : void 0;
-    return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(ThemeProvider_default2, __spreadProps(__spreadValues({}, props), {
+    return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(ThemeProvider_default2, __spreadProps(__spreadValues({}, props), {
       themeId: scopedTheme ? identifier_default : void 0,
       theme: scopedTheme || themeInput
     }));
   }
 
   // node_modules/@mui/material/styles/ThemeProviderWithVars.js
-  var React32 = __toESM(require_react());
+  var React34 = __toESM(require_react());
 
   // node_modules/@mui/material/InitColorSchemeScript/InitColorSchemeScript.js
-  var React31 = __toESM(require_react());
-  var import_jsx_runtime13 = __toESM(require_jsx_runtime());
+  var React33 = __toESM(require_react());
+  var import_jsx_runtime14 = __toESM(require_jsx_runtime());
   var defaultConfig = {
     attribute: "data-mui-color-scheme",
     colorSchemeStorageKey: "mui-color-scheme",
@@ -25804,7 +25973,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/material/styles/ThemeProviderWithVars.js
-  var import_jsx_runtime14 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime15 = __toESM(require_jsx_runtime());
   var {
     CssVarsProvider: InternalCssVarsProvider,
     useColorScheme,
@@ -25837,7 +26006,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var CssVarsProvider = InternalCssVarsProvider;
 
   // node_modules/@mui/material/styles/ThemeProvider.js
-  var import_jsx_runtime15 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime16 = __toESM(require_jsx_runtime());
   function ThemeProvider4(_a) {
     var _b = _a, {
       theme
@@ -25845,24 +26014,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       "theme"
     ]);
     if (typeof theme === "function") {
-      return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ThemeProviderNoVars, __spreadValues({
+      return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ThemeProviderNoVars, __spreadValues({
         theme
       }, props));
     }
     const muiTheme = identifier_default in theme ? theme[identifier_default] : theme;
     if (!("colorSchemes" in muiTheme)) {
       if (!("vars" in muiTheme)) {
-        return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ThemeProviderNoVars, __spreadValues({
+        return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ThemeProviderNoVars, __spreadValues({
           theme: __spreadProps(__spreadValues({}, theme), {
             vars: null
           })
         }, props));
       }
-      return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ThemeProviderNoVars, __spreadValues({
+      return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ThemeProviderNoVars, __spreadValues({
         theme
       }, props));
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(CssVarsProvider, __spreadValues({
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(CssVarsProvider, __spreadValues({
       theme
     }, props));
   }
@@ -25871,14 +26040,49 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var capitalize_default = capitalize;
 
   // node_modules/@mui/material/utils/createSvgIcon.js
-  var React37 = __toESM(require_react());
+  var React40 = __toESM(require_react());
 
   // node_modules/@mui/material/SvgIcon/SvgIcon.js
-  var React36 = __toESM(require_react());
+  var React39 = __toESM(require_react());
 
   // node_modules/@mui/material/zero-styled/index.js
-  var React34 = __toESM(require_react());
-  var import_jsx_runtime16 = __toESM(require_jsx_runtime());
+  var React37 = __toESM(require_react());
+
+  // node_modules/@mui/material/GlobalStyles/GlobalStyles.js
+  var React36 = __toESM(require_react());
+  var import_jsx_runtime17 = __toESM(require_jsx_runtime());
+  function GlobalStyles3(props) {
+    return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(GlobalStyles_default, __spreadProps(__spreadValues({}, props), {
+      defaultTheme: defaultTheme_default,
+      themeId: identifier_default
+    }));
+  }
+  false ? GlobalStyles3.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * The styles you want to apply globally.
+     */
+    styles: import_prop_types.default.oneOfType([import_prop_types.default.array, import_prop_types.default.func, import_prop_types.default.number, import_prop_types.default.object, import_prop_types.default.string, import_prop_types.default.bool])
+  } : void 0;
+  var GlobalStyles_default2 = GlobalStyles3;
+
+  // node_modules/@mui/material/zero-styled/index.js
+  var import_jsx_runtime18 = __toESM(require_jsx_runtime());
+  function globalCss(styles4) {
+    return function GlobalStylesWrapper(props) {
+      return (
+        // Pigment CSS `globalCss` support callback with theme inside an object but `GlobalStyles` support theme as a callback value.
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(GlobalStyles_default2, {
+          styles: typeof styles4 === "function" ? (theme) => styles4(__spreadValues({
+            theme
+          }, props)) : styles4
+        })
+      );
+    };
+  }
   function internal_createExtendSxProp() {
     return extendSxProp;
   }
@@ -25888,8 +26092,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var memoTheme_default = memoTheme;
 
   // node_modules/@mui/material/DefaultPropsProvider/DefaultPropsProvider.js
-  var React35 = __toESM(require_react());
-  var import_jsx_runtime17 = __toESM(require_jsx_runtime());
+  var React38 = __toESM(require_react());
+  var import_jsx_runtime19 = __toESM(require_jsx_runtime());
   false ? DefaultPropsProvider.propTypes = {
     // ┌────────────────────────────── Warning ──────────────────────────────┐
     // │ These PropTypes are generated from the TypeScript type definitions. │
@@ -25915,7 +26119,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var svgIconClasses = generateUtilityClasses("MuiSvgIcon", ["root", "colorPrimary", "colorSecondary", "colorAction", "colorError", "colorDisabled", "fontSizeInherit", "fontSizeSmall", "fontSizeMedium", "fontSizeLarge"]);
 
   // node_modules/@mui/material/SvgIcon/SvgIcon.js
-  var import_jsx_runtime18 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime20 = __toESM(require_jsx_runtime());
   var useUtilityClasses = (ownerState) => {
     const {
       color: color3,
@@ -25930,11 +26134,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var SvgIconRoot = styled_default2("svg", {
     name: "MuiSvgIcon",
     slot: "Root",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.root, ownerState.color !== "inherit" && styles2[`color${capitalize_default(ownerState.color)}`], styles2[`fontSize${capitalize_default(ownerState.fontSize)}`]];
+      return [styles4.root, ownerState.color !== "inherit" && styles4[`color${capitalize_default(ownerState.color)}`], styles4[`fontSize${capitalize_default(ownerState.fontSize)}`]];
     }
   })(memoTheme_default(({
     theme
@@ -26029,7 +26233,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       ]
     };
   }));
-  var SvgIcon = /* @__PURE__ */ React36.forwardRef(function SvgIcon2(inProps, ref) {
+  var SvgIcon = /* @__PURE__ */ React39.forwardRef(function SvgIcon2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiSvgIcon"
@@ -26055,7 +26259,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       "titleAccess",
       "viewBox"
     ]);
-    const hasSvgAsChild = /* @__PURE__ */ React36.isValidElement(children) && children.type === "svg";
+    const hasSvgAsChild = /* @__PURE__ */ React39.isValidElement(children) && children.type === "svg";
     const ownerState = __spreadProps(__spreadValues({}, props), {
       color: color3,
       component,
@@ -26070,7 +26274,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       more.viewBox = viewBox;
     }
     const classes = useUtilityClasses(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(SvgIconRoot, __spreadProps(__spreadValues(__spreadValues(__spreadValues({
+    return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(SvgIconRoot, __spreadProps(__spreadValues(__spreadValues(__spreadValues({
       as: component,
       className: clsx_default(classes.root, className),
       focusable: "false",
@@ -26080,7 +26284,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       ref
     }, more), other), hasSvgAsChild && children.props), {
       ownerState,
-      children: [hasSvgAsChild ? children.props.children : children, titleAccess ? /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("title", {
+      children: [hasSvgAsChild ? children.props.children : children, titleAccess ? /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("title", {
         children: titleAccess
       }) : null]
     }));
@@ -26161,10 +26365,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var SvgIcon_default = SvgIcon;
 
   // node_modules/@mui/material/utils/createSvgIcon.js
-  var import_jsx_runtime19 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime21 = __toESM(require_jsx_runtime());
   function createSvgIcon(path, displayName) {
     function Component(props, ref) {
-      return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(SvgIcon_default, __spreadProps(__spreadValues({
+      return /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(SvgIcon_default, __spreadProps(__spreadValues({
         "data-testid": `${displayName}Icon`,
         ref
       }, props), {
@@ -26175,17 +26379,59 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       Component.displayName = `${displayName}Icon`;
     }
     Component.muiName = SvgIcon_default.muiName;
-    return /* @__PURE__ */ React37.memo(/* @__PURE__ */ React37.forwardRef(Component));
+    return /* @__PURE__ */ React40.memo(/* @__PURE__ */ React40.forwardRef(Component));
   }
+
+  // node_modules/@mui/material/utils/isMuiElement.js
+  var isMuiElement_default = isMuiElement;
+
+  // node_modules/@mui/material/utils/useEnhancedEffect.js
+  var useEnhancedEffect_default2 = useEnhancedEffect_default;
 
   // node_modules/@mui/material/utils/useId.js
   var useId_default = useId;
+
+  // node_modules/@mui/material/utils/useControlled.js
+  var useControlled_default = useControlled;
 
   // node_modules/@mui/material/utils/useEventCallback.js
   var useEventCallback_default2 = useEventCallback_default;
 
   // node_modules/@mui/material/utils/useForkRef.js
   var useForkRef_default = useForkRef;
+
+  // node_modules/@mui/material/utils/mergeSlotProps.js
+  function mergeSlotProps2(externalSlotProps, defaultSlotProps) {
+    if (!externalSlotProps) {
+      return defaultSlotProps;
+    }
+    if (typeof externalSlotProps === "function" || typeof defaultSlotProps === "function") {
+      return (ownerState) => {
+        const defaultSlotPropsValue = typeof defaultSlotProps === "function" ? defaultSlotProps(ownerState) : defaultSlotProps;
+        const externalSlotPropsValue = typeof externalSlotProps === "function" ? externalSlotProps(__spreadValues(__spreadValues({}, ownerState), defaultSlotPropsValue)) : externalSlotProps;
+        const className2 = clsx_default(ownerState == null ? void 0 : ownerState.className, defaultSlotPropsValue == null ? void 0 : defaultSlotPropsValue.className, externalSlotPropsValue == null ? void 0 : externalSlotPropsValue.className);
+        return __spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues({}, defaultSlotPropsValue), externalSlotPropsValue), !!className2 && {
+          className: className2
+        }), (defaultSlotPropsValue == null ? void 0 : defaultSlotPropsValue.style) && (externalSlotPropsValue == null ? void 0 : externalSlotPropsValue.style) && {
+          style: __spreadValues(__spreadValues({}, defaultSlotPropsValue.style), externalSlotPropsValue.style)
+        }), (defaultSlotPropsValue == null ? void 0 : defaultSlotPropsValue.sx) && (externalSlotPropsValue == null ? void 0 : externalSlotPropsValue.sx) && {
+          sx: [...Array.isArray(defaultSlotPropsValue.sx) ? defaultSlotPropsValue.sx : [defaultSlotPropsValue.sx], ...Array.isArray(externalSlotPropsValue.sx) ? externalSlotPropsValue.sx : [externalSlotPropsValue.sx]]
+        });
+      };
+    }
+    const typedDefaultSlotProps = defaultSlotProps;
+    const className = clsx_default(typedDefaultSlotProps == null ? void 0 : typedDefaultSlotProps.className, externalSlotProps == null ? void 0 : externalSlotProps.className);
+    return __spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues({}, defaultSlotProps), externalSlotProps), !!className && {
+      className
+    }), (typedDefaultSlotProps == null ? void 0 : typedDefaultSlotProps.style) && (externalSlotProps == null ? void 0 : externalSlotProps.style) && {
+      style: __spreadValues(__spreadValues({}, typedDefaultSlotProps.style), externalSlotProps.style)
+    }), (typedDefaultSlotProps == null ? void 0 : typedDefaultSlotProps.sx) && (externalSlotProps == null ? void 0 : externalSlotProps.sx) && {
+      sx: [...Array.isArray(typedDefaultSlotProps.sx) ? typedDefaultSlotProps.sx : [typedDefaultSlotProps.sx], ...Array.isArray(externalSlotProps.sx) ? externalSlotProps.sx : [externalSlotProps.sx]]
+    });
+  }
+
+  // node_modules/@mui/material/Collapse/Collapse.js
+  var React44 = __toESM(require_react());
 
   // node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js
   function _objectWithoutPropertiesLoose(r2, e) {
@@ -26893,8 +27139,414 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     };
   }
 
+  // node_modules/@mui/material/Collapse/collapseClasses.js
+  function getCollapseUtilityClass(slot) {
+    return generateUtilityClass("MuiCollapse", slot);
+  }
+  var collapseClasses = generateUtilityClasses("MuiCollapse", ["root", "horizontal", "vertical", "entered", "hidden", "wrapper", "wrapperInner"]);
+
+  // node_modules/@mui/material/Collapse/Collapse.js
+  var import_jsx_runtime22 = __toESM(require_jsx_runtime());
+  var useUtilityClasses2 = (ownerState) => {
+    const {
+      orientation,
+      classes
+    } = ownerState;
+    const slots = {
+      root: ["root", `${orientation}`],
+      entered: ["entered"],
+      hidden: ["hidden"],
+      wrapper: ["wrapper", `${orientation}`],
+      wrapperInner: ["wrapperInner", `${orientation}`]
+    };
+    return composeClasses(slots, getCollapseUtilityClass, classes);
+  };
+  var CollapseRoot = styled_default2("div", {
+    name: "MuiCollapse",
+    slot: "Root",
+    overridesResolver: (props, styles4) => {
+      const {
+        ownerState
+      } = props;
+      return [styles4.root, styles4[ownerState.orientation], ownerState.state === "entered" && styles4.entered, ownerState.state === "exited" && !ownerState.in && ownerState.collapsedSize === "0px" && styles4.hidden];
+    }
+  })(memoTheme_default(({
+    theme
+  }) => ({
+    height: 0,
+    overflow: "hidden",
+    transition: theme.transitions.create("height"),
+    variants: [{
+      props: {
+        orientation: "horizontal"
+      },
+      style: {
+        height: "auto",
+        width: 0,
+        transition: theme.transitions.create("width")
+      }
+    }, {
+      props: {
+        state: "entered"
+      },
+      style: {
+        height: "auto",
+        overflow: "visible"
+      }
+    }, {
+      props: {
+        state: "entered",
+        orientation: "horizontal"
+      },
+      style: {
+        width: "auto"
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.state === "exited" && !ownerState.in && ownerState.collapsedSize === "0px",
+      style: {
+        visibility: "hidden"
+      }
+    }]
+  })));
+  var CollapseWrapper = styled_default2("div", {
+    name: "MuiCollapse",
+    slot: "Wrapper",
+    overridesResolver: (props, styles4) => styles4.wrapper
+  })({
+    // Hack to get children with a negative margin to not falsify the height computation.
+    display: "flex",
+    width: "100%",
+    variants: [{
+      props: {
+        orientation: "horizontal"
+      },
+      style: {
+        width: "auto",
+        height: "100%"
+      }
+    }]
+  });
+  var CollapseWrapperInner = styled_default2("div", {
+    name: "MuiCollapse",
+    slot: "WrapperInner",
+    overridesResolver: (props, styles4) => styles4.wrapperInner
+  })({
+    width: "100%",
+    variants: [{
+      props: {
+        orientation: "horizontal"
+      },
+      style: {
+        width: "auto",
+        height: "100%"
+      }
+    }]
+  });
+  var Collapse = /* @__PURE__ */ React44.forwardRef(function Collapse2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiCollapse"
+    });
+    const _a = props, {
+      addEndListener,
+      children,
+      className,
+      collapsedSize: collapsedSizeProp = "0px",
+      component,
+      easing: easing2,
+      in: inProp,
+      onEnter,
+      onEntered,
+      onEntering,
+      onExit,
+      onExited,
+      onExiting,
+      orientation = "vertical",
+      style: style4,
+      timeout: timeout2 = duration.standard,
+      TransitionComponent: TransitionComponent = Transition_default
+    } = _a, other = __objRest(_a, [
+      "addEndListener",
+      "children",
+      "className",
+      "collapsedSize",
+      "component",
+      "easing",
+      "in",
+      "onEnter",
+      "onEntered",
+      "onEntering",
+      "onExit",
+      "onExited",
+      "onExiting",
+      "orientation",
+      "style",
+      "timeout",
+      // eslint-disable-next-line react/prop-types
+      "TransitionComponent"
+    ]);
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      orientation,
+      collapsedSize: collapsedSizeProp
+    });
+    const classes = useUtilityClasses2(ownerState);
+    const theme = useTheme5();
+    const timer = useTimeout();
+    const wrapperRef = React44.useRef(null);
+    const autoTransitionDuration = React44.useRef();
+    const collapsedSize = typeof collapsedSizeProp === "number" ? `${collapsedSizeProp}px` : collapsedSizeProp;
+    const isHorizontal = orientation === "horizontal";
+    const size = isHorizontal ? "width" : "height";
+    const nodeRef = React44.useRef(null);
+    const handleRef = useForkRef_default(ref, nodeRef);
+    const normalizedTransitionCallback = (callback) => (maybeIsAppearing) => {
+      if (callback) {
+        const node2 = nodeRef.current;
+        if (maybeIsAppearing === void 0) {
+          callback(node2);
+        } else {
+          callback(node2, maybeIsAppearing);
+        }
+      }
+    };
+    const getWrapperSize = () => wrapperRef.current ? wrapperRef.current[isHorizontal ? "clientWidth" : "clientHeight"] : 0;
+    const handleEnter = normalizedTransitionCallback((node2, isAppearing) => {
+      if (wrapperRef.current && isHorizontal) {
+        wrapperRef.current.style.position = "absolute";
+      }
+      node2.style[size] = collapsedSize;
+      if (onEnter) {
+        onEnter(node2, isAppearing);
+      }
+    });
+    const handleEntering = normalizedTransitionCallback((node2, isAppearing) => {
+      const wrapperSize = getWrapperSize();
+      if (wrapperRef.current && isHorizontal) {
+        wrapperRef.current.style.position = "";
+      }
+      const {
+        duration: transitionDuration,
+        easing: transitionTimingFunction
+      } = getTransitionProps({
+        style: style4,
+        timeout: timeout2,
+        easing: easing2
+      }, {
+        mode: "enter"
+      });
+      if (timeout2 === "auto") {
+        const duration2 = theme.transitions.getAutoHeightDuration(wrapperSize);
+        node2.style.transitionDuration = `${duration2}ms`;
+        autoTransitionDuration.current = duration2;
+      } else {
+        node2.style.transitionDuration = typeof transitionDuration === "string" ? transitionDuration : `${transitionDuration}ms`;
+      }
+      node2.style[size] = `${wrapperSize}px`;
+      node2.style.transitionTimingFunction = transitionTimingFunction;
+      if (onEntering) {
+        onEntering(node2, isAppearing);
+      }
+    });
+    const handleEntered = normalizedTransitionCallback((node2, isAppearing) => {
+      node2.style[size] = "auto";
+      if (onEntered) {
+        onEntered(node2, isAppearing);
+      }
+    });
+    const handleExit = normalizedTransitionCallback((node2) => {
+      node2.style[size] = `${getWrapperSize()}px`;
+      if (onExit) {
+        onExit(node2);
+      }
+    });
+    const handleExited = normalizedTransitionCallback(onExited);
+    const handleExiting = normalizedTransitionCallback((node2) => {
+      const wrapperSize = getWrapperSize();
+      const {
+        duration: transitionDuration,
+        easing: transitionTimingFunction
+      } = getTransitionProps({
+        style: style4,
+        timeout: timeout2,
+        easing: easing2
+      }, {
+        mode: "exit"
+      });
+      if (timeout2 === "auto") {
+        const duration2 = theme.transitions.getAutoHeightDuration(wrapperSize);
+        node2.style.transitionDuration = `${duration2}ms`;
+        autoTransitionDuration.current = duration2;
+      } else {
+        node2.style.transitionDuration = typeof transitionDuration === "string" ? transitionDuration : `${transitionDuration}ms`;
+      }
+      node2.style[size] = collapsedSize;
+      node2.style.transitionTimingFunction = transitionTimingFunction;
+      if (onExiting) {
+        onExiting(node2);
+      }
+    });
+    const handleAddEndListener = (next2) => {
+      if (timeout2 === "auto") {
+        timer.start(autoTransitionDuration.current || 0, next2);
+      }
+      if (addEndListener) {
+        addEndListener(nodeRef.current, next2);
+      }
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(TransitionComponent, __spreadProps(__spreadValues({
+      in: inProp,
+      onEnter: handleEnter,
+      onEntered: handleEntered,
+      onEntering: handleEntering,
+      onExit: handleExit,
+      onExited: handleExited,
+      onExiting: handleExiting,
+      addEndListener: handleAddEndListener,
+      nodeRef,
+      timeout: timeout2 === "auto" ? null : timeout2
+    }, other), {
+      children: (state, _b) => {
+        var _c = _b, {
+          ownerState: incomingOwnerState
+        } = _c, restChildProps = __objRest(_c, [
+          "ownerState"
+        ]);
+        return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(CollapseRoot, __spreadProps(__spreadValues({
+          as: component,
+          className: clsx_default(classes.root, className, {
+            "entered": classes.entered,
+            "exited": !inProp && collapsedSize === "0px" && classes.hidden
+          }[state]),
+          style: __spreadValues({
+            [isHorizontal ? "minWidth" : "minHeight"]: collapsedSize
+          }, style4),
+          ref: handleRef,
+          ownerState: __spreadProps(__spreadValues({}, ownerState), {
+            state
+          })
+        }, restChildProps), {
+          children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(CollapseWrapper, {
+            ownerState: __spreadProps(__spreadValues({}, ownerState), {
+              state
+            }),
+            className: classes.wrapper,
+            ref: wrapperRef,
+            children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(CollapseWrapperInner, {
+              ownerState: __spreadProps(__spreadValues({}, ownerState), {
+                state
+              }),
+              className: classes.wrapperInner,
+              children
+            })
+          })
+        }));
+      }
+    }));
+  });
+  false ? Collapse.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * Add a custom transition end trigger. Called with the transitioning DOM
+     * node and a done callback. Allows for more fine grained transition end
+     * logic. Note: Timeouts are still used as a fallback if provided.
+     */
+    addEndListener: import_prop_types.default.func,
+    /**
+     * The content node to be collapsed.
+     */
+    children: import_prop_types.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * The width (horizontal) or height (vertical) of the container when collapsed.
+     * @default '0px'
+     */
+    collapsedSize: import_prop_types.default.oneOfType([import_prop_types.default.number, import_prop_types.default.string]),
+    /**
+     * The component used for the root node.
+     * Either a string to use a HTML element or a component.
+     */
+    component: elementTypeAcceptingRef_default,
+    /**
+     * The transition timing function.
+     * You may specify a single easing or a object containing enter and exit values.
+     */
+    easing: import_prop_types.default.oneOfType([import_prop_types.default.shape({
+      enter: import_prop_types.default.string,
+      exit: import_prop_types.default.string
+    }), import_prop_types.default.string]),
+    /**
+     * If `true`, the component will transition in.
+     */
+    in: import_prop_types.default.bool,
+    /**
+     * @ignore
+     */
+    onEnter: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    onEntered: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    onEntering: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    onExit: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    onExited: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    onExiting: import_prop_types.default.func,
+    /**
+     * The transition orientation.
+     * @default 'vertical'
+     */
+    orientation: import_prop_types.default.oneOf(["horizontal", "vertical"]),
+    /**
+     * @ignore
+     */
+    style: import_prop_types.default.object,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object]),
+    /**
+     * The duration for the transition, in milliseconds.
+     * You may specify a single timeout for all transitions, or individually with an object.
+     *
+     * Set to 'auto' to automatically calculate transition time based on height.
+     * @default duration.standard
+     */
+    timeout: import_prop_types.default.oneOfType([import_prop_types.default.oneOf(["auto"]), import_prop_types.default.number, import_prop_types.default.shape({
+      appear: import_prop_types.default.number,
+      enter: import_prop_types.default.number,
+      exit: import_prop_types.default.number
+    })])
+  } : void 0;
+  if (Collapse) {
+    Collapse.muiSupportAuto = true;
+  }
+  var Collapse_default = Collapse;
+
   // node_modules/@mui/material/Paper/Paper.js
-  var React41 = __toESM(require_react());
+  var React45 = __toESM(require_react());
 
   // node_modules/@mui/material/Paper/paperClasses.js
   function getPaperUtilityClass(slot) {
@@ -26903,8 +27555,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var paperClasses = generateUtilityClasses("MuiPaper", ["root", "rounded", "outlined", "elevation", "elevation0", "elevation1", "elevation2", "elevation3", "elevation4", "elevation5", "elevation6", "elevation7", "elevation8", "elevation9", "elevation10", "elevation11", "elevation12", "elevation13", "elevation14", "elevation15", "elevation16", "elevation17", "elevation18", "elevation19", "elevation20", "elevation21", "elevation22", "elevation23", "elevation24"]);
 
   // node_modules/@mui/material/Paper/Paper.js
-  var import_jsx_runtime20 = __toESM(require_jsx_runtime());
-  var useUtilityClasses2 = (ownerState) => {
+  var import_jsx_runtime23 = __toESM(require_jsx_runtime());
+  var useUtilityClasses3 = (ownerState) => {
     const {
       square,
       elevation,
@@ -26919,11 +27571,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var PaperRoot = styled_default2("div", {
     name: "MuiPaper",
     slot: "Root",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.root, styles2[ownerState.variant], !ownerState.square && styles2.rounded, ownerState.variant === "elevation" && styles2[`elevation${ownerState.elevation}`]];
+      return [styles4.root, styles4[ownerState.variant], !ownerState.square && styles4.rounded, ownerState.variant === "elevation" && styles4[`elevation${ownerState.elevation}`]];
     }
   })(memoTheme_default(({
     theme
@@ -26955,7 +27607,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   })));
-  var Paper = /* @__PURE__ */ React41.forwardRef(function Paper2(inProps, ref) {
+  var Paper = /* @__PURE__ */ React45.forwardRef(function Paper2(inProps, ref) {
     var _b;
     const props = useDefaultProps2({
       props: inProps,
@@ -26981,13 +27633,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       square,
       variant
     });
-    const classes = useUtilityClasses2(ownerState);
+    const classes = useUtilityClasses3(ownerState);
     if (false) {
       if (theme.shadows[elevation] === void 0) {
         console.error([`MUI: The elevation provided <Paper elevation={${elevation}}> is not available in the theme.`, `Please make sure that \`theme.shadows[${elevation}]\` is defined.`].join("\n"));
       }
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(PaperRoot, __spreadProps(__spreadValues({
+    return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(PaperRoot, __spreadProps(__spreadValues({
       as: component,
       ownerState,
       className: clsx_default(classes.root, className),
@@ -27119,10 +27771,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/material/ButtonBase/ButtonBase.js
-  var React45 = __toESM(require_react());
+  var React49 = __toESM(require_react());
 
   // node_modules/@mui/material/useLazyRipple/useLazyRipple.js
-  var React42 = __toESM(require_react());
+  var React46 = __toESM(require_react());
   var LazyRipple = class _LazyRipple {
     constructor() {
       __publicField(this, "mountEffect", () => {
@@ -27151,10 +27803,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     static use() {
       const ripple = useLazyRef(_LazyRipple.create).current;
-      const [shouldMount, setShouldMount] = React42.useState(false);
+      const [shouldMount, setShouldMount] = React46.useState(false);
       ripple.shouldMount = shouldMount;
       ripple.setShouldMount = setShouldMount;
-      React42.useEffect(ripple.mountEffect, [shouldMount]);
+      React46.useEffect(ripple.mountEffect, [shouldMount]);
       return ripple;
     }
     mount() {
@@ -27201,11 +27853,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/material/ButtonBase/TouchRipple.js
-  var React44 = __toESM(require_react());
+  var React48 = __toESM(require_react());
 
   // node_modules/@mui/material/ButtonBase/Ripple.js
-  var React43 = __toESM(require_react());
-  var import_jsx_runtime21 = __toESM(require_jsx_runtime());
+  var React47 = __toESM(require_react());
+  var import_jsx_runtime24 = __toESM(require_jsx_runtime());
   function Ripple(props) {
     const {
       className,
@@ -27218,7 +27870,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       onExited,
       timeout: timeout2
     } = props;
-    const [leaving, setLeaving] = React43.useState(false);
+    const [leaving, setLeaving] = React47.useState(false);
     const rippleClassName = clsx_default(className, classes.ripple, classes.rippleVisible, pulsate && classes.ripplePulsate);
     const rippleStyles = {
       width: rippleSize,
@@ -27230,7 +27882,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (!inProp && !leaving) {
       setLeaving(true);
     }
-    React43.useEffect(() => {
+    React47.useEffect(() => {
       if (!inProp && onExited != null) {
         const timeoutId = setTimeout(onExited, timeout2);
         return () => {
@@ -27239,10 +27891,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
       return void 0;
     }, [onExited, inProp, timeout2]);
-    return /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", {
+    return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", {
       className: rippleClassName,
       style: rippleStyles,
-      children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", {
+      children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", {
         className: childClassName
       })
     });
@@ -27289,7 +27941,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var touchRippleClasses_default = touchRippleClasses;
 
   // node_modules/@mui/material/ButtonBase/TouchRipple.js
-  var import_jsx_runtime22 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime25 = __toESM(require_jsx_runtime());
   var DURATION = 550;
   var DELAY_RIPPLE = 80;
   var enterKeyframe = keyframes`
@@ -27394,7 +28046,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     animation-delay: 200ms;
   }
 `;
-  var TouchRipple = /* @__PURE__ */ React44.forwardRef(function TouchRipple2(inProps, ref) {
+  var TouchRipple = /* @__PURE__ */ React48.forwardRef(function TouchRipple2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiTouchRipple"
@@ -27408,20 +28060,20 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       "classes",
       "className"
     ]);
-    const [ripples, setRipples] = React44.useState([]);
-    const nextKey2 = React44.useRef(0);
-    const rippleCallback = React44.useRef(null);
-    React44.useEffect(() => {
+    const [ripples, setRipples] = React48.useState([]);
+    const nextKey2 = React48.useRef(0);
+    const rippleCallback = React48.useRef(null);
+    React48.useEffect(() => {
       if (rippleCallback.current) {
         rippleCallback.current();
         rippleCallback.current = null;
       }
     }, [ripples]);
-    const ignoringMouseDown = React44.useRef(false);
+    const ignoringMouseDown = React48.useRef(false);
     const startTimer = useTimeout();
-    const startTimerCommit = React44.useRef(null);
-    const container2 = React44.useRef(null);
-    const startCommit = React44.useCallback((params) => {
+    const startTimerCommit = React48.useRef(null);
+    const container2 = React48.useRef(null);
+    const startCommit = React48.useCallback((params) => {
       const {
         pulsate: pulsate2,
         rippleX,
@@ -27429,7 +28081,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         rippleSize,
         cb
       } = params;
-      setRipples((oldRipples) => [...oldRipples, /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(TouchRippleRipple, {
+      setRipples((oldRipples) => [...oldRipples, /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(TouchRippleRipple, {
         classes: {
           ripple: clsx_default(classes.ripple, touchRippleClasses_default.ripple),
           rippleVisible: clsx_default(classes.rippleVisible, touchRippleClasses_default.rippleVisible),
@@ -27447,7 +28099,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       nextKey2.current += 1;
       rippleCallback.current = cb;
     }, [classes]);
-    const start3 = React44.useCallback((event = {}, options = {}, cb = () => {
+    const start3 = React48.useCallback((event = {}, options = {}, cb = () => {
     }) => {
       const {
         pulsate: pulsate2 = false,
@@ -27521,12 +28173,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         });
       }
     }, [centerProp, startCommit, startTimer]);
-    const pulsate = React44.useCallback(() => {
+    const pulsate = React48.useCallback(() => {
       start3({}, {
         pulsate: true
       });
     }, [start3]);
-    const stop2 = React44.useCallback((event, cb) => {
+    const stop2 = React48.useCallback((event, cb) => {
       startTimer.clear();
       if ((event == null ? void 0 : event.type) === "touchend" && startTimerCommit.current) {
         startTimerCommit.current();
@@ -27545,16 +28197,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       });
       rippleCallback.current = cb;
     }, [startTimer]);
-    React44.useImperativeHandle(ref, () => ({
+    React48.useImperativeHandle(ref, () => ({
       pulsate,
       start: start3,
       stop: stop2
     }), [pulsate, start3, stop2]);
-    return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(TouchRippleRoot, __spreadProps(__spreadValues({
+    return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(TouchRippleRoot, __spreadProps(__spreadValues({
       className: clsx_default(touchRippleClasses_default.root, classes.root, className),
       ref: container2
     }, other), {
-      children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(TransitionGroup_default, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(TransitionGroup_default, {
         component: null,
         exit: true,
         children: ripples
@@ -27586,8 +28238,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var buttonBaseClasses_default = buttonBaseClasses;
 
   // node_modules/@mui/material/ButtonBase/ButtonBase.js
-  var import_jsx_runtime23 = __toESM(require_jsx_runtime());
-  var useUtilityClasses3 = (ownerState) => {
+  var import_jsx_runtime26 = __toESM(require_jsx_runtime());
+  var useUtilityClasses4 = (ownerState) => {
     const {
       disabled,
       focusVisible,
@@ -27606,7 +28258,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var ButtonBaseRoot = styled_default2("button", {
     name: "MuiButtonBase",
     slot: "Root",
-    overridesResolver: (props, styles2) => styles2.root
+    overridesResolver: (props, styles4) => styles4.root
   })({
     display: "inline-flex",
     alignItems: "center",
@@ -27647,7 +28299,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       colorAdjust: "exact"
     }
   });
-  var ButtonBase = /* @__PURE__ */ React45.forwardRef(function ButtonBase2(inProps, ref) {
+  var ButtonBase = /* @__PURE__ */ React49.forwardRef(function ButtonBase2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiButtonBase"
@@ -27713,21 +28365,21 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       "touchRippleRef",
       "type"
     ]);
-    const buttonRef = React45.useRef(null);
+    const buttonRef = React49.useRef(null);
     const ripple = useLazyRipple();
     const handleRippleRef = useForkRef_default(ripple.ref, touchRippleRef);
-    const [focusVisible, setFocusVisible] = React45.useState(false);
+    const [focusVisible, setFocusVisible] = React49.useState(false);
     if (disabled && focusVisible) {
       setFocusVisible(false);
     }
-    React45.useImperativeHandle(action, () => ({
+    React49.useImperativeHandle(action, () => ({
       focusVisible: () => {
         setFocusVisible(true);
         buttonRef.current.focus();
       }
     }), []);
     const enableTouchRipple = ripple.shouldMount && !disableRipple && !disabled;
-    React45.useEffect(() => {
+    React49.useEffect(() => {
       if (focusVisible && focusRipple && !disableRipple) {
         ripple.pulsate();
       }
@@ -27832,8 +28484,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       tabIndex,
       focusVisible
     });
-    const classes = useUtilityClasses3(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(ButtonBaseRoot, __spreadProps(__spreadValues(__spreadValues({
+    const classes = useUtilityClasses4(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(ButtonBaseRoot, __spreadProps(__spreadValues(__spreadValues({
       as: ComponentProp,
       className: clsx_default(classes.root, className),
       ownerState,
@@ -27854,7 +28506,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       tabIndex: disabled ? -1 : tabIndex,
       type
     }, buttonProps), other), {
-      children: [children, enableTouchRipple ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(TouchRipple_default, __spreadValues({
+      children: [children, enableTouchRipple ? /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(TouchRipple_default, __spreadValues({
         ref: handleRippleRef,
         center: centerRipple
       }, TouchRippleProps)) : null]
@@ -28051,10 +28703,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/material/IconButton/IconButton.js
-  var React47 = __toESM(require_react());
+  var React51 = __toESM(require_react());
 
   // node_modules/@mui/material/CircularProgress/CircularProgress.js
-  var React46 = __toESM(require_react());
+  var React50 = __toESM(require_react());
 
   // node_modules/@mui/material/CircularProgress/circularProgressClasses.js
   function getCircularProgressUtilityClass(slot) {
@@ -28063,7 +28715,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var circularProgressClasses = generateUtilityClasses("MuiCircularProgress", ["root", "determinate", "indeterminate", "colorPrimary", "colorSecondary", "svg", "circle", "circleDeterminate", "circleIndeterminate", "circleDisableShrink"]);
 
   // node_modules/@mui/material/CircularProgress/CircularProgress.js
-  var import_jsx_runtime24 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime27 = __toESM(require_jsx_runtime());
   var SIZE = 44;
   var circularRotateKeyframe = keyframes`
   0% {
@@ -28096,7 +28748,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var dashAnimation = typeof circularDashKeyframe !== "string" ? css`
         animation: ${circularDashKeyframe} 1.4s ease-in-out infinite;
       ` : null;
-  var useUtilityClasses4 = (ownerState) => {
+  var useUtilityClasses5 = (ownerState) => {
     const {
       classes,
       variant,
@@ -28113,11 +28765,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var CircularProgressRoot = styled_default2("span", {
     name: "MuiCircularProgress",
     slot: "Root",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.root, styles2[ownerState.variant], styles2[`color${capitalize_default(ownerState.color)}`]];
+      return [styles4.root, styles4[ownerState.variant], styles4[`color${capitalize_default(ownerState.color)}`]];
     }
   })(memoTheme_default(({
     theme
@@ -28149,7 +28801,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var CircularProgressSVG = styled_default2("svg", {
     name: "MuiCircularProgress",
     slot: "Svg",
-    overridesResolver: (props, styles2) => styles2.svg
+    overridesResolver: (props, styles4) => styles4.svg
   })({
     display: "block"
     // Keeps the progress centered
@@ -28157,11 +28809,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var CircularProgressCircle = styled_default2("circle", {
     name: "MuiCircularProgress",
     slot: "Circle",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.circle, styles2[`circle${capitalize_default(ownerState.variant)}`], ownerState.disableShrink && styles2.circleDisableShrink];
+      return [styles4.circle, styles4[`circle${capitalize_default(ownerState.variant)}`], ownerState.disableShrink && styles4.circleDisableShrink];
     }
   })(memoTheme_default(({
     theme
@@ -28194,7 +28846,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   })));
-  var CircularProgress = /* @__PURE__ */ React46.forwardRef(function CircularProgress2(inProps, ref) {
+  var CircularProgress = /* @__PURE__ */ React50.forwardRef(function CircularProgress2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiCircularProgress"
@@ -28226,7 +28878,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       value,
       variant
     });
-    const classes = useUtilityClasses4(ownerState);
+    const classes = useUtilityClasses5(ownerState);
     const circleStyle = {};
     const rootStyle = {};
     const rootProps = {};
@@ -28237,7 +28889,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       circleStyle.strokeDashoffset = `${((100 - value) / 100 * circumference).toFixed(3)}px`;
       rootStyle.transform = "rotate(-90deg)";
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(CircularProgressRoot, __spreadProps(__spreadValues(__spreadValues({
+    return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(CircularProgressRoot, __spreadProps(__spreadValues(__spreadValues({
       className: clsx_default(classes.root, className),
       style: __spreadValues(__spreadValues({
         width: size,
@@ -28247,11 +28899,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       ref,
       role: "progressbar"
     }, rootProps), other), {
-      children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(CircularProgressSVG, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(CircularProgressSVG, {
         className: classes.svg,
         ownerState,
         viewBox: `${SIZE / 2} ${SIZE / 2} ${SIZE} ${SIZE}`,
-        children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(CircularProgressCircle, {
+        children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(CircularProgressCircle, {
           className: classes.circle,
           style: circleStyle,
           ownerState,
@@ -28338,8 +28990,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var iconButtonClasses_default = iconButtonClasses;
 
   // node_modules/@mui/material/IconButton/IconButton.js
-  var import_jsx_runtime25 = __toESM(require_jsx_runtime());
-  var useUtilityClasses5 = (ownerState) => {
+  var import_jsx_runtime28 = __toESM(require_jsx_runtime());
+  var useUtilityClasses6 = (ownerState) => {
     const {
       classes,
       disabled,
@@ -28358,11 +29010,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var IconButtonRoot = styled_default2(ButtonBase_default, {
     name: "MuiIconButton",
     slot: "Root",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.root, ownerState.loading && styles2.loading, ownerState.color !== "default" && styles2[`color${capitalize_default(ownerState.color)}`], ownerState.edge && styles2[`edge${capitalize_default(ownerState.edge)}`], styles2[`size${capitalize_default(ownerState.size)}`]];
+      return [styles4.root, ownerState.loading && styles4.loading, ownerState.color !== "default" && styles4[`color${capitalize_default(ownerState.color)}`], ownerState.edge && styles4[`edge${capitalize_default(ownerState.edge)}`], styles4[`size${capitalize_default(ownerState.size)}`]];
     }
   })(memoTheme_default(({
     theme
@@ -28471,7 +29123,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var IconButtonLoadingIndicator = styled_default2("span", {
     name: "MuiIconButton",
     slot: "LoadingIndicator",
-    overridesResolver: (props, styles2) => styles2.loadingIndicator
+    overridesResolver: (props, styles4) => styles4.loadingIndicator
   })(({
     theme
   }) => ({
@@ -28491,7 +29143,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   }));
-  var IconButton = /* @__PURE__ */ React47.forwardRef(function IconButton2(inProps, ref) {
+  var IconButton = /* @__PURE__ */ React51.forwardRef(function IconButton2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiIconButton"
@@ -28520,7 +29172,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       "loadingIndicator"
     ]);
     const loadingId = useId_default(idProp);
-    const loadingIndicator = loadingIndicatorProp != null ? loadingIndicatorProp : /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(CircularProgress_default, {
+    const loadingIndicator = loadingIndicatorProp != null ? loadingIndicatorProp : /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(CircularProgress_default, {
       "aria-labelledby": loadingId,
       color: "inherit",
       size: 16
@@ -28534,8 +29186,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       loadingIndicator,
       size
     });
-    const classes = useUtilityClasses5(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(IconButtonRoot, __spreadProps(__spreadValues({
+    const classes = useUtilityClasses6(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(IconButtonRoot, __spreadProps(__spreadValues({
       id: loading ? loadingId : idProp,
       className: clsx_default(classes.root, className),
       centerRipple: true,
@@ -28545,12 +29197,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }, other), {
       ownerState,
       children: [typeof loading === "boolean" && // use plain HTML span to minimize the runtime overhead
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", {
+      /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", {
         className: classes.loadingWrapper,
         style: {
           display: "contents"
         },
-        children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(IconButtonLoadingIndicator, {
+        children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(IconButtonLoadingIndicator, {
           className: classes.loadingIndicator,
           ownerState,
           children: loading && loadingIndicator
@@ -28567,7 +29219,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * The icon to display.
      */
     children: chainPropTypes(import_prop_types.default.node, (props) => {
-      const found = React47.Children.toArray(props.children).some((child) => /* @__PURE__ */ React47.isValidElement(child) && child.props.onClick);
+      const found = React51.Children.toArray(props.children).some((child) => /* @__PURE__ */ React51.isValidElement(child) && child.props.onClick);
       if (found) {
         return new Error(["MUI: You are providing an onClick event listener to a child of a button element.", "Prefer applying it to the IconButton directly.", "This guarantees that the whole <button> will be responsive to click events."].join("\n"));
       }
@@ -28645,16 +29297,17 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var IconButton_default = IconButton;
 
   // node_modules/@mui/material/Typography/Typography.js
-  var React48 = __toESM(require_react());
+  var React52 = __toESM(require_react());
 
   // node_modules/@mui/material/Typography/typographyClasses.js
   function getTypographyUtilityClass(slot) {
     return generateUtilityClass("MuiTypography", slot);
   }
   var typographyClasses = generateUtilityClasses("MuiTypography", ["root", "h1", "h2", "h3", "h4", "h5", "h6", "subtitle1", "subtitle2", "body1", "body2", "inherit", "button", "caption", "overline", "alignLeft", "alignRight", "alignCenter", "alignJustify", "noWrap", "gutterBottom", "paragraph"]);
+  var typographyClasses_default = typographyClasses;
 
   // node_modules/@mui/material/Typography/Typography.js
-  var import_jsx_runtime26 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime29 = __toESM(require_jsx_runtime());
   var v6Colors = {
     primary: true,
     secondary: true,
@@ -28667,7 +29320,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     textDisabled: true
   };
   var extendSxProp2 = internal_createExtendSxProp();
-  var useUtilityClasses6 = (ownerState) => {
+  var useUtilityClasses7 = (ownerState) => {
     const {
       align,
       gutterBottom,
@@ -28684,11 +29337,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var TypographyRoot = styled_default2("span", {
     name: "MuiTypography",
     slot: "Root",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.root, ownerState.variant && styles2[ownerState.variant], ownerState.align !== "inherit" && styles2[`align${capitalize_default(ownerState.align)}`], ownerState.noWrap && styles2.noWrap, ownerState.gutterBottom && styles2.gutterBottom, ownerState.paragraph && styles2.paragraph];
+      return [styles4.root, ownerState.variant && styles4[ownerState.variant], ownerState.align !== "inherit" && styles4[`align${capitalize_default(ownerState.align)}`], ownerState.noWrap && styles4.noWrap, ownerState.gutterBottom && styles4.gutterBottom, ownerState.paragraph && styles4.paragraph];
     }
   })(memoTheme_default(({
     theme
@@ -28771,7 +29424,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     body2: "p",
     inherit: "p"
   };
-  var Typography = /* @__PURE__ */ React48.forwardRef(function Typography2(inProps, ref) {
+  var Typography = /* @__PURE__ */ React52.forwardRef(function Typography2(inProps, ref) {
     const _a = useDefaultProps2({
       props: inProps,
       name: "MuiTypography"
@@ -28815,8 +29468,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       variantMapping
     });
     const Component = component || (paragraph ? "p" : variantMapping[variant] || defaultVariantMapping[variant]) || "span";
-    const classes = useUtilityClasses6(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(TypographyRoot, __spreadProps(__spreadValues({
+    const classes = useUtilityClasses7(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(TypographyRoot, __spreadProps(__spreadValues({
       as: Component,
       ref,
       className: clsx_default(classes.root, className)
@@ -28916,10 +29569,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var Typography_default = Typography;
 
   // node_modules/@mui/material/Popper/Popper.js
-  var React51 = __toESM(require_react());
+  var React55 = __toESM(require_react());
 
   // node_modules/@mui/material/Popper/BasePopper.js
-  var React50 = __toESM(require_react());
+  var React54 = __toESM(require_react());
 
   // node_modules/@popperjs/core/lib/enums.js
   var top = "top";
@@ -28962,8 +29615,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       return window;
     }
     if (node2.toString() !== "[object Window]") {
-      var ownerDocument3 = node2.ownerDocument;
-      return ownerDocument3 ? ownerDocument3.defaultView || window : window;
+      var ownerDocument4 = node2.ownerDocument;
+      return ownerDocument4 ? ownerDocument4.defaultView || window : window;
     }
     return node2;
   }
@@ -30202,7 +30855,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@popperjs/core/lib/utils/debounce.js
-  function debounce(fn2) {
+  function debounce2(fn2) {
     var pending;
     return function() {
       if (!pending) {
@@ -30327,7 +30980,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         },
         // Async and optimistically optimized update – it will not be executed if
         // not necessary (debounced to run at most once-per-tick)
-        update: debounce(function() {
+        update: debounce2(function() {
           return new Promise(function(resolve) {
             instance2.forceUpdate();
             resolve(state);
@@ -30379,19 +31032,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/material/Portal/Portal.js
-  var React49 = __toESM(require_react());
+  var React53 = __toESM(require_react());
   var ReactDOM2 = __toESM(require_react_dom());
   function getContainer(container2) {
     return typeof container2 === "function" ? container2() : container2;
   }
-  var Portal = /* @__PURE__ */ React49.forwardRef(function Portal2(props, forwardedRef) {
+  var Portal = /* @__PURE__ */ React53.forwardRef(function Portal2(props, forwardedRef) {
     const {
       children,
       container: container2,
       disablePortal = false
     } = props;
-    const [mountNode, setMountNode] = React49.useState(null);
-    const handleRef = useForkRef(/* @__PURE__ */ React49.isValidElement(children) ? getReactElementRef(children) : null, forwardedRef);
+    const [mountNode, setMountNode] = React53.useState(null);
+    const handleRef = useForkRef(/* @__PURE__ */ React53.isValidElement(children) ? getReactElementRef(children) : null, forwardedRef);
     useEnhancedEffect_default(() => {
       if (!disablePortal) {
         setMountNode(getContainer(container2) || document.body);
@@ -30407,11 +31060,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       return void 0;
     }, [forwardedRef, mountNode, disablePortal]);
     if (disablePortal) {
-      if (/* @__PURE__ */ React49.isValidElement(children)) {
+      if (/* @__PURE__ */ React53.isValidElement(children)) {
         const newProps = {
           ref: handleRef
         };
-        return /* @__PURE__ */ React49.cloneElement(children, newProps);
+        return /* @__PURE__ */ React53.cloneElement(children, newProps);
       }
       return children;
     }
@@ -30455,7 +31108,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var popperClasses = generateUtilityClasses("MuiPopper", ["root"]);
 
   // node_modules/@mui/material/Popper/BasePopper.js
-  var import_jsx_runtime27 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime30 = __toESM(require_jsx_runtime());
   function flipPlacement(placement, direction) {
     if (direction === "ltr") {
       return placement;
@@ -30479,7 +31132,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function isHTMLElement2(element) {
     return element.nodeType !== void 0;
   }
-  var useUtilityClasses7 = (ownerState) => {
+  var useUtilityClasses8 = (ownerState) => {
     const {
       classes
     } = ownerState;
@@ -30489,7 +31142,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return composeClasses(slots, getPopperUtilityClass, classes);
   };
   var defaultPopperOptions = {};
-  var PopperTooltip = /* @__PURE__ */ React50.forwardRef(function PopperTooltip2(props, forwardedRef) {
+  var PopperTooltip = /* @__PURE__ */ React54.forwardRef(function PopperTooltip2(props, forwardedRef) {
     var _b;
     const _a = props, {
       anchorEl,
@@ -30521,24 +31174,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       // @ts-ignore internal logic
       "ownerState"
     ]);
-    const tooltipRef = React50.useRef(null);
+    const tooltipRef = React54.useRef(null);
     const ownRef = useForkRef(tooltipRef, forwardedRef);
-    const popperRef = React50.useRef(null);
+    const popperRef = React54.useRef(null);
     const handlePopperRef = useForkRef(popperRef, popperRefProp);
-    const handlePopperRefRef = React50.useRef(handlePopperRef);
+    const handlePopperRefRef = React54.useRef(handlePopperRef);
     useEnhancedEffect_default(() => {
       handlePopperRefRef.current = handlePopperRef;
     }, [handlePopperRef]);
-    React50.useImperativeHandle(popperRefProp, () => popperRef.current, []);
+    React54.useImperativeHandle(popperRefProp, () => popperRef.current, []);
     const rtlPlacement = flipPlacement(initialPlacement, direction);
-    const [placement, setPlacement] = React50.useState(rtlPlacement);
-    const [resolvedAnchorElement, setResolvedAnchorElement] = React50.useState(resolveAnchorEl(anchorEl));
-    React50.useEffect(() => {
+    const [placement, setPlacement] = React54.useState(rtlPlacement);
+    const [resolvedAnchorElement, setResolvedAnchorElement] = React54.useState(resolveAnchorEl(anchorEl));
+    React54.useEffect(() => {
       if (popperRef.current) {
         popperRef.current.forceUpdate();
       }
     });
-    React50.useEffect(() => {
+    React54.useEffect(() => {
       if (anchorEl) {
         setResolvedAnchorElement(resolveAnchorEl(anchorEl));
       }
@@ -30601,7 +31254,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (TransitionProps !== null) {
       childProps.TransitionProps = TransitionProps;
     }
-    const classes = useUtilityClasses7(props);
+    const classes = useUtilityClasses8(props);
     const Root2 = (_b = slots.root) != null ? _b : "div";
     const rootProps = useSlotProps_default({
       elementType: Root2,
@@ -30614,11 +31267,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       ownerState: props,
       className: classes.root
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Root2, __spreadProps(__spreadValues({}, rootProps), {
+    return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Root2, __spreadProps(__spreadValues({}, rootProps), {
       children: typeof children === "function" ? children(childProps) : children
     }));
   });
-  var Popper = /* @__PURE__ */ React50.forwardRef(function Popper2(props, forwardedRef) {
+  var Popper = /* @__PURE__ */ React54.forwardRef(function Popper2(props, forwardedRef) {
     const _a = props, {
       anchorEl,
       children,
@@ -30652,7 +31305,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       "slotProps",
       "slots"
     ]);
-    const [exited, setExited] = React50.useState(true);
+    const [exited, setExited] = React54.useState(true);
     const handleEnter = () => {
       setExited(false);
     };
@@ -30675,10 +31328,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       onEnter: handleEnter,
       onExited: handleExited
     } : void 0;
-    return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Portal_default, {
+    return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Portal_default, {
       disablePortal,
       container: container2,
-      children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(PopperTooltip, __spreadProps(__spreadValues({
+      children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(PopperTooltip, __spreadProps(__spreadValues({
         anchorEl,
         direction,
         disablePortal,
@@ -30828,13 +31481,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var BasePopper_default = Popper;
 
   // node_modules/@mui/material/Popper/Popper.js
-  var import_jsx_runtime28 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime31 = __toESM(require_jsx_runtime());
   var PopperRoot = styled_default2(BasePopper_default, {
     name: "MuiPopper",
     slot: "Root",
-    overridesResolver: (props, styles2) => styles2.root
+    overridesResolver: (props, styles4) => styles4.root
   })({});
-  var Popper3 = /* @__PURE__ */ React51.forwardRef(function Popper4(inProps, ref) {
+  var Popper3 = /* @__PURE__ */ React55.forwardRef(function Popper4(inProps, ref) {
     var _b;
     const isRtl = useRtl();
     const props = useDefaultProps2({
@@ -30887,7 +31540,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       popperRef,
       transition
     }, other);
-    return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(PopperRoot, __spreadProps(__spreadValues({
+    return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(PopperRoot, __spreadProps(__spreadValues({
       as: component,
       direction: isRtl ? "rtl" : "ltr",
       slots: {
@@ -31031,13 +31684,1026 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
   var Popper_default = Popper3;
 
+  // node_modules/@mui/material/InputBase/InputBase.js
+  var React59 = __toESM(require_react());
+
+  // node_modules/@mui/material/TextareaAutosize/TextareaAutosize.js
+  var React56 = __toESM(require_react());
+  var import_jsx_runtime32 = __toESM(require_jsx_runtime());
+  function getStyleValue2(value) {
+    return parseInt(value, 10) || 0;
+  }
+  var styles = {
+    shadow: {
+      // Visibility needed to hide the extra text area on iPads
+      visibility: "hidden",
+      // Remove from the content flow
+      position: "absolute",
+      // Ignore the scrollbar width
+      overflow: "hidden",
+      height: 0,
+      top: 0,
+      left: 0,
+      // Create a new layer, increase the isolation of the computed values
+      transform: "translateZ(0)"
+    }
+  };
+  function isObjectEmpty3(object) {
+    for (const _2 in object) {
+      return false;
+    }
+    return true;
+  }
+  function isEmpty2(obj) {
+    return isObjectEmpty3(obj) || obj.outerHeightStyle === 0 && !obj.overflowing;
+  }
+  var TextareaAutosize = /* @__PURE__ */ React56.forwardRef(function TextareaAutosize2(props, forwardedRef) {
+    const _a = props, {
+      onChange,
+      maxRows,
+      minRows = 1,
+      style: style4,
+      value
+    } = _a, other = __objRest(_a, [
+      "onChange",
+      "maxRows",
+      "minRows",
+      "style",
+      "value"
+    ]);
+    const {
+      current: isControlled
+    } = React56.useRef(value != null);
+    const textareaRef = React56.useRef(null);
+    const handleRef = useForkRef(forwardedRef, textareaRef);
+    const heightRef = React56.useRef(null);
+    const hiddenTextareaRef = React56.useRef(null);
+    const calculateTextareaStyles = React56.useCallback(() => {
+      const textarea = textareaRef.current;
+      const hiddenTextarea = hiddenTextareaRef.current;
+      if (!textarea || !hiddenTextarea) {
+        return void 0;
+      }
+      const containerWindow = ownerWindow(textarea);
+      const computedStyle = containerWindow.getComputedStyle(textarea);
+      if (computedStyle.width === "0px") {
+        return {
+          outerHeightStyle: 0,
+          overflowing: false
+        };
+      }
+      hiddenTextarea.style.width = computedStyle.width;
+      hiddenTextarea.value = textarea.value || props.placeholder || "x";
+      if (hiddenTextarea.value.slice(-1) === "\n") {
+        hiddenTextarea.value += " ";
+      }
+      const boxSizing2 = computedStyle.boxSizing;
+      const padding2 = getStyleValue2(computedStyle.paddingBottom) + getStyleValue2(computedStyle.paddingTop);
+      const border2 = getStyleValue2(computedStyle.borderBottomWidth) + getStyleValue2(computedStyle.borderTopWidth);
+      const innerHeight = hiddenTextarea.scrollHeight;
+      hiddenTextarea.value = "x";
+      const singleRowHeight = hiddenTextarea.scrollHeight;
+      let outerHeight = innerHeight;
+      if (minRows) {
+        outerHeight = Math.max(Number(minRows) * singleRowHeight, outerHeight);
+      }
+      if (maxRows) {
+        outerHeight = Math.min(Number(maxRows) * singleRowHeight, outerHeight);
+      }
+      outerHeight = Math.max(outerHeight, singleRowHeight);
+      const outerHeightStyle = outerHeight + (boxSizing2 === "border-box" ? padding2 + border2 : 0);
+      const overflowing = Math.abs(outerHeight - innerHeight) <= 1;
+      return {
+        outerHeightStyle,
+        overflowing
+      };
+    }, [maxRows, minRows, props.placeholder]);
+    const didHeightChange = useEventCallback_default(() => {
+      const textarea = textareaRef.current;
+      const textareaStyles = calculateTextareaStyles();
+      if (!textarea || !textareaStyles || isEmpty2(textareaStyles)) {
+        return false;
+      }
+      const outerHeightStyle = textareaStyles.outerHeightStyle;
+      return heightRef.current != null && heightRef.current !== outerHeightStyle;
+    });
+    const syncHeight = React56.useCallback(() => {
+      const textarea = textareaRef.current;
+      const textareaStyles = calculateTextareaStyles();
+      if (!textarea || !textareaStyles || isEmpty2(textareaStyles)) {
+        return;
+      }
+      const outerHeightStyle = textareaStyles.outerHeightStyle;
+      if (heightRef.current !== outerHeightStyle) {
+        heightRef.current = outerHeightStyle;
+        textarea.style.height = `${outerHeightStyle}px`;
+      }
+      textarea.style.overflow = textareaStyles.overflowing ? "hidden" : "";
+    }, [calculateTextareaStyles]);
+    const frameRef = React56.useRef(-1);
+    useEnhancedEffect_default(() => {
+      const debouncedHandleResize = debounce(syncHeight);
+      const textarea = textareaRef == null ? void 0 : textareaRef.current;
+      if (!textarea) {
+        return void 0;
+      }
+      const containerWindow = ownerWindow(textarea);
+      containerWindow.addEventListener("resize", debouncedHandleResize);
+      let resizeObserver;
+      if (typeof ResizeObserver !== "undefined") {
+        resizeObserver = new ResizeObserver(() => {
+          if (didHeightChange()) {
+            resizeObserver.unobserve(textarea);
+            cancelAnimationFrame(frameRef.current);
+            syncHeight();
+            frameRef.current = requestAnimationFrame(() => {
+              resizeObserver.observe(textarea);
+            });
+          }
+        });
+        resizeObserver.observe(textarea);
+      }
+      return () => {
+        debouncedHandleResize.clear();
+        cancelAnimationFrame(frameRef.current);
+        containerWindow.removeEventListener("resize", debouncedHandleResize);
+        if (resizeObserver) {
+          resizeObserver.disconnect();
+        }
+      };
+    }, [calculateTextareaStyles, syncHeight, didHeightChange]);
+    useEnhancedEffect_default(() => {
+      syncHeight();
+    });
+    const handleChange = (event) => {
+      if (!isControlled) {
+        syncHeight();
+      }
+      if (onChange) {
+        onChange(event);
+      }
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(React56.Fragment, {
+      children: [/* @__PURE__ */ (0, import_jsx_runtime32.jsx)("textarea", __spreadValues({
+        value,
+        onChange: handleChange,
+        ref: handleRef,
+        rows: minRows,
+        style: style4
+      }, other)), /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("textarea", {
+        "aria-hidden": true,
+        className: props.className,
+        readOnly: true,
+        ref: hiddenTextareaRef,
+        tabIndex: -1,
+        style: __spreadProps(__spreadValues(__spreadValues({}, styles.shadow), style4), {
+          paddingTop: 0,
+          paddingBottom: 0
+        })
+      })]
+    });
+  });
+  false ? TextareaAutosize.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │ To update them, edit the TypeScript types and run `pnpm proptypes`. │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * Maximum number of rows to display.
+     */
+    maxRows: import_prop_types.default.oneOfType([import_prop_types.default.number, import_prop_types.default.string]),
+    /**
+     * Minimum number of rows to display.
+     * @default 1
+     */
+    minRows: import_prop_types.default.oneOfType([import_prop_types.default.number, import_prop_types.default.string]),
+    /**
+     * @ignore
+     */
+    onChange: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    placeholder: import_prop_types.default.string,
+    /**
+     * @ignore
+     */
+    style: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    value: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.string), import_prop_types.default.number, import_prop_types.default.string])
+  } : void 0;
+  var TextareaAutosize_default = TextareaAutosize;
+
+  // node_modules/@mui/material/utils/isHostComponent.js
+  function isHostComponent2(element) {
+    return typeof element === "string";
+  }
+  var isHostComponent_default2 = isHostComponent2;
+
+  // node_modules/@mui/material/FormControl/formControlState.js
+  function formControlState({
+    props,
+    states,
+    muiFormControl
+  }) {
+    return states.reduce((acc, state) => {
+      acc[state] = props[state];
+      if (muiFormControl) {
+        if (typeof props[state] === "undefined") {
+          acc[state] = muiFormControl[state];
+        }
+      }
+      return acc;
+    }, {});
+  }
+
+  // node_modules/@mui/material/FormControl/FormControlContext.js
+  var React57 = __toESM(require_react());
+  var FormControlContext = /* @__PURE__ */ React57.createContext(void 0);
+  if (false) {
+    FormControlContext.displayName = "FormControlContext";
+  }
+  var FormControlContext_default = FormControlContext;
+
+  // node_modules/@mui/material/FormControl/useFormControl.js
+  var React58 = __toESM(require_react());
+  function useFormControl() {
+    return React58.useContext(FormControlContext_default);
+  }
+
+  // node_modules/@mui/material/InputBase/utils.js
+  function hasValue(value) {
+    return value != null && !(Array.isArray(value) && value.length === 0);
+  }
+  function isFilled(obj, SSR = false) {
+    return obj && (hasValue(obj.value) && obj.value !== "" || SSR && hasValue(obj.defaultValue) && obj.defaultValue !== "");
+  }
+  function isAdornedStart(obj) {
+    return obj.startAdornment;
+  }
+
+  // node_modules/@mui/material/InputBase/inputBaseClasses.js
+  function getInputBaseUtilityClass(slot) {
+    return generateUtilityClass("MuiInputBase", slot);
+  }
+  var inputBaseClasses = generateUtilityClasses("MuiInputBase", ["root", "formControl", "focused", "disabled", "adornedStart", "adornedEnd", "error", "sizeSmall", "multiline", "colorSecondary", "fullWidth", "hiddenLabel", "readOnly", "input", "inputSizeSmall", "inputMultiline", "inputTypeSearch", "inputAdornedStart", "inputAdornedEnd", "inputHiddenLabel"]);
+  var inputBaseClasses_default = inputBaseClasses;
+
+  // node_modules/@mui/material/InputBase/InputBase.js
+  var import_jsx_runtime33 = __toESM(require_jsx_runtime());
+  var _InputGlobalStyles;
+  var rootOverridesResolver = (props, styles4) => {
+    const {
+      ownerState
+    } = props;
+    return [styles4.root, ownerState.formControl && styles4.formControl, ownerState.startAdornment && styles4.adornedStart, ownerState.endAdornment && styles4.adornedEnd, ownerState.error && styles4.error, ownerState.size === "small" && styles4.sizeSmall, ownerState.multiline && styles4.multiline, ownerState.color && styles4[`color${capitalize_default(ownerState.color)}`], ownerState.fullWidth && styles4.fullWidth, ownerState.hiddenLabel && styles4.hiddenLabel];
+  };
+  var inputOverridesResolver = (props, styles4) => {
+    const {
+      ownerState
+    } = props;
+    return [styles4.input, ownerState.size === "small" && styles4.inputSizeSmall, ownerState.multiline && styles4.inputMultiline, ownerState.type === "search" && styles4.inputTypeSearch, ownerState.startAdornment && styles4.inputAdornedStart, ownerState.endAdornment && styles4.inputAdornedEnd, ownerState.hiddenLabel && styles4.inputHiddenLabel];
+  };
+  var useUtilityClasses9 = (ownerState) => {
+    const {
+      classes,
+      color: color3,
+      disabled,
+      error,
+      endAdornment,
+      focused,
+      formControl,
+      fullWidth,
+      hiddenLabel,
+      multiline,
+      readOnly,
+      size,
+      startAdornment,
+      type
+    } = ownerState;
+    const slots = {
+      root: ["root", `color${capitalize_default(color3)}`, disabled && "disabled", error && "error", fullWidth && "fullWidth", focused && "focused", formControl && "formControl", size && size !== "medium" && `size${capitalize_default(size)}`, multiline && "multiline", startAdornment && "adornedStart", endAdornment && "adornedEnd", hiddenLabel && "hiddenLabel", readOnly && "readOnly"],
+      input: ["input", disabled && "disabled", type === "search" && "inputTypeSearch", multiline && "inputMultiline", size === "small" && "inputSizeSmall", hiddenLabel && "inputHiddenLabel", startAdornment && "inputAdornedStart", endAdornment && "inputAdornedEnd", readOnly && "readOnly"]
+    };
+    return composeClasses(slots, getInputBaseUtilityClass, classes);
+  };
+  var InputBaseRoot = styled_default2("div", {
+    name: "MuiInputBase",
+    slot: "Root",
+    overridesResolver: rootOverridesResolver
+  })(memoTheme_default(({
+    theme
+  }) => __spreadProps(__spreadValues({}, theme.typography.body1), {
+    color: (theme.vars || theme).palette.text.primary,
+    lineHeight: "1.4375em",
+    // 23px
+    boxSizing: "border-box",
+    // Prevent padding issue with fullWidth.
+    position: "relative",
+    cursor: "text",
+    display: "inline-flex",
+    alignItems: "center",
+    [`&.${inputBaseClasses_default.disabled}`]: {
+      color: (theme.vars || theme).palette.text.disabled,
+      cursor: "default"
+    },
+    variants: [{
+      props: ({
+        ownerState
+      }) => ownerState.multiline,
+      style: {
+        padding: "4px 0 5px"
+      }
+    }, {
+      props: ({
+        ownerState,
+        size
+      }) => ownerState.multiline && size === "small",
+      style: {
+        paddingTop: 1
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.fullWidth,
+      style: {
+        width: "100%"
+      }
+    }]
+  })));
+  var InputBaseInput = styled_default2("input", {
+    name: "MuiInputBase",
+    slot: "Input",
+    overridesResolver: inputOverridesResolver
+  })(memoTheme_default(({
+    theme
+  }) => {
+    const light2 = theme.palette.mode === "light";
+    const placeholder = __spreadProps(__spreadValues({
+      color: "currentColor"
+    }, theme.vars ? {
+      opacity: theme.vars.opacity.inputPlaceholder
+    } : {
+      opacity: light2 ? 0.42 : 0.5
+    }), {
+      transition: theme.transitions.create("opacity", {
+        duration: theme.transitions.duration.shorter
+      })
+    });
+    const placeholderHidden = {
+      opacity: "0 !important"
+    };
+    const placeholderVisible = theme.vars ? {
+      opacity: theme.vars.opacity.inputPlaceholder
+    } : {
+      opacity: light2 ? 0.42 : 0.5
+    };
+    return {
+      font: "inherit",
+      letterSpacing: "inherit",
+      color: "currentColor",
+      padding: "4px 0 5px",
+      border: 0,
+      boxSizing: "content-box",
+      background: "none",
+      height: "1.4375em",
+      // Reset 23pxthe native input line-height
+      margin: 0,
+      // Reset for Safari
+      WebkitTapHighlightColor: "transparent",
+      display: "block",
+      // Make the flex item shrink with Firefox
+      minWidth: 0,
+      width: "100%",
+      "&::-webkit-input-placeholder": placeholder,
+      "&::-moz-placeholder": placeholder,
+      // Firefox 19+
+      "&::-ms-input-placeholder": placeholder,
+      // Edge
+      "&:focus": {
+        outline: 0
+      },
+      // Reset Firefox invalid required input style
+      "&:invalid": {
+        boxShadow: "none"
+      },
+      "&::-webkit-search-decoration": {
+        // Remove the padding when type=search.
+        WebkitAppearance: "none"
+      },
+      // Show and hide the placeholder logic
+      [`label[data-shrink=false] + .${inputBaseClasses_default.formControl} &`]: {
+        "&::-webkit-input-placeholder": placeholderHidden,
+        "&::-moz-placeholder": placeholderHidden,
+        // Firefox 19+
+        "&::-ms-input-placeholder": placeholderHidden,
+        // Edge
+        "&:focus::-webkit-input-placeholder": placeholderVisible,
+        "&:focus::-moz-placeholder": placeholderVisible,
+        // Firefox 19+
+        "&:focus::-ms-input-placeholder": placeholderVisible
+        // Edge
+      },
+      [`&.${inputBaseClasses_default.disabled}`]: {
+        opacity: 1,
+        // Reset iOS opacity
+        WebkitTextFillColor: (theme.vars || theme).palette.text.disabled
+        // Fix opacity Safari bug
+      },
+      variants: [{
+        props: ({
+          ownerState
+        }) => !ownerState.disableInjectingGlobalStyles,
+        style: {
+          animationName: "mui-auto-fill-cancel",
+          animationDuration: "10ms",
+          "&:-webkit-autofill": {
+            animationDuration: "5000s",
+            animationName: "mui-auto-fill"
+          }
+        }
+      }, {
+        props: {
+          size: "small"
+        },
+        style: {
+          paddingTop: 1
+        }
+      }, {
+        props: ({
+          ownerState
+        }) => ownerState.multiline,
+        style: {
+          height: "auto",
+          resize: "none",
+          padding: 0,
+          paddingTop: 0
+        }
+      }, {
+        props: {
+          type: "search"
+        },
+        style: {
+          MozAppearance: "textfield"
+          // Improve type search style.
+        }
+      }]
+    };
+  }));
+  var InputGlobalStyles = globalCss({
+    "@keyframes mui-auto-fill": {
+      from: {
+        display: "block"
+      }
+    },
+    "@keyframes mui-auto-fill-cancel": {
+      from: {
+        display: "block"
+      }
+    }
+  });
+  var InputBase = /* @__PURE__ */ React59.forwardRef(function InputBase2(inProps, ref) {
+    var _b;
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiInputBase"
+    });
+    const _a = props, {
+      "aria-describedby": ariaDescribedby,
+      autoComplete,
+      autoFocus,
+      className,
+      color: color3,
+      components = {},
+      componentsProps = {},
+      defaultValue,
+      disabled,
+      disableInjectingGlobalStyles,
+      endAdornment,
+      error,
+      fullWidth = false,
+      id,
+      inputComponent = "input",
+      inputProps: inputPropsProp = {},
+      inputRef: inputRefProp,
+      margin: margin2,
+      maxRows,
+      minRows,
+      multiline = false,
+      name,
+      onBlur,
+      onChange,
+      onClick,
+      onFocus,
+      onKeyDown,
+      onKeyUp,
+      placeholder,
+      readOnly,
+      renderSuffix,
+      rows,
+      size,
+      slotProps = {},
+      slots = {},
+      startAdornment,
+      type = "text",
+      value: valueProp
+    } = _a, other = __objRest(_a, [
+      "aria-describedby",
+      "autoComplete",
+      "autoFocus",
+      "className",
+      "color",
+      "components",
+      "componentsProps",
+      "defaultValue",
+      "disabled",
+      "disableInjectingGlobalStyles",
+      "endAdornment",
+      "error",
+      "fullWidth",
+      "id",
+      "inputComponent",
+      "inputProps",
+      "inputRef",
+      "margin",
+      "maxRows",
+      "minRows",
+      "multiline",
+      "name",
+      "onBlur",
+      "onChange",
+      "onClick",
+      "onFocus",
+      "onKeyDown",
+      "onKeyUp",
+      "placeholder",
+      "readOnly",
+      "renderSuffix",
+      "rows",
+      "size",
+      "slotProps",
+      "slots",
+      "startAdornment",
+      "type",
+      "value"
+    ]);
+    const value = inputPropsProp.value != null ? inputPropsProp.value : valueProp;
+    const {
+      current: isControlled
+    } = React59.useRef(value != null);
+    const inputRef = React59.useRef();
+    const handleInputRefWarning = React59.useCallback((instance2) => {
+      if (false) {
+        if (instance2 && instance2.nodeName !== "INPUT" && !instance2.focus) {
+          console.error(["MUI: You have provided a `inputComponent` to the input component", "that does not correctly handle the `ref` prop.", "Make sure the `ref` prop is called with a HTMLInputElement."].join("\n"));
+        }
+      }
+    }, []);
+    const handleInputRef = useForkRef_default(inputRef, inputRefProp, inputPropsProp.ref, handleInputRefWarning);
+    const [focused, setFocused] = React59.useState(false);
+    const muiFormControl = useFormControl();
+    if (false) {
+      React59.useEffect(() => {
+        if (muiFormControl) {
+          return muiFormControl.registerEffect();
+        }
+        return void 0;
+      }, [muiFormControl]);
+    }
+    const fcs = formControlState({
+      props,
+      muiFormControl,
+      states: ["color", "disabled", "error", "hiddenLabel", "size", "required", "filled"]
+    });
+    fcs.focused = muiFormControl ? muiFormControl.focused : focused;
+    React59.useEffect(() => {
+      if (!muiFormControl && disabled && focused) {
+        setFocused(false);
+        if (onBlur) {
+          onBlur();
+        }
+      }
+    }, [muiFormControl, disabled, focused, onBlur]);
+    const onFilled = muiFormControl && muiFormControl.onFilled;
+    const onEmpty = muiFormControl && muiFormControl.onEmpty;
+    const checkDirty = React59.useCallback((obj) => {
+      if (isFilled(obj)) {
+        if (onFilled) {
+          onFilled();
+        }
+      } else if (onEmpty) {
+        onEmpty();
+      }
+    }, [onFilled, onEmpty]);
+    useEnhancedEffect_default2(() => {
+      if (isControlled) {
+        checkDirty({
+          value
+        });
+      }
+    }, [value, checkDirty, isControlled]);
+    const handleFocus = (event) => {
+      if (onFocus) {
+        onFocus(event);
+      }
+      if (inputPropsProp.onFocus) {
+        inputPropsProp.onFocus(event);
+      }
+      if (muiFormControl && muiFormControl.onFocus) {
+        muiFormControl.onFocus(event);
+      } else {
+        setFocused(true);
+      }
+    };
+    const handleBlur = (event) => {
+      if (onBlur) {
+        onBlur(event);
+      }
+      if (inputPropsProp.onBlur) {
+        inputPropsProp.onBlur(event);
+      }
+      if (muiFormControl && muiFormControl.onBlur) {
+        muiFormControl.onBlur(event);
+      } else {
+        setFocused(false);
+      }
+    };
+    const handleChange = (event, ...args) => {
+      if (!isControlled) {
+        const element = event.target || inputRef.current;
+        if (element == null) {
+          throw new Error(false ? "MUI: Expected valid input target. Did you use a custom `inputComponent` and forget to forward refs? See https://mui.com/r/input-component-ref-interface for more info." : formatMuiErrorMessage(1));
+        }
+        checkDirty({
+          value: element.value
+        });
+      }
+      if (inputPropsProp.onChange) {
+        inputPropsProp.onChange(event, ...args);
+      }
+      if (onChange) {
+        onChange(event, ...args);
+      }
+    };
+    React59.useEffect(() => {
+      checkDirty(inputRef.current);
+    }, []);
+    const handleClick = (event) => {
+      if (inputRef.current && event.currentTarget === event.target) {
+        inputRef.current.focus();
+      }
+      if (onClick) {
+        onClick(event);
+      }
+    };
+    let InputComponent = inputComponent;
+    let inputProps = inputPropsProp;
+    if (multiline && InputComponent === "input") {
+      if (rows) {
+        if (false) {
+          if (minRows || maxRows) {
+            console.warn("MUI: You can not use the `minRows` or `maxRows` props when the input `rows` prop is set.");
+          }
+        }
+        inputProps = __spreadValues({
+          type: void 0,
+          minRows: rows,
+          maxRows: rows
+        }, inputProps);
+      } else {
+        inputProps = __spreadValues({
+          type: void 0,
+          maxRows,
+          minRows
+        }, inputProps);
+      }
+      InputComponent = TextareaAutosize_default;
+    }
+    const handleAutoFill = (event) => {
+      checkDirty(event.animationName === "mui-auto-fill-cancel" ? inputRef.current : {
+        value: "x"
+      });
+    };
+    React59.useEffect(() => {
+      if (muiFormControl) {
+        muiFormControl.setAdornedStart(Boolean(startAdornment));
+      }
+    }, [muiFormControl, startAdornment]);
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      color: fcs.color || "primary",
+      disabled: fcs.disabled,
+      endAdornment,
+      error: fcs.error,
+      focused: fcs.focused,
+      formControl: muiFormControl,
+      fullWidth,
+      hiddenLabel: fcs.hiddenLabel,
+      multiline,
+      size: fcs.size,
+      startAdornment,
+      type
+    });
+    const classes = useUtilityClasses9(ownerState);
+    const Root2 = slots.root || components.Root || InputBaseRoot;
+    const rootProps = slotProps.root || componentsProps.root || {};
+    const Input = slots.input || components.Input || InputBaseInput;
+    inputProps = __spreadValues(__spreadValues({}, inputProps), (_b = slotProps.input) != null ? _b : componentsProps.input);
+    return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(React59.Fragment, {
+      children: [!disableInjectingGlobalStyles && typeof InputGlobalStyles === "function" && // For Emotion/Styled-components, InputGlobalStyles will be a function
+      // For Pigment CSS, this has no effect because the InputGlobalStyles will be null.
+      (_InputGlobalStyles || (_InputGlobalStyles = /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(InputGlobalStyles, {}))), /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(Root2, __spreadProps(__spreadValues(__spreadValues(__spreadProps(__spreadValues({}, rootProps), {
+        ref,
+        onClick: handleClick
+      }), other), !isHostComponent_default2(Root2) && {
+        ownerState: __spreadValues(__spreadValues({}, ownerState), rootProps.ownerState)
+      }), {
+        className: clsx_default(classes.root, rootProps.className, className, readOnly && "MuiInputBase-readOnly"),
+        children: [startAdornment, /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(FormControlContext_default.Provider, {
+          value: null,
+          children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Input, __spreadProps(__spreadValues(__spreadValues({
+            "aria-invalid": fcs.error,
+            "aria-describedby": ariaDescribedby,
+            autoComplete,
+            autoFocus,
+            defaultValue,
+            disabled: fcs.disabled,
+            id,
+            onAnimationStart: handleAutoFill,
+            name,
+            placeholder,
+            readOnly,
+            required: fcs.required,
+            rows,
+            value,
+            onKeyDown,
+            onKeyUp,
+            type
+          }, inputProps), !isHostComponent_default2(Input) && {
+            as: InputComponent,
+            ownerState: __spreadValues(__spreadValues({}, ownerState), inputProps.ownerState)
+          }), {
+            ref: handleInputRef,
+            className: clsx_default(classes.input, inputProps.className, readOnly && "MuiInputBase-readOnly"),
+            onBlur: handleBlur,
+            onChange: handleChange,
+            onFocus: handleFocus
+          }))
+        }), endAdornment, renderSuffix ? renderSuffix(__spreadProps(__spreadValues({}, fcs), {
+          startAdornment
+        })) : null]
+      }))]
+    });
+  });
+  false ? InputBase.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * @ignore
+     */
+    "aria-describedby": import_prop_types.default.string,
+    /**
+     * This prop helps users to fill forms faster, especially on mobile devices.
+     * The name can be confusing, as it's more like an autofill.
+     * You can learn more about it [following the specification](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill).
+     */
+    autoComplete: import_prop_types.default.string,
+    /**
+     * If `true`, the `input` element is focused during the first mount.
+     */
+    autoFocus: import_prop_types.default.bool,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * The color of the component.
+     * It supports both default and custom theme colors, which can be added as shown in the
+     * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
+     * The prop defaults to the value (`'primary'`) inherited from the parent FormControl component.
+     */
+    color: import_prop_types.default.oneOfType([import_prop_types.default.oneOf(["primary", "secondary", "error", "info", "success", "warning"]), import_prop_types.default.string]),
+    /**
+     * The components used for each slot inside.
+     *
+     * @deprecated use the `slots` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     *
+     * @default {}
+     */
+    components: import_prop_types.default.shape({
+      Input: import_prop_types.default.elementType,
+      Root: import_prop_types.default.elementType
+    }),
+    /**
+     * The extra props for the slot components.
+     * You can override the existing props or add new ones.
+     *
+     * @deprecated use the `slotProps` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     *
+     * @default {}
+     */
+    componentsProps: import_prop_types.default.shape({
+      input: import_prop_types.default.object,
+      root: import_prop_types.default.object
+    }),
+    /**
+     * The default value. Use when the component is not controlled.
+     */
+    defaultValue: import_prop_types.default.any,
+    /**
+     * If `true`, the component is disabled.
+     * The prop defaults to the value (`false`) inherited from the parent FormControl component.
+     */
+    disabled: import_prop_types.default.bool,
+    /**
+     * If `true`, GlobalStyles for the auto-fill keyframes will not be injected/removed on mount/unmount. Make sure to inject them at the top of your application.
+     * This option is intended to help with boosting the initial rendering performance if you are loading a big amount of Input components at once.
+     * @default false
+     */
+    disableInjectingGlobalStyles: import_prop_types.default.bool,
+    /**
+     * End `InputAdornment` for this component.
+     */
+    endAdornment: import_prop_types.default.node,
+    /**
+     * If `true`, the `input` will indicate an error.
+     * The prop defaults to the value (`false`) inherited from the parent FormControl component.
+     */
+    error: import_prop_types.default.bool,
+    /**
+     * If `true`, the `input` will take up the full width of its container.
+     * @default false
+     */
+    fullWidth: import_prop_types.default.bool,
+    /**
+     * The id of the `input` element.
+     */
+    id: import_prop_types.default.string,
+    /**
+     * The component used for the `input` element.
+     * Either a string to use a HTML element or a component.
+     * @default 'input'
+     */
+    inputComponent: elementTypeAcceptingRef_default,
+    /**
+     * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
+     * @default {}
+     */
+    inputProps: import_prop_types.default.object,
+    /**
+     * Pass a ref to the `input` element.
+     */
+    inputRef: refType_default,
+    /**
+     * If `dense`, will adjust vertical spacing. This is normally obtained via context from
+     * FormControl.
+     * The prop defaults to the value (`'none'`) inherited from the parent FormControl component.
+     */
+    margin: import_prop_types.default.oneOf(["dense", "none"]),
+    /**
+     * Maximum number of rows to display when multiline option is set to true.
+     */
+    maxRows: import_prop_types.default.oneOfType([import_prop_types.default.number, import_prop_types.default.string]),
+    /**
+     * Minimum number of rows to display when multiline option is set to true.
+     */
+    minRows: import_prop_types.default.oneOfType([import_prop_types.default.number, import_prop_types.default.string]),
+    /**
+     * If `true`, a [TextareaAutosize](https://mui.com/material-ui/react-textarea-autosize/) element is rendered.
+     * @default false
+     */
+    multiline: import_prop_types.default.bool,
+    /**
+     * Name attribute of the `input` element.
+     */
+    name: import_prop_types.default.string,
+    /**
+     * Callback fired when the `input` is blurred.
+     *
+     * Notice that the first argument (event) might be undefined.
+     */
+    onBlur: import_prop_types.default.func,
+    /**
+     * Callback fired when the value is changed.
+     *
+     * @param {React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>} event The event source of the callback.
+     * You can pull out the new value by accessing `event.target.value` (string).
+     */
+    onChange: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    onClick: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    onFocus: import_prop_types.default.func,
+    /**
+     * Callback fired when the `input` doesn't satisfy its constraints.
+     */
+    onInvalid: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    onKeyDown: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    onKeyUp: import_prop_types.default.func,
+    /**
+     * The short hint displayed in the `input` before the user enters a value.
+     */
+    placeholder: import_prop_types.default.string,
+    /**
+     * It prevents the user from changing the value of the field
+     * (not from interacting with the field).
+     */
+    readOnly: import_prop_types.default.bool,
+    /**
+     * @ignore
+     */
+    renderSuffix: import_prop_types.default.func,
+    /**
+     * If `true`, the `input` element is required.
+     * The prop defaults to the value (`false`) inherited from the parent FormControl component.
+     */
+    required: import_prop_types.default.bool,
+    /**
+     * Number of rows to display when multiline option is set to true.
+     */
+    rows: import_prop_types.default.oneOfType([import_prop_types.default.number, import_prop_types.default.string]),
+    /**
+     * The size of the component.
+     */
+    size: import_prop_types.default.oneOfType([import_prop_types.default.oneOf(["medium", "small"]), import_prop_types.default.string]),
+    /**
+     * The extra props for the slot components.
+     * You can override the existing props or add new ones.
+     *
+     * This prop is an alias for the `componentsProps` prop, which will be deprecated in the future.
+     *
+     * @default {}
+     */
+    slotProps: import_prop_types.default.shape({
+      input: import_prop_types.default.object,
+      root: import_prop_types.default.object
+    }),
+    /**
+     * The components used for each slot inside.
+     *
+     * This prop is an alias for the `components` prop, which will be deprecated in the future.
+     *
+     * @default {}
+     */
+    slots: import_prop_types.default.shape({
+      input: import_prop_types.default.elementType,
+      root: import_prop_types.default.elementType
+    }),
+    /**
+     * Start `InputAdornment` for this component.
+     */
+    startAdornment: import_prop_types.default.node,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object]),
+    /**
+     * Type of the `input` element. It should be [a valid HTML5 input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types).
+     * @default 'text'
+     */
+    type: import_prop_types.default.string,
+    /**
+     * The value of the `input` element, required for a controlled component.
+     */
+    value: import_prop_types.default.any
+  } : void 0;
+  var InputBase_default = InputBase;
+
+  // node_modules/@mui/material/OutlinedInput/outlinedInputClasses.js
+  function getOutlinedInputUtilityClass(slot) {
+    return generateUtilityClass("MuiOutlinedInput", slot);
+  }
+  var outlinedInputClasses = __spreadValues(__spreadValues({}, inputBaseClasses_default), generateUtilityClasses("MuiOutlinedInput", ["root", "notchedOutline", "input"]));
+  var outlinedInputClasses_default = outlinedInputClasses;
+
   // node_modules/@mui/material/Backdrop/Backdrop.js
-  var React53 = __toESM(require_react());
+  var React61 = __toESM(require_react());
 
   // node_modules/@mui/material/Fade/Fade.js
-  var React52 = __toESM(require_react());
-  var import_jsx_runtime29 = __toESM(require_jsx_runtime());
-  var styles = {
+  var React60 = __toESM(require_react());
+  var import_jsx_runtime34 = __toESM(require_jsx_runtime());
+  var styles2 = {
     entering: {
       opacity: 1
     },
@@ -31045,7 +32711,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       opacity: 1
     }
   };
-  var Fade = /* @__PURE__ */ React52.forwardRef(function Fade2(props, ref) {
+  var Fade = /* @__PURE__ */ React60.forwardRef(function Fade2(props, ref) {
     const theme = useTheme5();
     const defaultTimeout = {
       enter: theme.transitions.duration.enteringScreen,
@@ -31084,7 +32750,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       "TransitionComponent"
     ]);
     const enableStrictModeCompat = true;
-    const nodeRef = React52.useRef(null);
+    const nodeRef = React60.useRef(null);
     const handleRef = useForkRef_default(nodeRef, getReactElementRef(children), ref);
     const normalizedTransitionCallback = (callback) => (maybeIsAppearing) => {
       if (callback) {
@@ -31134,7 +32800,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         addEndListener(nodeRef.current, next2);
       }
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(TransitionComponent, __spreadProps(__spreadValues({
+    return /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(TransitionComponent, __spreadProps(__spreadValues({
       appear,
       in: inProp,
       nodeRef: enableStrictModeCompat ? nodeRef : void 0,
@@ -31153,11 +32819,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         } = _c, restChildProps = __objRest(_c, [
           "ownerState"
         ]);
-        return /* @__PURE__ */ React52.cloneElement(children, __spreadValues({
+        return /* @__PURE__ */ React60.cloneElement(children, __spreadValues({
           style: __spreadValues(__spreadValues(__spreadValues({
             opacity: 0,
             visibility: state === "exited" && !inProp ? "hidden" : void 0
-          }, styles[state]), style4), children.props.style),
+          }, styles2[state]), style4), children.props.style),
           ref: handleRef
         }, restChildProps));
       }
@@ -31247,8 +32913,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var backdropClasses = generateUtilityClasses("MuiBackdrop", ["root", "invisible"]);
 
   // node_modules/@mui/material/Backdrop/Backdrop.js
-  var import_jsx_runtime30 = __toESM(require_jsx_runtime());
-  var useUtilityClasses8 = (ownerState) => {
+  var import_jsx_runtime35 = __toESM(require_jsx_runtime());
+  var useUtilityClasses10 = (ownerState) => {
     const {
       classes,
       invisible
@@ -31261,11 +32927,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var BackdropRoot = styled_default2("div", {
     name: "MuiBackdrop",
     slot: "Root",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.root, ownerState.invisible && styles2.invisible];
+      return [styles4.root, ownerState.invisible && styles4.invisible];
     }
   })({
     position: "fixed",
@@ -31287,7 +32953,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   });
-  var Backdrop = /* @__PURE__ */ React53.forwardRef(function Backdrop2(inProps, ref) {
+  var Backdrop = /* @__PURE__ */ React61.forwardRef(function Backdrop2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiBackdrop"
@@ -31321,7 +32987,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       component,
       invisible
     });
-    const classes = useUtilityClasses8(ownerState);
+    const classes = useUtilityClasses10(ownerState);
     const backwardCompatibleSlots = __spreadValues({
       transition: TransitionComponentProp,
       root: components.Root
@@ -31342,11 +33008,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       externalForwardedProps,
       ownerState
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(TransitionSlot, __spreadProps(__spreadValues(__spreadValues({
+    return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(TransitionSlot, __spreadProps(__spreadValues(__spreadValues({
       in: open,
       timeout: transitionDuration
     }, other), transitionProps), {
-      children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(RootSlot, __spreadProps(__spreadValues({
+      children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(RootSlot, __spreadProps(__spreadValues({
         "aria-hidden": true
       }, rootProps), {
         classes,
@@ -31448,7 +33114,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var Backdrop_default = Backdrop;
 
   // node_modules/@mui/material/Badge/Badge.js
-  var React54 = __toESM(require_react());
+  var React62 = __toESM(require_react());
 
   // node_modules/@mui/material/Badge/useBadge.js
   function useBadge(parameters) {
@@ -31515,10 +33181,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var badgeClasses_default = badgeClasses;
 
   // node_modules/@mui/material/Badge/Badge.js
-  var import_jsx_runtime31 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime36 = __toESM(require_jsx_runtime());
   var RADIUS_STANDARD = 10;
   var RADIUS_DOT = 4;
-  var useUtilityClasses9 = (ownerState) => {
+  var useUtilityClasses11 = (ownerState) => {
     const {
       color: color3,
       anchorOrigin,
@@ -31536,7 +33202,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var BadgeRoot = styled_default2("span", {
     name: "MuiBadge",
     slot: "Root",
-    overridesResolver: (props, styles2) => styles2.root
+    overridesResolver: (props, styles4) => styles4.root
   })({
     position: "relative",
     display: "inline-flex",
@@ -31547,11 +33213,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var BadgeBadge = styled_default2("span", {
     name: "MuiBadge",
     slot: "Badge",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.badge, styles2[ownerState.variant], styles2[`anchorOrigin${capitalize_default(ownerState.anchorOrigin.vertical)}${capitalize_default(ownerState.anchorOrigin.horizontal)}${capitalize_default(ownerState.overlap)}`], ownerState.color !== "default" && styles2[`color${capitalize_default(ownerState.color)}`], ownerState.invisible && styles2.invisible];
+      return [styles4.badge, styles4[ownerState.variant], styles4[`anchorOrigin${capitalize_default(ownerState.anchorOrigin.vertical)}${capitalize_default(ownerState.anchorOrigin.horizontal)}${capitalize_default(ownerState.overlap)}`], ownerState.color !== "default" && styles4[`color${capitalize_default(ownerState.color)}`], ownerState.invisible && styles4.invisible];
     }
   })(memoTheme_default(({
     theme
@@ -31719,7 +33385,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       horizontal: (_b = anchorOrigin == null ? void 0 : anchorOrigin.horizontal) != null ? _b : "right"
     };
   }
-  var Badge = /* @__PURE__ */ React54.forwardRef(function Badge2(inProps, ref) {
+  var Badge = /* @__PURE__ */ React62.forwardRef(function Badge2(inProps, ref) {
     var _b, _c, _d, _e, _f, _g;
     const props = useDefaultProps2({
       props: inProps,
@@ -31798,7 +33464,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       overlap,
       variant
     });
-    const classes = useUtilityClasses9(ownerState);
+    const classes = useUtilityClasses11(ownerState);
     const RootSlot = (_c = (_b = slots == null ? void 0 : slots.root) != null ? _b : components.Root) != null ? _c : BadgeRoot;
     const BadgeSlot = (_e = (_d = slots == null ? void 0 : slots.badge) != null ? _d : components.Badge) != null ? _e : BadgeBadge;
     const rootSlotProps = (_f = slotProps == null ? void 0 : slotProps.root) != null ? _f : componentsProps.root;
@@ -31820,8 +33486,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       ownerState,
       className: clsx_default(classes.badge, badgeSlotProps == null ? void 0 : badgeSlotProps.className)
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(RootSlot, __spreadProps(__spreadValues({}, rootProps), {
-      children: [children, /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(BadgeSlot, __spreadProps(__spreadValues({}, badgeProps), {
+    return /* @__PURE__ */ (0, import_jsx_runtime36.jsxs)(RootSlot, __spreadProps(__spreadValues({}, rootProps), {
+      children: [children, /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(BadgeSlot, __spreadProps(__spreadValues({}, badgeProps), {
         children: displayValue
       }))]
     }));
@@ -31976,7 +33642,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var Box_default = Box;
 
   // node_modules/@mui/material/Button/Button.js
-  var React57 = __toESM(require_react());
+  var React65 = __toESM(require_react());
 
   // node_modules/@mui/material/Button/buttonClasses.js
   function getButtonUtilityClass(slot) {
@@ -31986,24 +33652,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var buttonClasses_default = buttonClasses;
 
   // node_modules/@mui/material/ButtonGroup/ButtonGroupContext.js
-  var React55 = __toESM(require_react());
-  var ButtonGroupContext = /* @__PURE__ */ React55.createContext({});
+  var React63 = __toESM(require_react());
+  var ButtonGroupContext = /* @__PURE__ */ React63.createContext({});
   if (false) {
     ButtonGroupContext.displayName = "ButtonGroupContext";
   }
   var ButtonGroupContext_default = ButtonGroupContext;
 
   // node_modules/@mui/material/ButtonGroup/ButtonGroupButtonContext.js
-  var React56 = __toESM(require_react());
-  var ButtonGroupButtonContext = /* @__PURE__ */ React56.createContext(void 0);
+  var React64 = __toESM(require_react());
+  var ButtonGroupButtonContext = /* @__PURE__ */ React64.createContext(void 0);
   if (false) {
     ButtonGroupButtonContext.displayName = "ButtonGroupButtonContext";
   }
   var ButtonGroupButtonContext_default = ButtonGroupButtonContext;
 
   // node_modules/@mui/material/Button/Button.js
-  var import_jsx_runtime32 = __toESM(require_jsx_runtime());
-  var useUtilityClasses10 = (ownerState) => {
+  var import_jsx_runtime37 = __toESM(require_jsx_runtime());
+  var useUtilityClasses12 = (ownerState) => {
     const {
       color: color3,
       disableElevation,
@@ -32056,11 +33722,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     shouldForwardProp: (prop) => rootShouldForwardProp_default(prop) || prop === "classes",
     name: "MuiButton",
     slot: "Root",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.root, styles2[ownerState.variant], styles2[`${ownerState.variant}${capitalize_default(ownerState.color)}`], styles2[`size${capitalize_default(ownerState.size)}`], styles2[`${ownerState.variant}Size${capitalize_default(ownerState.size)}`], ownerState.color === "inherit" && styles2.colorInherit, ownerState.disableElevation && styles2.disableElevation, ownerState.fullWidth && styles2.fullWidth, ownerState.loading && styles2.loading];
+      return [styles4.root, styles4[ownerState.variant], styles4[`${ownerState.variant}${capitalize_default(ownerState.color)}`], styles4[`size${capitalize_default(ownerState.size)}`], styles4[`${ownerState.variant}Size${capitalize_default(ownerState.size)}`], ownerState.color === "inherit" && styles4.colorInherit, ownerState.disableElevation && styles4.disableElevation, ownerState.fullWidth && styles4.fullWidth, ownerState.loading && styles4.loading];
     }
   })(memoTheme_default(({
     theme
@@ -32264,11 +33930,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var ButtonStartIcon = styled_default2("span", {
     name: "MuiButton",
     slot: "StartIcon",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.startIcon, ownerState.loading && styles2.startIconLoadingStart, styles2[`iconSize${capitalize_default(ownerState.size)}`]];
+      return [styles4.startIcon, ownerState.loading && styles4.startIconLoadingStart, styles4[`iconSize${capitalize_default(ownerState.size)}`]];
     }
   })(({
     theme
@@ -32308,11 +33974,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var ButtonEndIcon = styled_default2("span", {
     name: "MuiButton",
     slot: "EndIcon",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.endIcon, ownerState.loading && styles2.endIconLoadingEnd, styles2[`iconSize${capitalize_default(ownerState.size)}`]];
+      return [styles4.endIcon, ownerState.loading && styles4.endIconLoadingEnd, styles4[`iconSize${capitalize_default(ownerState.size)}`]];
     }
   })(({
     theme
@@ -32352,7 +34018,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var ButtonLoadingIndicator = styled_default2("span", {
     name: "MuiButton",
     slot: "LoadingIndicator",
-    overridesResolver: (props, styles2) => styles2.loadingIndicator
+    overridesResolver: (props, styles4) => styles4.loadingIndicator
   })(({
     theme
   }) => ({
@@ -32444,15 +34110,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var ButtonLoadingIconPlaceholder = styled_default2("span", {
     name: "MuiButton",
     slot: "LoadingIconPlaceholder",
-    overridesResolver: (props, styles2) => styles2.loadingIconPlaceholder
+    overridesResolver: (props, styles4) => styles4.loadingIconPlaceholder
   })({
     display: "inline-block",
     width: "1em",
     height: "1em"
   });
-  var Button = /* @__PURE__ */ React57.forwardRef(function Button2(inProps, ref) {
-    const contextProps = React57.useContext(ButtonGroupContext_default);
-    const buttonGroupButtonContextPositionClassName = React57.useContext(ButtonGroupButtonContext_default);
+  var Button = /* @__PURE__ */ React65.forwardRef(function Button2(inProps, ref) {
+    const contextProps = React65.useContext(ButtonGroupContext_default);
+    const buttonGroupButtonContextPositionClassName = React65.useContext(ButtonGroupButtonContext_default);
     const resolvedProps = resolveProps(contextProps, inProps);
     const props = useDefaultProps2({
       props: resolvedProps,
@@ -32498,7 +34164,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       "variant"
     ]);
     const loadingId = useId_default(idProp);
-    const loadingIndicator = loadingIndicatorProp != null ? loadingIndicatorProp : /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(CircularProgress_default, {
+    const loadingIndicator = loadingIndicatorProp != null ? loadingIndicatorProp : /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(CircularProgress_default, {
       "aria-labelledby": loadingId,
       color: "inherit",
       size: 16
@@ -32517,19 +34183,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       type,
       variant
     });
-    const classes = useUtilityClasses10(ownerState);
-    const startIcon = (startIconProp || loading && loadingPosition === "start") && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(ButtonStartIcon, {
+    const classes = useUtilityClasses12(ownerState);
+    const startIcon = (startIconProp || loading && loadingPosition === "start") && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(ButtonStartIcon, {
       className: classes.startIcon,
       ownerState,
-      children: startIconProp || /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(ButtonLoadingIconPlaceholder, {
+      children: startIconProp || /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(ButtonLoadingIconPlaceholder, {
         className: classes.loadingIconPlaceholder,
         ownerState
       })
     });
-    const endIcon = (endIconProp || loading && loadingPosition === "end") && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(ButtonEndIcon, {
+    const endIcon = (endIconProp || loading && loadingPosition === "end") && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(ButtonEndIcon, {
       className: classes.endIcon,
       ownerState,
-      children: endIconProp || /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(ButtonLoadingIconPlaceholder, {
+      children: endIconProp || /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(ButtonLoadingIconPlaceholder, {
         className: classes.loadingIconPlaceholder,
         ownerState
       })
@@ -32537,19 +34203,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const positionClassName = buttonGroupButtonContextPositionClassName || "";
     const loader = typeof loading === "boolean" ? (
       // use plain HTML span to minimize the runtime overhead
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("span", {
+      /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("span", {
         className: classes.loadingWrapper,
         style: {
           display: "contents"
         },
-        children: loading && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(ButtonLoadingIndicator, {
+        children: loading && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(ButtonLoadingIndicator, {
           className: classes.loadingIndicator,
           ownerState,
           children: loadingIndicator
         })
       })
     ) : null;
-    return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(ButtonRoot, __spreadProps(__spreadValues({
+    return /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(ButtonRoot, __spreadProps(__spreadValues({
       ownerState,
       className: clsx_default(contextProps.className, classes.root, className, positionClassName),
       component,
@@ -32682,8 +34348,664 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
   var Button_default = Button;
 
+  // node_modules/@mui/material/Checkbox/Checkbox.js
+  var React70 = __toESM(require_react());
+
+  // node_modules/@mui/material/internal/SwitchBase.js
+  var React66 = __toESM(require_react());
+
+  // node_modules/@mui/material/internal/switchBaseClasses.js
+  function getSwitchBaseUtilityClass(slot) {
+    return generateUtilityClass("PrivateSwitchBase", slot);
+  }
+  var switchBaseClasses = generateUtilityClasses("PrivateSwitchBase", ["root", "checked", "disabled", "input", "edgeStart", "edgeEnd"]);
+
+  // node_modules/@mui/material/internal/SwitchBase.js
+  var import_jsx_runtime38 = __toESM(require_jsx_runtime());
+  var useUtilityClasses13 = (ownerState) => {
+    const {
+      classes,
+      checked,
+      disabled,
+      edge
+    } = ownerState;
+    const slots = {
+      root: ["root", checked && "checked", disabled && "disabled", edge && `edge${capitalize_default(edge)}`],
+      input: ["input"]
+    };
+    return composeClasses(slots, getSwitchBaseUtilityClass, classes);
+  };
+  var SwitchBaseRoot = styled_default2(ButtonBase_default)({
+    padding: 9,
+    borderRadius: "50%",
+    variants: [{
+      props: {
+        edge: "start",
+        size: "small"
+      },
+      style: {
+        marginLeft: -3
+      }
+    }, {
+      props: ({
+        edge,
+        ownerState
+      }) => edge === "start" && ownerState.size !== "small",
+      style: {
+        marginLeft: -12
+      }
+    }, {
+      props: {
+        edge: "end",
+        size: "small"
+      },
+      style: {
+        marginRight: -3
+      }
+    }, {
+      props: ({
+        edge,
+        ownerState
+      }) => edge === "end" && ownerState.size !== "small",
+      style: {
+        marginRight: -12
+      }
+    }]
+  });
+  var SwitchBaseInput = styled_default2("input", {
+    shouldForwardProp: rootShouldForwardProp_default
+  })({
+    cursor: "inherit",
+    position: "absolute",
+    opacity: 0,
+    width: "100%",
+    height: "100%",
+    top: 0,
+    left: 0,
+    margin: 0,
+    padding: 0,
+    zIndex: 1
+  });
+  var SwitchBase = /* @__PURE__ */ React66.forwardRef(function SwitchBase2(props, ref) {
+    const _a = props, {
+      autoFocus,
+      checked: checkedProp,
+      checkedIcon,
+      defaultChecked,
+      disabled: disabledProp,
+      disableFocusRipple = false,
+      edge = false,
+      icon,
+      id,
+      inputProps,
+      inputRef,
+      name,
+      onBlur,
+      onChange,
+      onFocus,
+      readOnly,
+      required = false,
+      tabIndex,
+      type,
+      value,
+      slots = {},
+      slotProps = {}
+    } = _a, other = __objRest(_a, [
+      "autoFocus",
+      "checked",
+      "checkedIcon",
+      "defaultChecked",
+      "disabled",
+      "disableFocusRipple",
+      "edge",
+      "icon",
+      "id",
+      "inputProps",
+      "inputRef",
+      "name",
+      "onBlur",
+      "onChange",
+      "onFocus",
+      "readOnly",
+      "required",
+      "tabIndex",
+      "type",
+      "value",
+      "slots",
+      "slotProps"
+    ]);
+    const [checked, setCheckedState] = useControlled_default({
+      controlled: checkedProp,
+      default: Boolean(defaultChecked),
+      name: "SwitchBase",
+      state: "checked"
+    });
+    const muiFormControl = useFormControl();
+    const handleFocus = (event) => {
+      if (onFocus) {
+        onFocus(event);
+      }
+      if (muiFormControl && muiFormControl.onFocus) {
+        muiFormControl.onFocus(event);
+      }
+    };
+    const handleBlur = (event) => {
+      if (onBlur) {
+        onBlur(event);
+      }
+      if (muiFormControl && muiFormControl.onBlur) {
+        muiFormControl.onBlur(event);
+      }
+    };
+    const handleInputChange = (event) => {
+      if (event.nativeEvent.defaultPrevented) {
+        return;
+      }
+      const newChecked = event.target.checked;
+      setCheckedState(newChecked);
+      if (onChange) {
+        onChange(event, newChecked);
+      }
+    };
+    let disabled = disabledProp;
+    if (muiFormControl) {
+      if (typeof disabled === "undefined") {
+        disabled = muiFormControl.disabled;
+      }
+    }
+    const hasLabelFor = type === "checkbox" || type === "radio";
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      checked,
+      disabled,
+      disableFocusRipple,
+      edge
+    });
+    const classes = useUtilityClasses13(ownerState);
+    const externalForwardedProps = {
+      slots,
+      slotProps: __spreadValues({
+        input: inputProps
+      }, slotProps)
+    };
+    const [RootSlot, rootSlotProps] = useSlot("root", {
+      ref,
+      elementType: SwitchBaseRoot,
+      className: classes.root,
+      shouldForwardComponentProp: true,
+      externalForwardedProps: __spreadValues(__spreadProps(__spreadValues({}, externalForwardedProps), {
+        component: "span"
+      }), other),
+      getSlotProps: (handlers) => __spreadProps(__spreadValues({}, handlers), {
+        onFocus: (event) => {
+          var _a2;
+          (_a2 = handlers.onFocus) == null ? void 0 : _a2.call(handlers, event);
+          handleFocus(event);
+        },
+        onBlur: (event) => {
+          var _a2;
+          (_a2 = handlers.onBlur) == null ? void 0 : _a2.call(handlers, event);
+          handleBlur(event);
+        }
+      }),
+      ownerState,
+      additionalProps: {
+        centerRipple: true,
+        focusRipple: !disableFocusRipple,
+        disabled,
+        role: void 0,
+        tabIndex: null
+      }
+    });
+    const [InputSlot, inputSlotProps] = useSlot("input", {
+      ref: inputRef,
+      elementType: SwitchBaseInput,
+      className: classes.input,
+      externalForwardedProps,
+      getSlotProps: (handlers) => ({
+        onChange: (event) => {
+          var _a2;
+          (_a2 = handlers.onChange) == null ? void 0 : _a2.call(handlers, event);
+          handleInputChange(event);
+        }
+      }),
+      ownerState,
+      additionalProps: __spreadValues({
+        autoFocus,
+        checked: checkedProp,
+        defaultChecked,
+        disabled,
+        id: hasLabelFor ? id : void 0,
+        name,
+        readOnly,
+        required,
+        tabIndex,
+        type
+      }, type === "checkbox" && value === void 0 ? {} : {
+        value
+      })
+    });
+    return /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(RootSlot, __spreadProps(__spreadValues({}, rootSlotProps), {
+      children: [/* @__PURE__ */ (0, import_jsx_runtime38.jsx)(InputSlot, __spreadValues({}, inputSlotProps)), checked ? checkedIcon : icon]
+    }));
+  });
+  false ? SwitchBase.propTypes = {
+    /**
+     * If `true`, the `input` element is focused during the first mount.
+     */
+    autoFocus: import_prop_types.default.bool,
+    /**
+     * If `true`, the component is checked.
+     */
+    checked: import_prop_types.default.bool,
+    /**
+     * The icon to display when the component is checked.
+     */
+    checkedIcon: import_prop_types.default.node.isRequired,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * @ignore
+     */
+    defaultChecked: import_prop_types.default.bool,
+    /**
+     * If `true`, the component is disabled.
+     */
+    disabled: import_prop_types.default.bool,
+    /**
+     * If `true`, the  keyboard focus ripple is disabled.
+     * @default false
+     */
+    disableFocusRipple: import_prop_types.default.bool,
+    /**
+     * If given, uses a negative margin to counteract the padding on one
+     * side (this is often helpful for aligning the left or right
+     * side of the icon with content above or below, without ruining the border
+     * size and shape).
+     * @default false
+     */
+    edge: import_prop_types.default.oneOf(["end", "start", false]),
+    /**
+     * The icon to display when the component is unchecked.
+     */
+    icon: import_prop_types.default.node.isRequired,
+    /**
+     * The id of the `input` element.
+     */
+    id: import_prop_types.default.string,
+    /**
+     * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
+     */
+    inputProps: import_prop_types.default.object,
+    /**
+     * Pass a ref to the `input` element.
+     */
+    inputRef: refType_default,
+    /*
+     * @ignore
+     */
+    name: import_prop_types.default.string,
+    /**
+     * @ignore
+     */
+    onBlur: import_prop_types.default.func,
+    /**
+     * Callback fired when the state is changed.
+     *
+     * @param {object} event The event source of the callback.
+     * You can pull out the new checked state by accessing `event.target.checked` (boolean).
+     */
+    onChange: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    onFocus: import_prop_types.default.func,
+    /**
+     * It prevents the user from changing the value of the field
+     * (not from interacting with the field).
+     */
+    readOnly: import_prop_types.default.bool,
+    /**
+     * If `true`, the `input` element is required.
+     */
+    required: import_prop_types.default.bool,
+    /**
+     * The props used for each slot inside.
+     * @default {}
+     */
+    slotProps: import_prop_types.default.shape({
+      input: import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object]),
+      root: import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object])
+    }),
+    /**
+     * The components used for each slot inside.
+     * @default {}
+     */
+    slots: import_prop_types.default.shape({
+      input: import_prop_types.default.elementType,
+      root: import_prop_types.default.elementType
+    }),
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    tabIndex: import_prop_types.default.oneOfType([import_prop_types.default.number, import_prop_types.default.string]),
+    /**
+     * The input component prop `type`.
+     */
+    type: import_prop_types.default.string.isRequired,
+    /**
+     * The value of the component.
+     */
+    value: import_prop_types.default.any
+  } : void 0;
+  var SwitchBase_default = SwitchBase;
+
+  // node_modules/@mui/material/internal/svg-icons/CheckBoxOutlineBlank.js
+  var React67 = __toESM(require_react());
+  var import_jsx_runtime39 = __toESM(require_jsx_runtime());
+  var CheckBoxOutlineBlank_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime39.jsx)("path", {
+    d: "M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+  }), "CheckBoxOutlineBlank");
+
+  // node_modules/@mui/material/internal/svg-icons/CheckBox.js
+  var React68 = __toESM(require_react());
+  var import_jsx_runtime40 = __toESM(require_jsx_runtime());
+  var CheckBox_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime40.jsx)("path", {
+    d: "M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+  }), "CheckBox");
+
+  // node_modules/@mui/material/internal/svg-icons/IndeterminateCheckBox.js
+  var React69 = __toESM(require_react());
+  var import_jsx_runtime41 = __toESM(require_jsx_runtime());
+  var IndeterminateCheckBox_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime41.jsx)("path", {
+    d: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2z"
+  }), "IndeterminateCheckBox");
+
+  // node_modules/@mui/material/Checkbox/checkboxClasses.js
+  function getCheckboxUtilityClass(slot) {
+    return generateUtilityClass("MuiCheckbox", slot);
+  }
+  var checkboxClasses = generateUtilityClasses("MuiCheckbox", ["root", "checked", "disabled", "indeterminate", "colorPrimary", "colorSecondary", "sizeSmall", "sizeMedium"]);
+  var checkboxClasses_default = checkboxClasses;
+
+  // node_modules/@mui/material/Checkbox/Checkbox.js
+  var import_jsx_runtime42 = __toESM(require_jsx_runtime());
+  var useUtilityClasses14 = (ownerState) => {
+    const {
+      classes,
+      indeterminate,
+      color: color3,
+      size
+    } = ownerState;
+    const slots = {
+      root: ["root", indeterminate && "indeterminate", `color${capitalize_default(color3)}`, `size${capitalize_default(size)}`]
+    };
+    const composedClasses = composeClasses(slots, getCheckboxUtilityClass, classes);
+    return __spreadValues(__spreadValues({}, classes), composedClasses);
+  };
+  var CheckboxRoot = styled_default2(SwitchBase_default, {
+    shouldForwardProp: (prop) => rootShouldForwardProp_default(prop) || prop === "classes",
+    name: "MuiCheckbox",
+    slot: "Root",
+    overridesResolver: (props, styles4) => {
+      const {
+        ownerState
+      } = props;
+      return [styles4.root, ownerState.indeterminate && styles4.indeterminate, styles4[`size${capitalize_default(ownerState.size)}`], ownerState.color !== "default" && styles4[`color${capitalize_default(ownerState.color)}`]];
+    }
+  })(memoTheme_default(({
+    theme
+  }) => ({
+    color: (theme.vars || theme).palette.text.secondary,
+    variants: [{
+      props: {
+        color: "default",
+        disableRipple: false
+      },
+      style: {
+        "&:hover": {
+          backgroundColor: theme.vars ? `rgba(${theme.vars.palette.action.activeChannel} / ${theme.vars.palette.action.hoverOpacity})` : alpha(theme.palette.action.active, theme.palette.action.hoverOpacity)
+        }
+      }
+    }, ...Object.entries(theme.palette).filter(createSimplePaletteValueFilter()).map(([color3]) => ({
+      props: {
+        color: color3,
+        disableRipple: false
+      },
+      style: {
+        "&:hover": {
+          backgroundColor: theme.vars ? `rgba(${theme.vars.palette[color3].mainChannel} / ${theme.vars.palette.action.hoverOpacity})` : alpha(theme.palette[color3].main, theme.palette.action.hoverOpacity)
+        }
+      }
+    })), ...Object.entries(theme.palette).filter(createSimplePaletteValueFilter()).map(([color3]) => ({
+      props: {
+        color: color3
+      },
+      style: {
+        [`&.${checkboxClasses_default.checked}, &.${checkboxClasses_default.indeterminate}`]: {
+          color: (theme.vars || theme).palette[color3].main
+        },
+        [`&.${checkboxClasses_default.disabled}`]: {
+          color: (theme.vars || theme).palette.action.disabled
+        }
+      }
+    })), {
+      // Should be last to override other colors
+      props: {
+        disableRipple: false
+      },
+      style: {
+        // Reset on touch devices, it doesn't add specificity
+        "&:hover": {
+          "@media (hover: none)": {
+            backgroundColor: "transparent"
+          }
+        }
+      }
+    }]
+  })));
+  var defaultCheckedIcon = /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(CheckBox_default, {});
+  var defaultIcon = /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(CheckBoxOutlineBlank_default, {});
+  var defaultIndeterminateIcon = /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(IndeterminateCheckBox_default, {});
+  var Checkbox = /* @__PURE__ */ React70.forwardRef(function Checkbox2(inProps, ref) {
+    var _b, _c, _d;
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiCheckbox"
+    });
+    const _a = props, {
+      checkedIcon = defaultCheckedIcon,
+      color: color3 = "primary",
+      icon: iconProp = defaultIcon,
+      indeterminate = false,
+      indeterminateIcon: indeterminateIconProp = defaultIndeterminateIcon,
+      inputProps,
+      size = "medium",
+      disableRipple = false,
+      className,
+      slots = {},
+      slotProps = {}
+    } = _a, other = __objRest(_a, [
+      "checkedIcon",
+      "color",
+      "icon",
+      "indeterminate",
+      "indeterminateIcon",
+      "inputProps",
+      "size",
+      "disableRipple",
+      "className",
+      "slots",
+      "slotProps"
+    ]);
+    const icon = indeterminate ? indeterminateIconProp : iconProp;
+    const indeterminateIcon = indeterminate ? indeterminateIconProp : checkedIcon;
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      disableRipple,
+      color: color3,
+      indeterminate,
+      size
+    });
+    const classes = useUtilityClasses14(ownerState);
+    const externalInputProps = (_b = slotProps.input) != null ? _b : inputProps;
+    const [RootSlot, rootSlotProps] = useSlot("root", {
+      ref,
+      elementType: CheckboxRoot,
+      className: clsx_default(classes.root, className),
+      shouldForwardComponentProp: true,
+      externalForwardedProps: __spreadValues({
+        slots,
+        slotProps
+      }, other),
+      ownerState,
+      additionalProps: {
+        type: "checkbox",
+        icon: /* @__PURE__ */ React70.cloneElement(icon, {
+          fontSize: (_c = icon.props.fontSize) != null ? _c : size
+        }),
+        checkedIcon: /* @__PURE__ */ React70.cloneElement(indeterminateIcon, {
+          fontSize: (_d = indeterminateIcon.props.fontSize) != null ? _d : size
+        }),
+        disableRipple,
+        slots,
+        slotProps: {
+          input: mergeSlotProps2(typeof externalInputProps === "function" ? externalInputProps(ownerState) : externalInputProps, {
+            "data-indeterminate": indeterminate
+          })
+        }
+      }
+    });
+    return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(RootSlot, __spreadProps(__spreadValues({}, rootSlotProps), {
+      classes
+    }));
+  });
+  false ? Checkbox.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * If `true`, the component is checked.
+     */
+    checked: import_prop_types.default.bool,
+    /**
+     * The icon to display when the component is checked.
+     * @default <CheckBoxIcon />
+     */
+    checkedIcon: import_prop_types.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * The color of the component.
+     * It supports both default and custom theme colors, which can be added as shown in the
+     * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
+     * @default 'primary'
+     */
+    color: import_prop_types.default.oneOfType([import_prop_types.default.oneOf(["default", "primary", "secondary", "error", "info", "success", "warning"]), import_prop_types.default.string]),
+    /**
+     * The default checked state. Use when the component is not controlled.
+     */
+    defaultChecked: import_prop_types.default.bool,
+    /**
+     * If `true`, the component is disabled.
+     * @default false
+     */
+    disabled: import_prop_types.default.bool,
+    /**
+     * If `true`, the ripple effect is disabled.
+     * @default false
+     */
+    disableRipple: import_prop_types.default.bool,
+    /**
+     * The icon to display when the component is unchecked.
+     * @default <CheckBoxOutlineBlankIcon />
+     */
+    icon: import_prop_types.default.node,
+    /**
+     * The id of the `input` element.
+     */
+    id: import_prop_types.default.string,
+    /**
+     * If `true`, the component appears indeterminate.
+     * This does not set the native input element to indeterminate due
+     * to inconsistent behavior across browsers.
+     * However, we set a `data-indeterminate` attribute on the `input`.
+     * @default false
+     */
+    indeterminate: import_prop_types.default.bool,
+    /**
+     * The icon to display when the component is indeterminate.
+     * @default <IndeterminateCheckBoxIcon />
+     */
+    indeterminateIcon: import_prop_types.default.node,
+    /**
+     * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
+     * @deprecated Use `slotProps.input` instead. This prop will be removed in v7. See [Migrating from deprecated APIs](/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     */
+    inputProps: import_prop_types.default.object,
+    /**
+     * Callback fired when the state is changed.
+     *
+     * @param {React.ChangeEvent<HTMLInputElement>} event The event source of the callback.
+     * You can pull out the new checked state by accessing `event.target.checked` (boolean).
+     */
+    onChange: import_prop_types.default.func,
+    /**
+     * If `true`, the `input` element is required.
+     * @default false
+     */
+    required: import_prop_types.default.bool,
+    /**
+     * The size of the component.
+     * `small` is equivalent to the dense checkbox styling.
+     * @default 'medium'
+     */
+    size: import_prop_types.default.oneOfType([import_prop_types.default.oneOf(["medium", "small"]), import_prop_types.default.string]),
+    /**
+     * The props used for each slot inside.
+     * @default {}
+     */
+    slotProps: import_prop_types.default.shape({
+      input: import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object]),
+      root: import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object])
+    }),
+    /**
+     * The components used for each slot inside.
+     * @default {}
+     */
+    slots: import_prop_types.default.shape({
+      input: import_prop_types.default.elementType,
+      root: import_prop_types.default.elementType
+    }),
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object]),
+    /**
+     * The value of the component. The DOM API casts this to a string.
+     * The browser uses "on" as the default value.
+     */
+    value: import_prop_types.default.any
+  } : void 0;
+  var Checkbox_default = Checkbox;
+
   // node_modules/@mui/material/Dialog/Dialog.js
-  var React62 = __toESM(require_react());
+  var React75 = __toESM(require_react());
 
   // node_modules/@mui/material/Modal/ModalManager.js
   function isOverflowing(container2) {
@@ -32868,11 +35190,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/material/Modal/Modal.js
-  var React60 = __toESM(require_react());
+  var React73 = __toESM(require_react());
 
   // node_modules/@mui/material/Unstable_TrapFocus/FocusTrap.js
-  var React58 = __toESM(require_react());
-  var import_jsx_runtime33 = __toESM(require_jsx_runtime());
+  var React71 = __toESM(require_react());
+  var import_jsx_runtime43 = __toESM(require_jsx_runtime());
   var candidatesSelector = ["input", "select", "textarea", "a[href]", "button", "[tabindex]", "audio[controls]", "video[controls]", '[contenteditable]:not([contenteditable="false"])'].join(",");
   function getTabIndex(node2) {
     const tabindexAttr = parseInt(node2.getAttribute("tabindex") || "", 10);
@@ -32937,22 +35259,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       isEnabled = defaultIsEnabled,
       open
     } = props;
-    const ignoreNextEnforceFocus = React58.useRef(false);
-    const sentinelStart = React58.useRef(null);
-    const sentinelEnd = React58.useRef(null);
-    const nodeToRestore = React58.useRef(null);
-    const reactFocusEventTarget = React58.useRef(null);
-    const activated = React58.useRef(false);
-    const rootRef = React58.useRef(null);
+    const ignoreNextEnforceFocus = React71.useRef(false);
+    const sentinelStart = React71.useRef(null);
+    const sentinelEnd = React71.useRef(null);
+    const nodeToRestore = React71.useRef(null);
+    const reactFocusEventTarget = React71.useRef(null);
+    const activated = React71.useRef(false);
+    const rootRef = React71.useRef(null);
     const handleRef = useForkRef(getReactElementRef(children), rootRef);
-    const lastKeydown = React58.useRef(null);
-    React58.useEffect(() => {
+    const lastKeydown = React71.useRef(null);
+    React71.useEffect(() => {
       if (!open || !rootRef.current) {
         return;
       }
       activated.current = !disableAutoFocus;
     }, [disableAutoFocus, open]);
-    React58.useEffect(() => {
+    React71.useEffect(() => {
       if (!open || !rootRef.current) {
         return;
       }
@@ -32978,7 +35300,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }
       };
     }, [open]);
-    React58.useEffect(() => {
+    React71.useEffect(() => {
       if (!open || !rootRef.current) {
         return;
       }
@@ -33068,16 +35390,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
       activated.current = true;
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(React58.Fragment, {
-      children: [/* @__PURE__ */ (0, import_jsx_runtime33.jsx)("div", {
+    return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(React71.Fragment, {
+      children: [/* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", {
         tabIndex: open ? 0 : -1,
         onFocus: handleFocusSentinel,
         ref: sentinelStart,
         "data-testid": "sentinelStart"
-      }), /* @__PURE__ */ React58.cloneElement(children, {
+      }), /* @__PURE__ */ React71.cloneElement(children, {
         ref: handleRef,
         onFocus
-      }), /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("div", {
+      }), /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("div", {
         tabIndex: open ? 0 : -1,
         onFocus: handleFocusSentinel,
         ref: sentinelEnd,
@@ -33145,7 +35467,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var FocusTrap_default = FocusTrap;
 
   // node_modules/@mui/material/Modal/useModal.js
-  var React59 = __toESM(require_react());
+  var React72 = __toESM(require_react());
   function getContainer2(container2) {
     return typeof container2 === "function" ? container2() : container2;
   }
@@ -33168,11 +35490,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       open,
       rootRef
     } = parameters;
-    const modal = React59.useRef({});
-    const mountNodeRef = React59.useRef(null);
-    const modalRef = React59.useRef(null);
+    const modal = React72.useRef({});
+    const mountNodeRef = React72.useRef(null);
+    const modalRef = React72.useRef(null);
     const handleRef = useForkRef(modalRef, rootRef);
-    const [exited, setExited] = React59.useState(!open);
+    const [exited, setExited] = React72.useState(!open);
     const hasTransition = getHasTransition(children);
     let ariaHiddenProp = true;
     if (parameters["aria-hidden"] === "false" || parameters["aria-hidden"] === false) {
@@ -33211,15 +35533,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         ariaHidden(modalRef.current, ariaHiddenProp);
       }
     });
-    const handleClose = React59.useCallback(() => {
+    const handleClose = React72.useCallback(() => {
       manager.remove(getModal(), ariaHiddenProp);
     }, [ariaHiddenProp]);
-    React59.useEffect(() => {
+    React72.useEffect(() => {
       return () => {
         handleClose();
       };
     }, [handleClose]);
-    React59.useEffect(() => {
+    React72.useEffect(() => {
       if (open) {
         handleOpen();
       } else if (!hasTransition || !closeAfterTransition) {
@@ -33319,8 +35641,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var modalClasses = generateUtilityClasses("MuiModal", ["root", "hidden", "backdrop"]);
 
   // node_modules/@mui/material/Modal/Modal.js
-  var import_jsx_runtime34 = __toESM(require_jsx_runtime());
-  var useUtilityClasses11 = (ownerState) => {
+  var import_jsx_runtime44 = __toESM(require_jsx_runtime());
+  var useUtilityClasses15 = (ownerState) => {
     const {
       open,
       exited,
@@ -33335,11 +35657,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var ModalRoot = styled_default2("div", {
     name: "MuiModal",
     slot: "Root",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.root, !ownerState.open && ownerState.exited && styles2.hidden];
+      return [styles4.root, !ownerState.open && ownerState.exited && styles4.hidden];
     }
   })(memoTheme_default(({
     theme
@@ -33362,13 +35684,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var ModalBackdrop = styled_default2(Backdrop_default, {
     name: "MuiModal",
     slot: "Backdrop",
-    overridesResolver: (props, styles2) => {
-      return styles2.backdrop;
+    overridesResolver: (props, styles4) => {
+      return styles4.backdrop;
     }
   })({
     zIndex: -1
   });
-  var Modal = /* @__PURE__ */ React60.forwardRef(function Modal2(inProps, ref) {
+  var Modal = /* @__PURE__ */ React73.forwardRef(function Modal2(inProps, ref) {
     const props = useDefaultProps2({
       name: "MuiModal",
       props: inProps
@@ -33454,7 +35776,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const ownerState = __spreadProps(__spreadValues({}, propsWithDefaults), {
       exited
     });
-    const classes = useUtilityClasses11(ownerState);
+    const classes = useUtilityClasses15(ownerState);
     const childProps = {};
     if (children.props.tabIndex === void 0) {
       childProps.tabIndex = "-1";
@@ -33508,18 +35830,18 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (!keepMounted && !open && (!hasTransition || exited)) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(Portal_default, {
+    return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(Portal_default, {
       ref: portalRef,
       container: container2,
       disablePortal,
-      children: /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(RootSlot, __spreadProps(__spreadValues({}, rootProps), {
-        children: [!hideBackdrop && BackdropComponent ? /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(BackdropSlot, __spreadValues({}, backdropProps)) : null, /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(FocusTrap_default, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(RootSlot, __spreadProps(__spreadValues({}, rootProps), {
+        children: [!hideBackdrop && BackdropComponent ? /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(BackdropSlot, __spreadValues({}, backdropProps)) : null, /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(FocusTrap_default, {
           disableEnforceFocus,
           disableAutoFocus,
           disableRestoreFocus,
           isEnabled: isTopModal,
           open,
-          children: /* @__PURE__ */ React60.cloneElement(children, childProps)
+          children: /* @__PURE__ */ React73.cloneElement(children, childProps)
         })]
       }))
     });
@@ -33713,24 +36035,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var dialogClasses_default = dialogClasses;
 
   // node_modules/@mui/material/Dialog/DialogContext.js
-  var React61 = __toESM(require_react());
-  var DialogContext = /* @__PURE__ */ React61.createContext({});
+  var React74 = __toESM(require_react());
+  var DialogContext = /* @__PURE__ */ React74.createContext({});
   if (false) {
     DialogContext.displayName = "DialogContext";
   }
   var DialogContext_default = DialogContext;
 
   // node_modules/@mui/material/Dialog/Dialog.js
-  var import_jsx_runtime35 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime45 = __toESM(require_jsx_runtime());
   var DialogBackdrop = styled_default2(Backdrop_default, {
     name: "MuiDialog",
     slot: "Backdrop",
-    overrides: (props, styles2) => styles2.backdrop
+    overrides: (props, styles4) => styles4.backdrop
   })({
     // Improve scrollable dialog support.
     zIndex: -1
   });
-  var useUtilityClasses12 = (ownerState) => {
+  var useUtilityClasses16 = (ownerState) => {
     const {
       classes,
       scroll,
@@ -33748,7 +36070,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var DialogRoot = styled_default2(Modal_default, {
     name: "MuiDialog",
     slot: "Root",
-    overridesResolver: (props, styles2) => styles2.root
+    overridesResolver: (props, styles4) => styles4.root
   })({
     "@media print": {
       // Use !important to override the Modal inline-style.
@@ -33758,11 +36080,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var DialogContainer = styled_default2("div", {
     name: "MuiDialog",
     slot: "Container",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.container, styles2[`scroll${capitalize_default(ownerState.scroll)}`]];
+      return [styles4.container, styles4[`scroll${capitalize_default(ownerState.scroll)}`]];
     }
   })({
     height: "100%",
@@ -33801,11 +36123,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var DialogPaper = styled_default2(Paper_default, {
     name: "MuiDialog",
     slot: "Paper",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.paper, styles2[`scrollPaper${capitalize_default(ownerState.scroll)}`], styles2[`paperWidth${capitalize_default(String(ownerState.maxWidth))}`], ownerState.fullWidth && styles2.paperFullWidth, ownerState.fullScreen && styles2.paperFullScreen];
+      return [styles4.paper, styles4[`scrollPaper${capitalize_default(ownerState.scroll)}`], styles4[`paperWidth${capitalize_default(String(ownerState.maxWidth))}`], ownerState.fullWidth && styles4.paperFullWidth, ownerState.fullScreen && styles4.paperFullScreen];
     }
   })(memoTheme_default(({
     theme
@@ -33891,7 +36213,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   })));
-  var Dialog = /* @__PURE__ */ React62.forwardRef(function Dialog2(inProps, ref) {
+  var Dialog = /* @__PURE__ */ React75.forwardRef(function Dialog2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiDialog"
@@ -33957,8 +36279,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       maxWidth: maxWidth2,
       scroll
     });
-    const classes = useUtilityClasses12(ownerState);
-    const backdropClick = React62.useRef();
+    const classes = useUtilityClasses16(ownerState);
+    const backdropClick = React75.useRef();
     const handleMouseDown = (event) => {
       backdropClick.current = event.target === event.currentTarget;
     };
@@ -33978,7 +36300,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     };
     const ariaLabelledby = useId(ariaLabelledbyProp);
-    const dialogContextValue = React62.useMemo(() => {
+    const dialogContextValue = React75.useMemo(() => {
       return {
         titleId: ariaLabelledby
       };
@@ -34033,7 +36355,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         role: "presentation"
       }
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(RootSlot, __spreadProps(__spreadValues(__spreadValues({
+    return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(RootSlot, __spreadProps(__spreadValues(__spreadValues({
       closeAfterTransition: true,
       slots: {
         backdrop: BackdropSlot
@@ -34049,11 +36371,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       open,
       onClick: handleBackdropClick
     }, rootSlotProps), other), {
-      children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(TransitionSlot, __spreadProps(__spreadValues({}, transitionSlotProps), {
-        children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(ContainerSlot, __spreadProps(__spreadValues({
+      children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(TransitionSlot, __spreadProps(__spreadValues({}, transitionSlotProps), {
+        children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(ContainerSlot, __spreadProps(__spreadValues({
           onMouseDown: handleMouseDown
         }, containerSlotProps), {
-          children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(PaperSlot, __spreadProps(__spreadValues({
+          children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(PaperSlot, __spreadProps(__spreadValues({
             as: PaperComponent,
             elevation: 24,
             role: "dialog",
@@ -34061,7 +36383,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             "aria-labelledby": ariaLabelledby,
             "aria-modal": ariaModal
           }, paperSlotProps), {
-            children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(DialogContext_default.Provider, {
+            children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(DialogContext_default.Provider, {
               value: dialogContextValue,
               children
             })
@@ -34236,7 +36558,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var Dialog_default = Dialog;
 
   // node_modules/@mui/material/DialogActions/DialogActions.js
-  var React63 = __toESM(require_react());
+  var React76 = __toESM(require_react());
 
   // node_modules/@mui/material/DialogActions/dialogActionsClasses.js
   function getDialogActionsUtilityClass(slot) {
@@ -34245,8 +36567,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var dialogActionsClasses = generateUtilityClasses("MuiDialogActions", ["root", "spacing"]);
 
   // node_modules/@mui/material/DialogActions/DialogActions.js
-  var import_jsx_runtime36 = __toESM(require_jsx_runtime());
-  var useUtilityClasses13 = (ownerState) => {
+  var import_jsx_runtime46 = __toESM(require_jsx_runtime());
+  var useUtilityClasses17 = (ownerState) => {
     const {
       classes,
       disableSpacing
@@ -34259,11 +36581,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var DialogActionsRoot = styled_default2("div", {
     name: "MuiDialogActions",
     slot: "Root",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.root, !ownerState.disableSpacing && styles2.spacing];
+      return [styles4.root, !ownerState.disableSpacing && styles4.spacing];
     }
   })({
     display: "flex",
@@ -34282,7 +36604,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   });
-  var DialogActions = /* @__PURE__ */ React63.forwardRef(function DialogActions2(inProps, ref) {
+  var DialogActions = /* @__PURE__ */ React76.forwardRef(function DialogActions2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiDialogActions"
@@ -34297,8 +36619,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const ownerState = __spreadProps(__spreadValues({}, props), {
       disableSpacing
     });
-    const classes = useUtilityClasses13(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(DialogActionsRoot, __spreadValues({
+    const classes = useUtilityClasses17(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(DialogActionsRoot, __spreadValues({
       className: clsx_default(classes.root, className),
       ownerState,
       ref
@@ -34334,7 +36656,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var DialogActions_default = DialogActions;
 
   // node_modules/@mui/material/DialogContent/DialogContent.js
-  var React64 = __toESM(require_react());
+  var React77 = __toESM(require_react());
 
   // node_modules/@mui/material/DialogContent/dialogContentClasses.js
   function getDialogContentUtilityClass(slot) {
@@ -34350,8 +36672,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var dialogTitleClasses_default = dialogTitleClasses;
 
   // node_modules/@mui/material/DialogContent/DialogContent.js
-  var import_jsx_runtime37 = __toESM(require_jsx_runtime());
-  var useUtilityClasses14 = (ownerState) => {
+  var import_jsx_runtime47 = __toESM(require_jsx_runtime());
+  var useUtilityClasses18 = (ownerState) => {
     const {
       classes,
       dividers
@@ -34364,11 +36686,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var DialogContentRoot = styled_default2("div", {
     name: "MuiDialogContent",
     slot: "Root",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.root, ownerState.dividers && styles2.dividers];
+      return [styles4.root, ownerState.dividers && styles4.dividers];
     }
   })(memoTheme_default(({
     theme
@@ -34398,7 +36720,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   })));
-  var DialogContent = /* @__PURE__ */ React64.forwardRef(function DialogContent2(inProps, ref) {
+  var DialogContent = /* @__PURE__ */ React77.forwardRef(function DialogContent2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiDialogContent"
@@ -34413,8 +36735,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const ownerState = __spreadProps(__spreadValues({}, props), {
       dividers
     });
-    const classes = useUtilityClasses14(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(DialogContentRoot, __spreadValues({
+    const classes = useUtilityClasses18(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(DialogContentRoot, __spreadValues({
       className: clsx_default(classes.root, className),
       ownerState,
       ref
@@ -34450,9 +36772,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var DialogContent_default = DialogContent;
 
   // node_modules/@mui/material/DialogTitle/DialogTitle.js
-  var React65 = __toESM(require_react());
-  var import_jsx_runtime38 = __toESM(require_jsx_runtime());
-  var useUtilityClasses15 = (ownerState) => {
+  var React78 = __toESM(require_react());
+  var import_jsx_runtime48 = __toESM(require_jsx_runtime());
+  var useUtilityClasses19 = (ownerState) => {
     const {
       classes
     } = ownerState;
@@ -34464,12 +36786,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var DialogTitleRoot = styled_default2(Typography_default, {
     name: "MuiDialogTitle",
     slot: "Root",
-    overridesResolver: (props, styles2) => styles2.root
+    overridesResolver: (props, styles4) => styles4.root
   })({
     padding: "16px 24px",
     flex: "0 0 auto"
   });
-  var DialogTitle = /* @__PURE__ */ React65.forwardRef(function DialogTitle2(inProps, ref) {
+  var DialogTitle = /* @__PURE__ */ React78.forwardRef(function DialogTitle2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiDialogTitle"
@@ -34482,11 +36804,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       "id"
     ]);
     const ownerState = props;
-    const classes = useUtilityClasses15(ownerState);
+    const classes = useUtilityClasses19(ownerState);
     const {
       titleId = idProp
-    } = React65.useContext(DialogContext_default);
-    return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(DialogTitleRoot, __spreadValues({
+    } = React78.useContext(DialogContext_default);
+    return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(DialogTitleRoot, __spreadValues({
       component: "h2",
       className: clsx_default(classes.root, className),
       ownerState,
@@ -34523,16 +36845,490 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
   var DialogTitle_default = DialogTitle;
 
+  // node_modules/@mui/material/FormControl/FormControl.js
+  var React79 = __toESM(require_react());
+
+  // node_modules/@mui/material/FormControl/formControlClasses.js
+  function getFormControlUtilityClasses(slot) {
+    return generateUtilityClass("MuiFormControl", slot);
+  }
+  var formControlClasses = generateUtilityClasses("MuiFormControl", ["root", "marginNone", "marginNormal", "marginDense", "fullWidth", "disabled"]);
+
+  // node_modules/@mui/material/FormControl/FormControl.js
+  var import_jsx_runtime49 = __toESM(require_jsx_runtime());
+  var useUtilityClasses20 = (ownerState) => {
+    const {
+      classes,
+      margin: margin2,
+      fullWidth
+    } = ownerState;
+    const slots = {
+      root: ["root", margin2 !== "none" && `margin${capitalize_default(margin2)}`, fullWidth && "fullWidth"]
+    };
+    return composeClasses(slots, getFormControlUtilityClasses, classes);
+  };
+  var FormControlRoot = styled_default2("div", {
+    name: "MuiFormControl",
+    slot: "Root",
+    overridesResolver: (props, styles4) => {
+      const {
+        ownerState
+      } = props;
+      return [styles4.root, styles4[`margin${capitalize_default(ownerState.margin)}`], ownerState.fullWidth && styles4.fullWidth];
+    }
+  })({
+    display: "inline-flex",
+    flexDirection: "column",
+    position: "relative",
+    // Reset fieldset default style.
+    minWidth: 0,
+    padding: 0,
+    margin: 0,
+    border: 0,
+    verticalAlign: "top",
+    // Fix alignment issue on Safari.
+    variants: [{
+      props: {
+        margin: "normal"
+      },
+      style: {
+        marginTop: 16,
+        marginBottom: 8
+      }
+    }, {
+      props: {
+        margin: "dense"
+      },
+      style: {
+        marginTop: 8,
+        marginBottom: 4
+      }
+    }, {
+      props: {
+        fullWidth: true
+      },
+      style: {
+        width: "100%"
+      }
+    }]
+  });
+  var FormControl = /* @__PURE__ */ React79.forwardRef(function FormControl2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiFormControl"
+    });
+    const _a = props, {
+      children,
+      className,
+      color: color3 = "primary",
+      component = "div",
+      disabled = false,
+      error = false,
+      focused: visuallyFocused,
+      fullWidth = false,
+      hiddenLabel = false,
+      margin: margin2 = "none",
+      required = false,
+      size = "medium",
+      variant = "outlined"
+    } = _a, other = __objRest(_a, [
+      "children",
+      "className",
+      "color",
+      "component",
+      "disabled",
+      "error",
+      "focused",
+      "fullWidth",
+      "hiddenLabel",
+      "margin",
+      "required",
+      "size",
+      "variant"
+    ]);
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      color: color3,
+      component,
+      disabled,
+      error,
+      fullWidth,
+      hiddenLabel,
+      margin: margin2,
+      required,
+      size,
+      variant
+    });
+    const classes = useUtilityClasses20(ownerState);
+    const [adornedStart, setAdornedStart] = React79.useState(() => {
+      let initialAdornedStart = false;
+      if (children) {
+        React79.Children.forEach(children, (child) => {
+          if (!isMuiElement_default(child, ["Input", "Select"])) {
+            return;
+          }
+          const input = isMuiElement_default(child, ["Select"]) ? child.props.input : child;
+          if (input && isAdornedStart(input.props)) {
+            initialAdornedStart = true;
+          }
+        });
+      }
+      return initialAdornedStart;
+    });
+    const [filled, setFilled] = React79.useState(() => {
+      let initialFilled = false;
+      if (children) {
+        React79.Children.forEach(children, (child) => {
+          if (!isMuiElement_default(child, ["Input", "Select"])) {
+            return;
+          }
+          if (isFilled(child.props, true) || isFilled(child.props.inputProps, true)) {
+            initialFilled = true;
+          }
+        });
+      }
+      return initialFilled;
+    });
+    const [focusedState, setFocused] = React79.useState(false);
+    if (disabled && focusedState) {
+      setFocused(false);
+    }
+    const focused = visuallyFocused !== void 0 && !disabled ? visuallyFocused : focusedState;
+    let registerEffect;
+    const registeredInput = React79.useRef(false);
+    if (false) {
+      registerEffect = () => {
+        if (registeredInput.current) {
+          console.error(["MUI: There are multiple `InputBase` components inside a FormControl.", "This creates visual inconsistencies, only use one `InputBase`."].join("\n"));
+        }
+        registeredInput.current = true;
+        return () => {
+          registeredInput.current = false;
+        };
+      };
+    }
+    const onFilled = React79.useCallback(() => {
+      setFilled(true);
+    }, []);
+    const onEmpty = React79.useCallback(() => {
+      setFilled(false);
+    }, []);
+    const childContext = React79.useMemo(() => {
+      return {
+        adornedStart,
+        setAdornedStart,
+        color: color3,
+        disabled,
+        error,
+        filled,
+        focused,
+        fullWidth,
+        hiddenLabel,
+        size,
+        onBlur: () => {
+          setFocused(false);
+        },
+        onFocus: () => {
+          setFocused(true);
+        },
+        onEmpty,
+        onFilled,
+        registerEffect,
+        required,
+        variant
+      };
+    }, [adornedStart, color3, disabled, error, filled, focused, fullWidth, hiddenLabel, registerEffect, onEmpty, onFilled, required, size, variant]);
+    return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(FormControlContext_default.Provider, {
+      value: childContext,
+      children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(FormControlRoot, __spreadProps(__spreadValues({
+        as: component,
+        ownerState,
+        className: clsx_default(classes.root, className),
+        ref
+      }, other), {
+        children
+      }))
+    });
+  });
+  false ? FormControl.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * The content of the component.
+     */
+    children: import_prop_types.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * The color of the component.
+     * It supports both default and custom theme colors, which can be added as shown in the
+     * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
+     * @default 'primary'
+     */
+    color: import_prop_types.default.oneOfType([import_prop_types.default.oneOf(["primary", "secondary", "error", "info", "success", "warning"]), import_prop_types.default.string]),
+    /**
+     * The component used for the root node.
+     * Either a string to use a HTML element or a component.
+     */
+    component: import_prop_types.default.elementType,
+    /**
+     * If `true`, the label, input and helper text should be displayed in a disabled state.
+     * @default false
+     */
+    disabled: import_prop_types.default.bool,
+    /**
+     * If `true`, the label is displayed in an error state.
+     * @default false
+     */
+    error: import_prop_types.default.bool,
+    /**
+     * If `true`, the component is displayed in focused state.
+     */
+    focused: import_prop_types.default.bool,
+    /**
+     * If `true`, the component will take up the full width of its container.
+     * @default false
+     */
+    fullWidth: import_prop_types.default.bool,
+    /**
+     * If `true`, the label is hidden.
+     * This is used to increase density for a `FilledInput`.
+     * Be sure to add `aria-label` to the `input` element.
+     * @default false
+     */
+    hiddenLabel: import_prop_types.default.bool,
+    /**
+     * If `dense` or `normal`, will adjust vertical spacing of this and contained components.
+     * @default 'none'
+     */
+    margin: import_prop_types.default.oneOf(["dense", "none", "normal"]),
+    /**
+     * If `true`, the label will indicate that the `input` is required.
+     * @default false
+     */
+    required: import_prop_types.default.bool,
+    /**
+     * The size of the component.
+     * @default 'medium'
+     */
+    size: import_prop_types.default.oneOfType([import_prop_types.default.oneOf(["medium", "small"]), import_prop_types.default.string]),
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object]),
+    /**
+     * The variant to use.
+     * @default 'outlined'
+     */
+    variant: import_prop_types.default.oneOf(["filled", "outlined", "standard"])
+  } : void 0;
+  var FormControl_default = FormControl;
+
+  // node_modules/@mui/material/FormLabel/FormLabel.js
+  var React80 = __toESM(require_react());
+
+  // node_modules/@mui/material/FormLabel/formLabelClasses.js
+  function getFormLabelUtilityClasses(slot) {
+    return generateUtilityClass("MuiFormLabel", slot);
+  }
+  var formLabelClasses = generateUtilityClasses("MuiFormLabel", ["root", "colorSecondary", "focused", "disabled", "error", "filled", "required", "asterisk"]);
+  var formLabelClasses_default = formLabelClasses;
+
+  // node_modules/@mui/material/FormLabel/FormLabel.js
+  var import_jsx_runtime50 = __toESM(require_jsx_runtime());
+  var useUtilityClasses21 = (ownerState) => {
+    const {
+      classes,
+      color: color3,
+      focused,
+      disabled,
+      error,
+      filled,
+      required
+    } = ownerState;
+    const slots = {
+      root: ["root", `color${capitalize_default(color3)}`, disabled && "disabled", error && "error", filled && "filled", focused && "focused", required && "required"],
+      asterisk: ["asterisk", error && "error"]
+    };
+    return composeClasses(slots, getFormLabelUtilityClasses, classes);
+  };
+  var FormLabelRoot = styled_default2("label", {
+    name: "MuiFormLabel",
+    slot: "Root",
+    overridesResolver: (props, styles4) => {
+      const {
+        ownerState
+      } = props;
+      return [styles4.root, ownerState.color === "secondary" && styles4.colorSecondary, ownerState.filled && styles4.filled];
+    }
+  })(memoTheme_default(({
+    theme
+  }) => __spreadProps(__spreadValues({
+    color: (theme.vars || theme).palette.text.secondary
+  }, theme.typography.body1), {
+    lineHeight: "1.4375em",
+    padding: 0,
+    position: "relative",
+    variants: [...Object.entries(theme.palette).filter(createSimplePaletteValueFilter()).map(([color3]) => ({
+      props: {
+        color: color3
+      },
+      style: {
+        [`&.${formLabelClasses_default.focused}`]: {
+          color: (theme.vars || theme).palette[color3].main
+        }
+      }
+    })), {
+      props: {},
+      style: {
+        [`&.${formLabelClasses_default.disabled}`]: {
+          color: (theme.vars || theme).palette.text.disabled
+        },
+        [`&.${formLabelClasses_default.error}`]: {
+          color: (theme.vars || theme).palette.error.main
+        }
+      }
+    }]
+  })));
+  var AsteriskComponent = styled_default2("span", {
+    name: "MuiFormLabel",
+    slot: "Asterisk",
+    overridesResolver: (props, styles4) => styles4.asterisk
+  })(memoTheme_default(({
+    theme
+  }) => ({
+    [`&.${formLabelClasses_default.error}`]: {
+      color: (theme.vars || theme).palette.error.main
+    }
+  })));
+  var FormLabel = /* @__PURE__ */ React80.forwardRef(function FormLabel2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiFormLabel"
+    });
+    const _a = props, {
+      children,
+      className,
+      color: color3,
+      component = "label",
+      disabled,
+      error,
+      filled,
+      focused,
+      required
+    } = _a, other = __objRest(_a, [
+      "children",
+      "className",
+      "color",
+      "component",
+      "disabled",
+      "error",
+      "filled",
+      "focused",
+      "required"
+    ]);
+    const muiFormControl = useFormControl();
+    const fcs = formControlState({
+      props,
+      muiFormControl,
+      states: ["color", "required", "focused", "disabled", "error", "filled"]
+    });
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      color: fcs.color || "primary",
+      component,
+      disabled: fcs.disabled,
+      error: fcs.error,
+      filled: fcs.filled,
+      focused: fcs.focused,
+      required: fcs.required
+    });
+    const classes = useUtilityClasses21(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(FormLabelRoot, __spreadProps(__spreadValues({
+      as: component,
+      ownerState,
+      className: clsx_default(classes.root, className),
+      ref
+    }, other), {
+      children: [children, fcs.required && /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(AsteriskComponent, {
+        ownerState,
+        "aria-hidden": true,
+        className: classes.asterisk,
+        children: ["\u2009", "*"]
+      })]
+    }));
+  });
+  false ? FormLabel.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * The content of the component.
+     */
+    children: import_prop_types.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * The color of the component.
+     * It supports both default and custom theme colors, which can be added as shown in the
+     * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
+     */
+    color: import_prop_types.default.oneOfType([import_prop_types.default.oneOf(["error", "info", "primary", "secondary", "success", "warning"]), import_prop_types.default.string]),
+    /**
+     * The component used for the root node.
+     * Either a string to use a HTML element or a component.
+     */
+    component: import_prop_types.default.elementType,
+    /**
+     * If `true`, the label should be displayed in a disabled state.
+     */
+    disabled: import_prop_types.default.bool,
+    /**
+     * If `true`, the label is displayed in an error state.
+     */
+    error: import_prop_types.default.bool,
+    /**
+     * If `true`, the label should use filled classes key.
+     */
+    filled: import_prop_types.default.bool,
+    /**
+     * If `true`, the input of this label is focused (used by `FormGroup` components).
+     */
+    focused: import_prop_types.default.bool,
+    /**
+     * If `true`, the label will indicate that the `input` is required.
+     */
+    required: import_prop_types.default.bool,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object])
+  } : void 0;
+  var FormLabel_default = FormLabel;
+
   // node_modules/@mui/material/Grid2/Grid2.js
   var Grid2 = createGrid({
     createStyledComponent: styled_default2("div", {
       name: "MuiGrid2",
       slot: "Root",
-      overridesResolver: (props, styles2) => {
+      overridesResolver: (props, styles4) => {
         const {
           ownerState
         } = props;
-        return [styles2.root, ownerState.container && styles2.container];
+        return [styles4.root, ownerState.container && styles4.container];
       }
     }),
     componentName: "MuiGrid2",
@@ -34642,21 +37438,1939 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
   var Grid2_default = Grid2;
 
+  // node_modules/@mui/material/Grow/Grow.js
+  var React81 = __toESM(require_react());
+  var import_jsx_runtime51 = __toESM(require_jsx_runtime());
+  function getScale(value) {
+    return `scale(${value}, ${value ** 2})`;
+  }
+  var styles3 = {
+    entering: {
+      opacity: 1,
+      transform: getScale(1)
+    },
+    entered: {
+      opacity: 1,
+      transform: "none"
+    }
+  };
+  var isWebKit154 = typeof navigator !== "undefined" && /^((?!chrome|android).)*(safari|mobile)/i.test(navigator.userAgent) && /(os |version\/)15(.|_)4/i.test(navigator.userAgent);
+  var Grow = /* @__PURE__ */ React81.forwardRef(function Grow2(props, ref) {
+    const _a = props, {
+      addEndListener,
+      appear = true,
+      children,
+      easing: easing2,
+      in: inProp,
+      onEnter,
+      onEntered,
+      onEntering,
+      onExit,
+      onExited,
+      onExiting,
+      style: style4,
+      timeout: timeout2 = "auto",
+      TransitionComponent: TransitionComponent = Transition_default
+    } = _a, other = __objRest(_a, [
+      "addEndListener",
+      "appear",
+      "children",
+      "easing",
+      "in",
+      "onEnter",
+      "onEntered",
+      "onEntering",
+      "onExit",
+      "onExited",
+      "onExiting",
+      "style",
+      "timeout",
+      // eslint-disable-next-line react/prop-types
+      "TransitionComponent"
+    ]);
+    const timer = useTimeout();
+    const autoTimeout = React81.useRef();
+    const theme = useTheme5();
+    const nodeRef = React81.useRef(null);
+    const handleRef = useForkRef_default(nodeRef, getReactElementRef(children), ref);
+    const normalizedTransitionCallback = (callback) => (maybeIsAppearing) => {
+      if (callback) {
+        const node2 = nodeRef.current;
+        if (maybeIsAppearing === void 0) {
+          callback(node2);
+        } else {
+          callback(node2, maybeIsAppearing);
+        }
+      }
+    };
+    const handleEntering = normalizedTransitionCallback(onEntering);
+    const handleEnter = normalizedTransitionCallback((node2, isAppearing) => {
+      reflow(node2);
+      const {
+        duration: transitionDuration,
+        delay,
+        easing: transitionTimingFunction
+      } = getTransitionProps({
+        style: style4,
+        timeout: timeout2,
+        easing: easing2
+      }, {
+        mode: "enter"
+      });
+      let duration2;
+      if (timeout2 === "auto") {
+        duration2 = theme.transitions.getAutoHeightDuration(node2.clientHeight);
+        autoTimeout.current = duration2;
+      } else {
+        duration2 = transitionDuration;
+      }
+      node2.style.transition = [theme.transitions.create("opacity", {
+        duration: duration2,
+        delay
+      }), theme.transitions.create("transform", {
+        duration: isWebKit154 ? duration2 : duration2 * 0.666,
+        delay,
+        easing: transitionTimingFunction
+      })].join(",");
+      if (onEnter) {
+        onEnter(node2, isAppearing);
+      }
+    });
+    const handleEntered = normalizedTransitionCallback(onEntered);
+    const handleExiting = normalizedTransitionCallback(onExiting);
+    const handleExit = normalizedTransitionCallback((node2) => {
+      const {
+        duration: transitionDuration,
+        delay,
+        easing: transitionTimingFunction
+      } = getTransitionProps({
+        style: style4,
+        timeout: timeout2,
+        easing: easing2
+      }, {
+        mode: "exit"
+      });
+      let duration2;
+      if (timeout2 === "auto") {
+        duration2 = theme.transitions.getAutoHeightDuration(node2.clientHeight);
+        autoTimeout.current = duration2;
+      } else {
+        duration2 = transitionDuration;
+      }
+      node2.style.transition = [theme.transitions.create("opacity", {
+        duration: duration2,
+        delay
+      }), theme.transitions.create("transform", {
+        duration: isWebKit154 ? duration2 : duration2 * 0.666,
+        delay: isWebKit154 ? delay : delay || duration2 * 0.333,
+        easing: transitionTimingFunction
+      })].join(",");
+      node2.style.opacity = 0;
+      node2.style.transform = getScale(0.75);
+      if (onExit) {
+        onExit(node2);
+      }
+    });
+    const handleExited = normalizedTransitionCallback(onExited);
+    const handleAddEndListener = (next2) => {
+      if (timeout2 === "auto") {
+        timer.start(autoTimeout.current || 0, next2);
+      }
+      if (addEndListener) {
+        addEndListener(nodeRef.current, next2);
+      }
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(TransitionComponent, __spreadProps(__spreadValues({
+      appear,
+      in: inProp,
+      nodeRef,
+      onEnter: handleEnter,
+      onEntered: handleEntered,
+      onEntering: handleEntering,
+      onExit: handleExit,
+      onExited: handleExited,
+      onExiting: handleExiting,
+      addEndListener: handleAddEndListener,
+      timeout: timeout2 === "auto" ? null : timeout2
+    }, other), {
+      children: (state, _b) => {
+        var _c = _b, {
+          ownerState
+        } = _c, restChildProps = __objRest(_c, [
+          "ownerState"
+        ]);
+        return /* @__PURE__ */ React81.cloneElement(children, __spreadValues({
+          style: __spreadValues(__spreadValues(__spreadValues({
+            opacity: 0,
+            transform: getScale(0.75),
+            visibility: state === "exited" && !inProp ? "hidden" : void 0
+          }, styles3[state]), style4), children.props.style),
+          ref: handleRef
+        }, restChildProps));
+      }
+    }));
+  });
+  false ? Grow.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * Add a custom transition end trigger. Called with the transitioning DOM
+     * node and a done callback. Allows for more fine grained transition end
+     * logic. Note: Timeouts are still used as a fallback if provided.
+     */
+    addEndListener: import_prop_types.default.func,
+    /**
+     * Perform the enter transition when it first mounts if `in` is also `true`.
+     * Set this to `false` to disable this behavior.
+     * @default true
+     */
+    appear: import_prop_types.default.bool,
+    /**
+     * A single child content element.
+     */
+    children: elementAcceptingRef_default.isRequired,
+    /**
+     * The transition timing function.
+     * You may specify a single easing or a object containing enter and exit values.
+     */
+    easing: import_prop_types.default.oneOfType([import_prop_types.default.shape({
+      enter: import_prop_types.default.string,
+      exit: import_prop_types.default.string
+    }), import_prop_types.default.string]),
+    /**
+     * If `true`, the component will transition in.
+     */
+    in: import_prop_types.default.bool,
+    /**
+     * @ignore
+     */
+    onEnter: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    onEntered: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    onEntering: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    onExit: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    onExited: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    onExiting: import_prop_types.default.func,
+    /**
+     * @ignore
+     */
+    style: import_prop_types.default.object,
+    /**
+     * The duration for the transition, in milliseconds.
+     * You may specify a single timeout for all transitions, or individually with an object.
+     *
+     * Set to 'auto' to automatically calculate transition time based on height.
+     * @default 'auto'
+     */
+    timeout: import_prop_types.default.oneOfType([import_prop_types.default.oneOf(["auto"]), import_prop_types.default.number, import_prop_types.default.shape({
+      appear: import_prop_types.default.number,
+      enter: import_prop_types.default.number,
+      exit: import_prop_types.default.number
+    })])
+  } : void 0;
+  if (Grow) {
+    Grow.muiSupportAuto = true;
+  }
+  var Grow_default = Grow;
+
+  // node_modules/@mui/material/InputAdornment/InputAdornment.js
+  var React82 = __toESM(require_react());
+
+  // node_modules/@mui/material/InputAdornment/inputAdornmentClasses.js
+  function getInputAdornmentUtilityClass(slot) {
+    return generateUtilityClass("MuiInputAdornment", slot);
+  }
+  var inputAdornmentClasses = generateUtilityClasses("MuiInputAdornment", ["root", "filled", "standard", "outlined", "positionStart", "positionEnd", "disablePointerEvents", "hiddenLabel", "sizeSmall"]);
+  var inputAdornmentClasses_default = inputAdornmentClasses;
+
+  // node_modules/@mui/material/InputAdornment/InputAdornment.js
+  var import_jsx_runtime52 = __toESM(require_jsx_runtime());
+  var _span;
+  var overridesResolver = (props, styles4) => {
+    const {
+      ownerState
+    } = props;
+    return [styles4.root, styles4[`position${capitalize_default(ownerState.position)}`], ownerState.disablePointerEvents === true && styles4.disablePointerEvents, styles4[ownerState.variant]];
+  };
+  var useUtilityClasses22 = (ownerState) => {
+    const {
+      classes,
+      disablePointerEvents,
+      hiddenLabel,
+      position: position2,
+      size,
+      variant
+    } = ownerState;
+    const slots = {
+      root: ["root", disablePointerEvents && "disablePointerEvents", position2 && `position${capitalize_default(position2)}`, variant, hiddenLabel && "hiddenLabel", size && `size${capitalize_default(size)}`]
+    };
+    return composeClasses(slots, getInputAdornmentUtilityClass, classes);
+  };
+  var InputAdornmentRoot = styled_default2("div", {
+    name: "MuiInputAdornment",
+    slot: "Root",
+    overridesResolver
+  })(memoTheme_default(({
+    theme
+  }) => ({
+    display: "flex",
+    maxHeight: "2em",
+    alignItems: "center",
+    whiteSpace: "nowrap",
+    color: (theme.vars || theme).palette.action.active,
+    variants: [{
+      props: {
+        variant: "filled"
+      },
+      style: {
+        [`&.${inputAdornmentClasses_default.positionStart}&:not(.${inputAdornmentClasses_default.hiddenLabel})`]: {
+          marginTop: 16
+        }
+      }
+    }, {
+      props: {
+        position: "start"
+      },
+      style: {
+        marginRight: 8
+      }
+    }, {
+      props: {
+        position: "end"
+      },
+      style: {
+        marginLeft: 8
+      }
+    }, {
+      props: {
+        disablePointerEvents: true
+      },
+      style: {
+        pointerEvents: "none"
+      }
+    }]
+  })));
+  var InputAdornment = /* @__PURE__ */ React82.forwardRef(function InputAdornment2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiInputAdornment"
+    });
+    const _a = props, {
+      children,
+      className,
+      component = "div",
+      disablePointerEvents = false,
+      disableTypography = false,
+      position: position2,
+      variant: variantProp
+    } = _a, other = __objRest(_a, [
+      "children",
+      "className",
+      "component",
+      "disablePointerEvents",
+      "disableTypography",
+      "position",
+      "variant"
+    ]);
+    const muiFormControl = useFormControl() || {};
+    let variant = variantProp;
+    if (variantProp && muiFormControl.variant) {
+      if (false) {
+        if (variantProp === muiFormControl.variant) {
+          console.error("MUI: The `InputAdornment` variant infers the variant prop you do not have to provide one.");
+        }
+      }
+    }
+    if (muiFormControl && !variant) {
+      variant = muiFormControl.variant;
+    }
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      hiddenLabel: muiFormControl.hiddenLabel,
+      size: muiFormControl.size,
+      disablePointerEvents,
+      position: position2,
+      variant
+    });
+    const classes = useUtilityClasses22(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(FormControlContext_default.Provider, {
+      value: null,
+      children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(InputAdornmentRoot, __spreadProps(__spreadValues({
+        as: component,
+        ownerState,
+        className: clsx_default(classes.root, className),
+        ref
+      }, other), {
+        children: typeof children === "string" && !disableTypography ? /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(Typography_default, {
+          color: "textSecondary",
+          children
+        }) : /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(React82.Fragment, {
+          children: [position2 === "start" ? (
+            /* notranslate needed while Google Translate will not fix zero-width space issue */
+            _span || (_span = /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", {
+              className: "notranslate",
+              "aria-hidden": true,
+              children: "\u200B"
+            }))
+          ) : null, children]
+        })
+      }))
+    });
+  });
+  false ? InputAdornment.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * The content of the component, normally an `IconButton` or string.
+     */
+    children: import_prop_types.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * The component used for the root node.
+     * Either a string to use a HTML element or a component.
+     */
+    component: import_prop_types.default.elementType,
+    /**
+     * Disable pointer events on the root.
+     * This allows for the content of the adornment to focus the `input` on click.
+     * @default false
+     */
+    disablePointerEvents: import_prop_types.default.bool,
+    /**
+     * If children is a string then disable wrapping in a Typography component.
+     * @default false
+     */
+    disableTypography: import_prop_types.default.bool,
+    /**
+     * The position this adornment should appear relative to the `Input`.
+     */
+    position: import_prop_types.default.oneOf(["end", "start"]).isRequired,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object]),
+    /**
+     * The variant to use.
+     * Note: If you are using the `TextField` component or the `FormControl` component
+     * you do not have to set this manually.
+     */
+    variant: import_prop_types.default.oneOf(["filled", "outlined", "standard"])
+  } : void 0;
+  var InputAdornment_default = InputAdornment;
+
+  // node_modules/@mui/material/InputLabel/InputLabel.js
+  var React83 = __toESM(require_react());
+
+  // node_modules/@mui/material/InputLabel/inputLabelClasses.js
+  function getInputLabelUtilityClasses(slot) {
+    return generateUtilityClass("MuiInputLabel", slot);
+  }
+  var inputLabelClasses = generateUtilityClasses("MuiInputLabel", ["root", "focused", "disabled", "error", "required", "asterisk", "formControl", "sizeSmall", "shrink", "animated", "standard", "filled", "outlined"]);
+
+  // node_modules/@mui/material/InputLabel/InputLabel.js
+  var import_jsx_runtime53 = __toESM(require_jsx_runtime());
+  var useUtilityClasses23 = (ownerState) => {
+    const {
+      classes,
+      formControl,
+      size,
+      shrink,
+      disableAnimation,
+      variant,
+      required
+    } = ownerState;
+    const slots = {
+      root: ["root", formControl && "formControl", !disableAnimation && "animated", shrink && "shrink", size && size !== "normal" && `size${capitalize_default(size)}`, variant],
+      asterisk: [required && "asterisk"]
+    };
+    const composedClasses = composeClasses(slots, getInputLabelUtilityClasses, classes);
+    return __spreadValues(__spreadValues({}, classes), composedClasses);
+  };
+  var InputLabelRoot = styled_default2(FormLabel_default, {
+    shouldForwardProp: (prop) => rootShouldForwardProp_default(prop) || prop === "classes",
+    name: "MuiInputLabel",
+    slot: "Root",
+    overridesResolver: (props, styles4) => {
+      const {
+        ownerState
+      } = props;
+      return [{
+        [`& .${formLabelClasses_default.asterisk}`]: styles4.asterisk
+      }, styles4.root, ownerState.formControl && styles4.formControl, ownerState.size === "small" && styles4.sizeSmall, ownerState.shrink && styles4.shrink, !ownerState.disableAnimation && styles4.animated, ownerState.focused && styles4.focused, styles4[ownerState.variant]];
+    }
+  })(memoTheme_default(({
+    theme
+  }) => ({
+    display: "block",
+    transformOrigin: "top left",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    maxWidth: "100%",
+    variants: [{
+      props: ({
+        ownerState
+      }) => ownerState.formControl,
+      style: {
+        position: "absolute",
+        left: 0,
+        top: 0,
+        // slight alteration to spec spacing to match visual spec result
+        transform: "translate(0, 20px) scale(1)"
+      }
+    }, {
+      props: {
+        size: "small"
+      },
+      style: {
+        // Compensation for the `Input.inputSizeSmall` style.
+        transform: "translate(0, 17px) scale(1)"
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.shrink,
+      style: {
+        transform: "translate(0, -1.5px) scale(0.75)",
+        transformOrigin: "top left",
+        maxWidth: "133%"
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => !ownerState.disableAnimation,
+      style: {
+        transition: theme.transitions.create(["color", "transform", "max-width"], {
+          duration: theme.transitions.duration.shorter,
+          easing: theme.transitions.easing.easeOut
+        })
+      }
+    }, {
+      props: {
+        variant: "filled"
+      },
+      style: {
+        // Chrome's autofill feature gives the input field a yellow background.
+        // Since the input field is behind the label in the HTML tree,
+        // the input field is drawn last and hides the label with an opaque background color.
+        // zIndex: 1 will raise the label above opaque background-colors of input.
+        zIndex: 1,
+        pointerEvents: "none",
+        transform: "translate(12px, 16px) scale(1)",
+        maxWidth: "calc(100% - 24px)"
+      }
+    }, {
+      props: {
+        variant: "filled",
+        size: "small"
+      },
+      style: {
+        transform: "translate(12px, 13px) scale(1)"
+      }
+    }, {
+      props: ({
+        variant,
+        ownerState
+      }) => variant === "filled" && ownerState.shrink,
+      style: {
+        userSelect: "none",
+        pointerEvents: "auto",
+        transform: "translate(12px, 7px) scale(0.75)",
+        maxWidth: "calc(133% - 24px)"
+      }
+    }, {
+      props: ({
+        variant,
+        ownerState,
+        size
+      }) => variant === "filled" && ownerState.shrink && size === "small",
+      style: {
+        transform: "translate(12px, 4px) scale(0.75)"
+      }
+    }, {
+      props: {
+        variant: "outlined"
+      },
+      style: {
+        // see comment above on filled.zIndex
+        zIndex: 1,
+        pointerEvents: "none",
+        transform: "translate(14px, 16px) scale(1)",
+        maxWidth: "calc(100% - 24px)"
+      }
+    }, {
+      props: {
+        variant: "outlined",
+        size: "small"
+      },
+      style: {
+        transform: "translate(14px, 9px) scale(1)"
+      }
+    }, {
+      props: ({
+        variant,
+        ownerState
+      }) => variant === "outlined" && ownerState.shrink,
+      style: {
+        userSelect: "none",
+        pointerEvents: "auto",
+        // Theoretically, we should have (8+5)*2/0.75 = 34px
+        // but it feels a better when it bleeds a bit on the left, so 32px.
+        maxWidth: "calc(133% - 32px)",
+        transform: "translate(14px, -9px) scale(0.75)"
+      }
+    }]
+  })));
+  var InputLabel = /* @__PURE__ */ React83.forwardRef(function InputLabel2(inProps, ref) {
+    const props = useDefaultProps2({
+      name: "MuiInputLabel",
+      props: inProps
+    });
+    const _a = props, {
+      disableAnimation = false,
+      margin: margin2,
+      shrink: shrinkProp,
+      variant,
+      className
+    } = _a, other = __objRest(_a, [
+      "disableAnimation",
+      "margin",
+      "shrink",
+      "variant",
+      "className"
+    ]);
+    const muiFormControl = useFormControl();
+    let shrink = shrinkProp;
+    if (typeof shrink === "undefined" && muiFormControl) {
+      shrink = muiFormControl.filled || muiFormControl.focused || muiFormControl.adornedStart;
+    }
+    const fcs = formControlState({
+      props,
+      muiFormControl,
+      states: ["size", "variant", "required", "focused"]
+    });
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      disableAnimation,
+      formControl: muiFormControl,
+      shrink,
+      size: fcs.size,
+      variant: fcs.variant,
+      required: fcs.required,
+      focused: fcs.focused
+    });
+    const classes = useUtilityClasses23(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(InputLabelRoot, __spreadProps(__spreadValues({
+      "data-shrink": shrink,
+      ref,
+      className: clsx_default(classes.root, className)
+    }, other), {
+      ownerState,
+      classes
+    }));
+  });
+  false ? InputLabel.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * The content of the component.
+     */
+    children: import_prop_types.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * The color of the component.
+     * It supports both default and custom theme colors, which can be added as shown in the
+     * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
+     */
+    color: import_prop_types.default.oneOfType([import_prop_types.default.oneOf(["error", "info", "primary", "secondary", "success", "warning"]), import_prop_types.default.string]),
+    /**
+     * If `true`, the transition animation is disabled.
+     * @default false
+     */
+    disableAnimation: import_prop_types.default.bool,
+    /**
+     * If `true`, the component is disabled.
+     */
+    disabled: import_prop_types.default.bool,
+    /**
+     * If `true`, the label is displayed in an error state.
+     */
+    error: import_prop_types.default.bool,
+    /**
+     * If `true`, the `input` of this label is focused.
+     */
+    focused: import_prop_types.default.bool,
+    /**
+     * If `dense`, will adjust vertical spacing. This is normally obtained via context from
+     * FormControl.
+     */
+    margin: import_prop_types.default.oneOf(["dense"]),
+    /**
+     * if `true`, the label will indicate that the `input` is required.
+     */
+    required: import_prop_types.default.bool,
+    /**
+     * If `true`, the label is shrunk.
+     */
+    shrink: import_prop_types.default.bool,
+    /**
+     * The size of the component.
+     * @default 'normal'
+     */
+    size: import_prop_types.default.oneOfType([import_prop_types.default.oneOf(["normal", "small"]), import_prop_types.default.string]),
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object]),
+    /**
+     * The variant to use.
+     */
+    variant: import_prop_types.default.oneOf(["filled", "outlined", "standard"])
+  } : void 0;
+  var InputLabel_default = InputLabel;
+
+  // node_modules/@mui/material/List/List.js
+  var React85 = __toESM(require_react());
+
+  // node_modules/@mui/material/List/ListContext.js
+  var React84 = __toESM(require_react());
+  var ListContext = /* @__PURE__ */ React84.createContext({});
+  if (false) {
+    ListContext.displayName = "ListContext";
+  }
+  var ListContext_default = ListContext;
+
+  // node_modules/@mui/material/List/listClasses.js
+  function getListUtilityClass(slot) {
+    return generateUtilityClass("MuiList", slot);
+  }
+  var listClasses = generateUtilityClasses("MuiList", ["root", "padding", "dense", "subheader"]);
+
+  // node_modules/@mui/material/List/List.js
+  var import_jsx_runtime54 = __toESM(require_jsx_runtime());
+  var useUtilityClasses24 = (ownerState) => {
+    const {
+      classes,
+      disablePadding,
+      dense,
+      subheader
+    } = ownerState;
+    const slots = {
+      root: ["root", !disablePadding && "padding", dense && "dense", subheader && "subheader"]
+    };
+    return composeClasses(slots, getListUtilityClass, classes);
+  };
+  var ListRoot = styled_default2("ul", {
+    name: "MuiList",
+    slot: "Root",
+    overridesResolver: (props, styles4) => {
+      const {
+        ownerState
+      } = props;
+      return [styles4.root, !ownerState.disablePadding && styles4.padding, ownerState.dense && styles4.dense, ownerState.subheader && styles4.subheader];
+    }
+  })({
+    listStyle: "none",
+    margin: 0,
+    padding: 0,
+    position: "relative",
+    variants: [{
+      props: ({
+        ownerState
+      }) => !ownerState.disablePadding,
+      style: {
+        paddingTop: 8,
+        paddingBottom: 8
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.subheader,
+      style: {
+        paddingTop: 0
+      }
+    }]
+  });
+  var List = /* @__PURE__ */ React85.forwardRef(function List2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiList"
+    });
+    const _a = props, {
+      children,
+      className,
+      component = "ul",
+      dense = false,
+      disablePadding = false,
+      subheader
+    } = _a, other = __objRest(_a, [
+      "children",
+      "className",
+      "component",
+      "dense",
+      "disablePadding",
+      "subheader"
+    ]);
+    const context = React85.useMemo(() => ({
+      dense
+    }), [dense]);
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      component,
+      dense,
+      disablePadding
+    });
+    const classes = useUtilityClasses24(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(ListContext_default.Provider, {
+      value: context,
+      children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(ListRoot, __spreadProps(__spreadValues({
+        as: component,
+        className: clsx_default(classes.root, className),
+        ref,
+        ownerState
+      }, other), {
+        children: [subheader, children]
+      }))
+    });
+  });
+  false ? List.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * The content of the component.
+     */
+    children: import_prop_types.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * The component used for the root node.
+     * Either a string to use a HTML element or a component.
+     */
+    component: import_prop_types.default.elementType,
+    /**
+     * If `true`, compact vertical padding designed for keyboard and mouse input is used for
+     * the list and list items.
+     * The prop is available to descendant components as the `dense` context.
+     * @default false
+     */
+    dense: import_prop_types.default.bool,
+    /**
+     * If `true`, vertical padding is removed from the list.
+     * @default false
+     */
+    disablePadding: import_prop_types.default.bool,
+    /**
+     * The content of the subheader, normally `ListSubheader`.
+     */
+    subheader: import_prop_types.default.node,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object])
+  } : void 0;
+  var List_default = List;
+
+  // node_modules/@mui/material/ListItem/ListItem.js
+  var React88 = __toESM(require_react());
+
+  // node_modules/@mui/material/ListItem/listItemClasses.js
+  function getListItemUtilityClass(slot) {
+    return generateUtilityClass("MuiListItem", slot);
+  }
+  var listItemClasses = generateUtilityClasses("MuiListItem", ["root", "container", "dense", "alignItemsFlexStart", "divider", "gutters", "padding", "secondaryAction"]);
+
+  // node_modules/@mui/material/ListItemButton/ListItemButton.js
+  var React86 = __toESM(require_react());
+
+  // node_modules/@mui/material/ListItemButton/listItemButtonClasses.js
+  function getListItemButtonUtilityClass(slot) {
+    return generateUtilityClass("MuiListItemButton", slot);
+  }
+  var listItemButtonClasses = generateUtilityClasses("MuiListItemButton", ["root", "focusVisible", "dense", "alignItemsFlexStart", "disabled", "divider", "gutters", "selected"]);
+  var listItemButtonClasses_default = listItemButtonClasses;
+
+  // node_modules/@mui/material/ListItemButton/ListItemButton.js
+  var import_jsx_runtime55 = __toESM(require_jsx_runtime());
+  var overridesResolver2 = (props, styles4) => {
+    const {
+      ownerState
+    } = props;
+    return [styles4.root, ownerState.dense && styles4.dense, ownerState.alignItems === "flex-start" && styles4.alignItemsFlexStart, ownerState.divider && styles4.divider, !ownerState.disableGutters && styles4.gutters];
+  };
+  var useUtilityClasses25 = (ownerState) => {
+    const {
+      alignItems,
+      classes,
+      dense,
+      disabled,
+      disableGutters,
+      divider,
+      selected
+    } = ownerState;
+    const slots = {
+      root: ["root", dense && "dense", !disableGutters && "gutters", divider && "divider", disabled && "disabled", alignItems === "flex-start" && "alignItemsFlexStart", selected && "selected"]
+    };
+    const composedClasses = composeClasses(slots, getListItemButtonUtilityClass, classes);
+    return __spreadValues(__spreadValues({}, classes), composedClasses);
+  };
+  var ListItemButtonRoot = styled_default2(ButtonBase_default, {
+    shouldForwardProp: (prop) => rootShouldForwardProp_default(prop) || prop === "classes",
+    name: "MuiListItemButton",
+    slot: "Root",
+    overridesResolver: overridesResolver2
+  })(memoTheme_default(({
+    theme
+  }) => ({
+    display: "flex",
+    flexGrow: 1,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    position: "relative",
+    textDecoration: "none",
+    minWidth: 0,
+    boxSizing: "border-box",
+    textAlign: "left",
+    paddingTop: 8,
+    paddingBottom: 8,
+    transition: theme.transitions.create("background-color", {
+      duration: theme.transitions.duration.shortest
+    }),
+    "&:hover": {
+      textDecoration: "none",
+      backgroundColor: (theme.vars || theme).palette.action.hover,
+      // Reset on touch devices, it doesn't add specificity
+      "@media (hover: none)": {
+        backgroundColor: "transparent"
+      }
+    },
+    [`&.${listItemButtonClasses_default.selected}`]: {
+      backgroundColor: theme.vars ? `rgba(${theme.vars.palette.primary.mainChannel} / ${theme.vars.palette.action.selectedOpacity})` : alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity),
+      [`&.${listItemButtonClasses_default.focusVisible}`]: {
+        backgroundColor: theme.vars ? `rgba(${theme.vars.palette.primary.mainChannel} / calc(${theme.vars.palette.action.selectedOpacity} + ${theme.vars.palette.action.focusOpacity}))` : alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity + theme.palette.action.focusOpacity)
+      }
+    },
+    [`&.${listItemButtonClasses_default.selected}:hover`]: {
+      backgroundColor: theme.vars ? `rgba(${theme.vars.palette.primary.mainChannel} / calc(${theme.vars.palette.action.selectedOpacity} + ${theme.vars.palette.action.hoverOpacity}))` : alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity),
+      // Reset on touch devices, it doesn't add specificity
+      "@media (hover: none)": {
+        backgroundColor: theme.vars ? `rgba(${theme.vars.palette.primary.mainChannel} / ${theme.vars.palette.action.selectedOpacity})` : alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity)
+      }
+    },
+    [`&.${listItemButtonClasses_default.focusVisible}`]: {
+      backgroundColor: (theme.vars || theme).palette.action.focus
+    },
+    [`&.${listItemButtonClasses_default.disabled}`]: {
+      opacity: (theme.vars || theme).palette.action.disabledOpacity
+    },
+    variants: [{
+      props: ({
+        ownerState
+      }) => ownerState.divider,
+      style: {
+        borderBottom: `1px solid ${(theme.vars || theme).palette.divider}`,
+        backgroundClip: "padding-box"
+      }
+    }, {
+      props: {
+        alignItems: "flex-start"
+      },
+      style: {
+        alignItems: "flex-start"
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => !ownerState.disableGutters,
+      style: {
+        paddingLeft: 16,
+        paddingRight: 16
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.dense,
+      style: {
+        paddingTop: 4,
+        paddingBottom: 4
+      }
+    }]
+  })));
+  var ListItemButton = /* @__PURE__ */ React86.forwardRef(function ListItemButton2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiListItemButton"
+    });
+    const _a = props, {
+      alignItems = "center",
+      autoFocus = false,
+      component = "div",
+      children,
+      dense = false,
+      disableGutters = false,
+      divider = false,
+      focusVisibleClassName,
+      selected = false,
+      className
+    } = _a, other = __objRest(_a, [
+      "alignItems",
+      "autoFocus",
+      "component",
+      "children",
+      "dense",
+      "disableGutters",
+      "divider",
+      "focusVisibleClassName",
+      "selected",
+      "className"
+    ]);
+    const context = React86.useContext(ListContext_default);
+    const childContext = React86.useMemo(() => ({
+      dense: dense || context.dense || false,
+      alignItems,
+      disableGutters
+    }), [alignItems, context.dense, dense, disableGutters]);
+    const listItemRef = React86.useRef(null);
+    useEnhancedEffect_default2(() => {
+      if (autoFocus) {
+        if (listItemRef.current) {
+          listItemRef.current.focus();
+        } else if (false) {
+          console.error("MUI: Unable to set focus to a ListItemButton whose component has not been rendered.");
+        }
+      }
+    }, [autoFocus]);
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      alignItems,
+      dense: childContext.dense,
+      disableGutters,
+      divider,
+      selected
+    });
+    const classes = useUtilityClasses25(ownerState);
+    const handleRef = useForkRef_default(listItemRef, ref);
+    return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(ListContext_default.Provider, {
+      value: childContext,
+      children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(ListItemButtonRoot, __spreadProps(__spreadValues({
+        ref: handleRef,
+        href: other.href || other.to,
+        component: (other.href || other.to) && component === "div" ? "button" : component,
+        focusVisibleClassName: clsx_default(classes.focusVisible, focusVisibleClassName),
+        ownerState,
+        className: clsx_default(classes.root, className)
+      }, other), {
+        classes,
+        children
+      }))
+    });
+  });
+  false ? ListItemButton.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * Defines the `align-items` style property.
+     * @default 'center'
+     */
+    alignItems: import_prop_types.default.oneOf(["center", "flex-start"]),
+    /**
+     * If `true`, the list item is focused during the first mount.
+     * Focus will also be triggered if the value changes from false to true.
+     * @default false
+     */
+    autoFocus: import_prop_types.default.bool,
+    /**
+     * The content of the component if a `ListItemSecondaryAction` is used it must
+     * be the last child.
+     */
+    children: import_prop_types.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * The component used for the root node.
+     * Either a string to use a HTML element or a component.
+     */
+    component: import_prop_types.default.elementType,
+    /**
+     * If `true`, compact vertical padding designed for keyboard and mouse input is used.
+     * The prop defaults to the value inherited from the parent List component.
+     * @default false
+     */
+    dense: import_prop_types.default.bool,
+    /**
+     * If `true`, the component is disabled.
+     * @default false
+     */
+    disabled: import_prop_types.default.bool,
+    /**
+     * If `true`, the left and right padding is removed.
+     * @default false
+     */
+    disableGutters: import_prop_types.default.bool,
+    /**
+     * If `true`, a 1px light border is added to the bottom of the list item.
+     * @default false
+     */
+    divider: import_prop_types.default.bool,
+    /**
+     * This prop can help identify which element has keyboard focus.
+     * The class name will be applied when the element gains the focus through keyboard interaction.
+     * It's a polyfill for the [CSS :focus-visible selector](https://drafts.csswg.org/selectors-4/#the-focus-visible-pseudo).
+     * The rationale for using this feature [is explained here](https://github.com/WICG/focus-visible/blob/HEAD/explainer.md).
+     * A [polyfill can be used](https://github.com/WICG/focus-visible) to apply a `focus-visible` class to other components
+     * if needed.
+     */
+    focusVisibleClassName: import_prop_types.default.string,
+    /**
+     * @ignore
+     */
+    href: import_prop_types.default.string,
+    /**
+     * Use to apply selected styling.
+     * @default false
+     */
+    selected: import_prop_types.default.bool,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object])
+  } : void 0;
+  var ListItemButton_default = ListItemButton;
+
+  // node_modules/@mui/material/ListItemSecondaryAction/ListItemSecondaryAction.js
+  var React87 = __toESM(require_react());
+
+  // node_modules/@mui/material/ListItemSecondaryAction/listItemSecondaryActionClasses.js
+  function getListItemSecondaryActionClassesUtilityClass(slot) {
+    return generateUtilityClass("MuiListItemSecondaryAction", slot);
+  }
+  var listItemSecondaryActionClasses = generateUtilityClasses("MuiListItemSecondaryAction", ["root", "disableGutters"]);
+
+  // node_modules/@mui/material/ListItemSecondaryAction/ListItemSecondaryAction.js
+  var import_jsx_runtime56 = __toESM(require_jsx_runtime());
+  var useUtilityClasses26 = (ownerState) => {
+    const {
+      disableGutters,
+      classes
+    } = ownerState;
+    const slots = {
+      root: ["root", disableGutters && "disableGutters"]
+    };
+    return composeClasses(slots, getListItemSecondaryActionClassesUtilityClass, classes);
+  };
+  var ListItemSecondaryActionRoot = styled_default2("div", {
+    name: "MuiListItemSecondaryAction",
+    slot: "Root",
+    overridesResolver: (props, styles4) => {
+      const {
+        ownerState
+      } = props;
+      return [styles4.root, ownerState.disableGutters && styles4.disableGutters];
+    }
+  })({
+    position: "absolute",
+    right: 16,
+    top: "50%",
+    transform: "translateY(-50%)",
+    variants: [{
+      props: ({
+        ownerState
+      }) => ownerState.disableGutters,
+      style: {
+        right: 0
+      }
+    }]
+  });
+  var ListItemSecondaryAction = /* @__PURE__ */ React87.forwardRef(function ListItemSecondaryAction2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiListItemSecondaryAction"
+    });
+    const _a = props, {
+      className
+    } = _a, other = __objRest(_a, [
+      "className"
+    ]);
+    const context = React87.useContext(ListContext_default);
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      disableGutters: context.disableGutters
+    });
+    const classes = useUtilityClasses26(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(ListItemSecondaryActionRoot, __spreadValues({
+      className: clsx_default(classes.root, className),
+      ownerState,
+      ref
+    }, other));
+  });
+  false ? ListItemSecondaryAction.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * The content of the component, normally an `IconButton` or selection control.
+     */
+    children: import_prop_types.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object])
+  } : void 0;
+  ListItemSecondaryAction.muiName = "ListItemSecondaryAction";
+  var ListItemSecondaryAction_default = ListItemSecondaryAction;
+
+  // node_modules/@mui/material/ListItem/ListItem.js
+  var import_jsx_runtime57 = __toESM(require_jsx_runtime());
+  var overridesResolver3 = (props, styles4) => {
+    const {
+      ownerState
+    } = props;
+    return [styles4.root, ownerState.dense && styles4.dense, ownerState.alignItems === "flex-start" && styles4.alignItemsFlexStart, ownerState.divider && styles4.divider, !ownerState.disableGutters && styles4.gutters, !ownerState.disablePadding && styles4.padding, ownerState.hasSecondaryAction && styles4.secondaryAction];
+  };
+  var useUtilityClasses27 = (ownerState) => {
+    const {
+      alignItems,
+      classes,
+      dense,
+      disableGutters,
+      disablePadding,
+      divider,
+      hasSecondaryAction
+    } = ownerState;
+    const slots = {
+      root: ["root", dense && "dense", !disableGutters && "gutters", !disablePadding && "padding", divider && "divider", alignItems === "flex-start" && "alignItemsFlexStart", hasSecondaryAction && "secondaryAction"],
+      container: ["container"]
+    };
+    return composeClasses(slots, getListItemUtilityClass, classes);
+  };
+  var ListItemRoot = styled_default2("div", {
+    name: "MuiListItem",
+    slot: "Root",
+    overridesResolver: overridesResolver3
+  })(memoTheme_default(({
+    theme
+  }) => ({
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    position: "relative",
+    textDecoration: "none",
+    width: "100%",
+    boxSizing: "border-box",
+    textAlign: "left",
+    variants: [{
+      props: ({
+        ownerState
+      }) => !ownerState.disablePadding,
+      style: {
+        paddingTop: 8,
+        paddingBottom: 8
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => !ownerState.disablePadding && ownerState.dense,
+      style: {
+        paddingTop: 4,
+        paddingBottom: 4
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => !ownerState.disablePadding && !ownerState.disableGutters,
+      style: {
+        paddingLeft: 16,
+        paddingRight: 16
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => !ownerState.disablePadding && !!ownerState.secondaryAction,
+      style: {
+        // Add some space to avoid collision as `ListItemSecondaryAction`
+        // is absolutely positioned.
+        paddingRight: 48
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => !!ownerState.secondaryAction,
+      style: {
+        [`& > .${listItemButtonClasses_default.root}`]: {
+          paddingRight: 48
+        }
+      }
+    }, {
+      props: {
+        alignItems: "flex-start"
+      },
+      style: {
+        alignItems: "flex-start"
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.divider,
+      style: {
+        borderBottom: `1px solid ${(theme.vars || theme).palette.divider}`,
+        backgroundClip: "padding-box"
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.button,
+      style: {
+        transition: theme.transitions.create("background-color", {
+          duration: theme.transitions.duration.shortest
+        }),
+        "&:hover": {
+          textDecoration: "none",
+          backgroundColor: (theme.vars || theme).palette.action.hover,
+          // Reset on touch devices, it doesn't add specificity
+          "@media (hover: none)": {
+            backgroundColor: "transparent"
+          }
+        }
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.hasSecondaryAction,
+      style: {
+        // Add some space to avoid collision as `ListItemSecondaryAction`
+        // is absolutely positioned.
+        paddingRight: 48
+      }
+    }]
+  })));
+  var ListItemContainer = styled_default2("li", {
+    name: "MuiListItem",
+    slot: "Container",
+    overridesResolver: (props, styles4) => styles4.container
+  })({
+    position: "relative"
+  });
+  var ListItem = /* @__PURE__ */ React88.forwardRef(function ListItem2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiListItem"
+    });
+    const _a = props, {
+      alignItems = "center",
+      children: childrenProp,
+      className,
+      component: componentProp,
+      components = {},
+      componentsProps = {},
+      ContainerComponent = "li",
+      ContainerProps: _b = {}
+    } = _a, _c = _b, {
+      className: ContainerClassName
+    } = _c, ContainerProps = __objRest(_c, [
+      "className"
+    ]), _d = _a, {
+      dense = false,
+      disableGutters = false,
+      disablePadding = false,
+      divider = false,
+      secondaryAction,
+      slotProps = {},
+      slots = {}
+    } = _d, other = __objRest(_d, [
+      "alignItems",
+      "children",
+      "className",
+      "component",
+      "components",
+      "componentsProps",
+      "ContainerComponent",
+      "ContainerProps",
+      "dense",
+      "disableGutters",
+      "disablePadding",
+      "divider",
+      "secondaryAction",
+      "slotProps",
+      "slots"
+    ]);
+    const context = React88.useContext(ListContext_default);
+    const childContext = React88.useMemo(() => ({
+      dense: dense || context.dense || false,
+      alignItems,
+      disableGutters
+    }), [alignItems, context.dense, dense, disableGutters]);
+    const listItemRef = React88.useRef(null);
+    const children = React88.Children.toArray(childrenProp);
+    const hasSecondaryAction = children.length && isMuiElement_default(children[children.length - 1], ["ListItemSecondaryAction"]);
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      alignItems,
+      dense: childContext.dense,
+      disableGutters,
+      disablePadding,
+      divider,
+      hasSecondaryAction
+    });
+    const classes = useUtilityClasses27(ownerState);
+    const handleRef = useForkRef_default(listItemRef, ref);
+    const Root2 = slots.root || components.Root || ListItemRoot;
+    const rootProps = slotProps.root || componentsProps.root || {};
+    const componentProps = __spreadValues({
+      className: clsx_default(classes.root, rootProps.className, className)
+    }, other);
+    let Component = componentProp || "li";
+    if (hasSecondaryAction) {
+      Component = !componentProps.component && !componentProp ? "div" : Component;
+      if (ContainerComponent === "li") {
+        if (Component === "li") {
+          Component = "div";
+        } else if (componentProps.component === "li") {
+          componentProps.component = "div";
+        }
+      }
+      return /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(ListContext_default.Provider, {
+        value: childContext,
+        children: /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(ListItemContainer, __spreadProps(__spreadValues({
+          as: ContainerComponent,
+          className: clsx_default(classes.container, ContainerClassName),
+          ref: handleRef,
+          ownerState
+        }, ContainerProps), {
+          children: [/* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Root2, __spreadProps(__spreadValues(__spreadValues(__spreadValues({}, rootProps), !isHostComponent_default2(Root2) && {
+            as: Component,
+            ownerState: __spreadValues(__spreadValues({}, ownerState), rootProps.ownerState)
+          }), componentProps), {
+            children
+          })), children.pop()]
+        }))
+      });
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(ListContext_default.Provider, {
+      value: childContext,
+      children: /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(Root2, __spreadProps(__spreadValues(__spreadValues(__spreadProps(__spreadValues({}, rootProps), {
+        as: Component,
+        ref: handleRef
+      }), !isHostComponent_default2(Root2) && {
+        ownerState: __spreadValues(__spreadValues({}, ownerState), rootProps.ownerState)
+      }), componentProps), {
+        children: [children, secondaryAction && /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(ListItemSecondaryAction_default, {
+          children: secondaryAction
+        })]
+      }))
+    });
+  });
+  false ? ListItem.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * Defines the `align-items` style property.
+     * @default 'center'
+     */
+    alignItems: import_prop_types.default.oneOf(["center", "flex-start"]),
+    /**
+     * The content of the component if a `ListItemSecondaryAction` is used it must
+     * be the last child.
+     */
+    children: chainPropTypes(import_prop_types.default.node, (props) => {
+      const children = React88.Children.toArray(props.children);
+      let secondaryActionIndex = -1;
+      for (let i = children.length - 1; i >= 0; i -= 1) {
+        const child = children[i];
+        if (isMuiElement_default(child, ["ListItemSecondaryAction"])) {
+          secondaryActionIndex = i;
+          break;
+        }
+      }
+      if (secondaryActionIndex !== -1 && secondaryActionIndex !== children.length - 1) {
+        return new Error("MUI: You used an element after ListItemSecondaryAction. For ListItem to detect that it has a secondary action you must pass it as the last child to ListItem.");
+      }
+      return null;
+    }),
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * The component used for the root node.
+     * Either a string to use a HTML element or a component.
+     */
+    component: import_prop_types.default.elementType,
+    /**
+     * The components used for each slot inside.
+     *
+     * @deprecated Use the `slots` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     * @default {}
+     */
+    components: import_prop_types.default.shape({
+      Root: import_prop_types.default.elementType
+    }),
+    /**
+     * The extra props for the slot components.
+     * You can override the existing props or add new ones.
+     *
+     * @deprecated Use the `slotProps` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     * @default {}
+     */
+    componentsProps: import_prop_types.default.shape({
+      root: import_prop_types.default.object
+    }),
+    /**
+     * The container component used when a `ListItemSecondaryAction` is the last child.
+     * @default 'li'
+     * @deprecated Use the `component` or `slots.root` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     */
+    ContainerComponent: elementTypeAcceptingRef_default,
+    /**
+     * Props applied to the container component if used.
+     * @default {}
+     * @deprecated Use the `slotProps.root` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     */
+    ContainerProps: import_prop_types.default.object,
+    /**
+     * If `true`, compact vertical padding designed for keyboard and mouse input is used.
+     * The prop defaults to the value inherited from the parent List component.
+     * @default false
+     */
+    dense: import_prop_types.default.bool,
+    /**
+     * If `true`, the left and right padding is removed.
+     * @default false
+     */
+    disableGutters: import_prop_types.default.bool,
+    /**
+     * If `true`, all padding is removed.
+     * @default false
+     */
+    disablePadding: import_prop_types.default.bool,
+    /**
+     * If `true`, a 1px light border is added to the bottom of the list item.
+     * @default false
+     */
+    divider: import_prop_types.default.bool,
+    /**
+     * The element to display at the end of ListItem.
+     */
+    secondaryAction: import_prop_types.default.node,
+    /**
+     * The extra props for the slot components.
+     * You can override the existing props or add new ones.
+     *
+     * @default {}
+     */
+    slotProps: import_prop_types.default.shape({
+      root: import_prop_types.default.object
+    }),
+    /**
+     * The components used for each slot inside.
+     *
+     * @default {}
+     */
+    slots: import_prop_types.default.shape({
+      root: import_prop_types.default.elementType
+    }),
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object])
+  } : void 0;
+  var ListItem_default = ListItem;
+
+  // node_modules/@mui/material/ListItemIcon/ListItemIcon.js
+  var React89 = __toESM(require_react());
+
+  // node_modules/@mui/material/ListItemIcon/listItemIconClasses.js
+  function getListItemIconUtilityClass(slot) {
+    return generateUtilityClass("MuiListItemIcon", slot);
+  }
+  var listItemIconClasses = generateUtilityClasses("MuiListItemIcon", ["root", "alignItemsFlexStart"]);
+
+  // node_modules/@mui/material/ListItemIcon/ListItemIcon.js
+  var import_jsx_runtime58 = __toESM(require_jsx_runtime());
+  var useUtilityClasses28 = (ownerState) => {
+    const {
+      alignItems,
+      classes
+    } = ownerState;
+    const slots = {
+      root: ["root", alignItems === "flex-start" && "alignItemsFlexStart"]
+    };
+    return composeClasses(slots, getListItemIconUtilityClass, classes);
+  };
+  var ListItemIconRoot = styled_default2("div", {
+    name: "MuiListItemIcon",
+    slot: "Root",
+    overridesResolver: (props, styles4) => {
+      const {
+        ownerState
+      } = props;
+      return [styles4.root, ownerState.alignItems === "flex-start" && styles4.alignItemsFlexStart];
+    }
+  })(memoTheme_default(({
+    theme
+  }) => ({
+    minWidth: 56,
+    color: (theme.vars || theme).palette.action.active,
+    flexShrink: 0,
+    display: "inline-flex",
+    variants: [{
+      props: {
+        alignItems: "flex-start"
+      },
+      style: {
+        marginTop: 8
+      }
+    }]
+  })));
+  var ListItemIcon = /* @__PURE__ */ React89.forwardRef(function ListItemIcon2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiListItemIcon"
+    });
+    const _a = props, {
+      className
+    } = _a, other = __objRest(_a, [
+      "className"
+    ]);
+    const context = React89.useContext(ListContext_default);
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      alignItems: context.alignItems
+    });
+    const classes = useUtilityClasses28(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(ListItemIconRoot, __spreadValues({
+      className: clsx_default(classes.root, className),
+      ownerState,
+      ref
+    }, other));
+  });
+  false ? ListItemIcon.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * The content of the component, normally `Icon`, `SvgIcon`,
+     * or a `@mui/icons-material` SVG icon element.
+     */
+    children: import_prop_types.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object])
+  } : void 0;
+  var ListItemIcon_default = ListItemIcon;
+
+  // node_modules/@mui/material/ListItemText/ListItemText.js
+  var React90 = __toESM(require_react());
+
+  // node_modules/@mui/material/ListItemText/listItemTextClasses.js
+  function getListItemTextUtilityClass(slot) {
+    return generateUtilityClass("MuiListItemText", slot);
+  }
+  var listItemTextClasses = generateUtilityClasses("MuiListItemText", ["root", "multiline", "dense", "inset", "primary", "secondary"]);
+  var listItemTextClasses_default = listItemTextClasses;
+
+  // node_modules/@mui/material/ListItemText/ListItemText.js
+  var import_jsx_runtime59 = __toESM(require_jsx_runtime());
+  var useUtilityClasses29 = (ownerState) => {
+    const {
+      classes,
+      inset,
+      primary,
+      secondary,
+      dense
+    } = ownerState;
+    const slots = {
+      root: ["root", inset && "inset", dense && "dense", primary && secondary && "multiline"],
+      primary: ["primary"],
+      secondary: ["secondary"]
+    };
+    return composeClasses(slots, getListItemTextUtilityClass, classes);
+  };
+  var ListItemTextRoot = styled_default2("div", {
+    name: "MuiListItemText",
+    slot: "Root",
+    overridesResolver: (props, styles4) => {
+      const {
+        ownerState
+      } = props;
+      return [{
+        [`& .${listItemTextClasses_default.primary}`]: styles4.primary
+      }, {
+        [`& .${listItemTextClasses_default.secondary}`]: styles4.secondary
+      }, styles4.root, ownerState.inset && styles4.inset, ownerState.primary && ownerState.secondary && styles4.multiline, ownerState.dense && styles4.dense];
+    }
+  })({
+    flex: "1 1 auto",
+    minWidth: 0,
+    marginTop: 4,
+    marginBottom: 4,
+    [`.${typographyClasses_default.root}:where(& .${listItemTextClasses_default.primary})`]: {
+      display: "block"
+    },
+    [`.${typographyClasses_default.root}:where(& .${listItemTextClasses_default.secondary})`]: {
+      display: "block"
+    },
+    variants: [{
+      props: ({
+        ownerState
+      }) => ownerState.primary && ownerState.secondary,
+      style: {
+        marginTop: 6,
+        marginBottom: 6
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.inset,
+      style: {
+        paddingLeft: 56
+      }
+    }]
+  });
+  var ListItemText = /* @__PURE__ */ React90.forwardRef(function ListItemText2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiListItemText"
+    });
+    const _a = props, {
+      children,
+      className,
+      disableTypography = false,
+      inset = false,
+      primary: primaryProp,
+      primaryTypographyProps,
+      secondary: secondaryProp,
+      secondaryTypographyProps,
+      slots = {},
+      slotProps = {}
+    } = _a, other = __objRest(_a, [
+      "children",
+      "className",
+      "disableTypography",
+      "inset",
+      "primary",
+      "primaryTypographyProps",
+      "secondary",
+      "secondaryTypographyProps",
+      "slots",
+      "slotProps"
+    ]);
+    const {
+      dense
+    } = React90.useContext(ListContext_default);
+    let primary = primaryProp != null ? primaryProp : children;
+    let secondary = secondaryProp;
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      disableTypography,
+      inset,
+      primary: !!primary,
+      secondary: !!secondary,
+      dense
+    });
+    const classes = useUtilityClasses29(ownerState);
+    const externalForwardedProps = {
+      slots,
+      slotProps: __spreadValues({
+        primary: primaryTypographyProps,
+        secondary: secondaryTypographyProps
+      }, slotProps)
+    };
+    const [RootSlot, rootSlotProps] = useSlot("root", {
+      className: clsx_default(classes.root, className),
+      elementType: ListItemTextRoot,
+      externalForwardedProps: __spreadValues(__spreadValues({}, externalForwardedProps), other),
+      ownerState,
+      ref
+    });
+    const [PrimarySlot, primarySlotProps] = useSlot("primary", {
+      className: classes.primary,
+      elementType: Typography_default,
+      externalForwardedProps,
+      ownerState
+    });
+    const [SecondarySlot, secondarySlotProps] = useSlot("secondary", {
+      className: classes.secondary,
+      elementType: Typography_default,
+      externalForwardedProps,
+      ownerState
+    });
+    if (primary != null && primary.type !== Typography_default && !disableTypography) {
+      primary = /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(PrimarySlot, __spreadProps(__spreadValues({
+        variant: dense ? "body2" : "body1",
+        component: (primarySlotProps == null ? void 0 : primarySlotProps.variant) ? void 0 : "span"
+      }, primarySlotProps), {
+        children: primary
+      }));
+    }
+    if (secondary != null && secondary.type !== Typography_default && !disableTypography) {
+      secondary = /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(SecondarySlot, __spreadProps(__spreadValues({
+        variant: "body2",
+        color: "textSecondary"
+      }, secondarySlotProps), {
+        children: secondary
+      }));
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(RootSlot, __spreadProps(__spreadValues({}, rootSlotProps), {
+      children: [primary, secondary]
+    }));
+  });
+  false ? ListItemText.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * Alias for the `primary` prop.
+     */
+    children: import_prop_types.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * If `true`, the children won't be wrapped by a Typography component.
+     * This can be useful to render an alternative Typography variant by wrapping
+     * the `children` (or `primary`) text, and optional `secondary` text
+     * with the Typography component.
+     * @default false
+     */
+    disableTypography: import_prop_types.default.bool,
+    /**
+     * If `true`, the children are indented.
+     * This should be used if there is no left avatar or left icon.
+     * @default false
+     */
+    inset: import_prop_types.default.bool,
+    /**
+     * The main content element.
+     */
+    primary: import_prop_types.default.node,
+    /**
+     * These props will be forwarded to the primary typography component
+     * (as long as disableTypography is not `true`).
+     * @deprecated Use `slotProps.primary` instead. This prop will be removed in v7. See [Migrating from deprecated APIs](/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     */
+    primaryTypographyProps: import_prop_types.default.object,
+    /**
+     * The secondary content element.
+     */
+    secondary: import_prop_types.default.node,
+    /**
+     * These props will be forwarded to the secondary typography component
+     * (as long as disableTypography is not `true`).
+     * @deprecated Use `slotProps.secondary` instead. This prop will be removed in v7. See [Migrating from deprecated APIs](/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     */
+    secondaryTypographyProps: import_prop_types.default.object,
+    /**
+     * The props used for each slot inside.
+     * @default {}
+     */
+    slotProps: import_prop_types.default.shape({
+      primary: import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object]),
+      root: import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object]),
+      secondary: import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object])
+    }),
+    /**
+     * The components used for each slot inside.
+     * @default {}
+     */
+    slots: import_prop_types.default.shape({
+      primary: import_prop_types.default.elementType,
+      root: import_prop_types.default.elementType,
+      secondary: import_prop_types.default.elementType
+    }),
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object])
+  } : void 0;
+  var ListItemText_default = ListItemText;
+
   // node_modules/@mui/material/NoSsr/NoSsr.js
-  var React66 = __toESM(require_react());
+  var React91 = __toESM(require_react());
   function NoSsr(props) {
     const {
       children,
       defer = false,
       fallback = null
     } = props;
-    const [mountedState, setMountedState] = React66.useState(false);
+    const [mountedState, setMountedState] = React91.useState(false);
     useEnhancedEffect_default(() => {
       if (!defer) {
         setMountedState(true);
       }
     }, [defer]);
-    React66.useEffect(() => {
+    React91.useEffect(() => {
       if (defer) {
         setMountedState(true);
       }
@@ -34689,12 +39403,1428 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
   var NoSsr_default = NoSsr;
 
+  // node_modules/@mui/material/OutlinedInput/OutlinedInput.js
+  var React93 = __toESM(require_react());
+
+  // node_modules/@mui/material/OutlinedInput/NotchedOutline.js
+  var React92 = __toESM(require_react());
+  var import_jsx_runtime60 = __toESM(require_jsx_runtime());
+  var _span2;
+  var NotchedOutlineRoot = styled_default2("fieldset", {
+    shouldForwardProp: rootShouldForwardProp_default
+  })({
+    textAlign: "left",
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+    top: -5,
+    left: 0,
+    margin: 0,
+    padding: "0 8px",
+    pointerEvents: "none",
+    borderRadius: "inherit",
+    borderStyle: "solid",
+    borderWidth: 1,
+    overflow: "hidden",
+    minWidth: "0%"
+  });
+  var NotchedOutlineLegend = styled_default2("legend", {
+    shouldForwardProp: rootShouldForwardProp_default
+  })(memoTheme_default(({
+    theme
+  }) => ({
+    float: "unset",
+    // Fix conflict with bootstrap
+    width: "auto",
+    // Fix conflict with bootstrap
+    overflow: "hidden",
+    // Fix Horizontal scroll when label too long
+    variants: [{
+      props: ({
+        ownerState
+      }) => !ownerState.withLabel,
+      style: {
+        padding: 0,
+        lineHeight: "11px",
+        // sync with `height` in `legend` styles
+        transition: theme.transitions.create("width", {
+          duration: 150,
+          easing: theme.transitions.easing.easeOut
+        })
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.withLabel,
+      style: {
+        display: "block",
+        // Fix conflict with normalize.css and sanitize.css
+        padding: 0,
+        height: 11,
+        // sync with `lineHeight` in `legend` styles
+        fontSize: "0.75em",
+        visibility: "hidden",
+        maxWidth: 0.01,
+        transition: theme.transitions.create("max-width", {
+          duration: 50,
+          easing: theme.transitions.easing.easeOut
+        }),
+        whiteSpace: "nowrap",
+        "& > span": {
+          paddingLeft: 5,
+          paddingRight: 5,
+          display: "inline-block",
+          opacity: 0,
+          visibility: "visible"
+        }
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.withLabel && ownerState.notched,
+      style: {
+        maxWidth: "100%",
+        transition: theme.transitions.create("max-width", {
+          duration: 100,
+          easing: theme.transitions.easing.easeOut,
+          delay: 50
+        })
+      }
+    }]
+  })));
+  function NotchedOutline(props) {
+    const _a = props, {
+      children,
+      classes,
+      className,
+      label,
+      notched
+    } = _a, other = __objRest(_a, [
+      "children",
+      "classes",
+      "className",
+      "label",
+      "notched"
+    ]);
+    const withLabel = label != null && label !== "";
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      notched,
+      withLabel
+    });
+    return /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(NotchedOutlineRoot, __spreadProps(__spreadValues({
+      "aria-hidden": true,
+      className,
+      ownerState
+    }, other), {
+      children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(NotchedOutlineLegend, {
+        ownerState,
+        children: withLabel ? /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", {
+          children: label
+        }) : (
+          // notranslate needed while Google Translate will not fix zero-width space issue
+          _span2 || (_span2 = /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", {
+            className: "notranslate",
+            "aria-hidden": true,
+            children: "\u200B"
+          }))
+        )
+      })
+    }));
+  }
+  false ? NotchedOutline.propTypes = {
+    /**
+     * The content of the component.
+     */
+    children: import_prop_types.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * The label.
+     */
+    label: import_prop_types.default.node,
+    /**
+     * If `true`, the outline is notched to accommodate the label.
+     */
+    notched: import_prop_types.default.bool.isRequired,
+    /**
+     * @ignore
+     */
+    style: import_prop_types.default.object
+  } : void 0;
+
+  // node_modules/@mui/material/OutlinedInput/OutlinedInput.js
+  var import_jsx_runtime61 = __toESM(require_jsx_runtime());
+  var useUtilityClasses30 = (ownerState) => {
+    const {
+      classes
+    } = ownerState;
+    const slots = {
+      root: ["root"],
+      notchedOutline: ["notchedOutline"],
+      input: ["input"]
+    };
+    const composedClasses = composeClasses(slots, getOutlinedInputUtilityClass, classes);
+    return __spreadValues(__spreadValues({}, classes), composedClasses);
+  };
+  var OutlinedInputRoot = styled_default2(InputBaseRoot, {
+    shouldForwardProp: (prop) => rootShouldForwardProp_default(prop) || prop === "classes",
+    name: "MuiOutlinedInput",
+    slot: "Root",
+    overridesResolver: rootOverridesResolver
+  })(memoTheme_default(({
+    theme
+  }) => {
+    const borderColor2 = theme.palette.mode === "light" ? "rgba(0, 0, 0, 0.23)" : "rgba(255, 255, 255, 0.23)";
+    return {
+      position: "relative",
+      borderRadius: (theme.vars || theme).shape.borderRadius,
+      [`&:hover .${outlinedInputClasses_default.notchedOutline}`]: {
+        borderColor: (theme.vars || theme).palette.text.primary
+      },
+      // Reset on touch devices, it doesn't add specificity
+      "@media (hover: none)": {
+        [`&:hover .${outlinedInputClasses_default.notchedOutline}`]: {
+          borderColor: theme.vars ? `rgba(${theme.vars.palette.common.onBackgroundChannel} / 0.23)` : borderColor2
+        }
+      },
+      [`&.${outlinedInputClasses_default.focused} .${outlinedInputClasses_default.notchedOutline}`]: {
+        borderWidth: 2
+      },
+      variants: [...Object.entries(theme.palette).filter(createSimplePaletteValueFilter()).map(([color3]) => ({
+        props: {
+          color: color3
+        },
+        style: {
+          [`&.${outlinedInputClasses_default.focused} .${outlinedInputClasses_default.notchedOutline}`]: {
+            borderColor: (theme.vars || theme).palette[color3].main
+          }
+        }
+      })), {
+        props: {},
+        // to overide the above style
+        style: {
+          [`&.${outlinedInputClasses_default.error} .${outlinedInputClasses_default.notchedOutline}`]: {
+            borderColor: (theme.vars || theme).palette.error.main
+          },
+          [`&.${outlinedInputClasses_default.disabled} .${outlinedInputClasses_default.notchedOutline}`]: {
+            borderColor: (theme.vars || theme).palette.action.disabled
+          }
+        }
+      }, {
+        props: ({
+          ownerState
+        }) => ownerState.startAdornment,
+        style: {
+          paddingLeft: 14
+        }
+      }, {
+        props: ({
+          ownerState
+        }) => ownerState.endAdornment,
+        style: {
+          paddingRight: 14
+        }
+      }, {
+        props: ({
+          ownerState
+        }) => ownerState.multiline,
+        style: {
+          padding: "16.5px 14px"
+        }
+      }, {
+        props: ({
+          ownerState,
+          size
+        }) => ownerState.multiline && size === "small",
+        style: {
+          padding: "8.5px 14px"
+        }
+      }]
+    };
+  }));
+  var NotchedOutlineRoot2 = styled_default2(NotchedOutline, {
+    name: "MuiOutlinedInput",
+    slot: "NotchedOutline",
+    overridesResolver: (props, styles4) => styles4.notchedOutline
+  })(memoTheme_default(({
+    theme
+  }) => {
+    const borderColor2 = theme.palette.mode === "light" ? "rgba(0, 0, 0, 0.23)" : "rgba(255, 255, 255, 0.23)";
+    return {
+      borderColor: theme.vars ? `rgba(${theme.vars.palette.common.onBackgroundChannel} / 0.23)` : borderColor2
+    };
+  }));
+  var OutlinedInputInput = styled_default2(InputBaseInput, {
+    name: "MuiOutlinedInput",
+    slot: "Input",
+    overridesResolver: inputOverridesResolver
+  })(memoTheme_default(({
+    theme
+  }) => __spreadProps(__spreadValues(__spreadValues({
+    padding: "16.5px 14px"
+  }, !theme.vars && {
+    "&:-webkit-autofill": {
+      WebkitBoxShadow: theme.palette.mode === "light" ? null : "0 0 0 100px #266798 inset",
+      WebkitTextFillColor: theme.palette.mode === "light" ? null : "#fff",
+      caretColor: theme.palette.mode === "light" ? null : "#fff",
+      borderRadius: "inherit"
+    }
+  }), theme.vars && {
+    "&:-webkit-autofill": {
+      borderRadius: "inherit"
+    },
+    [theme.getColorSchemeSelector("dark")]: {
+      "&:-webkit-autofill": {
+        WebkitBoxShadow: "0 0 0 100px #266798 inset",
+        WebkitTextFillColor: "#fff",
+        caretColor: "#fff"
+      }
+    }
+  }), {
+    variants: [{
+      props: {
+        size: "small"
+      },
+      style: {
+        padding: "8.5px 14px"
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.multiline,
+      style: {
+        padding: 0
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.startAdornment,
+      style: {
+        paddingLeft: 0
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.endAdornment,
+      style: {
+        paddingRight: 0
+      }
+    }]
+  })));
+  var OutlinedInput = /* @__PURE__ */ React93.forwardRef(function OutlinedInput2(inProps, ref) {
+    var _b, _c, _d, _e;
+    var _React$Fragment;
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiOutlinedInput"
+    });
+    const _a = props, {
+      components = {},
+      fullWidth = false,
+      inputComponent = "input",
+      label,
+      multiline = false,
+      notched,
+      slots = {},
+      type = "text"
+    } = _a, other = __objRest(_a, [
+      "components",
+      "fullWidth",
+      "inputComponent",
+      "label",
+      "multiline",
+      "notched",
+      "slots",
+      "type"
+    ]);
+    const classes = useUtilityClasses30(props);
+    const muiFormControl = useFormControl();
+    const fcs = formControlState({
+      props,
+      muiFormControl,
+      states: ["color", "disabled", "error", "focused", "hiddenLabel", "size", "required"]
+    });
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      color: fcs.color || "primary",
+      disabled: fcs.disabled,
+      error: fcs.error,
+      focused: fcs.focused,
+      formControl: muiFormControl,
+      fullWidth,
+      hiddenLabel: fcs.hiddenLabel,
+      multiline,
+      size: fcs.size,
+      type
+    });
+    const RootSlot = (_c = (_b = slots.root) != null ? _b : components.Root) != null ? _c : OutlinedInputRoot;
+    const InputSlot = (_e = (_d = slots.input) != null ? _d : components.Input) != null ? _e : OutlinedInputInput;
+    return /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(InputBase_default, __spreadProps(__spreadValues({
+      slots: {
+        root: RootSlot,
+        input: InputSlot
+      },
+      renderSuffix: (state) => /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(NotchedOutlineRoot2, {
+        ownerState,
+        className: classes.notchedOutline,
+        label: label != null && label !== "" && fcs.required ? _React$Fragment || (_React$Fragment = /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(React93.Fragment, {
+          children: [label, "\u2009", "*"]
+        })) : label,
+        notched: typeof notched !== "undefined" ? notched : Boolean(state.startAdornment || state.filled || state.focused)
+      }),
+      fullWidth,
+      inputComponent,
+      multiline,
+      ref,
+      type
+    }, other), {
+      classes: __spreadProps(__spreadValues({}, classes), {
+        notchedOutline: null
+      })
+    }));
+  });
+  false ? OutlinedInput.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * This prop helps users to fill forms faster, especially on mobile devices.
+     * The name can be confusing, as it's more like an autofill.
+     * You can learn more about it [following the specification](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill).
+     */
+    autoComplete: import_prop_types.default.string,
+    /**
+     * If `true`, the `input` element is focused during the first mount.
+     */
+    autoFocus: import_prop_types.default.bool,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * The color of the component.
+     * It supports both default and custom theme colors, which can be added as shown in the
+     * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
+     * The prop defaults to the value (`'primary'`) inherited from the parent FormControl component.
+     */
+    color: import_prop_types.default.oneOfType([import_prop_types.default.oneOf(["primary", "secondary"]), import_prop_types.default.string]),
+    /**
+     * The components used for each slot inside.
+     *
+     * @deprecated use the `slots` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     *
+     * @default {}
+     */
+    components: import_prop_types.default.shape({
+      Input: import_prop_types.default.elementType,
+      Root: import_prop_types.default.elementType
+    }),
+    /**
+     * The default value. Use when the component is not controlled.
+     */
+    defaultValue: import_prop_types.default.any,
+    /**
+     * If `true`, the component is disabled.
+     * The prop defaults to the value (`false`) inherited from the parent FormControl component.
+     */
+    disabled: import_prop_types.default.bool,
+    /**
+     * End `InputAdornment` for this component.
+     */
+    endAdornment: import_prop_types.default.node,
+    /**
+     * If `true`, the `input` will indicate an error.
+     * The prop defaults to the value (`false`) inherited from the parent FormControl component.
+     */
+    error: import_prop_types.default.bool,
+    /**
+     * If `true`, the `input` will take up the full width of its container.
+     * @default false
+     */
+    fullWidth: import_prop_types.default.bool,
+    /**
+     * The id of the `input` element.
+     */
+    id: import_prop_types.default.string,
+    /**
+     * The component used for the `input` element.
+     * Either a string to use a HTML element or a component.
+     * @default 'input'
+     */
+    inputComponent: import_prop_types.default.elementType,
+    /**
+     * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
+     * @default {}
+     */
+    inputProps: import_prop_types.default.object,
+    /**
+     * Pass a ref to the `input` element.
+     */
+    inputRef: refType_default,
+    /**
+     * The label of the `input`. It is only used for layout. The actual labelling
+     * is handled by `InputLabel`.
+     */
+    label: import_prop_types.default.node,
+    /**
+     * If `dense`, will adjust vertical spacing. This is normally obtained via context from
+     * FormControl.
+     * The prop defaults to the value (`'none'`) inherited from the parent FormControl component.
+     */
+    margin: import_prop_types.default.oneOf(["dense", "none"]),
+    /**
+     * Maximum number of rows to display when multiline option is set to true.
+     */
+    maxRows: import_prop_types.default.oneOfType([import_prop_types.default.number, import_prop_types.default.string]),
+    /**
+     * Minimum number of rows to display when multiline option is set to true.
+     */
+    minRows: import_prop_types.default.oneOfType([import_prop_types.default.number, import_prop_types.default.string]),
+    /**
+     * If `true`, a [TextareaAutosize](https://mui.com/material-ui/react-textarea-autosize/) element is rendered.
+     * @default false
+     */
+    multiline: import_prop_types.default.bool,
+    /**
+     * Name attribute of the `input` element.
+     */
+    name: import_prop_types.default.string,
+    /**
+     * If `true`, the outline is notched to accommodate the label.
+     */
+    notched: import_prop_types.default.bool,
+    /**
+     * Callback fired when the value is changed.
+     *
+     * @param {React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>} event The event source of the callback.
+     * You can pull out the new value by accessing `event.target.value` (string).
+     */
+    onChange: import_prop_types.default.func,
+    /**
+     * The short hint displayed in the `input` before the user enters a value.
+     */
+    placeholder: import_prop_types.default.string,
+    /**
+     * It prevents the user from changing the value of the field
+     * (not from interacting with the field).
+     */
+    readOnly: import_prop_types.default.bool,
+    /**
+     * If `true`, the `input` element is required.
+     * The prop defaults to the value (`false`) inherited from the parent FormControl component.
+     */
+    required: import_prop_types.default.bool,
+    /**
+     * Number of rows to display when multiline option is set to true.
+     */
+    rows: import_prop_types.default.oneOfType([import_prop_types.default.number, import_prop_types.default.string]),
+    /**
+     * The components used for each slot inside.
+     *
+     * This prop is an alias for the `components` prop, which will be deprecated in the future.
+     *
+     * @default {}
+     */
+    slots: import_prop_types.default.shape({
+      input: import_prop_types.default.elementType,
+      root: import_prop_types.default.elementType
+    }),
+    /**
+     * Start `InputAdornment` for this component.
+     */
+    startAdornment: import_prop_types.default.node,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object]),
+    /**
+     * Type of the `input` element. It should be [a valid HTML5 input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types).
+     * @default 'text'
+     */
+    type: import_prop_types.default.string,
+    /**
+     * The value of the `input` element, required for a controlled component.
+     */
+    value: import_prop_types.default.any
+  } : void 0;
+  OutlinedInput.muiName = "Input";
+  var OutlinedInput_default = OutlinedInput;
+
+  // node_modules/@mui/material/Tooltip/Tooltip.js
+  var React94 = __toESM(require_react());
+
+  // node_modules/@mui/material/Tooltip/tooltipClasses.js
+  function getTooltipUtilityClass(slot) {
+    return generateUtilityClass("MuiTooltip", slot);
+  }
+  var tooltipClasses = generateUtilityClasses("MuiTooltip", ["popper", "popperInteractive", "popperArrow", "popperClose", "tooltip", "tooltipArrow", "touch", "tooltipPlacementLeft", "tooltipPlacementRight", "tooltipPlacementTop", "tooltipPlacementBottom", "arrow"]);
+  var tooltipClasses_default = tooltipClasses;
+
+  // node_modules/@mui/material/Tooltip/Tooltip.js
+  var import_jsx_runtime62 = __toESM(require_jsx_runtime());
+  function round3(value) {
+    return Math.round(value * 1e5) / 1e5;
+  }
+  var useUtilityClasses31 = (ownerState) => {
+    const {
+      classes,
+      disableInteractive,
+      arrow: arrow2,
+      touch,
+      placement
+    } = ownerState;
+    const slots = {
+      popper: ["popper", !disableInteractive && "popperInteractive", arrow2 && "popperArrow"],
+      tooltip: ["tooltip", arrow2 && "tooltipArrow", touch && "touch", `tooltipPlacement${capitalize_default(placement.split("-")[0])}`],
+      arrow: ["arrow"]
+    };
+    return composeClasses(slots, getTooltipUtilityClass, classes);
+  };
+  var TooltipPopper = styled_default2(Popper_default, {
+    name: "MuiTooltip",
+    slot: "Popper",
+    overridesResolver: (props, styles4) => {
+      const {
+        ownerState
+      } = props;
+      return [styles4.popper, !ownerState.disableInteractive && styles4.popperInteractive, ownerState.arrow && styles4.popperArrow, !ownerState.open && styles4.popperClose];
+    }
+  })(memoTheme_default(({
+    theme
+  }) => ({
+    zIndex: (theme.vars || theme).zIndex.tooltip,
+    pointerEvents: "none",
+    variants: [{
+      props: ({
+        ownerState
+      }) => !ownerState.disableInteractive,
+      style: {
+        pointerEvents: "auto"
+      }
+    }, {
+      props: ({
+        open
+      }) => !open,
+      style: {
+        pointerEvents: "none"
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.arrow,
+      style: {
+        [`&[data-popper-placement*="bottom"] .${tooltipClasses_default.arrow}`]: {
+          top: 0,
+          marginTop: "-0.71em",
+          "&::before": {
+            transformOrigin: "0 100%"
+          }
+        },
+        [`&[data-popper-placement*="top"] .${tooltipClasses_default.arrow}`]: {
+          bottom: 0,
+          marginBottom: "-0.71em",
+          "&::before": {
+            transformOrigin: "100% 0"
+          }
+        },
+        [`&[data-popper-placement*="right"] .${tooltipClasses_default.arrow}`]: {
+          height: "1em",
+          width: "0.71em",
+          "&::before": {
+            transformOrigin: "100% 100%"
+          }
+        },
+        [`&[data-popper-placement*="left"] .${tooltipClasses_default.arrow}`]: {
+          height: "1em",
+          width: "0.71em",
+          "&::before": {
+            transformOrigin: "0 0"
+          }
+        }
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.arrow && !ownerState.isRtl,
+      style: {
+        [`&[data-popper-placement*="right"] .${tooltipClasses_default.arrow}`]: {
+          left: 0,
+          marginLeft: "-0.71em"
+        }
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.arrow && !!ownerState.isRtl,
+      style: {
+        [`&[data-popper-placement*="right"] .${tooltipClasses_default.arrow}`]: {
+          right: 0,
+          marginRight: "-0.71em"
+        }
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.arrow && !ownerState.isRtl,
+      style: {
+        [`&[data-popper-placement*="left"] .${tooltipClasses_default.arrow}`]: {
+          right: 0,
+          marginRight: "-0.71em"
+        }
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.arrow && !!ownerState.isRtl,
+      style: {
+        [`&[data-popper-placement*="left"] .${tooltipClasses_default.arrow}`]: {
+          left: 0,
+          marginLeft: "-0.71em"
+        }
+      }
+    }]
+  })));
+  var TooltipTooltip = styled_default2("div", {
+    name: "MuiTooltip",
+    slot: "Tooltip",
+    overridesResolver: (props, styles4) => {
+      const {
+        ownerState
+      } = props;
+      return [styles4.tooltip, ownerState.touch && styles4.touch, ownerState.arrow && styles4.tooltipArrow, styles4[`tooltipPlacement${capitalize_default(ownerState.placement.split("-")[0])}`]];
+    }
+  })(memoTheme_default(({
+    theme
+  }) => ({
+    backgroundColor: theme.vars ? theme.vars.palette.Tooltip.bg : alpha(theme.palette.grey[700], 0.92),
+    borderRadius: (theme.vars || theme).shape.borderRadius,
+    color: (theme.vars || theme).palette.common.white,
+    fontFamily: theme.typography.fontFamily,
+    padding: "4px 8px",
+    fontSize: theme.typography.pxToRem(11),
+    maxWidth: 300,
+    margin: 2,
+    wordWrap: "break-word",
+    fontWeight: theme.typography.fontWeightMedium,
+    [`.${tooltipClasses_default.popper}[data-popper-placement*="left"] &`]: {
+      transformOrigin: "right center"
+    },
+    [`.${tooltipClasses_default.popper}[data-popper-placement*="right"] &`]: {
+      transformOrigin: "left center"
+    },
+    [`.${tooltipClasses_default.popper}[data-popper-placement*="top"] &`]: {
+      transformOrigin: "center bottom",
+      marginBottom: "14px"
+    },
+    [`.${tooltipClasses_default.popper}[data-popper-placement*="bottom"] &`]: {
+      transformOrigin: "center top",
+      marginTop: "14px"
+    },
+    variants: [{
+      props: ({
+        ownerState
+      }) => ownerState.arrow,
+      style: {
+        position: "relative",
+        margin: 0
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.touch,
+      style: {
+        padding: "8px 16px",
+        fontSize: theme.typography.pxToRem(14),
+        lineHeight: `${round3(16 / 14)}em`,
+        fontWeight: theme.typography.fontWeightRegular
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => !ownerState.isRtl,
+      style: {
+        [`.${tooltipClasses_default.popper}[data-popper-placement*="left"] &`]: {
+          marginRight: "14px"
+        },
+        [`.${tooltipClasses_default.popper}[data-popper-placement*="right"] &`]: {
+          marginLeft: "14px"
+        }
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => !ownerState.isRtl && ownerState.touch,
+      style: {
+        [`.${tooltipClasses_default.popper}[data-popper-placement*="left"] &`]: {
+          marginRight: "24px"
+        },
+        [`.${tooltipClasses_default.popper}[data-popper-placement*="right"] &`]: {
+          marginLeft: "24px"
+        }
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => !!ownerState.isRtl,
+      style: {
+        [`.${tooltipClasses_default.popper}[data-popper-placement*="left"] &`]: {
+          marginLeft: "14px"
+        },
+        [`.${tooltipClasses_default.popper}[data-popper-placement*="right"] &`]: {
+          marginRight: "14px"
+        }
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => !!ownerState.isRtl && ownerState.touch,
+      style: {
+        [`.${tooltipClasses_default.popper}[data-popper-placement*="left"] &`]: {
+          marginLeft: "24px"
+        },
+        [`.${tooltipClasses_default.popper}[data-popper-placement*="right"] &`]: {
+          marginRight: "24px"
+        }
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.touch,
+      style: {
+        [`.${tooltipClasses_default.popper}[data-popper-placement*="top"] &`]: {
+          marginBottom: "24px"
+        }
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.touch,
+      style: {
+        [`.${tooltipClasses_default.popper}[data-popper-placement*="bottom"] &`]: {
+          marginTop: "24px"
+        }
+      }
+    }]
+  })));
+  var TooltipArrow = styled_default2("span", {
+    name: "MuiTooltip",
+    slot: "Arrow",
+    overridesResolver: (props, styles4) => styles4.arrow
+  })(memoTheme_default(({
+    theme
+  }) => ({
+    overflow: "hidden",
+    position: "absolute",
+    width: "1em",
+    height: "0.71em",
+    boxSizing: "border-box",
+    color: theme.vars ? theme.vars.palette.Tooltip.bg : alpha(theme.palette.grey[700], 0.9),
+    "&::before": {
+      content: '""',
+      margin: "auto",
+      display: "block",
+      width: "100%",
+      height: "100%",
+      backgroundColor: "currentColor",
+      transform: "rotate(45deg)"
+    }
+  })));
+  var hystersisOpen = false;
+  var hystersisTimer = new Timeout();
+  var cursorPosition = {
+    x: 0,
+    y: 0
+  };
+  function composeEventHandler(handler, eventHandler) {
+    return (event, ...params) => {
+      if (eventHandler) {
+        eventHandler(event, ...params);
+      }
+      handler(event, ...params);
+    };
+  }
+  var Tooltip = /* @__PURE__ */ React94.forwardRef(function Tooltip2(inProps, ref) {
+    var _b, _c, _d;
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiTooltip"
+    });
+    const _a = props, {
+      arrow: arrow2 = false,
+      children: childrenProp,
+      classes: classesProp,
+      components = {},
+      componentsProps = {},
+      describeChild = false,
+      disableFocusListener = false,
+      disableHoverListener = false,
+      disableInteractive: disableInteractiveProp = false,
+      disableTouchListener = false,
+      enterDelay = 100,
+      enterNextDelay = 0,
+      enterTouchDelay = 700,
+      followCursor = false,
+      id: idProp,
+      leaveDelay = 0,
+      leaveTouchDelay = 1500,
+      onClose,
+      onOpen,
+      open: openProp,
+      placement = "bottom",
+      PopperComponent: PopperComponentProp,
+      PopperProps = {},
+      slotProps = {},
+      slots = {},
+      title,
+      TransitionComponent: TransitionComponentProp,
+      TransitionProps
+    } = _a, other = __objRest(_a, [
+      "arrow",
+      "children",
+      "classes",
+      "components",
+      "componentsProps",
+      "describeChild",
+      "disableFocusListener",
+      "disableHoverListener",
+      "disableInteractive",
+      "disableTouchListener",
+      "enterDelay",
+      "enterNextDelay",
+      "enterTouchDelay",
+      "followCursor",
+      "id",
+      "leaveDelay",
+      "leaveTouchDelay",
+      "onClose",
+      "onOpen",
+      "open",
+      "placement",
+      "PopperComponent",
+      "PopperProps",
+      "slotProps",
+      "slots",
+      "title",
+      "TransitionComponent",
+      "TransitionProps"
+    ]);
+    const children = /* @__PURE__ */ React94.isValidElement(childrenProp) ? childrenProp : /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", {
+      children: childrenProp
+    });
+    const theme = useTheme5();
+    const isRtl = useRtl();
+    const [childNode, setChildNode] = React94.useState();
+    const [arrowRef, setArrowRef] = React94.useState(null);
+    const ignoreNonTouchEvents = React94.useRef(false);
+    const disableInteractive = disableInteractiveProp || followCursor;
+    const closeTimer = useTimeout();
+    const enterTimer = useTimeout();
+    const leaveTimer = useTimeout();
+    const touchTimer = useTimeout();
+    const [openState, setOpenState] = useControlled_default({
+      controlled: openProp,
+      default: false,
+      name: "Tooltip",
+      state: "open"
+    });
+    let open = openState;
+    if (false) {
+      const {
+        current: isControlled
+      } = React94.useRef(openProp !== void 0);
+      React94.useEffect(() => {
+        if (childNode && childNode.disabled && !isControlled && title !== "" && childNode.tagName.toLowerCase() === "button") {
+          console.warn(["MUI: You are providing a disabled `button` child to the Tooltip component.", "A disabled element does not fire events.", "Tooltip needs to listen to the child element's events to display the title.", "", "Add a simple wrapper element, such as a `span`."].join("\n"));
+        }
+      }, [title, childNode, isControlled]);
+    }
+    const id = useId_default(idProp);
+    const prevUserSelect = React94.useRef();
+    const stopTouchInteraction = useEventCallback_default2(() => {
+      if (prevUserSelect.current !== void 0) {
+        document.body.style.WebkitUserSelect = prevUserSelect.current;
+        prevUserSelect.current = void 0;
+      }
+      touchTimer.clear();
+    });
+    React94.useEffect(() => stopTouchInteraction, [stopTouchInteraction]);
+    const handleOpen = (event) => {
+      hystersisTimer.clear();
+      hystersisOpen = true;
+      setOpenState(true);
+      if (onOpen && !open) {
+        onOpen(event);
+      }
+    };
+    const handleClose = useEventCallback_default2(
+      /**
+       * @param {React.SyntheticEvent | Event} event
+       */
+      (event) => {
+        hystersisTimer.start(800 + leaveDelay, () => {
+          hystersisOpen = false;
+        });
+        setOpenState(false);
+        if (onClose && open) {
+          onClose(event);
+        }
+        closeTimer.start(theme.transitions.duration.shortest, () => {
+          ignoreNonTouchEvents.current = false;
+        });
+      }
+    );
+    const handleMouseOver = (event) => {
+      if (ignoreNonTouchEvents.current && event.type !== "touchstart") {
+        return;
+      }
+      if (childNode) {
+        childNode.removeAttribute("title");
+      }
+      enterTimer.clear();
+      leaveTimer.clear();
+      if (enterDelay || hystersisOpen && enterNextDelay) {
+        enterTimer.start(hystersisOpen ? enterNextDelay : enterDelay, () => {
+          handleOpen(event);
+        });
+      } else {
+        handleOpen(event);
+      }
+    };
+    const handleMouseLeave = (event) => {
+      enterTimer.clear();
+      leaveTimer.start(leaveDelay, () => {
+        handleClose(event);
+      });
+    };
+    const [, setChildIsFocusVisible] = React94.useState(false);
+    const handleBlur = (event) => {
+      if (!isFocusVisible(event.target)) {
+        setChildIsFocusVisible(false);
+        handleMouseLeave(event);
+      }
+    };
+    const handleFocus = (event) => {
+      if (!childNode) {
+        setChildNode(event.currentTarget);
+      }
+      if (isFocusVisible(event.target)) {
+        setChildIsFocusVisible(true);
+        handleMouseOver(event);
+      }
+    };
+    const detectTouchStart = (event) => {
+      ignoreNonTouchEvents.current = true;
+      const childrenProps2 = children.props;
+      if (childrenProps2.onTouchStart) {
+        childrenProps2.onTouchStart(event);
+      }
+    };
+    const handleTouchStart = (event) => {
+      detectTouchStart(event);
+      leaveTimer.clear();
+      closeTimer.clear();
+      stopTouchInteraction();
+      prevUserSelect.current = document.body.style.WebkitUserSelect;
+      document.body.style.WebkitUserSelect = "none";
+      touchTimer.start(enterTouchDelay, () => {
+        document.body.style.WebkitUserSelect = prevUserSelect.current;
+        handleMouseOver(event);
+      });
+    };
+    const handleTouchEnd = (event) => {
+      if (children.props.onTouchEnd) {
+        children.props.onTouchEnd(event);
+      }
+      stopTouchInteraction();
+      leaveTimer.start(leaveTouchDelay, () => {
+        handleClose(event);
+      });
+    };
+    React94.useEffect(() => {
+      if (!open) {
+        return void 0;
+      }
+      function handleKeyDown(nativeEvent) {
+        if (nativeEvent.key === "Escape") {
+          handleClose(nativeEvent);
+        }
+      }
+      document.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.removeEventListener("keydown", handleKeyDown);
+      };
+    }, [handleClose, open]);
+    const handleRef = useForkRef_default(getReactElementRef(children), setChildNode, ref);
+    if (!title && title !== 0) {
+      open = false;
+    }
+    const popperRef = React94.useRef();
+    const handleMouseMove = (event) => {
+      const childrenProps2 = children.props;
+      if (childrenProps2.onMouseMove) {
+        childrenProps2.onMouseMove(event);
+      }
+      cursorPosition = {
+        x: event.clientX,
+        y: event.clientY
+      };
+      if (popperRef.current) {
+        popperRef.current.update();
+      }
+    };
+    const nameOrDescProps = {};
+    const titleIsString = typeof title === "string";
+    if (describeChild) {
+      nameOrDescProps.title = !open && titleIsString && !disableHoverListener ? title : null;
+      nameOrDescProps["aria-describedby"] = open ? id : null;
+    } else {
+      nameOrDescProps["aria-label"] = titleIsString ? title : null;
+      nameOrDescProps["aria-labelledby"] = open && !titleIsString ? id : null;
+    }
+    const childrenProps = __spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues({}, nameOrDescProps), other), children.props), {
+      className: clsx_default(other.className, children.props.className),
+      onTouchStart: detectTouchStart,
+      ref: handleRef
+    }), followCursor ? {
+      onMouseMove: handleMouseMove
+    } : {});
+    if (false) {
+      childrenProps["data-mui-internal-clone-element"] = true;
+      React94.useEffect(() => {
+        if (childNode && !childNode.getAttribute("data-mui-internal-clone-element")) {
+          console.error(["MUI: The `children` component of the Tooltip is not forwarding its props correctly.", "Please make sure that props are spread on the same element that the ref is applied to."].join("\n"));
+        }
+      }, [childNode]);
+    }
+    const interactiveWrapperListeners = {};
+    if (!disableTouchListener) {
+      childrenProps.onTouchStart = handleTouchStart;
+      childrenProps.onTouchEnd = handleTouchEnd;
+    }
+    if (!disableHoverListener) {
+      childrenProps.onMouseOver = composeEventHandler(handleMouseOver, childrenProps.onMouseOver);
+      childrenProps.onMouseLeave = composeEventHandler(handleMouseLeave, childrenProps.onMouseLeave);
+      if (!disableInteractive) {
+        interactiveWrapperListeners.onMouseOver = handleMouseOver;
+        interactiveWrapperListeners.onMouseLeave = handleMouseLeave;
+      }
+    }
+    if (!disableFocusListener) {
+      childrenProps.onFocus = composeEventHandler(handleFocus, childrenProps.onFocus);
+      childrenProps.onBlur = composeEventHandler(handleBlur, childrenProps.onBlur);
+      if (!disableInteractive) {
+        interactiveWrapperListeners.onFocus = handleFocus;
+        interactiveWrapperListeners.onBlur = handleBlur;
+      }
+    }
+    if (false) {
+      if (children.props.title) {
+        console.error(["MUI: You have provided a `title` prop to the child of <Tooltip />.", `Remove this title prop \`${children.props.title}\` or the Tooltip component.`].join("\n"));
+      }
+    }
+    const ownerState = __spreadProps(__spreadValues({}, props), {
+      isRtl,
+      arrow: arrow2,
+      disableInteractive,
+      placement,
+      PopperComponentProp,
+      touch: ignoreNonTouchEvents.current
+    });
+    const resolvedPopperProps = typeof slotProps.popper === "function" ? slotProps.popper(ownerState) : slotProps.popper;
+    const popperOptions = React94.useMemo(() => {
+      var _a2, _b2;
+      let tooltipModifiers = [{
+        name: "arrow",
+        enabled: Boolean(arrowRef),
+        options: {
+          element: arrowRef,
+          padding: 4
+        }
+      }];
+      if ((_a2 = PopperProps.popperOptions) == null ? void 0 : _a2.modifiers) {
+        tooltipModifiers = tooltipModifiers.concat(PopperProps.popperOptions.modifiers);
+      }
+      if ((_b2 = resolvedPopperProps == null ? void 0 : resolvedPopperProps.popperOptions) == null ? void 0 : _b2.modifiers) {
+        tooltipModifiers = tooltipModifiers.concat(resolvedPopperProps.popperOptions.modifiers);
+      }
+      return __spreadProps(__spreadValues(__spreadValues({}, PopperProps.popperOptions), resolvedPopperProps == null ? void 0 : resolvedPopperProps.popperOptions), {
+        modifiers: tooltipModifiers
+      });
+    }, [arrowRef, PopperProps.popperOptions, resolvedPopperProps == null ? void 0 : resolvedPopperProps.popperOptions]);
+    const classes = useUtilityClasses31(ownerState);
+    const resolvedTransitionProps = typeof slotProps.transition === "function" ? slotProps.transition(ownerState) : slotProps.transition;
+    const externalForwardedProps = {
+      slots: __spreadValues({
+        popper: components.Popper,
+        transition: (_b = components.Transition) != null ? _b : TransitionComponentProp,
+        tooltip: components.Tooltip,
+        arrow: components.Arrow
+      }, slots),
+      slotProps: {
+        arrow: (_c = slotProps.arrow) != null ? _c : componentsProps.arrow,
+        popper: __spreadValues(__spreadValues({}, PopperProps), resolvedPopperProps != null ? resolvedPopperProps : componentsProps.popper),
+        // resolvedPopperProps can be spread because it's already an object
+        tooltip: (_d = slotProps.tooltip) != null ? _d : componentsProps.tooltip,
+        transition: __spreadValues(__spreadValues({}, TransitionProps), resolvedTransitionProps != null ? resolvedTransitionProps : componentsProps.transition)
+      }
+    };
+    const [PopperSlot, popperSlotProps] = useSlot("popper", {
+      elementType: TooltipPopper,
+      externalForwardedProps,
+      ownerState,
+      className: clsx_default(classes.popper, PopperProps == null ? void 0 : PopperProps.className)
+    });
+    const [TransitionSlot, transitionSlotProps] = useSlot("transition", {
+      elementType: Grow_default,
+      externalForwardedProps,
+      ownerState
+    });
+    const [TooltipSlot, tooltipSlotProps] = useSlot("tooltip", {
+      elementType: TooltipTooltip,
+      className: classes.tooltip,
+      externalForwardedProps,
+      ownerState
+    });
+    const [ArrowSlot, arrowSlotProps] = useSlot("arrow", {
+      elementType: TooltipArrow,
+      className: classes.arrow,
+      externalForwardedProps,
+      ownerState,
+      ref: setArrowRef
+    });
+    return /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(React94.Fragment, {
+      children: [/* @__PURE__ */ React94.cloneElement(children, childrenProps), /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(PopperSlot, __spreadProps(__spreadValues(__spreadValues({
+        as: PopperComponentProp != null ? PopperComponentProp : Popper_default,
+        placement,
+        anchorEl: followCursor ? {
+          getBoundingClientRect: () => ({
+            top: cursorPosition.y,
+            left: cursorPosition.x,
+            right: cursorPosition.x,
+            bottom: cursorPosition.y,
+            width: 0,
+            height: 0
+          })
+        } : childNode,
+        popperRef,
+        open: childNode ? open : false,
+        id,
+        transition: true
+      }, interactiveWrapperListeners), popperSlotProps), {
+        popperOptions,
+        children: ({
+          TransitionProps: TransitionPropsInner
+        }) => /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(TransitionSlot, __spreadProps(__spreadValues(__spreadValues({
+          timeout: theme.transitions.duration.shorter
+        }, TransitionPropsInner), transitionSlotProps), {
+          children: /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(TooltipSlot, __spreadProps(__spreadValues({}, tooltipSlotProps), {
+            children: [title, arrow2 ? /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(ArrowSlot, __spreadValues({}, arrowSlotProps)) : null]
+          }))
+        }))
+      }))]
+    });
+  });
+  false ? Tooltip.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * If `true`, adds an arrow to the tooltip.
+     * @default false
+     */
+    arrow: import_prop_types.default.bool,
+    /**
+     * Tooltip reference element.
+     */
+    children: elementAcceptingRef_default.isRequired,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types.default.string,
+    /**
+     * The components used for each slot inside.
+     *
+     * @deprecated use the `slots` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     *
+     * @default {}
+     */
+    components: import_prop_types.default.shape({
+      Arrow: import_prop_types.default.elementType,
+      Popper: import_prop_types.default.elementType,
+      Tooltip: import_prop_types.default.elementType,
+      Transition: import_prop_types.default.elementType
+    }),
+    /**
+     * The extra props for the slot components.
+     * You can override the existing props or add new ones.
+     *
+     * @deprecated use the `slotProps` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     *
+     * @default {}
+     */
+    componentsProps: import_prop_types.default.shape({
+      arrow: import_prop_types.default.object,
+      popper: import_prop_types.default.object,
+      tooltip: import_prop_types.default.object,
+      transition: import_prop_types.default.object
+    }),
+    /**
+     * Set to `true` if the `title` acts as an accessible description.
+     * By default the `title` acts as an accessible label for the child.
+     * @default false
+     */
+    describeChild: import_prop_types.default.bool,
+    /**
+     * Do not respond to focus-visible events.
+     * @default false
+     */
+    disableFocusListener: import_prop_types.default.bool,
+    /**
+     * Do not respond to hover events.
+     * @default false
+     */
+    disableHoverListener: import_prop_types.default.bool,
+    /**
+     * Makes a tooltip not interactive, i.e. it will close when the user
+     * hovers over the tooltip before the `leaveDelay` is expired.
+     * @default false
+     */
+    disableInteractive: import_prop_types.default.bool,
+    /**
+     * Do not respond to long press touch events.
+     * @default false
+     */
+    disableTouchListener: import_prop_types.default.bool,
+    /**
+     * The number of milliseconds to wait before showing the tooltip.
+     * This prop won't impact the enter touch delay (`enterTouchDelay`).
+     * @default 100
+     */
+    enterDelay: import_prop_types.default.number,
+    /**
+     * The number of milliseconds to wait before showing the tooltip when one was already recently opened.
+     * @default 0
+     */
+    enterNextDelay: import_prop_types.default.number,
+    /**
+     * The number of milliseconds a user must touch the element before showing the tooltip.
+     * @default 700
+     */
+    enterTouchDelay: import_prop_types.default.number,
+    /**
+     * If `true`, the tooltip follow the cursor over the wrapped element.
+     * @default false
+     */
+    followCursor: import_prop_types.default.bool,
+    /**
+     * This prop is used to help implement the accessibility logic.
+     * If you don't provide this prop. It falls back to a randomly generated id.
+     */
+    id: import_prop_types.default.string,
+    /**
+     * The number of milliseconds to wait before hiding the tooltip.
+     * This prop won't impact the leave touch delay (`leaveTouchDelay`).
+     * @default 0
+     */
+    leaveDelay: import_prop_types.default.number,
+    /**
+     * The number of milliseconds after the user stops touching an element before hiding the tooltip.
+     * @default 1500
+     */
+    leaveTouchDelay: import_prop_types.default.number,
+    /**
+     * Callback fired when the component requests to be closed.
+     *
+     * @param {React.SyntheticEvent} event The event source of the callback.
+     */
+    onClose: import_prop_types.default.func,
+    /**
+     * Callback fired when the component requests to be open.
+     *
+     * @param {React.SyntheticEvent} event The event source of the callback.
+     */
+    onOpen: import_prop_types.default.func,
+    /**
+     * If `true`, the component is shown.
+     */
+    open: import_prop_types.default.bool,
+    /**
+     * Tooltip placement.
+     * @default 'bottom'
+     */
+    placement: import_prop_types.default.oneOf(["auto-end", "auto-start", "auto", "bottom-end", "bottom-start", "bottom", "left-end", "left-start", "left", "right-end", "right-start", "right", "top-end", "top-start", "top"]),
+    /**
+     * The component used for the popper.
+     * @deprecated use the `slots.popper` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     */
+    PopperComponent: import_prop_types.default.elementType,
+    /**
+     * Props applied to the [`Popper`](https://mui.com/material-ui/api/popper/) element.
+     * @deprecated use the `slotProps.popper` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     * @default {}
+     */
+    PopperProps: import_prop_types.default.object,
+    /**
+     * The props used for each slot inside.
+     * @default {}
+     */
+    slotProps: import_prop_types.default.shape({
+      arrow: import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object]),
+      popper: import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object]),
+      tooltip: import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object]),
+      transition: import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object])
+    }),
+    /**
+     * The components used for each slot inside.
+     * @default {}
+     */
+    slots: import_prop_types.default.shape({
+      arrow: import_prop_types.default.elementType,
+      popper: import_prop_types.default.elementType,
+      tooltip: import_prop_types.default.elementType,
+      transition: import_prop_types.default.elementType
+    }),
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object]),
+    /**
+     * Tooltip title. Zero-length titles string, undefined, null and false are never displayed.
+     */
+    title: import_prop_types.default.node,
+    /**
+     * The component used for the transition.
+     * [Follow this guide](https://mui.com/material-ui/transitions/#transitioncomponent-prop) to learn more about the requirements for this component.
+     * @deprecated use the `slots.transition` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     */
+    TransitionComponent: import_prop_types.default.elementType,
+    /**
+     * Props applied to the transition element.
+     * By default, the element is based on this [`Transition`](https://reactcommunity.org/react-transition-group/transition/) component.
+     * @deprecated use the `slotProps.transition` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     * @default {}
+     */
+    TransitionProps: import_prop_types.default.object
+  } : void 0;
+  var Tooltip_default = Tooltip;
+
   // node_modules/@mui/material/Stack/Stack.js
   var Stack = createStack({
     createStyledComponent: styled_default2("div", {
       name: "MuiStack",
       slot: "Root",
-      overridesResolver: (props, styles2) => styles2.root
+      overridesResolver: (props, styles4) => styles4.root
     }),
     useThemeProps: (inProps) => useDefaultProps2({
       props: inProps,
@@ -34748,11 +40878,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var Stack_default = Stack;
 
   // node_modules/@mui/material/Table/Table.js
-  var React68 = __toESM(require_react());
+  var React96 = __toESM(require_react());
 
   // node_modules/@mui/material/Table/TableContext.js
-  var React67 = __toESM(require_react());
-  var TableContext = /* @__PURE__ */ React67.createContext();
+  var React95 = __toESM(require_react());
+  var TableContext = /* @__PURE__ */ React95.createContext();
   if (false) {
     TableContext.displayName = "TableContext";
   }
@@ -34765,8 +40895,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var tableClasses = generateUtilityClasses("MuiTable", ["root", "stickyHeader"]);
 
   // node_modules/@mui/material/Table/Table.js
-  var import_jsx_runtime39 = __toESM(require_jsx_runtime());
-  var useUtilityClasses16 = (ownerState) => {
+  var import_jsx_runtime63 = __toESM(require_jsx_runtime());
+  var useUtilityClasses32 = (ownerState) => {
     const {
       classes,
       stickyHeader
@@ -34779,11 +40909,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var TableRoot = styled_default2("table", {
     name: "MuiTable",
     slot: "Root",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.root, ownerState.stickyHeader && styles2.stickyHeader];
+      return [styles4.root, ownerState.stickyHeader && styles4.stickyHeader];
     }
   })(memoTheme_default(({
     theme
@@ -34808,7 +40938,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }]
   })));
   var defaultComponent = "table";
-  var Table = /* @__PURE__ */ React68.forwardRef(function Table2(inProps, ref) {
+  var Table = /* @__PURE__ */ React96.forwardRef(function Table2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiTable"
@@ -34832,15 +40962,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       size,
       stickyHeader
     });
-    const classes = useUtilityClasses16(ownerState);
-    const table = React68.useMemo(() => ({
+    const classes = useUtilityClasses32(ownerState);
+    const table = React96.useMemo(() => ({
       padding: padding2,
       size,
       stickyHeader
     }), [padding2, size, stickyHeader]);
-    return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(TableContext_default.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(TableContext_default.Provider, {
       value: table,
-      children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(TableRoot, __spreadValues({
+      children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(TableRoot, __spreadValues({
         as: component,
         role: component === defaultComponent ? null : "table",
         ref,
@@ -34894,11 +41024,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var Table_default = Table;
 
   // node_modules/@mui/material/TableBody/TableBody.js
-  var React70 = __toESM(require_react());
+  var React98 = __toESM(require_react());
 
   // node_modules/@mui/material/Table/Tablelvl2Context.js
-  var React69 = __toESM(require_react());
-  var Tablelvl2Context = /* @__PURE__ */ React69.createContext();
+  var React97 = __toESM(require_react());
+  var Tablelvl2Context = /* @__PURE__ */ React97.createContext();
   if (false) {
     Tablelvl2Context.displayName = "Tablelvl2Context";
   }
@@ -34911,8 +41041,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var tableBodyClasses = generateUtilityClasses("MuiTableBody", ["root"]);
 
   // node_modules/@mui/material/TableBody/TableBody.js
-  var import_jsx_runtime40 = __toESM(require_jsx_runtime());
-  var useUtilityClasses17 = (ownerState) => {
+  var import_jsx_runtime64 = __toESM(require_jsx_runtime());
+  var useUtilityClasses33 = (ownerState) => {
     const {
       classes
     } = ownerState;
@@ -34924,7 +41054,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var TableBodyRoot = styled_default2("tbody", {
     name: "MuiTableBody",
     slot: "Root",
-    overridesResolver: (props, styles2) => styles2.root
+    overridesResolver: (props, styles4) => styles4.root
   })({
     display: "table-row-group"
   });
@@ -34932,7 +41062,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     variant: "body"
   };
   var defaultComponent2 = "tbody";
-  var TableBody = /* @__PURE__ */ React70.forwardRef(function TableBody2(inProps, ref) {
+  var TableBody = /* @__PURE__ */ React98.forwardRef(function TableBody2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiTableBody"
@@ -34947,10 +41077,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const ownerState = __spreadProps(__spreadValues({}, props), {
       component
     });
-    const classes = useUtilityClasses17(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Tablelvl2Context_default.Provider, {
+    const classes = useUtilityClasses33(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(Tablelvl2Context_default.Provider, {
       value: tablelvl2,
-      children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(TableBodyRoot, __spreadValues({
+      children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(TableBodyRoot, __spreadValues({
         className: clsx_default(classes.root, className),
         as: component,
         ref,
@@ -34989,7 +41119,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var TableBody_default = TableBody;
 
   // node_modules/@mui/material/TableCell/TableCell.js
-  var React71 = __toESM(require_react());
+  var React99 = __toESM(require_react());
 
   // node_modules/@mui/material/TableCell/tableCellClasses.js
   function getTableCellUtilityClass(slot) {
@@ -34999,8 +41129,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var tableCellClasses_default = tableCellClasses;
 
   // node_modules/@mui/material/TableCell/TableCell.js
-  var import_jsx_runtime41 = __toESM(require_jsx_runtime());
-  var useUtilityClasses18 = (ownerState) => {
+  var import_jsx_runtime65 = __toESM(require_jsx_runtime());
+  var useUtilityClasses34 = (ownerState) => {
     const {
       classes,
       variant,
@@ -35017,11 +41147,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var TableCellRoot = styled_default2("td", {
     name: "MuiTableCell",
     slot: "Root",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.root, styles2[ownerState.variant], styles2[`size${capitalize_default(ownerState.size)}`], ownerState.padding !== "normal" && styles2[`padding${capitalize_default(ownerState.padding)}`], ownerState.align !== "inherit" && styles2[`align${capitalize_default(ownerState.align)}`], ownerState.stickyHeader && styles2.stickyHeader];
+      return [styles4.root, styles4[ownerState.variant], styles4[`size${capitalize_default(ownerState.size)}`], ownerState.padding !== "normal" && styles4[`padding${capitalize_default(ownerState.padding)}`], ownerState.align !== "inherit" && styles4[`align${capitalize_default(ownerState.align)}`], ownerState.stickyHeader && styles4.stickyHeader];
     }
   })(memoTheme_default(({
     theme
@@ -35131,7 +41261,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   })));
-  var TableCell = /* @__PURE__ */ React71.forwardRef(function TableCell2(inProps, ref) {
+  var TableCell = /* @__PURE__ */ React99.forwardRef(function TableCell2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiTableCell"
@@ -35155,8 +41285,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       "sortDirection",
       "variant"
     ]);
-    const table = React71.useContext(TableContext_default);
-    const tablelvl23 = React71.useContext(Tablelvl2Context_default);
+    const table = React99.useContext(TableContext_default);
+    const tablelvl23 = React99.useContext(Tablelvl2Context_default);
     const isHeadCell = tablelvl23 && tablelvl23.variant === "head";
     let component;
     if (componentProp) {
@@ -35180,12 +41310,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       stickyHeader: variant === "head" && table && table.stickyHeader,
       variant
     });
-    const classes = useUtilityClasses18(ownerState);
+    const classes = useUtilityClasses34(ownerState);
     let ariaSort = null;
     if (sortDirection) {
       ariaSort = sortDirection === "asc" ? "ascending" : "descending";
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(TableCellRoot, __spreadValues({
+    return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(TableCellRoot, __spreadValues({
       as: component,
       ref,
       className: clsx_default(classes.root, className),
@@ -35255,7 +41385,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var TableCell_default = TableCell;
 
   // node_modules/@mui/material/TableContainer/TableContainer.js
-  var React72 = __toESM(require_react());
+  var React100 = __toESM(require_react());
 
   // node_modules/@mui/material/TableContainer/tableContainerClasses.js
   function getTableContainerUtilityClass(slot) {
@@ -35264,8 +41394,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var tableContainerClasses = generateUtilityClasses("MuiTableContainer", ["root"]);
 
   // node_modules/@mui/material/TableContainer/TableContainer.js
-  var import_jsx_runtime42 = __toESM(require_jsx_runtime());
-  var useUtilityClasses19 = (ownerState) => {
+  var import_jsx_runtime66 = __toESM(require_jsx_runtime());
+  var useUtilityClasses35 = (ownerState) => {
     const {
       classes
     } = ownerState;
@@ -35277,12 +41407,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var TableContainerRoot = styled_default2("div", {
     name: "MuiTableContainer",
     slot: "Root",
-    overridesResolver: (props, styles2) => styles2.root
+    overridesResolver: (props, styles4) => styles4.root
   })({
     width: "100%",
     overflowX: "auto"
   });
-  var TableContainer = /* @__PURE__ */ React72.forwardRef(function TableContainer2(inProps, ref) {
+  var TableContainer = /* @__PURE__ */ React100.forwardRef(function TableContainer2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiTableContainer"
@@ -35297,8 +41427,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const ownerState = __spreadProps(__spreadValues({}, props), {
       component
     });
-    const classes = useUtilityClasses19(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(TableContainerRoot, __spreadValues({
+    const classes = useUtilityClasses35(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(TableContainerRoot, __spreadValues({
       ref,
       as: component,
       className: clsx_default(classes.root, className),
@@ -35335,7 +41465,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var TableContainer_default = TableContainer;
 
   // node_modules/@mui/material/TableHead/TableHead.js
-  var React73 = __toESM(require_react());
+  var React101 = __toESM(require_react());
 
   // node_modules/@mui/material/TableHead/tableHeadClasses.js
   function getTableHeadUtilityClass(slot) {
@@ -35344,8 +41474,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var tableHeadClasses = generateUtilityClasses("MuiTableHead", ["root"]);
 
   // node_modules/@mui/material/TableHead/TableHead.js
-  var import_jsx_runtime43 = __toESM(require_jsx_runtime());
-  var useUtilityClasses20 = (ownerState) => {
+  var import_jsx_runtime67 = __toESM(require_jsx_runtime());
+  var useUtilityClasses36 = (ownerState) => {
     const {
       classes
     } = ownerState;
@@ -35357,7 +41487,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var TableHeadRoot = styled_default2("thead", {
     name: "MuiTableHead",
     slot: "Root",
-    overridesResolver: (props, styles2) => styles2.root
+    overridesResolver: (props, styles4) => styles4.root
   })({
     display: "table-header-group"
   });
@@ -35365,7 +41495,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     variant: "head"
   };
   var defaultComponent3 = "thead";
-  var TableHead = /* @__PURE__ */ React73.forwardRef(function TableHead2(inProps, ref) {
+  var TableHead = /* @__PURE__ */ React101.forwardRef(function TableHead2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiTableHead"
@@ -35380,10 +41510,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const ownerState = __spreadProps(__spreadValues({}, props), {
       component
     });
-    const classes = useUtilityClasses20(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(Tablelvl2Context_default.Provider, {
+    const classes = useUtilityClasses36(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(Tablelvl2Context_default.Provider, {
       value: tablelvl22,
-      children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(TableHeadRoot, __spreadValues({
+      children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(TableHeadRoot, __spreadValues({
         as: component,
         className: clsx_default(classes.root, className),
         ref,
@@ -35422,7 +41552,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var TableHead_default = TableHead;
 
   // node_modules/@mui/material/TableRow/TableRow.js
-  var React74 = __toESM(require_react());
+  var React102 = __toESM(require_react());
 
   // node_modules/@mui/material/TableRow/tableRowClasses.js
   function getTableRowUtilityClass(slot) {
@@ -35432,8 +41562,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var tableRowClasses_default = tableRowClasses;
 
   // node_modules/@mui/material/TableRow/TableRow.js
-  var import_jsx_runtime44 = __toESM(require_jsx_runtime());
-  var useUtilityClasses21 = (ownerState) => {
+  var import_jsx_runtime68 = __toESM(require_jsx_runtime());
+  var useUtilityClasses37 = (ownerState) => {
     const {
       classes,
       selected,
@@ -35449,11 +41579,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var TableRowRoot = styled_default2("tr", {
     name: "MuiTableRow",
     slot: "Root",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.root, ownerState.head && styles2.head, ownerState.footer && styles2.footer];
+      return [styles4.root, ownerState.head && styles4.head, ownerState.footer && styles4.footer];
     }
   })(memoTheme_default(({
     theme
@@ -35474,7 +41604,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
   })));
   var defaultComponent4 = "tr";
-  var TableRow = /* @__PURE__ */ React74.forwardRef(function TableRow2(inProps, ref) {
+  var TableRow = /* @__PURE__ */ React102.forwardRef(function TableRow2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiTableRow"
@@ -35490,7 +41620,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       "hover",
       "selected"
     ]);
-    const tablelvl23 = React74.useContext(Tablelvl2Context_default);
+    const tablelvl23 = React102.useContext(Tablelvl2Context_default);
     const ownerState = __spreadProps(__spreadValues({}, props), {
       component,
       hover,
@@ -35498,8 +41628,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       head: tablelvl23 && tablelvl23.variant === "head",
       footer: tablelvl23 && tablelvl23.variant === "footer"
     });
-    const classes = useUtilityClasses21(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(TableRowRoot, __spreadValues({
+    const classes = useUtilityClasses37(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(TableRowRoot, __spreadValues({
       as: component,
       ref,
       className: clsx_default(classes.root, className),
@@ -35547,12 +41677,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var TableRow_default = TableRow;
 
   // node_modules/@mui/material/TableSortLabel/TableSortLabel.js
-  var React76 = __toESM(require_react());
+  var React104 = __toESM(require_react());
 
   // node_modules/@mui/material/internal/svg-icons/ArrowDownward.js
-  var React75 = __toESM(require_react());
-  var import_jsx_runtime45 = __toESM(require_jsx_runtime());
-  var ArrowDownward_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime45.jsx)("path", {
+  var React103 = __toESM(require_react());
+  var import_jsx_runtime69 = __toESM(require_jsx_runtime());
+  var ArrowDownward_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime69.jsx)("path", {
     d: "M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
   }), "ArrowDownward");
 
@@ -35564,8 +41694,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var tableSortLabelClasses_default = tableSortLabelClasses;
 
   // node_modules/@mui/material/TableSortLabel/TableSortLabel.js
-  var import_jsx_runtime46 = __toESM(require_jsx_runtime());
-  var useUtilityClasses22 = (ownerState) => {
+  var import_jsx_runtime70 = __toESM(require_jsx_runtime());
+  var useUtilityClasses38 = (ownerState) => {
     const {
       classes,
       direction,
@@ -35580,11 +41710,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var TableSortLabelRoot = styled_default2(ButtonBase_default, {
     name: "MuiTableSortLabel",
     slot: "Root",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.root, ownerState.active && styles2.active];
+      return [styles4.root, ownerState.active && styles4.active];
     }
   })(memoTheme_default(({
     theme
@@ -35614,11 +41744,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var TableSortLabelIcon = styled_default2("span", {
     name: "MuiTableSortLabel",
     slot: "Icon",
-    overridesResolver: (props, styles2) => {
+    overridesResolver: (props, styles4) => {
       const {
         ownerState
       } = props;
-      return [styles2.icon, styles2[`iconDirection${capitalize_default(ownerState.direction)}`]];
+      return [styles4.icon, styles4[`iconDirection${capitalize_default(ownerState.direction)}`]];
     }
   })(memoTheme_default(({
     theme
@@ -35647,7 +41777,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   })));
-  var TableSortLabel = /* @__PURE__ */ React76.forwardRef(function TableSortLabel2(inProps, ref) {
+  var TableSortLabel = /* @__PURE__ */ React104.forwardRef(function TableSortLabel2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiTableSortLabel"
@@ -35677,7 +41807,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       hideSortIcon,
       IconComponent
     });
-    const classes = useUtilityClasses22(ownerState);
+    const classes = useUtilityClasses38(ownerState);
     const externalForwardedProps = {
       slots,
       slotProps
@@ -35695,11 +41825,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       ownerState,
       className: classes.icon
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(RootSlot, __spreadProps(__spreadValues(__spreadValues({
+    return /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)(RootSlot, __spreadProps(__spreadValues(__spreadValues({
       disableRipple: true,
       component: "span"
     }, rootProps), other), {
-      children: [children, hideSortIcon && !active ? null : /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(IconSlot, __spreadValues({
+      children: [children, hideSortIcon && !active ? null : /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(IconSlot, __spreadValues({
         as: IconComponent
       }, iconProps))]
     }));
@@ -35765,9 +41895,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var TableSortLabel_default = TableSortLabel;
 
   // src/Components/Poppers/BasePopper.tsx
-  var import_jsx_runtime47 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime71 = __toESM(require_jsx_runtime());
   var BasePopper = ({ anchor, children }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
       Popper_default,
       {
         sx: { zIndex: 1700 },
@@ -35789,70 +41919,413 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/icons-material/esm/Close.js
-  var import_jsx_runtime48 = __toESM(require_jsx_runtime());
-  var Close_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime48.jsx)("path", {
+  var import_jsx_runtime72 = __toESM(require_jsx_runtime());
+  var Close_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime72.jsx)("path", {
     d: "M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
   }), "Close");
 
   // src/Components/Modals/BaseModal.tsx
-  var import_jsx_runtime49 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime73 = __toESM(require_jsx_runtime());
   var BaseModal = (props) => {
     const { sx, children, title, modal, setModal, maxWidth: maxWidth2, onCancel } = props;
     const onClose = () => onCancel ? onCancel() : setModal(false);
-    return /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(Dialog_default, { sx, open: modal, onClose, scroll: "paper", fullWidth: true, maxWidth: maxWidth2, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(Box_default, { sx: { display: "flex", alignItems: "center" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(DialogTitle_default, { children: title }),
-        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(Box_default, { sx: { flexGrow: 1 } }),
-        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(IconButton_default, { sx: { mr: 2 }, onClick: onClose, children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(Close_default, {}) })
+    return /* @__PURE__ */ (0, import_jsx_runtime73.jsxs)(Dialog_default, { sx, open: modal, onClose, scroll: "paper", fullWidth: true, maxWidth: maxWidth2, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime73.jsxs)(Box_default, { sx: { display: "flex", alignItems: "center" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(DialogTitle_default, { children: title }),
+        /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(Box_default, { sx: { flexGrow: 1 } }),
+        /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(IconButton_default, { sx: { mr: 2 }, onClick: onClose, children: /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(Close_default, {}) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(DialogContent_default, { dividers: true, children }),
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(DialogActions_default, { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(Button_default, { onClick: onClose, children: "Cancel" }) })
+      /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(DialogContent_default, { dividers: true, children }),
+      /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(DialogActions_default, { children: /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(Button_default, { onClick: onClose, children: "Cancel" }) })
     ] });
   };
 
-  // src/Components/Views/WidgetInfoRowsView.tsx
+  // src/Views/Agent/Elements/AgentElementCoverageDetailsView.tsx
+  var import_react33 = __toESM(require_react());
+
+  // src/Services/Tables/Sorting.ts
+  var import_lodash = __toESM(require_lodash());
   var import_react12 = __toESM(require_react());
-  var import_jsx_runtime50 = __toESM(require_jsx_runtime());
-  var WidgetInfoRowsView = (props) => {
-    const { children, containerSx } = props;
-    return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Grid2_default, { container: true, spacing: 1, sx: __spreadValues({ mt: 2 }, containerSx), children: import_react12.Children.map(
-      children,
-      (child, index) => child && /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Grid2_default, { size: { xs: 12 }, children: child }, index)
-    ) });
+  function descendingComparator(a, b, orderBy) {
+    if (orderBy === null) {
+      return 0;
+    }
+    const aValue = import_lodash.default.get(a, orderBy) || 0;
+    const bValue = import_lodash.default.get(b, orderBy) || 0;
+    if (bValue < aValue) {
+      return -1;
+    }
+    if (bValue > aValue) {
+      return 1;
+    }
+    return 0;
+  }
+  var getComparator = (order2, orderBy) => {
+    return order2 === "desc" ? (a, b) => descendingComparator(a, b, orderBy) : (a, b) => -descendingComparator(a, b, orderBy);
+  };
+  var useTableSorting = ({ items }) => {
+    const [orderBy, setOrderBy] = (0, import_react12.useState)(null);
+    const [orderDirection, setOrderDirection] = (0, import_react12.useState)("asc");
+    const sortedItems = (0, import_react12.useMemo)(
+      () => [...items].sort(getComparator(orderDirection, orderBy)),
+      [orderBy, orderDirection, items]
+    );
+    return { sortedItems, orderBy, orderDirection, setOrderBy, setOrderDirection };
   };
 
-  // node_modules/@mui/icons-material/esm/ContentCopy.js
-  var import_jsx_runtime51 = __toESM(require_jsx_runtime());
-  var ContentCopy_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime51.jsx)("path", {
-    d: "M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2m0 16H8V7h11z"
-  }), "ContentCopy");
-
-  // src/Components/Views/BaseInfoRowView.tsx
-  var import_react13 = __toESM(require_react());
-  var import_jsx_runtime52 = __toESM(require_jsx_runtime());
-  var BaseInfoRowView = (props) => {
-    const { name, icon, value, noWrap = false, allowCopy = true, component = false, containerSx } = props;
-    const internalValue = (0, import_react13.useMemo)(() => value || "unknown", [value]);
-    const onCopy = async () => {
-      await navigator.clipboard.writeText(String(value));
-    };
-    return /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(Box_default, { sx: __spreadValues({ display: "flex", alignItems: "center" }, containerSx), children: [
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(Typography_default, { noWrap, sx: { display: "flex", alignItems: "center" }, children: [
-        name,
-        ": ",
-        component ? component : internalValue,
-        " ",
-        icon
-      ] }),
-      Boolean(value) && allowCopy && /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(Box_default, { sx: { display: "flex" }, children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(IconButton_default, { size: "small", sx: { ml: 1 }, onClick: onCopy, children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(ContentCopy_default, { fontSize: "small" }) }) })
+  // src/Components/Tables/BaseTableCell.tsx
+  var import_jsx_runtime74 = __toESM(require_jsx_runtime());
+  var BaseTableCell = ({ text, icon }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime74.jsxs)(Box_default, { sx: { display: "flex", alignItems: "center" }, children: [
+      icon,
+      /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(Typography_default, { variant: "body2", children: text })
     ] });
   };
 
-  // src/Components/Charts/Agent/Elements/ElementHistoryChartView.tsx
-  var import_react29 = __toESM(require_react());
+  // src/Models/Core/Actions.ts
+  var ActionType = /* @__PURE__ */ ((ActionType2) => {
+    ActionType2["Fill"] = "FILL";
+    ActionType2["Type"] = "TYPE";
+    ActionType2["Select"] = "SELECT";
+    ActionType2["Click"] = "CLICK";
+    ActionType2["Hover"] = "HOVER";
+    ActionType2["Text"] = "TEXT";
+    ActionType2["Value"] = "VALUE";
+    ActionType2["Hidden"] = "HIDDEN";
+    ActionType2["Visible"] = "VISIBLE";
+    ActionType2["Checked"] = "CHECKED";
+    ActionType2["Enabled"] = "ENABLED";
+    ActionType2["Disabled"] = "DISABLED";
+    ActionType2["Unchecked"] = "UNCHECKED";
+    return ActionType2;
+  })(ActionType || {});
+
+  // src/Services/Actions.tsx
+  var import_dayjs = __toESM(require_dayjs_min());
+
+  // node_modules/@mui/icons-material/esm/ToggleOn.js
+  var import_jsx_runtime75 = __toESM(require_jsx_runtime());
+  var ToggleOn_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime75.jsx)("path", {
+    d: "M17 7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h10c2.76 0 5-2.24 5-5s-2.24-5-5-5m0 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3"
+  }), "ToggleOn");
+
+  // node_modules/@mui/icons-material/esm/TextFields.js
+  var import_jsx_runtime76 = __toESM(require_jsx_runtime());
+  var TextFields_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime76.jsx)("path", {
+    d: "M2.5 4v3h5v12h3V7h5V4zm19 5h-9v3h3v7h3v-7h3z"
+  }), "TextFields");
+
+  // node_modules/@mui/icons-material/esm/EditOutlined.js
+  var import_jsx_runtime77 = __toESM(require_jsx_runtime());
+  var EditOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime77.jsx)("path", {
+    d: "m14.06 9.02.92.92L5.92 19H5v-.92zM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"
+  }), "EditOutlined");
+
+  // node_modules/@mui/icons-material/esm/MouseOutlined.js
+  var import_jsx_runtime78 = __toESM(require_jsx_runtime());
+  var MouseOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime78.jsx)("path", {
+    d: "M20 9c-.04-4.39-3.6-7.93-8-7.93S4.04 4.61 4 9v6c0 4.42 3.58 8 8 8s8-3.58 8-8zm-2 0h-5V3.16c2.81.47 4.96 2.9 5 5.84m-7-5.84V9H6c.04-2.94 2.19-5.37 5-5.84M18 15c0 3.31-2.69 6-6 6s-6-2.69-6-6v-4h12z"
+  }), "MouseOutlined");
+
+  // node_modules/@mui/icons-material/esm/LabelOutlined.js
+  var import_jsx_runtime79 = __toESM(require_jsx_runtime());
+  var LabelOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime79.jsx)("path", {
+    d: "M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 1.99 2 1.99L16 19c.67 0 1.27-.33 1.63-.84L22 12zM16 17H5V7h11l3.55 5z"
+  }), "LabelOutlined");
+
+  // node_modules/@mui/icons-material/esm/CheckBoxOutlined.js
+  var import_jsx_runtime80 = __toESM(require_jsx_runtime());
+  var CheckBoxOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime80.jsx)("path", {
+    d: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m0 16H5V5h14zM17.99 9l-1.41-1.42-6.59 6.59-2.58-2.57-1.42 1.41 4 3.99z"
+  }), "CheckBoxOutlined");
+
+  // node_modules/@mui/icons-material/esm/PanToolAltOutlined.js
+  var import_jsx_runtime81 = __toESM(require_jsx_runtime());
+  var PanToolAltOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime81.jsx)("path", {
+    d: "m18.89 11.77-3.8-1.67c-.13-.06-.28-.1-.44-.1H14V5.5C14 4.12 12.88 3 11.5 3S9 4.12 9 5.5v8.15l-1.87-.4c-.19-.03-1.02-.15-1.73.56L4 15.22l5.12 5.19c.37.38.88.59 1.41.59h6.55c.98 0 1.81-.7 1.97-1.67l.92-5.44c.15-.86-.29-1.72-1.08-2.12M17.08 19h-6.55l-3.7-3.78 4.17.89V5.5c0-.28.22-.5.5-.5s.5.22.5.5v6.18h1.76L18 13.56z"
+  }), "PanToolAltOutlined");
+
+  // node_modules/@mui/icons-material/esm/VisibilityOutlined.js
+  var import_jsx_runtime82 = __toESM(require_jsx_runtime());
+  var VisibilityOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime82.jsx)("path", {
+    d: "M12 6c3.79 0 7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17s-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6m0-2C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4m0 5c1.38 0 2.5 1.12 2.5 2.5S13.38 14 12 14s-2.5-1.12-2.5-2.5S10.62 9 12 9m0-2c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7"
+  }), "VisibilityOutlined");
+
+  // node_modules/@mui/icons-material/esm/DoNotTouchOutlined.js
+  var import_jsx_runtime83 = __toESM(require_jsx_runtime());
+  var DoNotTouchOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime83.jsx)("path", {
+    d: "M2.81 2.81 1.39 4.22 7 9.83v4.3l-2.6-1.48c-.17-.09-.34-.14-.54-.14-.26 0-.5.09-.7.26L2 13.88l6.8 7.18c.57.6 1.35.94 2.18.94H17c.62 0 1.18-.19 1.66-.52l1.12 1.12 1.41-1.41zM17 20h-6c-.39 0-.64-.23-.75-.36L6.87 16H9v-4.17l8.14 8.14c-.05.01-.09.03-.14.03m-3.17-9H14V3.25c0-.69.56-1.25 1.25-1.25s1.25.56 1.25 1.25V11h1V5.25c0-.69.56-1.25 1.25-1.25S20 4.56 20 5.25v11.92l-2-2V13h-2.17zm-.83-.83V2.25C13 1.56 12.44 1 11.75 1s-1.25.56-1.25 1.25v5.42zm-3.5-3.5V4.25C9.5 3.56 8.94 3 8.25 3c-.67 0-1.2.53-1.24 1.18z"
+  }), "DoNotTouchOutlined");
+
+  // node_modules/@mui/icons-material/esm/CheckBoxOutlineBlank.js
+  var import_jsx_runtime84 = __toESM(require_jsx_runtime());
+  var CheckBoxOutlineBlank_default2 = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime84.jsx)("path", {
+    d: "M19 5v14H5V5zm0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2"
+  }), "CheckBoxOutlineBlank");
+
+  // node_modules/@mui/icons-material/esm/VisibilityOffOutlined.js
+  var import_jsx_runtime85 = __toESM(require_jsx_runtime());
+  var VisibilityOffOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime85.jsx)("path", {
+    d: "M12 6c3.79 0 7.17 2.13 8.82 5.5-.59 1.22-1.42 2.27-2.41 3.12l1.41 1.41c1.39-1.23 2.49-2.77 3.18-4.53C21.27 7.11 17 4 12 4c-1.27 0-2.49.2-3.64.57l1.65 1.65C10.66 6.09 11.32 6 12 6m-1.07 1.14L13 9.21c.57.25 1.03.71 1.28 1.28l2.07 2.07c.08-.34.14-.7.14-1.07C16.5 9.01 14.48 7 12 7c-.37 0-.72.05-1.07.14M2.01 3.87l2.68 2.68C3.06 7.83 1.77 9.53 1 11.5 2.73 15.89 7 19 12 19c1.52 0 2.98-.29 4.32-.82l3.42 3.42 1.41-1.41L3.42 2.45zm7.5 7.5 2.61 2.61c-.04.01-.08.02-.12.02-1.38 0-2.5-1.12-2.5-2.5 0-.05.01-.08.01-.13m-3.4-3.4 1.75 1.75c-.23.55-.36 1.15-.36 1.78 0 2.48 2.02 4.5 4.5 4.5.63 0 1.23-.13 1.77-.36l.98.98c-.88.24-1.8.38-2.75.38-3.79 0-7.17-2.13-8.82-5.5.7-1.43 1.72-2.61 2.93-3.53"
+  }), "VisibilityOffOutlined");
+
+  // node_modules/@mui/icons-material/esm/ArrowDropDownCircleOutlined.js
+  var import_jsx_runtime86 = __toESM(require_jsx_runtime());
+  var ArrowDropDownCircleOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime86.jsx)("path", {
+    d: "M12 4c4.41 0 8 3.59 8 8s-3.59 8-8 8-8-3.59-8-8 3.59-8 8-8m0-2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 13-4-4h8z"
+  }), "ArrowDropDownCircleOutlined");
+
+  // src/Services/Actions.tsx
+  var import_jsx_runtime87 = __toESM(require_jsx_runtime());
+  var normalizeActionType = (action) => {
+    return action.toLowerCase().split("_").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+  };
+  var getActionsChartData = (props) => {
+    const { actions, createdAt } = props;
+    const base = {
+      createdAt: (0, import_dayjs.default)(createdAt).toDate()
+    };
+    for (const action of actions) {
+      base[action.actionType] = action.count;
+    }
+    return base;
+  };
+  var MAP_ACTION_TYPE_TO_COLOR = {
+    // input
+    ["FILL" /* Fill */]: green_default["300"],
+    ["TYPE" /* Type */]: green_default["400"],
+    ["SELECT" /* Select */]: green_default["500"],
+    // action
+    ["CLICK" /* Click */]: blue_default["300"],
+    ["HOVER" /* Hover */]: blue_default["400"],
+    // assert
+    ["TEXT" /* Text */]: purple_default["300"],
+    ["VALUE" /* Value */]: purple_default["400"],
+    ["HIDDEN" /* Hidden */]: purple_default["500"],
+    ["VISIBLE" /* Visible */]: purple_default["600"],
+    ["CHECKED" /* Checked */]: orange_default["300"],
+    ["ENABLED" /* Enabled */]: orange_default["400"],
+    ["DISABLED" /* Disabled */]: orange_default["500"],
+    ["UNCHECKED" /* Unchecked */]: orange_default["600"]
+  };
+  var ACTION_TYPES_BY_GROUP = {
+    input: ["FILL" /* Fill */, "TYPE" /* Type */, "SELECT" /* Select */],
+    action: ["CLICK" /* Click */, "HOVER" /* Hover */],
+    assert: [
+      "TEXT" /* Text */,
+      "VALUE" /* Value */,
+      "HIDDEN" /* Hidden */,
+      "VISIBLE" /* Visible */,
+      "CHECKED" /* Checked */,
+      "ENABLED" /* Enabled */,
+      "DISABLED" /* Disabled */,
+      "UNCHECKED" /* Unchecked */
+    ]
+  };
+  var MAP_ACTION_TYPE_TO_ICON = {
+    // input
+    ["FILL" /* Fill */]: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(EditOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
+    ["TYPE" /* Type */]: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(EditOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
+    ["SELECT" /* Select */]: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(ArrowDropDownCircleOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
+    // action
+    ["CLICK" /* Click */]: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(MouseOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
+    ["HOVER" /* Hover */]: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(PanToolAltOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
+    // assert
+    ["TEXT" /* Text */]: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(TextFields_default, { sx: { mr: 1.5 }, fontSize: "small" }),
+    ["VALUE" /* Value */]: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(LabelOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
+    ["HIDDEN" /* Hidden */]: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(VisibilityOffOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
+    ["VISIBLE" /* Visible */]: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(VisibilityOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
+    ["CHECKED" /* Checked */]: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(CheckBoxOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
+    ["ENABLED" /* Enabled */]: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(ToggleOn_default, { sx: { mr: 1.5 }, fontSize: "small" }),
+    ["DISABLED" /* Disabled */]: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(DoNotTouchOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
+    ["UNCHECKED" /* Unchecked */]: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(CheckBoxOutlineBlank_default2, { sx: { mr: 1.5 }, fontSize: "small" })
+  };
+
+  // src/Components/Tables/Core/Actions/ActionCell.tsx
+  var import_jsx_runtime88 = __toESM(require_jsx_runtime());
+  var ActionCell = ({ type }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(BaseTableCell, { text: normalizeActionType(type), icon: MAP_ACTION_TYPE_TO_ICON[type] });
+  };
+
+  // src/Components/Tables/BaseTableRow.tsx
+  var import_jsx_runtime89 = __toESM(require_jsx_runtime());
+  var BaseTableRow = ({ cells }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(TableRow_default, { hover: true, sx: { "&:last-child td, &:last-child th": { border: 0 } }, children: cells.map((cell, index) => /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(TableCell_default, { align: cell.align || "left", children: cell.value }, index)) });
+  };
+
+  // src/Components/Tables/Core/Actions/ActionCoverageTableRow.tsx
+  var import_jsx_runtime90 = __toESM(require_jsx_runtime());
+  var ActionCoverageTableRow = ({ action }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(BaseTableRow, { cells: [{ value: /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(ActionCell, { type: action.actionType }) }, { value: action.count }] });
+  };
+
+  // src/Components/Tables/BaseTableHeader.tsx
+  var import_jsx_runtime91 = __toESM(require_jsx_runtime());
+  var BaseTableHeader = (props) => {
+    const { cells, orderBy, setOrderBy, orderDirection, setOrderDirection } = props;
+    const onOrder = (key) => () => {
+      setOrderBy(key);
+      setOrderDirection(orderDirection === "asc" ? "desc" : "asc");
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(TableHead_default, { children: /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(TableRow_default, { children: cells.map((cell, index) => /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(TableCell_default, { align: cell.align || "left", sx: { whiteSpace: "nowrap", pt: 2, pb: 2 }, children: cell.orderKey ? /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(
+      TableSortLabel_default,
+      {
+        active: orderBy === cell.orderKey,
+        direction: orderDirection,
+        onClick: onOrder(cell.orderKey),
+        children: cell.value
+      }
+    ) : cell.value }, index)) }) });
+  };
+
+  // src/Components/Tables/Core/Actions/ActionCoverageTableHeader.tsx
+  var import_jsx_runtime92 = __toESM(require_jsx_runtime());
+  var ActionCoverageTableHeader = (props) => {
+    const { orderBy, setOrderBy, orderDirection, setOrderDirection } = props;
+    return /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(
+      BaseTableHeader,
+      {
+        cells: [
+          { value: "Action", orderKey: "actionType" },
+          { value: "Count", orderKey: "count" }
+        ],
+        orderBy,
+        setOrderBy,
+        orderDirection,
+        setOrderDirection
+      }
+    );
+  };
+
+  // src/Components/Tables/BaseTable.tsx
+  var import_jsx_runtime93 = __toESM(require_jsx_runtime());
+  var BaseTable = (props) => {
+    const { header, children, containerSx } = props;
+    return /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(TableContainer_default, { component: Paper_default, sx: __spreadProps(__spreadValues({}, containerSx), { width: "100%" }), children: /* @__PURE__ */ (0, import_jsx_runtime93.jsxs)(Table_default, { size: "small", children: [
+      header,
+      /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(TableBody_default, { children })
+    ] }) });
+  };
+
+  // src/Components/Tables/Core/Actions/ActionCoverageTable.tsx
+  var import_jsx_runtime94 = __toESM(require_jsx_runtime());
+  var ActionCoverageTable = ({ actions }) => {
+    const { sortedItems, orderBy, setOrderBy, orderDirection, setOrderDirection } = useTableSorting({ items: actions });
+    return /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(
+      BaseTable,
+      {
+        containerSx: { mt: 3 },
+        header: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(
+          ActionCoverageTableHeader,
+          {
+            orderBy,
+            setOrderBy,
+            orderDirection,
+            setOrderDirection
+          }
+        ),
+        children: sortedItems.map((action, index) => /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(ActionCoverageTableRow, { action }, index))
+      }
+    );
+  };
+
+  // src/Views/Agent/Scenarios/AgentScenariosView.tsx
+  var import_react32 = __toESM(require_react());
+
+  // node_modules/@mui/icons-material/esm/DescriptionOutlined.js
+  var import_jsx_runtime95 = __toESM(require_jsx_runtime());
+  var DescriptionOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime95.jsx)("path", {
+    d: "M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8zm4 18H6V4h7v5h5z"
+  }), "DescriptionOutlined");
+
+  // src/Components/ListItems/BaseListItem.tsx
+  var import_jsx_runtime96 = __toESM(require_jsx_runtime());
+  var BaseListItem = (props) => {
+    const { menu, icon, dense = false, label, compact, title, subtitle, selected, onClick } = props;
+    return /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(ListItem_default, { dense, secondaryAction: menu, divider: true, disableGutters: true, children: /* @__PURE__ */ (0, import_jsx_runtime96.jsxs)(ListItemButton_default, { selected, dense: true, onClick, disableGutters: compact, children: [
+      icon && /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(ListItemIcon_default, { children: icon }),
+      /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(ListItemText_default, { sx: { wordBreak: "break-word", whiteSpace: "normal" }, primary: title, secondary: subtitle }),
+      label
+    ] }) });
+  };
+
+  // src/Components/ListItems/Agent/Scenarios/AgentScenarioListItem.tsx
+  var import_jsx_runtime97 = __toESM(require_jsx_runtime());
+  var AgentScenarioListItem = (props) => {
+    const { scenario, onScenarioDetails } = props;
+    const onDetails = () => onScenarioDetails(scenario);
+    return /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
+      BaseListItem,
+      {
+        icon: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(DescriptionOutlined_default, { fontSize: "small" }),
+        dense: true,
+        title: scenario.name,
+        onClick: onDetails
+      }
+    );
+  };
+
+  // src/Services/Views.ts
+  var getActionMarginRight = ({ index, margin: margin2, actions }) => {
+    return (actions == null ? void 0 : actions.length) === index + 1 ? 0 : margin2;
+  };
+
+  // src/Components/Badges/ToolbarBadge.tsx
+  var ToolbarBadge = styled_default2(Badge_default)(() => ({
+    "& .MuiBadge-badge": {
+      fontSize: "0.7rem",
+      minWidth: 15,
+      height: 15,
+      padding: "0 4px"
+    }
+  }));
+
+  // src/Components/Views/BoxView.tsx
+  var import_jsx_runtime98 = __toESM(require_jsx_runtime());
+  var BoxView = ({ title, actions, children, containerSx }) => {
+    const getMarginRight = (index) => getActionMarginRight({ index, actions, margin: 1 });
+    return /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(Box_default, { sx: __spreadValues({ mt: 3 }, containerSx), children: [
+      /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(Grid2_default, { container: true, sx: { display: "flex", alignItems: "center" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Grid2_default, { sx: { flexGrow: 1 }, children: title && /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Typography_default, { fontWeight: "bold", children: title }) }),
+        actions == null ? void 0 : actions.map((action, index) => /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Grid2_default, { children: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(IconButton_default, { sx: { mr: getMarginRight(index) }, size: "small", onClick: action.onClick, children: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(ToolbarBadge, { badgeContent: action.badgeContent, color: "primary", children: action.icon }) }, index) }, index))
+      ] }),
+      children
+    ] });
+  };
+
+  // node_modules/@mui/icons-material/esm/FolderOpenOutlined.js
+  var import_jsx_runtime99 = __toESM(require_jsx_runtime());
+  var FolderOpenOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime99.jsx)("path", {
+    d: "M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2m0 12H4V8h16z"
+  }), "FolderOpenOutlined");
+
+  // src/Components/Views/EmptyView.tsx
+  var import_jsx_runtime100 = __toESM(require_jsx_runtime());
+  var EmptyView = ({ title, description, containerSx }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(
+      Box_default,
+      {
+        sx: __spreadValues({
+          mt: 5,
+          flexDirection: "column",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }, containerSx),
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(FolderOpenOutlined_default, { fontSize: "large" }),
+          /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(Typography_default, { sx: { mt: 2 }, variant: "h6", children: title }),
+          /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(Typography_default, { children: description })
+        ]
+      }
+    );
+  };
+
+  // src/Components/Charts/Coverage/History/ScenarioHistoryChartView.tsx
+  var import_react28 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/BarChart/BarPlot.js
-  var React114 = __toESM(require_react());
+  var React142 = __toESM(require_react());
 
   // node_modules/@react-spring/rafz/dist/react-spring_rafz.modern.mjs
   var updateQueue = makeQueue();
@@ -36013,6 +42486,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@react-spring/shared/dist/react-spring_shared.modern.mjs
+  var import_react13 = __toESM(require_react(), 1);
   var import_react14 = __toESM(require_react(), 1);
   var import_react15 = __toESM(require_react(), 1);
   var import_react16 = __toESM(require_react(), 1);
@@ -36020,7 +42494,6 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var import_react18 = __toESM(require_react(), 1);
   var import_react19 = __toESM(require_react(), 1);
   var import_react20 = __toESM(require_react(), 1);
-  var import_react21 = __toESM(require_react(), 1);
   var __defProp2 = Object.defineProperty;
   var __export = (target, all) => {
     for (var name in all)
@@ -36781,9 +43254,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return is.str(value) && (value[0] == "#" || /\d/.test(value) || // Do not identify a CSS variable as an AnimatedString if its SSR
     !isSSR() && cssVariableRegex.test(value) || value in (colors || {}));
   }
-  var useIsomorphicLayoutEffect = isSSR() ? import_react17.useEffect : import_react17.useLayoutEffect;
+  var useIsomorphicLayoutEffect = isSSR() ? import_react16.useEffect : import_react16.useLayoutEffect;
   var useIsMounted = () => {
-    const isMounted = (0, import_react16.useRef)(false);
+    const isMounted = (0, import_react15.useRef)(false);
     useIsomorphicLayoutEffect(() => {
       isMounted.current = true;
       return () => {
@@ -36793,7 +43266,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return isMounted;
   };
   function useForceUpdate() {
-    const update3 = (0, import_react15.useState)()[1];
+    const update3 = (0, import_react14.useState)()[1];
     const isMounted = useIsMounted();
     return () => {
       if (isMounted.current) {
@@ -36802,13 +43275,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     };
   }
   function useMemoOne(getResult, inputs) {
-    const [initial] = (0, import_react18.useState)(
+    const [initial] = (0, import_react17.useState)(
       () => ({
         inputs,
         result: getResult()
       })
     );
-    const committed = (0, import_react18.useRef)();
+    const committed = (0, import_react17.useRef)();
     const prevCache = committed.current;
     let cache = prevCache;
     if (cache) {
@@ -36824,7 +43297,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     } else {
       cache = initial;
     }
-    (0, import_react18.useEffect)(() => {
+    (0, import_react17.useEffect)(() => {
       committed.current = cache;
       if (prevCache == initial) {
         initial.inputs = initial.result = void 0;
@@ -36843,22 +43316,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     return true;
   }
-  var useOnce = (effect4) => (0, import_react19.useEffect)(effect4, emptyDeps);
+  var useOnce = (effect4) => (0, import_react18.useEffect)(effect4, emptyDeps);
   var emptyDeps = [];
   function usePrev(value) {
-    const prevRef = (0, import_react20.useRef)();
-    (0, import_react20.useEffect)(() => {
+    const prevRef = (0, import_react19.useRef)();
+    (0, import_react19.useEffect)(() => {
       prevRef.current = value;
     });
     return prevRef.current;
   }
 
   // node_modules/@react-spring/core/dist/react-spring_core.modern.mjs
-  var import_react23 = __toESM(require_react(), 1);
+  var import_react22 = __toESM(require_react(), 1);
 
   // node_modules/@react-spring/animated/dist/react-spring_animated.modern.mjs
-  var React77 = __toESM(require_react(), 1);
-  var import_react22 = __toESM(require_react(), 1);
+  var React105 = __toESM(require_react(), 1);
+  var import_react21 = __toESM(require_react(), 1);
   var $node = Symbol.for("Animated:node");
   var isAnimated = (value) => !!value && value[$node] === value;
   var getAnimated = (owner) => owner && owner[$node];
@@ -37045,10 +43518,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       // re-rendered on every animation frame.
       !is.fun(Component) || Component.prototype && Component.prototype.isReactComponent
     );
-    return (0, import_react22.forwardRef)((givenProps, givenRef) => {
-      const instanceRef = (0, import_react22.useRef)(null);
+    return (0, import_react21.forwardRef)((givenProps, givenRef) => {
+      const instanceRef = (0, import_react21.useRef)(null);
       const ref = hasInstance && // eslint-disable-next-line react-hooks/rules-of-hooks
-      (0, import_react22.useCallback)(
+      (0, import_react21.useCallback)(
         (value) => {
           instanceRef.current = updateRef(givenRef, value);
         },
@@ -37067,7 +43540,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }
       };
       const observer = new PropsObserver(callback, deps);
-      const observerRef = (0, import_react22.useRef)();
+      const observerRef = (0, import_react21.useRef)();
       useIsomorphicLayoutEffect(() => {
         observerRef.current = observer;
         each(deps, (dep) => addFluidObserver(dep, observer));
@@ -37081,13 +43554,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         };
       });
-      (0, import_react22.useEffect)(callback, []);
+      (0, import_react21.useEffect)(callback, []);
       useOnce(() => () => {
         const observer2 = observerRef.current;
         each(observer2.deps, (dep) => removeFluidObserver(dep, observer2));
       });
       const usedProps = host2.getComponentProps(props.getValue());
-      return /* @__PURE__ */ React77.createElement(Component, __spreadProps(__spreadValues({}, usedProps), { ref }));
+      return /* @__PURE__ */ React105.createElement(Component, __spreadProps(__spreadValues({}, usedProps), { ref }));
     });
   };
   var PropsObserver = class {
@@ -37155,12 +43628,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var getDisplayName = (arg2) => is.str(arg2) ? arg2 : arg2 && is.str(arg2.displayName) ? arg2.displayName : is.fun(arg2) && arg2.name || null;
 
   // node_modules/@react-spring/core/dist/react-spring_core.modern.mjs
-  var React78 = __toESM(require_react(), 1);
+  var React106 = __toESM(require_react(), 1);
+  var import_react23 = __toESM(require_react(), 1);
   var import_react24 = __toESM(require_react(), 1);
-  var import_react25 = __toESM(require_react(), 1);
   var React210 = __toESM(require_react(), 1);
+  var import_react25 = __toESM(require_react(), 1);
   var import_react26 = __toESM(require_react(), 1);
-  var import_react27 = __toESM(require_react(), 1);
   function callProp(value, ...args) {
     return is.fun(value) ? value(...args) : value;
   }
@@ -38622,17 +45095,17 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     } = _b, props = __objRest(_b, [
       "children"
     ]);
-    const inherited = (0, import_react24.useContext)(ctx);
+    const inherited = (0, import_react23.useContext)(ctx);
     const pause = props.pause || !!inherited.pause, immediate = props.immediate || !!inherited.immediate;
     props = useMemoOne(() => ({ pause, immediate }), [pause, immediate]);
     const { Provider } = ctx;
-    return /* @__PURE__ */ React78.createElement(Provider, { value: props }, children);
+    return /* @__PURE__ */ React106.createElement(Provider, { value: props }, children);
   };
   var ctx = makeContext(SpringContext, {});
   SpringContext.Provider = ctx.Provider;
   SpringContext.Consumer = ctx.Consumer;
   function makeContext(target, init) {
-    Object.assign(target, React78.createContext(init));
+    Object.assign(target, React106.createContext(init));
     target.Provider._context = target;
     target.Consumer._context = target;
     return target;
@@ -38721,13 +45194,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       ref: propsRef,
       config: propsConfig
     } = propsFn ? propsFn() : props;
-    const ref = (0, import_react26.useMemo)(
+    const ref = (0, import_react25.useMemo)(
       () => propsFn || arguments.length == 3 ? SpringRef() : void 0,
       []
     );
     const items = toArray(data);
     const transitions = [];
-    const usedTransitions = (0, import_react26.useRef)(null);
+    const usedTransitions = (0, import_react25.useRef)(null);
     const prevTransitions = reset ? null : usedTransitions.current;
     useIsomorphicLayoutEffect(() => {
       usedTransitions.current = transitions;
@@ -38798,8 +45271,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const forceUpdate = useForceUpdate();
     const defaultProps4 = getDefaultProps(props);
     const changes = /* @__PURE__ */ new Map();
-    const exitingTransitions = (0, import_react26.useRef)(/* @__PURE__ */ new Map());
-    const forceChange = (0, import_react26.useRef)(false);
+    const exitingTransitions = (0, import_react25.useRef)(/* @__PURE__ */ new Map());
+    const forceChange = (0, import_react25.useRef)(false);
     each(transitions, (t, i) => {
       const key = t.key;
       const prevPhase = t.phase;
@@ -38886,7 +45359,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         changes.set(t, { phase, springs, payload });
       }
     });
-    const context = (0, import_react26.useContext)(SpringContext);
+    const context = (0, import_react25.useContext)(SpringContext);
     const prevContext = usePrev(context);
     const hasContext = context !== prevContext && hasProps(context);
     useIsomorphicLayoutEffect(() => {
@@ -39437,7 +45910,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var animated = host.animated;
 
   // node_modules/@mui/x-charts/context/CartesianProvider/CartesianProvider.js
-  var React94 = __toESM(require_react());
+  var React122 = __toESM(require_react());
 
   // node_modules/d3-array/src/ascending.js
   function ascending(a, b) {
@@ -39676,15 +46149,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/d3-scale/src/band.js
   function band() {
-    var scale = ordinal().unknown(void 0), domain = scale.domain, ordinalRange = scale.range, r0 = 0, r1 = 1, step, bandwidth, round3 = false, paddingInner = 0, paddingOuter = 0, align = 0.5;
+    var scale = ordinal().unknown(void 0), domain = scale.domain, ordinalRange = scale.range, r0 = 0, r1 = 1, step, bandwidth, round4 = false, paddingInner = 0, paddingOuter = 0, align = 0.5;
     delete scale.unknown;
     function rescale() {
       var n = domain().length, reverse = r1 < r0, start3 = reverse ? r1 : r0, stop2 = reverse ? r0 : r1;
       step = (stop2 - start3) / Math.max(1, n - paddingInner + paddingOuter * 2);
-      if (round3) step = Math.floor(step);
+      if (round4) step = Math.floor(step);
       start3 += (stop2 - start3 - step * (n - paddingInner)) * align;
       bandwidth = step * (1 - paddingInner);
-      if (round3) start3 = Math.round(start3), bandwidth = Math.round(bandwidth);
+      if (round4) start3 = Math.round(start3), bandwidth = Math.round(bandwidth);
       var values3 = range(n).map(function(i) {
         return start3 + step * i;
       });
@@ -39697,7 +46170,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       return arguments.length ? ([r0, r1] = _2, r0 = +r0, r1 = +r1, rescale()) : [r0, r1];
     };
     scale.rangeRound = function(_2) {
-      return [r0, r1] = _2, r0 = +r0, r1 = +r1, round3 = true, rescale();
+      return [r0, r1] = _2, r0 = +r0, r1 = +r1, round4 = true, rescale();
     };
     scale.bandwidth = function() {
       return bandwidth;
@@ -39706,7 +46179,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       return step;
     };
     scale.round = function(_2) {
-      return arguments.length ? (round3 = !!_2, rescale()) : round3;
+      return arguments.length ? (round4 = !!_2, rescale()) : round4;
     };
     scale.padding = function(_2) {
       return arguments.length ? (paddingInner = Math.min(1, paddingOuter = +_2), rescale()) : paddingInner;
@@ -39721,7 +46194,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       return arguments.length ? (align = Math.max(0, Math.min(1, _2)), rescale()) : align;
     };
     scale.copy = function() {
-      return band(domain(), [r0, r1]).round(round3).paddingInner(paddingInner).paddingOuter(paddingOuter).align(align);
+      return band(domain(), [r0, r1]).round(round4).paddingInner(paddingInner).paddingOuter(paddingOuter).align(align);
     };
     return initRange.apply(rescale(), arguments);
   }
@@ -41905,7 +48378,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/hooks/useTicks.js
-  var React79 = __toESM(require_react());
+  var React107 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/internals/isBandScale.js
   function isBandScale(scale) {
@@ -41946,7 +48419,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       tickPlacement = "extremities",
       tickLabelPlacement = "middle"
     } = options;
-    return React79.useMemo(() => {
+    return React107.useMemo(() => {
       if (isBandScale(scale)) {
         const domain2 = scale.domain();
         if (scale.bandwidth() > 0) {
@@ -42000,7 +48473,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/internals/getScale.js
-  function getScale(scaleType, domain, range2) {
+  function getScale2(scaleType, domain, range2) {
     switch (scaleType) {
       case "log":
         return log(domain, range2);
@@ -42164,7 +48637,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }));
       const tickNumber = rawTickNumber / ((zoomRange[1] - zoomRange[0]) / 100);
       const zoomedRange = zoomScaleRange(range2, zoomRange);
-      const scale = getScale(scaleType, axisExtremums, zoomedRange);
+      const scale = getScale2(scaleType, axisExtremums, zoomedRange);
       const finalScale = domainLimit === "nice" ? scale.nice(rawTickNumber) : scale;
       const [minDomain, maxDomain] = finalScale.domain();
       const domain = [(_j = axis.min) != null ? _j : minDomain, (_k = axis.max) != null ? _k : maxDomain];
@@ -42185,18 +48658,18 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/hooks/useDrawingArea.js
-  var React83 = __toESM(require_react());
+  var React111 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/context/DrawingProvider.js
-  var React82 = __toESM(require_react());
+  var React110 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/node_modules/@mui/utils/esm/useId/useId.js
-  var React80 = __toESM(require_react(), 1);
+  var React108 = __toESM(require_react(), 1);
   var globalId2 = 0;
   function useGlobalId2(idOverride) {
-    const [defaultId, setDefaultId] = React80.useState(idOverride);
+    const [defaultId, setDefaultId] = React108.useState(idOverride);
     const id = idOverride || defaultId;
-    React80.useEffect(() => {
+    React108.useEffect(() => {
       if (defaultId == null) {
         globalId2 += 1;
         setDefaultId(`mui-${globalId2}`);
@@ -42204,7 +48677,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }, [defaultId]);
     return id;
   }
-  var safeReact2 = __spreadValues({}, React80);
+  var safeReact2 = __spreadValues({}, React108);
   var maybeReactUseId2 = safeReact2.useId;
   function useId2(idOverride) {
     if (maybeReactUseId2 !== void 0) {
@@ -42215,7 +48688,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/hooks/useChartDimensions.js
-  var React81 = __toESM(require_react());
+  var React109 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/constants/index.js
   var DEFAULT_X_AXIS_KEY = "DEFAULT_X_AXIS_KEY";
@@ -42230,7 +48703,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   // node_modules/@mui/x-charts/hooks/useChartDimensions.js
   var useChartDimensions = (width2, height2, margin2) => {
     const defaultizedMargin = _extends({}, DEFAULT_MARGINS, margin2);
-    const drawingArea = React81.useMemo(() => ({
+    const drawingArea = React109.useMemo(() => ({
       left: defaultizedMargin.left,
       top: defaultizedMargin.top,
       right: defaultizedMargin.right,
@@ -42243,8 +48716,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var useChartDimensions_default = useChartDimensions;
 
   // node_modules/@mui/x-charts/context/DrawingProvider.js
-  var import_jsx_runtime53 = __toESM(require_jsx_runtime());
-  var DrawingContext = /* @__PURE__ */ React82.createContext({
+  var import_jsx_runtime101 = __toESM(require_jsx_runtime());
+  var DrawingContext = /* @__PURE__ */ React110.createContext({
     top: 0,
     left: 0,
     bottom: 0,
@@ -42257,7 +48730,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   if (false) {
     DrawingContext.displayName = "DrawingContext";
   }
-  var SvgContext = /* @__PURE__ */ React82.createContext({
+  var SvgContext = /* @__PURE__ */ React110.createContext({
     isInitialized: false,
     data: {
       current: null
@@ -42276,7 +48749,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     } = props;
     const drawingArea = useChartDimensions_default(width2, height2, margin2);
     const chartId = useId2();
-    const isPointInside = React82.useCallback(({
+    const isPointInside = React110.useCallback(({
       x,
       y
     }, options) => {
@@ -42293,18 +48766,18 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
       return isInsideX && isInsideY;
     }, [drawingArea]);
-    const value = React82.useMemo(() => _extends({
+    const value = React110.useMemo(() => _extends({
       chartId: chartId != null ? chartId : ""
     }, drawingArea, {
       isPointInside
     }), [chartId, drawingArea, isPointInside]);
-    const refValue = React82.useMemo(() => ({
+    const refValue = React110.useMemo(() => ({
       isInitialized: true,
       data: svgRef
     }), [svgRef]);
-    return /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(SvgContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(SvgContext.Provider, {
       value: refValue,
-      children: /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(DrawingContext.Provider, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(DrawingContext.Provider, {
         value,
         children
       })
@@ -42321,8 +48794,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       bottom: bottom2,
       right: right2,
       isPointInside
-    } = React83.useContext(DrawingContext);
-    return React83.useMemo(() => ({
+    } = React111.useContext(DrawingContext);
+    return React111.useMemo(() => ({
       left: left2,
       top: top2,
       width: width2,
@@ -42334,7 +48807,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/hooks/useSeries.js
-  var React92 = __toESM(require_react());
+  var React120 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/internals/defaultizeColor.js
   var DEFAULT_COLORS = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"];
@@ -42391,7 +48864,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/x-charts/context/SeriesProvider/SeriesProvider.js
-  var React91 = __toESM(require_react());
+  var React119 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/colorPalettes/colorPalettes.js
   var blueberryTwilightPaletteLight = ["#02B2AF", "#2E96FF", "#B800D8", "#60009B", "#2731C8", "#03008D"];
@@ -42399,8 +48872,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var blueberryTwilightPalette = (mode) => mode === "dark" ? blueberryTwilightPaletteDark : blueberryTwilightPaletteLight;
 
   // node_modules/@mui/x-charts/context/SeriesProvider/SeriesContext.js
-  var React84 = __toESM(require_react());
-  var SeriesContext = /* @__PURE__ */ React84.createContext({
+  var React112 = __toESM(require_react());
+  var SeriesContext = /* @__PURE__ */ React112.createContext({
     isInitialized: false,
     data: {}
   });
@@ -42409,11 +48882,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/context/PluginProvider/PluginProvider.js
-  var React86 = __toESM(require_react());
+  var React114 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/context/PluginProvider/PluginContext.js
-  var React85 = __toESM(require_react());
-  var PluginContext = /* @__PURE__ */ React85.createContext({
+  var React113 = __toESM(require_react());
+  var PluginContext = /* @__PURE__ */ React113.createContext({
     isInitialized: false,
     data: {
       colorProcessors: {},
@@ -43376,29 +49849,29 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/context/PluginProvider/PluginProvider.js
-  var import_jsx_runtime54 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime102 = __toESM(require_jsx_runtime());
   function PluginProvider(props) {
     const {
       children,
       plugins
     } = props;
-    const formattedSeries = React86.useMemo(() => ({
+    const formattedSeries = React114.useMemo(() => ({
       isInitialized: true,
       data: mergePlugins(plugins)
     }), [plugins]);
-    return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(PluginContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(PluginContext.Provider, {
       value: formattedSeries,
       children
     });
   }
 
   // node_modules/@mui/x-charts/context/PluginProvider/useColorProcessor.js
-  var React87 = __toESM(require_react());
+  var React115 = __toESM(require_react());
   function useColorProcessor(seriesType) {
     const {
       isInitialized,
       data
-    } = React87.useContext(PluginContext);
+    } = React115.useContext(PluginContext);
     if (!isInitialized) {
       throw new Error(["MUI X: Could not find the plugin context.", "It looks like you rendered your component outside of a ChartsContainer parent component."].join("\n"));
     }
@@ -43409,12 +49882,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/context/PluginProvider/useSeriesFormatter.js
-  var React88 = __toESM(require_react());
+  var React116 = __toESM(require_react());
   function useSeriesFormatter(seriesType) {
     const {
       isInitialized,
       data
-    } = React88.useContext(PluginContext);
+    } = React116.useContext(PluginContext);
     if (!isInitialized) {
       throw new Error(["MUI X: Could not find the plugin context.", "It looks like you rendered your component outside of a ChartsContainer parent component."].join("\n"));
     }
@@ -43425,12 +49898,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/context/PluginProvider/useXExtremumGetter.js
-  var React89 = __toESM(require_react());
+  var React117 = __toESM(require_react());
   function useXExtremumGetter(seriesType) {
     const {
       isInitialized,
       data
-    } = React89.useContext(PluginContext);
+    } = React117.useContext(PluginContext);
     if (!isInitialized) {
       throw new Error(["MUI X: Could not find the plugin context.", "It looks like you rendered your component outside of a ChartsContainer parent component."].join("\n"));
     }
@@ -43441,12 +49914,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/context/PluginProvider/useYExtremumGetter.js
-  var React90 = __toESM(require_react());
+  var React118 = __toESM(require_react());
   function useYExtremumGetter(seriesType) {
     const {
       isInitialized,
       data
-    } = React90.useContext(PluginContext);
+    } = React118.useContext(PluginContext);
     if (!isInitialized) {
       throw new Error(["MUI X: Could not find the plugin context.", "It looks like you rendered your component outside of a ChartsContainer parent component."].join("\n"));
     }
@@ -43457,7 +49930,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/context/SeriesProvider/SeriesProvider.js
-  var import_jsx_runtime55 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime103 = __toESM(require_jsx_runtime());
   function SeriesProvider(props) {
     const {
       series,
@@ -43467,7 +49940,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     } = props;
     const seriesFormatters = useSeriesFormatter();
     const theme = useTheme5();
-    const formattedSeries = React91.useMemo(() => ({
+    const formattedSeries = React119.useMemo(() => ({
       isInitialized: true,
       data: preprocessSeries({
         series,
@@ -43476,7 +49949,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         dataset
       })
     }), [series, colors3, theme.palette.mode, seriesFormatters, dataset]);
-    return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(SeriesContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime103.jsx)(SeriesContext.Provider, {
       value: formattedSeries,
       children
     });
@@ -43487,7 +49960,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const {
       isInitialized,
       data
-    } = React92.useContext(SeriesContext);
+    } = React120.useContext(SeriesContext);
     if (!isInitialized) {
       throw new Error(["MUI X: Could not find the series ref context.", "It looks like you rendered your component outside of a ChartsContainer parent component."].join("\n"));
     }
@@ -43495,12 +49968,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
   function useBarSeries() {
     const series = useSeries();
-    return React92.useMemo(() => series.bar, [series.bar]);
+    return React120.useMemo(() => series.bar, [series.bar]);
   }
 
   // node_modules/@mui/x-charts/context/CartesianProvider/CartesianContext.js
-  var React93 = __toESM(require_react());
-  var CartesianContext = /* @__PURE__ */ React93.createContext({
+  var React121 = __toESM(require_react());
+  var CartesianContext = /* @__PURE__ */ React121.createContext({
     isInitialized: false,
     data: {
       xAxis: {},
@@ -43514,7 +49987,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/context/CartesianProvider/CartesianProvider.js
-  var import_jsx_runtime56 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime104 = __toESM(require_jsx_runtime());
   function CartesianProvider(props) {
     const {
       xAxis,
@@ -43525,21 +49998,21 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const drawingArea = useDrawingArea();
     const xExtremumGetters = useXExtremumGetter();
     const yExtremumGetters = useYExtremumGetter();
-    const xValues = React94.useMemo(() => computeAxisValue({
+    const xValues = React122.useMemo(() => computeAxisValue({
       drawingArea,
       formattedSeries,
       axis: xAxis,
       extremumGetters: xExtremumGetters,
       axisDirection: "x"
     }), [drawingArea, formattedSeries, xAxis, xExtremumGetters]);
-    const yValues = React94.useMemo(() => computeAxisValue({
+    const yValues = React122.useMemo(() => computeAxisValue({
       drawingArea,
       formattedSeries,
       axis: yAxis,
       extremumGetters: yExtremumGetters,
       axisDirection: "y"
     }), [drawingArea, formattedSeries, yAxis, yExtremumGetters]);
-    const value = React94.useMemo(() => ({
+    const value = React122.useMemo(() => ({
       isInitialized: true,
       data: {
         xAxis: xValues.axis,
@@ -43548,23 +50021,23 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         yAxisIds: yValues.axisIds
       }
     }), [xValues, yValues]);
-    return /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(CartesianContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(CartesianContext.Provider, {
       value,
       children
     });
   }
 
   // node_modules/@mui/x-charts/context/CartesianProvider/useCartesianContext.js
-  var React95 = __toESM(require_react());
+  var React123 = __toESM(require_react());
   var useCartesianContext = () => {
     const {
       data
-    } = React95.useContext(CartesianContext);
+    } = React123.useContext(CartesianContext);
     return data;
   };
 
   // node_modules/@mui/x-charts/BarChart/BarElement.js
-  var React104 = __toESM(require_react());
+  var React132 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/node_modules/@mui/utils/esm/composeClasses/composeClasses.js
   function composeClasses2(slots, getUtilityClass, classes = void 0) {
@@ -43589,10 +50062,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/node_modules/@mui/utils/esm/useForkRef/useForkRef.js
-  var React96 = __toESM(require_react(), 1);
+  var React124 = __toESM(require_react(), 1);
   function useForkRef2(...refs) {
-    const cleanupRef = React96.useRef(void 0);
-    const refEffect = React96.useCallback((instance2) => {
+    const cleanupRef = React124.useRef(void 0);
+    const refEffect = React124.useCallback((instance2) => {
       const cleanups = refs.map((ref) => {
         if (ref == null) {
           return null;
@@ -43613,7 +50086,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         cleanups.forEach((refCleanup) => refCleanup == null ? void 0 : refCleanup());
       };
     }, refs);
-    return React96.useMemo(() => {
+    return React124.useMemo(() => {
       if (refs.every((ref) => ref == null)) {
         return null;
       }
@@ -43630,14 +50103,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/node_modules/@mui/utils/esm/isHostComponent/isHostComponent.js
-  function isHostComponent2(element) {
+  function isHostComponent3(element) {
     return typeof element === "string";
   }
-  var isHostComponent_default2 = isHostComponent2;
+  var isHostComponent_default3 = isHostComponent3;
 
   // node_modules/@mui/x-charts/node_modules/@mui/utils/esm/appendOwnerState/appendOwnerState.js
   function appendOwnerState2(elementType, otherProps, ownerState) {
-    if (elementType === void 0 || isHostComponent_default2(elementType)) {
+    if (elementType === void 0 || isHostComponent_default3(elementType)) {
       return otherProps;
     }
     return __spreadProps(__spreadValues({}, otherProps), {
@@ -43673,7 +50146,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var omitEventHandlers_default2 = omitEventHandlers2;
 
   // node_modules/@mui/x-charts/node_modules/@mui/utils/esm/mergeSlotProps/mergeSlotProps.js
-  function mergeSlotProps2(parameters) {
+  function mergeSlotProps3(parameters) {
     const {
       getSlotProps,
       additionalProps,
@@ -43714,7 +50187,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       internalRef: internalSlotProps.ref
     };
   }
-  var mergeSlotProps_default2 = mergeSlotProps2;
+  var mergeSlotProps_default2 = mergeSlotProps3;
 
   // node_modules/@mui/x-charts/node_modules/@mui/utils/esm/resolveComponentProps/resolveComponentProps.js
   function resolveComponentProps2(componentProps, ownerState, slotState) {
@@ -43803,12 +50276,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/hooks/useInteractionItemProps.js
-  var React103 = __toESM(require_react());
+  var React131 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/context/InteractionProvider.js
-  var React97 = __toESM(require_react());
-  var import_jsx_runtime57 = __toESM(require_jsx_runtime());
-  var InteractionContext = /* @__PURE__ */ React97.createContext({
+  var React125 = __toESM(require_react());
+  var import_jsx_runtime105 = __toESM(require_jsx_runtime());
+  var InteractionContext = /* @__PURE__ */ React125.createContext({
     item: null,
     axis: {
       x: null,
@@ -43863,7 +50336,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const {
       children
     } = props;
-    const [data, dispatch] = React97.useReducer(dataReducer, {
+    const [data, dispatch] = React125.useReducer(dataReducer, {
       item: null,
       axis: {
         x: null,
@@ -43871,21 +50344,21 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       },
       useVoronoiInteraction: false
     });
-    const value = React97.useMemo(() => _extends({}, data, {
+    const value = React125.useMemo(() => _extends({}, data, {
       dispatch
     }), [data]);
-    return /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(InteractionContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime105.jsx)(InteractionContext.Provider, {
       value,
       children
     });
   }
 
   // node_modules/@mui/x-charts/context/HighlightedProvider/HighlightedProvider.js
-  var React100 = __toESM(require_react());
+  var React128 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/node_modules/@mui/utils/esm/useControlled/useControlled.js
-  var React98 = __toESM(require_react(), 1);
-  function useControlled({
+  var React126 = __toESM(require_react(), 1);
+  function useControlled2({
     controlled,
     default: defaultProp,
     name,
@@ -43893,25 +50366,25 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }) {
     const {
       current: isControlled
-    } = React98.useRef(controlled !== void 0);
-    const [valueState, setValue] = React98.useState(defaultProp);
+    } = React126.useRef(controlled !== void 0);
+    const [valueState, setValue] = React126.useState(defaultProp);
     const value = isControlled ? controlled : valueState;
     if (false) {
-      React98.useEffect(() => {
+      React126.useEffect(() => {
         if (isControlled !== (controlled !== void 0)) {
           console.error([`MUI: A component is changing the ${isControlled ? "" : "un"}controlled ${state} state of ${name} to be ${isControlled ? "un" : ""}controlled.`, "Elements should not switch from uncontrolled to controlled (or vice versa).", `Decide between using a controlled or uncontrolled ${name} element for the lifetime of the component.`, "The nature of the state is determined during the first render. It's considered controlled if the value is not `undefined`.", "More info: https://fb.me/react-controlled-components"].join("\n"));
         }
       }, [state, name, controlled]);
       const {
         current: defaultValue
-      } = React98.useRef(defaultProp);
-      React98.useEffect(() => {
+      } = React126.useRef(defaultProp);
+      React126.useEffect(() => {
         if (!isControlled && !Object.is(defaultValue, defaultProp)) {
           console.error([`MUI: A component is changing the default ${state} state of an uncontrolled ${name} after being initialized. To suppress this warning opt to use a controlled ${name}.`].join("\n"));
         }
       }, [JSON.stringify(defaultProp)]);
     }
-    const setValueIfUncontrolled = React98.useCallback((newValue) => {
+    const setValueIfUncontrolled = React126.useCallback((newValue) => {
       if (!isControlled) {
         setValue(newValue);
       }
@@ -43920,8 +50393,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/context/HighlightedProvider/HighlightedContext.js
-  var React99 = __toESM(require_react());
-  var HighlightedContext = /* @__PURE__ */ React99.createContext({
+  var React127 = __toESM(require_react());
+  var HighlightedContext = /* @__PURE__ */ React127.createContext({
     isInitialized: false,
     data: {
       highlightedItem: null,
@@ -43966,7 +50439,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/x-charts/context/HighlightedProvider/HighlightedProvider.js
-  var import_jsx_runtime58 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime106 = __toESM(require_jsx_runtime());
   var _excluded = ["highlighted", "faded"];
   var mergeDeprecatedOptions = (options) => {
     const _ref = options != null ? options : {}, {
@@ -43984,14 +50457,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     onHighlightChange
   }) {
     var _a;
-    const [highlightedItem, setHighlightedItem] = useControlled({
+    const [highlightedItem, setHighlightedItem] = useControlled2({
       controlled: highlightedItemProps,
       default: null,
       name: "HighlightedProvider",
       state: "highlightedItem"
     });
     const series = useSeries();
-    const seriesById = React100.useMemo(() => {
+    const seriesById = React128.useMemo(() => {
       const map2 = /* @__PURE__ */ new Map();
       Object.keys(series).forEach((seriesType) => {
         var _a2;
@@ -44004,7 +50477,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       return map2;
     }, [series]);
     const highlightScope = highlightedItem && highlightedItem.seriesId ? (_a = seriesById.get(highlightedItem.seriesId)) != null ? _a : void 0 : void 0;
-    const providerValue = React100.useMemo(() => {
+    const providerValue = React128.useMemo(() => {
       return {
         isInitialized: true,
         data: {
@@ -44023,7 +50496,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }
       };
     }, [highlightedItem, highlightScope, setHighlightedItem, onHighlightChange]);
-    return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(HighlightedContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime106.jsx)(HighlightedContext.Provider, {
       value: providerValue,
       children
     });
@@ -44050,12 +50523,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/context/HighlightedProvider/useHighlighted.js
-  var React101 = __toESM(require_react());
+  var React129 = __toESM(require_react());
   function useHighlighted() {
     const {
       isInitialized,
       data
-    } = React101.useContext(HighlightedContext);
+    } = React129.useContext(HighlightedContext);
     if (!isInitialized) {
       throw new Error(["MUI X: Could not find the highlighted ref context.", "It looks like you rendered your component outside of a ChartsContainer parent component."].join("\n"));
     }
@@ -44080,9 +50553,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/context/ZAxisContextProvider.js
-  var React102 = __toESM(require_react());
-  var import_jsx_runtime59 = __toESM(require_jsx_runtime());
-  var ZAxisContext = /* @__PURE__ */ React102.createContext({
+  var React130 = __toESM(require_react());
+  var import_jsx_runtime107 = __toESM(require_jsx_runtime());
+  var ZAxisContext = /* @__PURE__ */ React130.createContext({
     zAxis: {},
     zAxisIds: []
   });
@@ -44095,7 +50568,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       dataset,
       children
     } = props;
-    const zAxis = React102.useMemo(() => inZAxis == null ? void 0 : inZAxis.map((axisConfig) => {
+    const zAxis = React130.useMemo(() => inZAxis == null ? void 0 : inZAxis.map((axisConfig) => {
       const dataKey = axisConfig.dataKey;
       if (dataKey === void 0 || axisConfig.data !== void 0) {
         return axisConfig;
@@ -44107,7 +50580,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         data: dataset.map((d) => d[dataKey])
       });
     }), [inZAxis, dataset]);
-    const value = React102.useMemo(() => {
+    const value = React130.useMemo(() => {
       var _a;
       const allZAxis = (_a = zAxis == null ? void 0 : zAxis.map((axis, index) => _extends({
         id: `defaultized-z-axis-${index}`
@@ -44130,7 +50603,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }) => id)
       };
     }, [zAxis]);
-    return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ZAxisContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(ZAxisContext.Provider, {
       value,
       children
     });
@@ -44176,7 +50649,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var useInteractionItemProps = (skip) => {
     const {
       dispatch: dispatchInteraction
-    } = React103.useContext(InteractionContext);
+    } = React131.useContext(InteractionContext);
     const {
       setHighlighted,
       clearHighlighted
@@ -44220,13 +50693,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/x-charts/BarChart/BarElement.js
-  var import_jsx_runtime60 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime108 = __toESM(require_jsx_runtime());
   var _excluded2 = ["id", "dataIndex", "classes", "color", "slots", "slotProps", "style", "onClick"];
   function getBarElementUtilityClass(slot) {
     return generateUtilityClass2("MuiBarElement", slot);
   }
   var barElementClasses = generateUtilityClasses2("MuiBarElement", ["root"]);
-  var useUtilityClasses23 = (ownerState) => {
+  var useUtilityClasses39 = (ownerState) => {
     const {
       classes,
       id
@@ -44239,7 +50712,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var BarElementPath = styled_default2(animated.rect, {
     name: "MuiBarElement",
     slot: "Root",
-    overridesResolver: (_2, styles2) => styles2.root
+    overridesResolver: (_2, styles4) => styles4.root
   })(({
     ownerState
   }) => ({
@@ -44276,7 +50749,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       isFaded,
       isHighlighted
     };
-    const classes = useUtilityClasses23(ownerState);
+    const classes = useUtilityClasses39(ownerState);
     const Bar = (_a = slots == null ? void 0 : slots.bar) != null ? _a : BarElementPath;
     const barProps = useSlotProps_default2({
       elementType: Bar,
@@ -44294,7 +50767,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       className: classes.root,
       ownerState
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Bar, _extends({}, barProps));
+    return /* @__PURE__ */ (0, import_jsx_runtime108.jsx)(Bar, _extends({}, barProps));
   }
   false ? BarElement.propTypes = {
     // ----------------------------- Warning --------------------------------
@@ -44317,12 +50790,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/hooks/useChartId.js
-  var React105 = __toESM(require_react());
+  var React133 = __toESM(require_react());
   function useChartId() {
     const {
       chartId
-    } = React105.useContext(DrawingContext);
-    return React105.useMemo(() => chartId, [chartId]);
+    } = React133.useContext(DrawingContext);
+    return React133.useMemo(() => chartId, [chartId]);
   }
 
   // node_modules/@mui/x-charts/hooks/useScale.js
@@ -44337,12 +50810,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/hooks/useSvgRef.js
-  var React106 = __toESM(require_react());
+  var React134 = __toESM(require_react());
   function useSvgRef() {
     const {
       isInitialized,
       data
-    } = React106.useContext(SvgContext);
+    } = React134.useContext(SvgContext);
     if (!isInitialized) {
       throw new Error(["MUI X: Could not find the svg ref context.", "It looks like you rendered your component outside of a ChartsContainer parent component."].join("\n"));
     }
@@ -44350,7 +50823,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/BarChart/BarClipPath.js
-  var React107 = __toESM(require_react());
+  var React135 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/BarChart/getRadius.js
   var getRadius = (corner, {
@@ -44379,13 +50852,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/x-charts/BarChart/BarClipPath.js
-  var import_jsx_runtime61 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime109 = __toESM(require_jsx_runtime());
   var _excluded3 = ["style", "maskId"];
   var buildInset = (corners) => `inset(0px round ${corners.topLeft}px ${corners.topRight}px ${corners.bottomRight}px ${corners.bottomLeft}px)`;
   function BarClipRect(props) {
     var _a, _b;
     const radiusData = props.ownerState;
-    return /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(animated.rect, {
+    return /* @__PURE__ */ (0, import_jsx_runtime109.jsx)(animated.rect, {
       style: _extends({}, props.style, {
         clipPath: (props.ownerState.layout === "vertical" ? (_a = props.style) == null ? void 0 : _a.height : (_b = props.style) == null ? void 0 : _b.width).to((value) => buildInset({
           topLeft: Math.min(value, getRadius("top-left", radiusData)),
@@ -44404,9 +50877,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (!props.borderRadius || props.borderRadius <= 0) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("clipPath", {
+    return /* @__PURE__ */ (0, import_jsx_runtime109.jsx)("clipPath", {
       id: maskId,
-      children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(BarClipRect, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime109.jsx)(BarClipRect, {
         ownerState: rest,
         style: style4
       })
@@ -44414,17 +50887,17 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/BarChart/BarLabel/BarLabelPlot.js
-  var React110 = __toESM(require_react());
+  var React138 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/BarChart/BarLabel/BarLabelItem.js
-  var React109 = __toESM(require_react());
+  var React137 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/BarChart/BarLabel/barLabelClasses.js
   function getBarLabelUtilityClass(slot) {
     return generateUtilityClass2("MuiBarLabel", slot);
   }
   var barLabelClasses = generateUtilityClasses2("MuiBarLabel", ["root", "highlighted", "faded"]);
-  var useUtilityClasses24 = (ownerState) => {
+  var useUtilityClasses40 = (ownerState) => {
     const {
       classes,
       seriesId,
@@ -44463,17 +50936,17 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/x-charts/BarChart/BarLabel/BarLabel.js
-  var React108 = __toESM(require_react());
-  var import_jsx_runtime62 = __toESM(require_jsx_runtime());
+  var React136 = __toESM(require_react());
+  var import_jsx_runtime110 = __toESM(require_jsx_runtime());
   var _excluded4 = ["seriesId", "dataIndex", "color", "isFaded", "isHighlighted", "classes"];
   var BarLabelComponent = styled_default2(animated.text, {
     name: "MuiBarLabel",
     slot: "Root",
-    overridesResolver: (_2, styles2) => [{
-      [`&.${barLabelClasses.faded}`]: styles2.faded
+    overridesResolver: (_2, styles4) => [{
+      [`&.${barLabelClasses.faded}`]: styles4.faded
     }, {
-      [`&.${barLabelClasses.highlighted}`]: styles2.highlighted
-    }, styles2.root]
+      [`&.${barLabelClasses.highlighted}`]: styles4.highlighted
+    }, styles4.root]
   })(({
     theme
   }) => {
@@ -44497,7 +50970,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       name: "MuiBarLabel"
     });
     const otherProps = _objectWithoutPropertiesLoose(props, _excluded4);
-    return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(BarLabelComponent, _extends({}, otherProps));
+    return /* @__PURE__ */ (0, import_jsx_runtime110.jsx)(BarLabelComponent, _extends({}, otherProps));
   }
   false ? BarLabel.propTypes = {
     // ----------------------------- Warning --------------------------------
@@ -44512,7 +50985,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/BarChart/BarLabel/BarLabelItem.js
-  var import_jsx_runtime63 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime111 = __toESM(require_jsx_runtime());
   var _excluded5 = ["seriesId", "classes", "color", "style", "dataIndex", "barLabel", "slots", "slotProps", "height", "width", "value"];
   var _excluded22 = ["ownerState"];
   function BarLabelItem(props) {
@@ -44545,7 +51018,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       isHighlighted,
       dataIndex
     };
-    const classes = useUtilityClasses24(ownerState);
+    const classes = useUtilityClasses40(ownerState);
     const Component = (_a = slots == null ? void 0 : slots.barLabel) != null ? _a : BarLabel;
     const _useSlotProps = useSlotProps_default2({
       elementType: Component,
@@ -44572,7 +51045,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (!formattedLabelText) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(Component, _extends({}, barLabelProps, barLabelOwnerState, {
+    return /* @__PURE__ */ (0, import_jsx_runtime111.jsx)(Component, _extends({}, barLabelProps, barLabelOwnerState, {
       children: formattedLabelText
     }));
   }
@@ -44618,7 +51091,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/BarChart/BarLabel/BarLabelPlot.js
-  var import_jsx_runtime64 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime112 = __toESM(require_jsx_runtime());
   var _excluded6 = ["bars", "skipAnimation"];
   var leaveStyle = ({
     layout,
@@ -44663,7 +51136,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       update: enterStyle,
       immediate: skipAnimation2
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(React110.Fragment, {
+    return /* @__PURE__ */ (0, import_jsx_runtime112.jsx)(React138.Fragment, {
       children: barLabelTransition((style4, {
         seriesId,
         dataIndex,
@@ -44671,7 +51144,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         value,
         width: width2,
         height: height2
-      }) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(BarLabelItem, _extends({
+      }) => /* @__PURE__ */ (0, import_jsx_runtime112.jsx)(BarLabelItem, _extends({
         seriesId,
         dataIndex,
         value,
@@ -44712,8 +51185,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/context/AnimationProvider/AnimationContext.js
-  var React111 = __toESM(require_react());
-  var AnimationContext = /* @__PURE__ */ React111.createContext({
+  var React139 = __toESM(require_react());
+  var AnimationContext = /* @__PURE__ */ React139.createContext({
     isInitialized: false,
     data: {
       skipAnimation: void 0
@@ -44724,15 +51197,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/context/AnimationProvider/AnimationProvider.js
-  var React112 = __toESM(require_react());
-  var import_jsx_runtime65 = __toESM(require_jsx_runtime());
+  var React140 = __toESM(require_react());
+  var import_jsx_runtime113 = __toESM(require_jsx_runtime());
   function AnimationProvider(props) {
     const {
       children,
       skipAnimation: inSkipAnimation
     } = props;
     const isAnimationDisabledEnvironment = typeof window === "undefined" || !(window == null ? void 0 : window.matchMedia);
-    const [skipAnimation2, setSkipAnimation] = React112.useState(isAnimationDisabledEnvironment || void 0);
+    const [skipAnimation2, setSkipAnimation] = React140.useState(isAnimationDisabledEnvironment || void 0);
     useIsomorphicLayoutEffect(() => {
       var _a;
       if (isAnimationDisabledEnvironment) {
@@ -44753,7 +51226,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         (_a2 = mql == null ? void 0 : mql.removeEventListener) == null ? void 0 : _a2.call(mql, "change", handleMediaChange);
       };
     }, []);
-    const value = React112.useMemo(() => ({
+    const value = React140.useMemo(() => ({
       isInitialized: true,
       data: {
         // If dev sets `skipAnimation` to true, it will skip all animations.
@@ -44761,19 +51234,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         skipAnimation: inSkipAnimation || skipAnimation2
       }
     }), [skipAnimation2, inSkipAnimation]);
-    return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(AnimationContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime113.jsx)(AnimationContext.Provider, {
       value,
       children
     });
   }
 
   // node_modules/@mui/x-charts/context/AnimationProvider/useSkipAnimation.js
-  var React113 = __toESM(require_react());
+  var React141 = __toESM(require_react());
   function useSkipAnimation(skipAnimation2) {
     const {
       isInitialized,
       data
-    } = React113.useContext(AnimationContext);
+    } = React141.useContext(AnimationContext);
     if (!isInitialized) {
       throw new Error(["MUI X: Could not find the animation ref context.", "It looks like you rendered your component outside of a ChartsContainer parent component."].join("\n"));
     }
@@ -44781,7 +51254,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/BarChart/BarPlot.js
-  var import_jsx_runtime66 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime114 = __toESM(require_jsx_runtime());
   var _excluded7 = ["skipAnimation", "onItemClick", "borderRadius", "barLabel"];
   function getBandSize({
     bandWidth: W,
@@ -44960,14 +51433,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       update: enterStyle2,
       immediate: skipAnimation2
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(React114.Fragment, {
+    return /* @__PURE__ */ (0, import_jsx_runtime114.jsxs)(React142.Fragment, {
       children: [!withoutBorderRadius && maskTransition((style4, {
         id,
         hasPositive,
         hasNegative,
         layout
       }) => {
-        return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(BarClipPath, {
+        return /* @__PURE__ */ (0, import_jsx_runtime114.jsx)(BarClipPath, {
           maskId: id,
           borderRadius: borderRadius2,
           hasNegative,
@@ -44981,7 +51454,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         color: color3,
         maskId
       }) => {
-        const barElement = /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(BarElement, _extends({
+        const barElement = /* @__PURE__ */ (0, import_jsx_runtime114.jsx)(BarElement, _extends({
           id: seriesId,
           dataIndex,
           color: color3
@@ -44998,11 +51471,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         if (withoutBorderRadius) {
           return barElement;
         }
-        return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("g", {
+        return /* @__PURE__ */ (0, import_jsx_runtime114.jsx)("g", {
           clipPath: `url(#${maskId})`,
           children: barElement
         });
-      }), barLabel && /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(BarLabelPlot, _extends({
+      }), barLabel && /* @__PURE__ */ (0, import_jsx_runtime114.jsx)(BarLabelPlot, _extends({
         bars: completedData,
         skipAnimation: skipAnimation2,
         barLabel
@@ -45050,16 +51523,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/ResponsiveChartContainer/ResponsiveChartContainer.js
-  var React125 = __toESM(require_react());
+  var React153 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/ChartContainer/ChartContainer.js
-  var React122 = __toESM(require_react());
+  var React150 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/ChartsSurface/ChartsSurface.js
-  var React116 = __toESM(require_react());
+  var React144 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/hooks/useAxisEvents.js
-  var React115 = __toESM(require_react());
+  var React143 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/internals/getSVGPoint.js
   function getSVGPoint(svg, event) {
@@ -45084,15 +51557,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     } = useCartesianContext();
     const {
       dispatch
-    } = React115.useContext(InteractionContext);
+    } = React143.useContext(InteractionContext);
     const usedXAxis = xAxisIds[0];
     const usedYAxis = yAxisIds[0];
-    const mousePosition = React115.useRef({
+    const mousePosition = React143.useRef({
       isInChart: false,
       x: -1,
       y: -1
     });
-    React115.useEffect(() => {
+    React143.useEffect(() => {
       const element = svgRef.current;
       if (element === null || disableAxisListener) {
         return () => {
@@ -45210,7 +51683,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/x-charts/ChartsSurface/ChartsSurface.js
-  var import_jsx_runtime67 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime115 = __toESM(require_jsx_runtime());
   var _excluded8 = ["children", "width", "height", "viewBox", "disableAxisListener", "className", "title", "desc"];
   var ChartChartsSurfaceStyles = styled_default2("svg", {
     name: "MuiChartsSurface",
@@ -45220,7 +51693,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     // For example, prevent page scroll & zoom.
     touchAction: "none"
   }));
-  var ChartsSurface = /* @__PURE__ */ React116.forwardRef(function ChartsSurface2(inProps, ref) {
+  var ChartsSurface = /* @__PURE__ */ React144.forwardRef(function ChartsSurface2(inProps, ref) {
     const props = useThemeProps2({
       props: inProps,
       name: "MuiChartsSurface"
@@ -45242,16 +51715,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       y: 0
     }, viewBox);
     useAxisEvents(disableAxisListener);
-    return /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(ChartChartsSurfaceStyles, _extends({
+    return /* @__PURE__ */ (0, import_jsx_runtime115.jsxs)(ChartChartsSurfaceStyles, _extends({
       width: width2,
       height: height2,
       viewBox: `${svgView.x} ${svgView.y} ${svgView.width} ${svgView.height}`,
       ref,
       className
     }, other, {
-      children: [/* @__PURE__ */ (0, import_jsx_runtime67.jsx)("title", {
+      children: [/* @__PURE__ */ (0, import_jsx_runtime115.jsx)("title", {
         children: title
-      }), /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("desc", {
+      }), /* @__PURE__ */ (0, import_jsx_runtime115.jsx)("desc", {
         children: desc
       }), children]
     }));
@@ -45289,11 +51762,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/internals/components/ChartsAxesGradients/ChartsAxesGradients.js
-  var React119 = __toESM(require_react());
+  var React147 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/internals/components/ChartsAxesGradients/ChartsPiecewiseGradient.js
-  var React117 = __toESM(require_react());
-  var import_jsx_runtime68 = __toESM(require_jsx_runtime());
+  var React145 = __toESM(require_react());
+  var import_jsx_runtime116 = __toESM(require_jsx_runtime());
   function ChartsPiecewiseGradient(props) {
     const {
       isReversed,
@@ -45306,7 +51779,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (size <= 0) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("linearGradient", {
+    return /* @__PURE__ */ (0, import_jsx_runtime116.jsx)("linearGradient", {
       id: gradientId,
       x1: "0",
       x2: "0",
@@ -45320,12 +51793,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           return null;
         }
         const offset2 = isReversed ? 1 - x / size : x / size;
-        return /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(React117.Fragment, {
-          children: [/* @__PURE__ */ (0, import_jsx_runtime68.jsx)("stop", {
+        return /* @__PURE__ */ (0, import_jsx_runtime116.jsxs)(React145.Fragment, {
+          children: [/* @__PURE__ */ (0, import_jsx_runtime116.jsx)("stop", {
             offset: offset2,
             stopColor: colorMap.colors[index],
             stopOpacity: 1
-          }), /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("stop", {
+          }), /* @__PURE__ */ (0, import_jsx_runtime116.jsx)("stop", {
             offset: offset2,
             stopColor: colorMap.colors[index + 1],
             stopOpacity: 1
@@ -45336,8 +51809,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/internals/components/ChartsAxesGradients/ChartsContinuousGradient.js
-  var React118 = __toESM(require_react());
-  var import_jsx_runtime69 = __toESM(require_jsx_runtime());
+  var React146 = __toESM(require_react());
+  var import_jsx_runtime117 = __toESM(require_jsx_runtime());
   var PX_PRECISION = 10;
   function ChartsContinuousGradient(props) {
     var _a, _b;
@@ -45359,7 +51832,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const interpolator = typeof extremValues[0] === "number" ? number_default(extremValues[0], extremValues[1]) : date_default(extremValues[0], extremValues[1]);
     const numberOfPoints = Math.round((Math.max(...extremPositions) - Math.min(...extremPositions)) / PX_PRECISION);
     const keyPrefix = `${extremValues[0]}-${extremValues[1]}-`;
-    return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("linearGradient", {
+    return /* @__PURE__ */ (0, import_jsx_runtime117.jsx)("linearGradient", {
       id: gradientId,
       x1: "0",
       x2: "0",
@@ -45383,7 +51856,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         if (color3 === null) {
           return null;
         }
-        return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("stop", {
+        return /* @__PURE__ */ (0, import_jsx_runtime117.jsx)("stop", {
           offset: offset2,
           stopColor: color3,
           stopOpacity: 1
@@ -45393,12 +51866,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/internals/components/ChartsAxesGradients/ChartsAxesGradients.js
-  var import_jsx_runtime70 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime118 = __toESM(require_jsx_runtime());
   function useChartGradient() {
     const {
       chartId
-    } = React119.useContext(DrawingContext);
-    return React119.useCallback((axisId, direction) => `${chartId}-gradient-${direction}-${axisId}`, [chartId]);
+    } = React147.useContext(DrawingContext);
+    return React147.useCallback((axisId, direction) => `${chartId}-gradient-${direction}-${axisId}`, [chartId]);
   }
   function ChartsAxesGradients() {
     const {
@@ -45418,7 +51891,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       yAxisIds,
       yAxis
     } = useCartesianContext();
-    return /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)("defs", {
+    return /* @__PURE__ */ (0, import_jsx_runtime118.jsxs)("defs", {
       children: [yAxisIds.filter((axisId) => yAxis[axisId].colorMap !== void 0).map((axisId) => {
         const gradientId = getGradientId(axisId, "y");
         const {
@@ -45428,7 +51901,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           reverse
         } = yAxis[axisId];
         if ((colorMap == null ? void 0 : colorMap.type) === "piecewise") {
-          return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(ChartsPiecewiseGradient, {
+          return /* @__PURE__ */ (0, import_jsx_runtime118.jsx)(ChartsPiecewiseGradient, {
             isReversed: !reverse,
             scale,
             colorMap,
@@ -45438,7 +51911,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }, gradientId);
         }
         if ((colorMap == null ? void 0 : colorMap.type) === "continuous") {
-          return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(ChartsContinuousGradient, {
+          return /* @__PURE__ */ (0, import_jsx_runtime118.jsx)(ChartsContinuousGradient, {
             isReversed: !reverse,
             scale,
             colorScale,
@@ -45458,7 +51931,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           colorScale
         } = xAxis[axisId];
         if ((colorMap == null ? void 0 : colorMap.type) === "piecewise") {
-          return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(ChartsPiecewiseGradient, {
+          return /* @__PURE__ */ (0, import_jsx_runtime118.jsx)(ChartsPiecewiseGradient, {
             isReversed: reverse,
             scale,
             colorMap,
@@ -45468,7 +51941,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }, gradientId);
         }
         if ((colorMap == null ? void 0 : colorMap.type) === "continuous") {
-          return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(ChartsContinuousGradient, {
+          return /* @__PURE__ */ (0, import_jsx_runtime118.jsx)(ChartsContinuousGradient, {
             isReversed: reverse,
             scale,
             colorScale,
@@ -45484,10 +51957,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/ChartContainer/useChartContainerProps.js
-  var React121 = __toESM(require_react());
+  var React149 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/ChartContainer/useDefaultizeAxis.js
-  var React120 = __toESM(require_react());
+  var React148 = __toESM(require_react());
   var defaultizeAxis = (inAxis, dataset, axisName) => {
     var _a;
     const DEFAULT_AXIS_KEY = axisName === "x" ? DEFAULT_X_AXIS_KEY : DEFAULT_Y_AXIS_KEY;
@@ -45512,8 +51985,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     });
   };
   var useDefaultizeAxis = (inXAxis, inYAxis, dataset) => {
-    const xAxis = React120.useMemo(() => defaultizeAxis(inXAxis, dataset, "x"), [inXAxis, dataset]);
-    const yAxis = React120.useMemo(() => defaultizeAxis(inYAxis, dataset, "y"), [inYAxis, dataset]);
+    const xAxis = React148.useMemo(() => defaultizeAxis(inXAxis, dataset, "x"), [inXAxis, dataset]);
+    const yAxis = React148.useMemo(() => defaultizeAxis(inYAxis, dataset, "y"), [inYAxis, dataset]);
     return [xAxis, yAxis];
   };
 
@@ -45540,7 +52013,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       children,
       skipAnimation: skipAnimation2
     } = props, other = _objectWithoutPropertiesLoose(props, _excluded9);
-    const svgRef = React121.useRef(null);
+    const svgRef = React149.useRef(null);
     const chartSurfaceRef = useForkRef2(ref, svgRef);
     const [defaultizedXAxis, defaultizedYAxis] = useDefaultizeAxis(xAxis, yAxis, dataset);
     const drawingProviderProps = {
@@ -45598,8 +52071,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/x-charts/ChartContainer/ChartContainer.js
-  var import_jsx_runtime71 = __toESM(require_jsx_runtime());
-  var ChartContainer = /* @__PURE__ */ React122.forwardRef(function ChartContainer2(props, ref) {
+  var import_jsx_runtime119 = __toESM(require_jsx_runtime());
+  var ChartContainer = /* @__PURE__ */ React150.forwardRef(function ChartContainer2(props, ref) {
     const {
       children,
       drawingProviderProps,
@@ -45611,15 +52084,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       pluginProviderProps,
       animationProviderProps
     } = useChartContainerProps(props, ref);
-    return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(DrawingProvider, _extends({}, drawingProviderProps, {
-      children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(PluginProvider, _extends({}, pluginProviderProps, {
-        children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(SeriesProvider, _extends({}, seriesProviderProps, {
-          children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(CartesianProvider, _extends({}, cartesianProviderProps, {
-            children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(ZAxisContextProvider, _extends({}, zAxisContextProps, {
-              children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(InteractionProvider, {
-                children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(HighlightedProvider, _extends({}, highlightedProviderProps, {
-                  children: /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)(ChartsSurface, _extends({}, chartsSurfaceProps, {
-                    children: [/* @__PURE__ */ (0, import_jsx_runtime71.jsx)(ChartsAxesGradients, {}), /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(AnimationProvider, _extends({}, animationProviderProps, {
+    return /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(DrawingProvider, _extends({}, drawingProviderProps, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(PluginProvider, _extends({}, pluginProviderProps, {
+        children: /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(SeriesProvider, _extends({}, seriesProviderProps, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(CartesianProvider, _extends({}, cartesianProviderProps, {
+            children: /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(ZAxisContextProvider, _extends({}, zAxisContextProps, {
+              children: /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(InteractionProvider, {
+                children: /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(HighlightedProvider, _extends({}, highlightedProviderProps, {
+                  children: /* @__PURE__ */ (0, import_jsx_runtime119.jsxs)(ChartsSurface, _extends({}, chartsSurfaceProps, {
+                    children: [/* @__PURE__ */ (0, import_jsx_runtime119.jsx)(ChartsAxesGradients, {}), /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(AnimationProvider, _extends({}, animationProviderProps, {
                       children
                     }))]
                   }))
@@ -45872,12 +52345,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   });
 
   // node_modules/@mui/x-charts/ResponsiveChartContainer/useChartContainerDimensions.js
-  var React124 = __toESM(require_react());
+  var React152 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/node_modules/@mui/utils/esm/useEnhancedEffect/useEnhancedEffect.js
-  var React123 = __toESM(require_react(), 1);
-  var useEnhancedEffect2 = typeof window !== "undefined" ? React123.useLayoutEffect : React123.useEffect;
-  var useEnhancedEffect_default2 = useEnhancedEffect2;
+  var React151 = __toESM(require_react(), 1);
+  var useEnhancedEffect2 = typeof window !== "undefined" ? React151.useLayoutEffect : React151.useEffect;
+  var useEnhancedEffect_default3 = useEnhancedEffect2;
 
   // node_modules/@mui/x-charts/node_modules/@mui/utils/esm/ownerDocument/ownerDocument.js
   function ownerDocument2(node2) {
@@ -45892,15 +52365,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@mui/x-charts/ResponsiveChartContainer/useChartContainerDimensions.js
   var useChartContainerDimensions = (inWidth, inHeight, resolveSizeBeforeRender) => {
-    const stateRef = React124.useRef({
+    const stateRef = React152.useRef({
       displayError: false,
       initialCompute: true,
       computeRun: 0
     });
-    const rootRef = React124.useRef(null);
-    const [width2, setWidth] = React124.useState(0);
-    const [height2, setHeight] = React124.useState(0);
-    const computeSize = React124.useCallback(() => {
+    const rootRef = React152.useRef(null);
+    const [width2, setWidth] = React152.useState(0);
+    const [height2, setHeight] = React152.useState(0);
+    const computeSize = React152.useCallback(() => {
       const mainEl = rootRef == null ? void 0 : rootRef.current;
       if (!mainEl) {
         return {};
@@ -45916,10 +52389,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         height: newHeight
       };
     }, []);
-    React124.useEffect(() => {
+    React152.useEffect(() => {
       stateRef.current.displayError = true;
     }, []);
-    useEnhancedEffect_default2(() => {
+    useEnhancedEffect_default3(() => {
       if (!resolveSizeBeforeRender || !stateRef.current.initialCompute || stateRef.current.computeRun > 20) {
         return;
       }
@@ -45930,7 +52403,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         stateRef.current.initialCompute = false;
       }
     }, [width2, height2, computeSize, resolveSizeBeforeRender]);
-    useEnhancedEffect_default2(() => {
+    useEnhancedEffect_default3(() => {
       if (inWidth !== void 0 && inHeight !== void 0) {
         return () => {
         };
@@ -46043,15 +52516,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/x-charts/ResponsiveChartContainer/ResponsiveChartContainer.js
-  var import_jsx_runtime72 = __toESM(require_jsx_runtime());
-  var ResponsiveChartContainer = /* @__PURE__ */ React125.forwardRef(function ResponsiveChartContainer2(props, ref) {
+  var import_jsx_runtime120 = __toESM(require_jsx_runtime());
+  var ResponsiveChartContainer = /* @__PURE__ */ React153.forwardRef(function ResponsiveChartContainer2(props, ref) {
     const {
       hasIntrinsicSize,
       chartContainerProps,
       resizableChartContainerProps
     } = useResponsiveChartContainerProps(props, ref);
-    return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(ResizableContainer, _extends({}, resizableChartContainerProps, {
-      children: hasIntrinsicSize ? /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(ChartContainer, _extends({}, chartContainerProps)) : null
+    return /* @__PURE__ */ (0, import_jsx_runtime120.jsx)(ResizableContainer, _extends({}, resizableChartContainerProps, {
+      children: hasIntrinsicSize ? /* @__PURE__ */ (0, import_jsx_runtime120.jsx)(ChartContainer, _extends({}, chartContainerProps)) : null
     }));
   });
   false ? ResponsiveChartContainer.propTypes = {
@@ -46280,7 +52753,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/ChartsXAxis/ChartsXAxis.js
-  var React128 = __toESM(require_react());
+  var React156 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/ChartsAxis/axisClasses.js
   function getAxisUtilityClass(slot) {
@@ -46292,7 +52765,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var AxisRoot = styled_default2("g", {
     name: "MuiChartsAxis",
     slot: "Root",
-    overridesResolver: (props, styles2) => styles2.root
+    overridesResolver: (props, styles4) => styles4.root
   })(({
     theme
   }) => ({
@@ -46314,7 +52787,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }));
 
   // node_modules/@mui/x-charts/ChartsText/ChartsText.js
-  var React126 = __toESM(require_react());
+  var React154 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/internals/domUtils.js
   function isSsr() {
@@ -46423,7 +52896,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/ChartsText/ChartsText.js
-  var import_jsx_runtime73 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime121 = __toESM(require_jsx_runtime());
   var _excluded11 = ["x", "y", "style", "text", "ownerState"];
   var _excluded23 = ["angle", "textAnchor", "dominantBaseline"];
   function ChartsText(props) {
@@ -46438,7 +52911,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       textAnchor,
       dominantBaseline
     } = _ref, style4 = _objectWithoutPropertiesLoose(_ref, _excluded23);
-    const wordsByLines = React126.useMemo(() => getWordsByLines({
+    const wordsByLines = React154.useMemo(() => getWordsByLines({
       style: style4,
       needsComputation: text.includes("\n"),
       text
@@ -46459,14 +52932,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (angle) {
       transforms.push(`rotate(${angle}, ${x}, ${y})`);
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime73.jsx)("text", _extends({}, textProps, {
+    return /* @__PURE__ */ (0, import_jsx_runtime121.jsx)("text", _extends({}, textProps, {
       transform: transforms.length > 0 ? transforms.join(" ") : void 0,
       x,
       y,
       textAnchor,
       dominantBaseline,
       style: style4,
-      children: wordsByLines.map((line2, index) => /* @__PURE__ */ (0, import_jsx_runtime73.jsx)("tspan", {
+      children: wordsByLines.map((line2, index) => /* @__PURE__ */ (0, import_jsx_runtime121.jsx)("tspan", {
         x,
         dy: `${index === 0 ? startDy : wordsByLines[0].height}px`,
         dominantBaseline,
@@ -46523,15 +52996,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/hooks/useMounted.js
-  var React127 = __toESM(require_react());
+  var React155 = __toESM(require_react());
   function useMounted(defer = false) {
-    const [mountedState, setMountedState] = React127.useState(false);
-    useEnhancedEffect_default2(() => {
+    const [mountedState, setMountedState] = React155.useState(false);
+    useEnhancedEffect_default3(() => {
       if (!defer) {
         setMountedState(true);
       }
     }, [defer]);
-    React127.useEffect(() => {
+    React155.useEffect(() => {
       if (defer) {
         setMountedState(true);
       }
@@ -46540,9 +53013,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/ChartsXAxis/ChartsXAxis.js
-  var import_jsx_runtime74 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime122 = __toESM(require_jsx_runtime());
   var _excluded12 = ["scale", "tickNumber", "reverse"];
-  var useUtilityClasses25 = (ownerState) => {
+  var useUtilityClasses41 = (ownerState) => {
     const {
       classes,
       position: position2
@@ -46611,7 +53084,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var XAxisRoot = styled_default2(AxisRoot, {
     name: "MuiChartsXAxis",
     slot: "Root",
-    overridesResolver: (props, styles2) => styles2.root
+    overridesResolver: (props, styles4) => styles4.root
   })({});
   var defaultProps2 = {
     position: "bottom",
@@ -46656,7 +53129,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       sx
     } = defaultizedProps;
     const theme = useTheme5();
-    const classes = useUtilityClasses25(_extends({}, defaultizedProps, {
+    const classes = useUtilityClasses41(_extends({}, defaultizedProps, {
       theme
     }));
     const {
@@ -46720,11 +53193,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (ordinalAxis && domain.length === 0 || !ordinalAxis && domain.some(isInfinity)) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime74.jsxs)(XAxisRoot, {
+    return /* @__PURE__ */ (0, import_jsx_runtime122.jsxs)(XAxisRoot, {
       transform: `translate(0, ${position2 === "bottom" ? top2 + height2 : top2})`,
       className: classes.root,
       sx,
-      children: [!disableLine && /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(Line, _extends({
+      children: [!disableLine && /* @__PURE__ */ (0, import_jsx_runtime122.jsx)(Line, _extends({
         x1: left2,
         x2: left2 + width2,
         className: classes.line
@@ -46748,22 +53221,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }, {
           direction: "x"
         });
-        return /* @__PURE__ */ (0, import_jsx_runtime74.jsxs)("g", {
+        return /* @__PURE__ */ (0, import_jsx_runtime122.jsxs)("g", {
           transform: `translate(${offset2}, 0)`,
           className: classes.tickContainer,
-          children: [!disableTicks && showTick && /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(Tick, _extends({
+          children: [!disableTicks && showTick && /* @__PURE__ */ (0, import_jsx_runtime122.jsx)(Tick, _extends({
             y2: positionSign * tickSize,
             className: classes.tick
-          }, slotProps == null ? void 0 : slotProps.axisTick)), formattedValue !== void 0 && !skipLabel && showTickLabel && /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(TickLabel, _extends({
+          }, slotProps == null ? void 0 : slotProps.axisTick)), formattedValue !== void 0 && !skipLabel && showTickLabel && /* @__PURE__ */ (0, import_jsx_runtime122.jsx)(TickLabel, _extends({
             x: xTickLabel,
             y: yTickLabel
           }, axisTickLabelProps, {
             text: formattedValue.toString()
           }))]
         }, index);
-      }), label && /* @__PURE__ */ (0, import_jsx_runtime74.jsx)("g", {
+      }), label && /* @__PURE__ */ (0, import_jsx_runtime122.jsx)("g", {
         className: classes.label,
-        children: /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(Label, _extends({}, labelRefPoint, axisLabelProps, {
+        children: /* @__PURE__ */ (0, import_jsx_runtime122.jsx)(Label, _extends({}, labelRefPoint, axisLabelProps, {
           text: label
         }))
       })]
@@ -46896,10 +53369,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/ChartsYAxis/ChartsYAxis.js
-  var React129 = __toESM(require_react());
-  var import_jsx_runtime75 = __toESM(require_jsx_runtime());
+  var React157 = __toESM(require_react());
+  var import_jsx_runtime123 = __toESM(require_jsx_runtime());
   var _excluded13 = ["scale", "tickNumber"];
-  var useUtilityClasses26 = (ownerState) => {
+  var useUtilityClasses42 = (ownerState) => {
     const {
       classes,
       position: position2
@@ -46917,7 +53390,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var YAxisRoot = styled_default2(AxisRoot, {
     name: "MuiChartsYAxis",
     slot: "Root",
-    overridesResolver: (props, styles2) => styles2.root
+    overridesResolver: (props, styles4) => styles4.root
   })({});
   var defaultProps3 = {
     position: "left",
@@ -46963,7 +53436,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     } = defaultizedProps;
     const theme = useTheme5();
     const isRtl = useRtl();
-    const classes = useUtilityClasses26(_extends({}, defaultizedProps, {
+    const classes = useUtilityClasses42(_extends({}, defaultizedProps, {
       theme
     }));
     const {
@@ -47031,11 +53504,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (ordinalAxis && domain.length === 0 || !ordinalAxis && domain.some(isInfinity)) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime75.jsxs)(YAxisRoot, {
+    return /* @__PURE__ */ (0, import_jsx_runtime123.jsxs)(YAxisRoot, {
       transform: `translate(${position2 === "right" ? left2 + width2 : left2}, 0)`,
       className: classes.root,
       sx,
-      children: [!disableLine && /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(Line, _extends({
+      children: [!disableLine && /* @__PURE__ */ (0, import_jsx_runtime123.jsx)(Line, _extends({
         y1: top2,
         y2: top2 + height2,
         className: classes.line
@@ -47057,21 +53530,21 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         if (!showLabel) {
           return null;
         }
-        return /* @__PURE__ */ (0, import_jsx_runtime75.jsxs)("g", {
+        return /* @__PURE__ */ (0, import_jsx_runtime123.jsxs)("g", {
           transform: `translate(0, ${offset2})`,
           className: classes.tickContainer,
-          children: [!disableTicks && /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(Tick, _extends({
+          children: [!disableTicks && /* @__PURE__ */ (0, import_jsx_runtime123.jsx)(Tick, _extends({
             x2: positionSign * tickSize,
             className: classes.tick
-          }, slotProps == null ? void 0 : slotProps.axisTick)), formattedValue !== void 0 && !skipLabel && /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(TickLabel, _extends({
+          }, slotProps == null ? void 0 : slotProps.axisTick)), formattedValue !== void 0 && !skipLabel && /* @__PURE__ */ (0, import_jsx_runtime123.jsx)(TickLabel, _extends({
             x: xTickLabel,
             y: yTickLabel,
             text: formattedValue.toString()
           }, axisTickLabelProps))]
         }, index);
-      }), label && /* @__PURE__ */ (0, import_jsx_runtime75.jsx)("g", {
+      }), label && /* @__PURE__ */ (0, import_jsx_runtime123.jsx)("g", {
         className: classes.label,
-        children: /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(Label, _extends({}, labelRefPoint, axisLabelProps, {
+        children: /* @__PURE__ */ (0, import_jsx_runtime123.jsx)(Label, _extends({}, labelRefPoint, axisLabelProps, {
           text: label
         }))
       })]
@@ -47204,10 +53677,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/ChartsTooltip/ChartsTooltip.js
-  var React135 = __toESM(require_react());
+  var React163 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/ChartsTooltip/utils.js
-  var React130 = __toESM(require_react());
+  var React158 = __toESM(require_react());
   function generateVirtualElement(mousePosition) {
     if (mousePosition === null) {
       return {
@@ -47246,8 +53719,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
   function useMouseTracker() {
     const svgRef = useSvgRef();
-    const [mousePosition, setMousePosition] = React130.useState(null);
-    React130.useEffect(() => {
+    const [mousePosition, setMousePosition] = React158.useState(null);
+    React158.useEffect(() => {
       const element = svgRef.current;
       if (element === null) {
         return () => {
@@ -47293,10 +53766,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/ChartsTooltip/ChartsItemTooltipContent.js
-  var React132 = __toESM(require_react());
+  var React160 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/ChartsTooltip/DefaultChartsItemTooltipContent.js
-  var React131 = __toESM(require_react());
+  var React159 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/ChartsTooltip/chartsTooltipClasses.js
   function getChartsTooltipUtilityClass(slot) {
@@ -47308,7 +53781,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var ChartsTooltipPaper = styled_default2("div", {
     name: "MuiChartsTooltip",
     slot: "Container",
-    overridesResolver: (props, styles2) => styles2.paper
+    overridesResolver: (props, styles4) => styles4.paper
   })(({
     theme
   }) => ({
@@ -47321,7 +53794,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var ChartsTooltipTable = styled_default2("table", {
     name: "MuiChartsTooltip",
     slot: "Table",
-    overridesResolver: (props, styles2) => styles2.table
+    overridesResolver: (props, styles4) => styles4.table
   })(({
     theme
   }) => ({
@@ -47333,7 +53806,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var ChartsTooltipRow = styled_default2("tr", {
     name: "MuiChartsTooltip",
     slot: "Row",
-    overridesResolver: (props, styles2) => styles2.row
+    overridesResolver: (props, styles4) => styles4.row
   })(({
     theme
   }) => ({
@@ -47347,7 +53820,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var ChartsTooltipCell = styled_default2("td", {
     name: "MuiChartsTooltip",
     slot: "Cell",
-    overridesResolver: (props, styles2) => styles2.cell
+    overridesResolver: (props, styles4) => styles4.cell
   })(({
     theme
   }) => ({
@@ -47370,7 +53843,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var ChartsTooltipMark = styled_default2("div", {
     name: "MuiChartsTooltip",
     slot: "Mark",
-    overridesResolver: (props, styles2) => styles2.mark,
+    overridesResolver: (props, styles4) => styles4.mark,
     shouldForwardProp: (prop) => shouldForwardProp(prop) && prop !== "color"
   })(({
     theme,
@@ -47387,7 +53860,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }));
 
   // node_modules/@mui/x-charts/ChartsTooltip/DefaultChartsItemTooltipContent.js
-  var import_jsx_runtime76 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime124 = __toESM(require_jsx_runtime());
   function DefaultChartsItemTooltipContent(props) {
     var _a;
     const {
@@ -47416,24 +53889,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const formattedValue = (_a = series.valueFormatter) == null ? void 0 : _a.call(series, value, {
       dataIndex: itemData.dataIndex
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(ChartsTooltipPaper, {
+    return /* @__PURE__ */ (0, import_jsx_runtime124.jsx)(ChartsTooltipPaper, {
       sx,
       className: classes.paper,
-      children: /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(ChartsTooltipTable, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime124.jsx)(ChartsTooltipTable, {
         className: classes.table,
-        children: /* @__PURE__ */ (0, import_jsx_runtime76.jsx)("tbody", {
-          children: /* @__PURE__ */ (0, import_jsx_runtime76.jsxs)(ChartsTooltipRow, {
+        children: /* @__PURE__ */ (0, import_jsx_runtime124.jsx)("tbody", {
+          children: /* @__PURE__ */ (0, import_jsx_runtime124.jsxs)(ChartsTooltipRow, {
             className: classes.row,
-            children: [/* @__PURE__ */ (0, import_jsx_runtime76.jsx)(ChartsTooltipCell, {
+            children: [/* @__PURE__ */ (0, import_jsx_runtime124.jsx)(ChartsTooltipCell, {
               className: clsx_default(classes.markCell, classes.cell),
-              children: /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(ChartsTooltipMark, {
+              children: /* @__PURE__ */ (0, import_jsx_runtime124.jsx)(ChartsTooltipMark, {
                 color: color3,
                 className: classes.mark
               })
-            }), /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(ChartsTooltipCell, {
+            }), /* @__PURE__ */ (0, import_jsx_runtime124.jsx)(ChartsTooltipCell, {
               className: clsx_default(classes.labelCell, classes.cell),
               children: displayedLabel
-            }), /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(ChartsTooltipCell, {
+            }), /* @__PURE__ */ (0, import_jsx_runtime124.jsx)(ChartsTooltipCell, {
               className: clsx_default(classes.valueCell, classes.cell),
               children: formattedValue
             })]
@@ -47473,7 +53946,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/ChartsTooltip/ChartsItemTooltipContent.js
-  var import_jsx_runtime77 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime125 = __toESM(require_jsx_runtime());
   function ChartsItemTooltipContent(props) {
     var _a, _b, _c, _d, _e, _f, _g, _h;
     const {
@@ -47493,7 +53966,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const {
       zAxis,
       zAxisIds
-    } = React132.useContext(ZAxisContext);
+    } = React160.useContext(ZAxisContext);
     const colorProcessors = useColorProcessor();
     const xAxisId = (_b = (_a = series.xAxisId) != null ? _a : series.xAxisKey) != null ? _b : xAxisIds[0];
     const yAxisId = (_d = (_c = series.yAxisId) != null ? _c : series.yAxisKey) != null ? _d : yAxisIds[0];
@@ -47512,14 +53985,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       },
       ownerState: {}
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(Content, _extends({}, chartTooltipContentProps));
+    return /* @__PURE__ */ (0, import_jsx_runtime125.jsx)(Content, _extends({}, chartTooltipContentProps));
   }
 
   // node_modules/@mui/x-charts/ChartsTooltip/ChartsAxisTooltipContent.js
-  var React134 = __toESM(require_react());
+  var React162 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/ChartsTooltip/DefaultChartsAxisTooltipContent.js
-  var React133 = __toESM(require_react());
+  var React161 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/internals/configInit.js
   var instance;
@@ -47552,7 +54025,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/ChartsTooltip/DefaultChartsAxisTooltipContent.js
-  var import_jsx_runtime78 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime126 = __toESM(require_jsx_runtime());
   function DefaultChartsAxisTooltipContent(props) {
     var _a;
     const {
@@ -47567,23 +54040,23 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       return null;
     }
     const axisFormatter = (_a = axis.valueFormatter) != null ? _a : (v) => axis.scaleType === "utc" ? utcFormatter(v) : v.toLocaleString();
-    return /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(ChartsTooltipPaper, {
+    return /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(ChartsTooltipPaper, {
       sx,
       className: classes.paper,
-      children: /* @__PURE__ */ (0, import_jsx_runtime78.jsxs)(ChartsTooltipTable, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime126.jsxs)(ChartsTooltipTable, {
         className: classes.table,
-        children: [axisValue != null && !axis.hideTooltip && /* @__PURE__ */ (0, import_jsx_runtime78.jsx)("thead", {
-          children: /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(ChartsTooltipRow, {
-            children: /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(ChartsTooltipCell, {
+        children: [axisValue != null && !axis.hideTooltip && /* @__PURE__ */ (0, import_jsx_runtime126.jsx)("thead", {
+          children: /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(ChartsTooltipRow, {
+            children: /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(ChartsTooltipCell, {
               colSpan: 3,
-              children: /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(Typography_default, {
+              children: /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(Typography_default, {
                 children: axisFormatter(axisValue, {
                   location: "tooltip"
                 })
               })
             })
           })
-        }), /* @__PURE__ */ (0, import_jsx_runtime78.jsx)("tbody", {
+        }), /* @__PURE__ */ (0, import_jsx_runtime126.jsx)("tbody", {
           children: series.filter(isCartesianSeries).map(({
             id,
             label,
@@ -47600,22 +54073,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             }
             const formattedLabel = getLabel(label, "tooltip");
             const color3 = getColor5(dataIndex);
-            return /* @__PURE__ */ (0, import_jsx_runtime78.jsxs)(ChartsTooltipRow, {
+            return /* @__PURE__ */ (0, import_jsx_runtime126.jsxs)(ChartsTooltipRow, {
               className: classes.row,
-              children: [/* @__PURE__ */ (0, import_jsx_runtime78.jsx)(ChartsTooltipCell, {
+              children: [/* @__PURE__ */ (0, import_jsx_runtime126.jsx)(ChartsTooltipCell, {
                 className: clsx_default(classes.markCell, classes.cell),
-                children: color3 && /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(ChartsTooltipMark, {
+                children: color3 && /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(ChartsTooltipMark, {
                   color: color3,
                   className: classes.mark
                 })
-              }), /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(ChartsTooltipCell, {
+              }), /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(ChartsTooltipCell, {
                 className: clsx_default(classes.labelCell, classes.cell),
-                children: formattedLabel ? /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(Typography_default, {
+                children: formattedLabel ? /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(Typography_default, {
                   children: formattedLabel
                 }) : null
-              }), /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(ChartsTooltipCell, {
+              }), /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(ChartsTooltipCell, {
                 className: clsx_default(classes.valueCell, classes.cell),
-                children: /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(Typography_default, {
+                children: /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(Typography_default, {
                   children: formattedValue
                 })
               })]
@@ -47667,7 +54140,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/ChartsTooltip/ChartsAxisTooltipContent.js
-  var import_jsx_runtime79 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime127 = __toESM(require_jsx_runtime());
   function ChartsAxisTooltipContent(props) {
     const {
       content,
@@ -47688,11 +54161,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const {
       zAxisIds,
       zAxis
-    } = React134.useContext(ZAxisContext);
+    } = React162.useContext(ZAxisContext);
     const series = useSeries();
     const colorProcessors = useColorProcessor();
     const USED_AXIS_ID = isXaxis ? xAxisIds[0] : yAxisIds[0];
-    const relevantSeries = React134.useMemo(() => {
+    const relevantSeries = React162.useMemo(() => {
       const rep = [];
       Object.keys(series).filter(isCartesianSeriesType).forEach((seriesType) => {
         series[seriesType].seriesOrder.forEach((seriesId) => {
@@ -47715,7 +54188,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       });
       return rep;
     }, [USED_AXIS_ID, colorProcessors, isXaxis, series, xAxis, xAxisIds, yAxis, yAxisIds, zAxis, zAxisIds]);
-    const relevantAxis = React134.useMemo(() => {
+    const relevantAxis = React162.useMemo(() => {
       return isXaxis ? xAxis[USED_AXIS_ID] : yAxis[USED_AXIS_ID];
     }, [USED_AXIS_ID, isXaxis, xAxis, yAxis]);
     const Content = content != null ? content : DefaultChartsAxisTooltipContent;
@@ -47733,12 +54206,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       },
       ownerState: {}
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(Content, _extends({}, chartTooltipContentProps));
+    return /* @__PURE__ */ (0, import_jsx_runtime127.jsx)(Content, _extends({}, chartTooltipContentProps));
   }
 
   // node_modules/@mui/x-charts/ChartsTooltip/ChartsTooltip.js
-  var import_jsx_runtime80 = __toESM(require_jsx_runtime());
-  var useUtilityClasses27 = (ownerState) => {
+  var import_jsx_runtime128 = __toESM(require_jsx_runtime());
+  var useUtilityClasses43 = (ownerState) => {
     const {
       classes
     } = ownerState;
@@ -47758,7 +54231,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var ChartsTooltipRoot = styled_default2(Popper_default, {
     name: "MuiChartsTooltip",
     slot: "Root",
-    overridesResolver: (_2, styles2) => styles2.root
+    overridesResolver: (_2, styles4) => styles4.root
   })(({
     theme
   }) => ({
@@ -47782,11 +54255,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const {
       item,
       axis
-    } = React135.useContext(InteractionContext);
+    } = React163.useContext(InteractionContext);
     const displayedData = trigger === "item" ? item : axis;
     const tooltipHasData = getTooltipHasData(trigger, displayedData);
     const popperOpen = mousePosition !== null && tooltipHasData;
-    const classes = useUtilityClasses27({
+    const classes = useUtilityClasses43({
       classes: props.classes
     });
     const PopperComponent = (_a = slots == null ? void 0 : slots.popper) != null ? _a : ChartsTooltipRoot;
@@ -47809,10 +54282,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (trigger === "none") {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(NoSsr_default, {
-      children: popperOpen && /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(PopperComponent, _extends({}, popperProps, {
+    return /* @__PURE__ */ (0, import_jsx_runtime128.jsx)(NoSsr_default, {
+      children: popperOpen && /* @__PURE__ */ (0, import_jsx_runtime128.jsx)(PopperComponent, _extends({}, popperProps, {
         className: classes.root,
-        children: trigger === "item" ? /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(ChartsItemTooltipContent, {
+        children: trigger === "item" ? /* @__PURE__ */ (0, import_jsx_runtime128.jsx)(ChartsItemTooltipContent, {
           itemData: displayedData,
           content: (_b = slots == null ? void 0 : slots.itemContent) != null ? _b : itemContent,
           contentProps: slotProps == null ? void 0 : slotProps.itemContent,
@@ -47820,7 +54293,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             mx: 2
           },
           classes
-        }) : /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(ChartsAxisTooltipContent, {
+        }) : /* @__PURE__ */ (0, import_jsx_runtime128.jsx)(ChartsAxisTooltipContent, {
           axisData: displayedData,
           content: (_c = slots == null ? void 0 : slots.axisContent) != null ? _c : axisContent,
           contentProps: slotProps == null ? void 0 : slotProps.axisContent,
@@ -47872,13 +54345,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/ChartsAxisHighlight/ChartsAxisHighlight.js
-  var React136 = __toESM(require_react());
-  var import_jsx_runtime81 = __toESM(require_jsx_runtime());
+  var React164 = __toESM(require_react());
+  var import_jsx_runtime129 = __toESM(require_jsx_runtime());
   function getAxisHighlightUtilityClass(slot) {
     return generateUtilityClass2("MuiChartsAxisHighlight", slot);
   }
   var chartsAxisHighlightClasses = generateUtilityClasses2("MuiChartsAxisHighlight", ["root"]);
-  var useUtilityClasses28 = () => {
+  var useUtilityClasses44 = () => {
     const slots = {
       root: ["root"]
     };
@@ -47887,7 +54360,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var ChartsAxisHighlightPath = styled_default2("path", {
     name: "MuiChartsAxisHighlight",
     slot: "Root",
-    overridesResolver: (_2, styles2) => styles2.root
+    overridesResolver: (_2, styles4) => styles4.root
   })(({
     theme
   }) => ({
@@ -47925,14 +54398,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       yAxisIds,
       yAxis
     } = useCartesianContext();
-    const classes = useUtilityClasses28();
+    const classes = useUtilityClasses44();
     const USED_X_AXIS_ID = xAxisIds[0];
     const USED_Y_AXIS_ID = yAxisIds[0];
     const xScale = xAxis[USED_X_AXIS_ID].scale;
     const yScale = yAxis[USED_Y_AXIS_ID].scale;
     const {
       axis
-    } = React136.useContext(InteractionContext);
+    } = React164.useContext(InteractionContext);
     const getXPosition = getValueToPositionMapper(xScale);
     const getYPosition = getValueToPositionMapper(yScale);
     const axisX = axis.x;
@@ -47946,8 +54419,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         console.error([`MUI X: The position value provided for the axis is not valid for the current scale.`, `This probably means something is wrong with the data passed to the chart.`, `The ChartsAxisHighlight component will not be displayed.`].join("\n"));
       }
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime81.jsxs)(React136.Fragment, {
-      children: [isBandScaleX && xScale(axisX.value) !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime129.jsxs)(React164.Fragment, {
+      children: [isBandScaleX && xScale(axisX.value) !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime129.jsx)(
         ChartsAxisHighlightPath,
         {
           d: `M ${xScale(axisX.value) - (xScale.step() - xScale.bandwidth()) / 2} ${yScale.range()[0]} l ${xScale.step()} 0 l 0 ${yScale.range()[1] - yScale.range()[0]} l ${-xScale.step()} 0 Z`,
@@ -47956,20 +54429,20 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             axisHighlight: "band"
           }
         }
-      ), isBandScaleY && yScale(axisY.value) !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(ChartsAxisHighlightPath, {
+      ), isBandScaleY && yScale(axisY.value) !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime129.jsx)(ChartsAxisHighlightPath, {
         d: `M ${xScale.range()[0]} ${// @ts-expect-error, yScale value is checked in the statement above
         yScale(axisY.value) - (yScale.step() - yScale.bandwidth()) / 2} l 0 ${yScale.step()} l ${xScale.range()[1] - xScale.range()[0]} 0 l 0 ${-yScale.step()} Z`,
         className: classes.root,
         ownerState: {
           axisHighlight: "band"
         }
-      }), xAxisHighlight === "line" && axis.x !== null && /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(ChartsAxisHighlightPath, {
+      }), xAxisHighlight === "line" && axis.x !== null && /* @__PURE__ */ (0, import_jsx_runtime129.jsx)(ChartsAxisHighlightPath, {
         d: `M ${getXPosition(axis.x.value)} ${yScale.range()[0]} L ${getXPosition(axis.x.value)} ${yScale.range()[1]}`,
         className: classes.root,
         ownerState: {
           axisHighlight: "line"
         }
-      }), yAxisHighlight === "line" && axis.y !== null && /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(ChartsAxisHighlightPath, {
+      }), yAxisHighlight === "line" && axis.y !== null && /* @__PURE__ */ (0, import_jsx_runtime129.jsx)(ChartsAxisHighlightPath, {
         d: `M ${xScale.range()[0]} ${getYPosition(axis.y.value)} L ${xScale.range()[1]} ${getYPosition(axis.y.value)}`,
         className: classes.root,
         ownerState: {
@@ -47988,7 +54461,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/ChartsGrid/ChartsGrid.js
-  var React139 = __toESM(require_react());
+  var React167 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/ChartsGrid/chartsGridClasses.js
   function getChartsGridUtilityClass(slot) {
@@ -48000,16 +54473,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var GridRoot = styled_default2("g", {
     name: "MuiChartsGrid",
     slot: "Root",
-    overridesResolver: (props, styles2) => [{
-      [`&.${chartsGridClasses.verticalLine}`]: styles2.verticalLine
+    overridesResolver: (props, styles4) => [{
+      [`&.${chartsGridClasses.verticalLine}`]: styles4.verticalLine
     }, {
-      [`&.${chartsGridClasses.horizontalLine}`]: styles2.horizontalLine
-    }, styles2.root]
+      [`&.${chartsGridClasses.horizontalLine}`]: styles4.horizontalLine
+    }, styles4.root]
   })({});
   var GridLine = styled_default2("line", {
     name: "MuiChartsGrid",
     slot: "Line",
-    overridesResolver: (props, styles2) => styles2.line
+    overridesResolver: (props, styles4) => styles4.line
   })(({
     theme
   }) => ({
@@ -48019,8 +54492,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }));
 
   // node_modules/@mui/x-charts/ChartsGrid/ChartsVerticalGrid.js
-  var React137 = __toESM(require_react());
-  var import_jsx_runtime82 = __toESM(require_jsx_runtime());
+  var React165 = __toESM(require_react());
+  var import_jsx_runtime130 = __toESM(require_jsx_runtime());
   function ChartsGridVertical(props) {
     const {
       axis,
@@ -48037,11 +54510,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       tickNumber,
       tickInterval
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(React137.Fragment, {
+    return /* @__PURE__ */ (0, import_jsx_runtime130.jsx)(React165.Fragment, {
       children: xTicks.map(({
         value,
         offset: offset2
-      }) => /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(GridLine, {
+      }) => /* @__PURE__ */ (0, import_jsx_runtime130.jsx)(GridLine, {
         y1: drawingArea.top,
         y2: drawingArea.top + drawingArea.height,
         x1: offset2,
@@ -48052,8 +54525,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/ChartsGrid/ChartsHorizontalGrid.js
-  var React138 = __toESM(require_react());
-  var import_jsx_runtime83 = __toESM(require_jsx_runtime());
+  var React166 = __toESM(require_react());
+  var import_jsx_runtime131 = __toESM(require_jsx_runtime());
   function ChartsGridHorizontal(props) {
     const {
       axis,
@@ -48070,11 +54543,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       tickNumber,
       tickInterval
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(React138.Fragment, {
+    return /* @__PURE__ */ (0, import_jsx_runtime131.jsx)(React166.Fragment, {
       children: yTicks.map(({
         value,
         offset: offset2
-      }) => /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(GridLine, {
+      }) => /* @__PURE__ */ (0, import_jsx_runtime131.jsx)(GridLine, {
         y1: offset2,
         y2: offset2,
         x1: drawingArea.left,
@@ -48085,9 +54558,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/ChartsGrid/ChartsGrid.js
-  var import_jsx_runtime84 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime132 = __toESM(require_jsx_runtime());
   var _excluded14 = ["vertical", "horizontal"];
-  var useUtilityClasses29 = ({
+  var useUtilityClasses45 = ({
     classes
   }) => {
     const slots = {
@@ -48113,16 +54586,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       yAxis,
       yAxisIds
     } = useCartesianContext();
-    const classes = useUtilityClasses29(props);
+    const classes = useUtilityClasses45(props);
     const horizontalAxis = yAxis[yAxisIds[0]];
     const verticalAxis = xAxis[xAxisIds[0]];
-    return /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(GridRoot, _extends({}, other, {
+    return /* @__PURE__ */ (0, import_jsx_runtime132.jsxs)(GridRoot, _extends({}, other, {
       className: classes.root,
-      children: [vertical && /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(ChartsGridVertical, {
+      children: [vertical && /* @__PURE__ */ (0, import_jsx_runtime132.jsx)(ChartsGridVertical, {
         axis: verticalAxis,
         drawingArea,
         classes
-      }), horizontal && /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(ChartsGridHorizontal, {
+      }), horizontal && /* @__PURE__ */ (0, import_jsx_runtime132.jsx)(ChartsGridHorizontal, {
         axis: horizontalAxis,
         drawingArea,
         classes
@@ -48149,22 +54622,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // src/Components/Charts/BaseBarChart.tsx
-  var import_react28 = __toESM(require_react());
+  var import_react27 = __toESM(require_react());
 
   // src/Components/Charts/BaseBarChartLegend.tsx
-  var import_jsx_runtime85 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime133 = __toESM(require_jsx_runtime());
   var BaseBarChartLegend = ({ yAxis }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Stack_default, { spacing: 2, direction: "row", flexWrap: "wrap", justifyContent: "center", children: yAxis.map((axis, index) => /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(Box_default, { display: "flex", alignItems: "center", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Box_default, { sx: { width: 12, height: 12, bgcolor: axis.color, borderRadius: "2px", mr: 1 } }),
-      /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Typography_default, { variant: "body2", children: axis.label })
+    return /* @__PURE__ */ (0, import_jsx_runtime133.jsx)(Stack_default, { spacing: 2, direction: "row", flexWrap: "wrap", justifyContent: "center", children: yAxis.map((axis, index) => /* @__PURE__ */ (0, import_jsx_runtime133.jsxs)(Box_default, { display: "flex", alignItems: "center", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime133.jsx)(Box_default, { sx: { width: 12, height: 12, bgcolor: axis.color, borderRadius: "2px", mr: 1 } }),
+      /* @__PURE__ */ (0, import_jsx_runtime133.jsx)(Typography_default, { variant: "body2", children: axis.label })
     ] }, index)) });
   };
 
   // src/Components/Charts/BaseBarChart.tsx
-  var import_jsx_runtime86 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime134 = __toESM(require_jsx_runtime());
   var BaseBarChart = ({ xAxis, yAxis, dataset }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime86.jsxs)(import_react28.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(Box_default, { sx: { height: 300 }, children: /* @__PURE__ */ (0, import_jsx_runtime86.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime134.jsxs)(import_react27.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(Box_default, { sx: { height: 300 }, children: /* @__PURE__ */ (0, import_jsx_runtime134.jsxs)(
         ResponsiveChartContainer,
         {
           xAxis,
@@ -48172,30 +54645,30 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           series: yAxis.map((axis) => __spreadProps(__spreadValues({}, axis), { type: "bar" })),
           dataset,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(BarPlot, {}),
-            /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(ChartsGrid, { vertical: true, horizontal: true }),
-            /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(ChartsXAxis, {}),
-            /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(ChartsYAxis, {}),
-            /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(ChartsTooltip, { slotProps: { popper: { sx: { zIndex: 2e3 } } } }),
-            /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(ChartsAxisHighlight, { x: "band" })
+            /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(BarPlot, {}),
+            /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(ChartsGrid, { vertical: true, horizontal: true }),
+            /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(ChartsXAxis, {}),
+            /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(ChartsYAxis, {}),
+            /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(ChartsTooltip, { slotProps: { popper: { sx: { zIndex: 2e3 } } } }),
+            /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(ChartsAxisHighlight, { x: "band" })
           ]
         }
       ) }),
-      /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(BaseBarChartLegend, { yAxis })
+      /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(BaseBarChartLegend, { yAxis })
     ] });
   };
 
   // src/Components/Charts/BaseChartView.tsx
-  var import_jsx_runtime87 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime135 = __toESM(require_jsx_runtime());
   var BaseChartView = ({ title, children, childrenSx, containerSx }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime87.jsxs)(Paper_default, { sx: __spreadValues({ width: "100%", p: 2, mt: 3 }, containerSx), children: [
-      /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(Box_default, { sx: { display: "flex", alignItems: "center" }, children: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(Typography_default, { sx: { mr: 2 }, variant: "h6", children: title }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(Box_default, { sx: __spreadValues({ height: "100%" }, childrenSx), children })
+    return /* @__PURE__ */ (0, import_jsx_runtime135.jsxs)(Paper_default, { sx: __spreadValues({ width: "100%", p: 2, mt: 3 }, containerSx), children: [
+      /* @__PURE__ */ (0, import_jsx_runtime135.jsx)(Box_default, { sx: { display: "flex", alignItems: "center" }, children: /* @__PURE__ */ (0, import_jsx_runtime135.jsx)(Typography_default, { sx: { mr: 2 }, variant: "h6", children: title }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime135.jsx)(Box_default, { sx: __spreadValues({ height: "100%" }, childrenSx), children })
     ] });
   };
 
   // src/Services/Charts.ts
-  var import_dayjs = __toESM(require_dayjs_min());
+  var import_dayjs2 = __toESM(require_dayjs_min());
 
   // src/Services/Config.ts
   var SettingsManager = class {
@@ -48233,79 +54706,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   SettingsManager.setup();
 
   // src/Services/Charts.ts
-  var dateTimeValueFormatter = (value) => (0, import_dayjs.default)(value).format(SettingsManager.apiDateTimeFormat);
+  var dateTimeValueFormatter = (value) => (0, import_dayjs2.default)(value).format(SettingsManager.apiDateTimeFormat);
 
-  // src/Models/Actions.ts
-  var ActionType = /* @__PURE__ */ ((ActionType2) => {
-    ActionType2["Fill"] = "FILL";
-    ActionType2["Type"] = "TYPE";
-    ActionType2["Select"] = "SELECT";
-    ActionType2["Click"] = "CLICK";
-    ActionType2["Hover"] = "HOVER";
-    ActionType2["Text"] = "TEXT";
-    ActionType2["Value"] = "VALUE";
-    ActionType2["Hidden"] = "HIDDEN";
-    ActionType2["Visible"] = "VISIBLE";
-    ActionType2["Checked"] = "CHECKED";
-    ActionType2["Enabled"] = "ENABLED";
-    ActionType2["Disabled"] = "DISABLED";
-    ActionType2["Unchecked"] = "UNCHECKED";
-    return ActionType2;
-  })(ActionType || {});
-
-  // src/Services/Actions.ts
-  var import_dayjs2 = __toESM(require_dayjs_min());
-  var normalizeActionType = (action) => {
-    return action.toLowerCase().split("_").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
-  };
-  var getActionsChartData = (props) => {
-    const { actions, createdAt } = props;
-    const base = {
-      createdAt: (0, import_dayjs2.default)(createdAt).toDate()
-    };
-    for (const action of actions) {
-      base[action.type] = action.count;
-    }
-    return base;
-  };
-  var MAP_ACTION_TYPE_TO_COLOR = {
-    // input
-    ["FILL" /* Fill */]: green_default["300"],
-    ["TYPE" /* Type */]: green_default["400"],
-    ["SELECT" /* Select */]: green_default["500"],
-    // action
-    ["CLICK" /* Click */]: blue_default["300"],
-    ["HOVER" /* Hover */]: blue_default["400"],
-    // assert
-    ["TEXT" /* Text */]: purple_default["300"],
-    ["VALUE" /* Value */]: purple_default["400"],
-    ["HIDDEN" /* Hidden */]: purple_default["500"],
-    ["VISIBLE" /* Visible */]: purple_default["600"],
-    ["CHECKED" /* Checked */]: orange_default["300"],
-    ["ENABLED" /* Enabled */]: orange_default["400"],
-    ["DISABLED" /* Disabled */]: orange_default["500"],
-    ["UNCHECKED" /* Unchecked */]: orange_default["600"]
-  };
-  var ACTION_TYPES_BY_GROUP = {
-    input: ["FILL" /* Fill */, "TYPE" /* Type */, "SELECT" /* Select */],
-    action: ["CLICK" /* Click */, "HOVER" /* Hover */],
-    assert: [
-      "TEXT" /* Text */,
-      "VALUE" /* Value */,
-      "HIDDEN" /* Hidden */,
-      "VISIBLE" /* Visible */,
-      "CHECKED" /* Checked */,
-      "ENABLED" /* Enabled */,
-      "DISABLED" /* Disabled */,
-      "UNCHECKED" /* Unchecked */
-    ]
-  };
-
-  // src/Components/Charts/Agent/Elements/ElementHistoryChartView.tsx
-  var import_jsx_runtime88 = __toESM(require_jsx_runtime());
-  var ElementHistoryChartView = ({ history: history2 }) => {
-    const chartData = (0, import_react29.useMemo)(() => history2.map(getActionsChartData), [history2]);
-    return /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(BaseChartView, { title: "Element history", children: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
+  // src/Components/Charts/Coverage/History/ScenarioHistoryChartView.tsx
+  var import_jsx_runtime136 = __toESM(require_jsx_runtime());
+  var ScenarioHistoryChartView = ({ history: history2 }) => {
+    const chartData = (0, import_react28.useMemo)(() => history2.map(getActionsChartData), [history2]);
+    return /* @__PURE__ */ (0, import_jsx_runtime136.jsx)(BaseChartView, { title: "Scenario history", children: /* @__PURE__ */ (0, import_jsx_runtime136.jsx)(
       BaseBarChart,
       {
         xAxis: [{ dataKey: "createdAt", scaleType: "band", valueFormatter: dateTimeValueFormatter }],
@@ -48320,249 +54727,4024 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     ) });
   };
 
-  // src/Services/Tables/Sorting.ts
-  var import_lodash = __toESM(require_lodash());
-  var import_react30 = __toESM(require_react());
-  function descendingComparator(a, b, orderBy) {
-    if (orderBy === null) {
-      return 0;
-    }
-    const aValue = import_lodash.default.get(a, orderBy) || 0;
-    const bValue = import_lodash.default.get(b, orderBy) || 0;
-    if (bValue < aValue) {
-      return -1;
-    }
-    if (bValue > aValue) {
-      return 1;
-    }
-    return 0;
-  }
-  var getComparator = (order2, orderBy) => {
-    return order2 === "desc" ? (a, b) => descendingComparator(a, b, orderBy) : (a, b) => -descendingComparator(a, b, orderBy);
-  };
-  var useTableSorting = ({ items }) => {
-    const [orderBy, setOrderBy] = (0, import_react30.useState)(null);
-    const [orderDirection, setOrderDirection] = (0, import_react30.useState)("asc");
-    const sortedItems = (0, import_react30.useMemo)(
-      () => [...items].sort(getComparator(orderDirection, orderBy)),
-      [orderBy, orderDirection, items]
-    );
-    return { sortedItems, orderBy, orderDirection, setOrderBy, setOrderDirection };
+  // src/Components/Views/BaseInfoRowView.tsx
+  var import_react29 = __toESM(require_react());
+
+  // node_modules/@mui/icons-material/esm/ContentCopy.js
+  var import_jsx_runtime137 = __toESM(require_jsx_runtime());
+  var ContentCopy_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime137.jsx)("path", {
+    d: "M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2m0 16H8V7h11z"
+  }), "ContentCopy");
+
+  // src/Components/Buttons/CopyButton.tsx
+  var import_jsx_runtime138 = __toESM(require_jsx_runtime());
+  var CopyButton = ({ sx, onCopy }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime138.jsx)(IconButton_default, { size: "small", sx, onClick: onCopy, children: /* @__PURE__ */ (0, import_jsx_runtime138.jsx)(ContentCopy_default, { fontSize: "small" }) });
   };
 
-  // src/Components/Tables/BaseTableCell.tsx
-  var import_jsx_runtime89 = __toESM(require_jsx_runtime());
-  var BaseTableCell = ({ text, icon }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime89.jsxs)(Box_default, { sx: { display: "flex", alignItems: "center" }, children: [
-      icon,
-      /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(Typography_default, { variant: "body2", children: text })
+  // src/Components/Views/BaseInfoRowView.tsx
+  var import_jsx_runtime139 = __toESM(require_jsx_runtime());
+  var BaseInfoRowView = (props) => {
+    const { name, icon, value, allowCopy = true, component = false, containerSx } = props;
+    const internalValue = (0, import_react29.useMemo)(() => value || "unknown", [value]);
+    const onCopy = async () => {
+      await navigator.clipboard.writeText(String(value));
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime139.jsxs)(Box_default, { sx: __spreadValues({ display: "flex", alignItems: "center" }, containerSx), children: [
+      icon && /* @__PURE__ */ (0, import_jsx_runtime139.jsx)(Box_default, { sx: { mr: 1, display: "flex", alignItems: "center" }, children: icon }),
+      /* @__PURE__ */ (0, import_jsx_runtime139.jsxs)(Typography_default, { sx: { display: "flex", alignItems: "center", wordBreak: "break-word", whiteSpace: "normal" }, children: [
+        name,
+        ": ",
+        component ? component : internalValue
+      ] }),
+      Boolean(value) && allowCopy && /* @__PURE__ */ (0, import_jsx_runtime139.jsx)(Box_default, { sx: { display: "flex" }, children: /* @__PURE__ */ (0, import_jsx_runtime139.jsx)(CopyButton, { sx: { ml: 1 }, onCopy }) })
     ] });
   };
 
-  // node_modules/@mui/icons-material/esm/MouseOutlined.js
-  var import_jsx_runtime90 = __toESM(require_jsx_runtime());
-  var MouseOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime90.jsx)("path", {
-    d: "M20 9c-.04-4.39-3.6-7.93-8-7.93S4.04 4.61 4 9v6c0 4.42 3.58 8 8 8s8-3.58 8-8zm-2 0h-5V3.16c2.81.47 4.96 2.9 5 5.84m-7-5.84V9H6c.04-2.94 2.19-5.37 5-5.84M18 15c0 3.31-2.69 6-6 6s-6-2.69-6-6v-4h12z"
-  }), "MouseOutlined");
+  // src/Components/Views/WidgetInfoRowsView.tsx
+  var import_react30 = __toESM(require_react());
+  var import_jsx_runtime140 = __toESM(require_jsx_runtime());
+  var WidgetInfoRowsView = (props) => {
+    const { children, containerSx } = props;
+    return /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(Grid2_default, { container: true, spacing: 1, sx: __spreadValues({ mt: 2 }, containerSx), children: import_react30.Children.map(
+      children,
+      (child, index) => child && /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(Grid2_default, { size: { xs: 12 }, children: child }, index)
+    ) });
+  };
 
-  // node_modules/@mui/icons-material/esm/EditOutlined.js
-  var import_jsx_runtime91 = __toESM(require_jsx_runtime());
-  var EditOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime91.jsx)("path", {
-    d: "m14.06 9.02.92.92L5.92 19H5v-.92zM17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29m-3.6 3.19L3 17.25V21h3.75L17.81 9.94z"
-  }), "EditOutlined");
+  // node_modules/@mui/icons-material/esm/InsertLink.js
+  var import_jsx_runtime141 = __toESM(require_jsx_runtime());
+  var InsertLink_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime141.jsx)("path", {
+    d: "M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1M8 13h8v-2H8zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5"
+  }), "InsertLink");
 
-  // node_modules/@mui/icons-material/esm/ToggleOn.js
-  var import_jsx_runtime92 = __toESM(require_jsx_runtime());
-  var ToggleOn_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime92.jsx)("path", {
-    d: "M17 7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h10c2.76 0 5-2.24 5-5s-2.24-5-5-5m0 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3"
-  }), "ToggleOn");
+  // node_modules/@mui/icons-material/esm/BuildOutlined.js
+  var import_jsx_runtime142 = __toESM(require_jsx_runtime());
+  var BuildOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime142.jsx)("path", {
+    d: "m22.61 18.99-9.08-9.08c.93-2.34.45-5.1-1.44-7C9.79.61 6.21.4 3.66 2.26L7.5 6.11 6.08 7.52 2.25 3.69C.39 6.23.6 9.82 2.9 12.11c1.86 1.86 4.57 2.35 6.89 1.48l9.11 9.11c.39.39 1.02.39 1.41 0l2.3-2.3c.4-.38.4-1.01 0-1.41m-3 1.6-9.46-9.46c-.61.45-1.29.72-2 .82-1.36.2-2.79-.21-3.83-1.25C3.37 9.76 2.93 8.5 3 7.26l3.09 3.09 4.24-4.24-3.09-3.09c1.24-.07 2.49.37 3.44 1.31 1.08 1.08 1.49 2.57 1.24 3.96-.12.71-.42 1.37-.88 1.96l9.45 9.45z"
+  }), "BuildOutlined");
 
-  // node_modules/@mui/icons-material/esm/DoNotTouchOutlined.js
-  var import_jsx_runtime93 = __toESM(require_jsx_runtime());
-  var DoNotTouchOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime93.jsx)("path", {
-    d: "M2.81 2.81 1.39 4.22 7 9.83v4.3l-2.6-1.48c-.17-.09-.34-.14-.54-.14-.26 0-.5.09-.7.26L2 13.88l6.8 7.18c.57.6 1.35.94 2.18.94H17c.62 0 1.18-.19 1.66-.52l1.12 1.12 1.41-1.41zM17 20h-6c-.39 0-.64-.23-.75-.36L6.87 16H9v-4.17l8.14 8.14c-.05.01-.09.03-.14.03m-3.17-9H14V3.25c0-.69.56-1.25 1.25-1.25s1.25.56 1.25 1.25V11h1V5.25c0-.69.56-1.25 1.25-1.25S20 4.56 20 5.25v11.92l-2-2V13h-2.17zm-.83-.83V2.25C13 1.56 12.44 1 11.75 1s-1.25.56-1.25 1.25v5.42zm-3.5-3.5V4.25C9.5 3.56 8.94 3 8.25 3c-.67 0-1.2.53-1.24 1.18z"
-  }), "DoNotTouchOutlined");
-
-  // node_modules/@mui/icons-material/esm/CheckBoxOutlined.js
-  var import_jsx_runtime94 = __toESM(require_jsx_runtime());
-  var CheckBoxOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime94.jsx)("path", {
-    d: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m0 16H5V5h14zM17.99 9l-1.41-1.42-6.59 6.59-2.58-2.57-1.42 1.41 4 3.99z"
-  }), "CheckBoxOutlined");
-
-  // node_modules/@mui/icons-material/esm/CheckBoxOutlineBlank.js
-  var import_jsx_runtime95 = __toESM(require_jsx_runtime());
-  var CheckBoxOutlineBlank_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime95.jsx)("path", {
+  // node_modules/@mui/icons-material/esm/ArticleOutlined.js
+  var import_jsx_runtime143 = __toESM(require_jsx_runtime());
+  var ArticleOutlined_default = createSvgIcon([/* @__PURE__ */ (0, import_jsx_runtime143.jsx)("path", {
     d: "M19 5v14H5V5zm0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2"
-  }), "CheckBoxOutlineBlank");
+  }, "0"), /* @__PURE__ */ (0, import_jsx_runtime143.jsx)("path", {
+    d: "M14 17H7v-2h7zm3-4H7v-2h10zm0-4H7V7h10z"
+  }, "1")], "ArticleOutlined");
 
-  // node_modules/@mui/icons-material/esm/VisibilityOutlined.js
-  var import_jsx_runtime96 = __toESM(require_jsx_runtime());
-  var VisibilityOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime96.jsx)("path", {
-    d: "M12 6c3.79 0 7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17s-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6m0-2C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4m0 5c1.38 0 2.5 1.12 2.5 2.5S13.38 14 12 14s-2.5-1.12-2.5-2.5S10.62 9 12 9m0-2c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7"
-  }), "VisibilityOutlined");
+  // node_modules/@mui/icons-material/esm/FormatListNumbered.js
+  var import_jsx_runtime144 = __toESM(require_jsx_runtime());
+  var FormatListNumbered_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime144.jsx)("path", {
+    d: "M2 17h2v.5H3v1h1v.5H2v1h3v-4H2zm1-9h1V4H2v1h1zm-1 3h1.8L2 13.1v.9h3v-1H3.2L5 10.9V10H2zm5-6v2h14V5zm0 14h14v-2H7zm0-6h14v-2H7z"
+  }), "FormatListNumbered");
 
-  // node_modules/@mui/icons-material/esm/VisibilityOffOutlined.js
-  var import_jsx_runtime97 = __toESM(require_jsx_runtime());
-  var VisibilityOffOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime97.jsx)("path", {
-    d: "M12 6c3.79 0 7.17 2.13 8.82 5.5-.59 1.22-1.42 2.27-2.41 3.12l1.41 1.41c1.39-1.23 2.49-2.77 3.18-4.53C21.27 7.11 17 4 12 4c-1.27 0-2.49.2-3.64.57l1.65 1.65C10.66 6.09 11.32 6 12 6m-1.07 1.14L13 9.21c.57.25 1.03.71 1.28 1.28l2.07 2.07c.08-.34.14-.7.14-1.07C16.5 9.01 14.48 7 12 7c-.37 0-.72.05-1.07.14M2.01 3.87l2.68 2.68C3.06 7.83 1.77 9.53 1 11.5 2.73 15.89 7 19 12 19c1.52 0 2.98-.29 4.32-.82l3.42 3.42 1.41-1.41L3.42 2.45zm7.5 7.5 2.61 2.61c-.04.01-.08.02-.12.02-1.38 0-2.5-1.12-2.5-2.5 0-.05.01-.08.01-.13m-3.4-3.4 1.75 1.75c-.23.55-.36 1.15-.36 1.78 0 2.48 2.02 4.5 4.5 4.5.63 0 1.23-.13 1.77-.36l.98.98c-.88.24-1.8.38-2.75.38-3.79 0-7.17-2.13-8.82-5.5.7-1.43 1.72-2.61 2.93-3.53"
-  }), "VisibilityOffOutlined");
-
-  // src/Components/Tables/Agent/Elements/ActionCell.tsx
-  var import_jsx_runtime98 = __toESM(require_jsx_runtime());
-  var MAP_ACTION_TYPE_TO_ICON = {
-    // input
-    ["FILL" /* Fill */]: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(EditOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
-    ["TYPE" /* Type */]: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(EditOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
-    ["SELECT" /* Select */]: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(EditOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
-    // action
-    ["CLICK" /* Click */]: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(MouseOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
-    ["HOVER" /* Hover */]: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(MouseOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
-    // assert
-    ["TEXT" /* Text */]: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(VisibilityOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
-    ["VALUE" /* Value */]: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(VisibilityOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
-    ["HIDDEN" /* Hidden */]: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(VisibilityOffOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
-    ["VISIBLE" /* Visible */]: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(VisibilityOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
-    ["CHECKED" /* Checked */]: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(CheckBoxOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
-    ["ENABLED" /* Enabled */]: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(ToggleOn_default, { sx: { mr: 1.5 }, fontSize: "small" }),
-    ["DISABLED" /* Disabled */]: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(DoNotTouchOutlined_default, { sx: { mr: 1.5 }, fontSize: "small" }),
-    ["UNCHECKED" /* Unchecked */]: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(CheckBoxOutlineBlank_default, { sx: { mr: 1.5 }, fontSize: "small" })
-  };
-  var ActionCell = ({ type }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(BaseTableCell, { text: normalizeActionType(type), icon: MAP_ACTION_TYPE_TO_ICON[type] });
-  };
-
-  // src/Components/Tables/BaseTableRow.tsx
-  var import_jsx_runtime99 = __toESM(require_jsx_runtime());
-  var BaseTableRow = ({ cells }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(TableRow_default, { hover: true, sx: { "&:last-child td, &:last-child th": { border: 0 } }, children: cells.map((cell, index) => /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(TableCell_default, { align: cell.align || "left", children: cell.value }, index)) });
-  };
-
-  // src/Components/Tables/Agent/Elements/ActionCoverageTableRow.tsx
-  var import_jsx_runtime100 = __toESM(require_jsx_runtime());
-  var ActionCoverageTableRow = ({ action }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(BaseTableRow, { cells: [{ value: /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(ActionCell, { type: action.type }) }, { value: action.count }] });
-  };
-
-  // src/Components/Tables/BaseTableHeader.tsx
-  var import_jsx_runtime101 = __toESM(require_jsx_runtime());
-  var BaseTableHeader = (props) => {
-    const { cells, orderBy, setOrderBy, orderDirection, setOrderDirection } = props;
-    const onOrder = (key) => () => {
-      setOrderBy(key);
-      setOrderDirection(orderDirection === "asc" ? "desc" : "asc");
-    };
-    return /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(TableHead_default, { children: /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(TableRow_default, { children: cells.map((cell, index) => /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(TableCell_default, { align: cell.align || "left", sx: { whiteSpace: "nowrap", pt: 2, pb: 2 }, children: cell.orderKey ? /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(
-      TableSortLabel_default,
-      {
-        active: orderBy === cell.orderKey,
-        direction: orderDirection,
-        onClick: onOrder(cell.orderKey),
-        children: cell.value
-      }
-    ) : cell.value }, index)) }) });
-  };
-
-  // src/Components/Tables/Agent/Elements/ActionCoverageTableHeader.tsx
-  var import_jsx_runtime102 = __toESM(require_jsx_runtime());
-  var ActionCoverageTableHeader = (props) => {
-    const { orderBy, setOrderBy, orderDirection, setOrderDirection } = props;
-    return /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
-      BaseTableHeader,
-      {
-        cells: [
-          { value: "Action", orderKey: "type" },
-          { value: "Count", orderKey: "count" }
-        ],
-        orderBy,
-        setOrderBy,
-        orderDirection,
-        setOrderDirection
-      }
-    );
-  };
-
-  // src/Components/Tables/BaseTable.tsx
-  var import_jsx_runtime103 = __toESM(require_jsx_runtime());
-  var BaseTable = (props) => {
-    const { header, children, containerSx } = props;
-    return /* @__PURE__ */ (0, import_jsx_runtime103.jsx)(TableContainer_default, { component: Paper_default, sx: __spreadProps(__spreadValues({}, containerSx), { width: "100%" }), children: /* @__PURE__ */ (0, import_jsx_runtime103.jsxs)(Table_default, { size: "small", children: [
-      header,
-      /* @__PURE__ */ (0, import_jsx_runtime103.jsx)(TableBody_default, { children })
+  // src/Views/Scenarios/Details/ScenarioDetailsInfoView.tsx
+  var import_jsx_runtime145 = __toESM(require_jsx_runtime());
+  var ScenarioDetailsInfoView = ({ sx, scenario }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(BoxView, { containerSx: sx, title: "Base info", children: /* @__PURE__ */ (0, import_jsx_runtime145.jsxs)(WidgetInfoRowsView, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(BaseInfoRowView, { icon: /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(InsertLink_default, { fontSize: "small" }), name: "URL", value: scenario.url }),
+      /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(BaseInfoRowView, { icon: /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(ArticleOutlined_default, { fontSize: "small" }), name: "Name", value: scenario.name }),
+      /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(
+        BaseInfoRowView,
+        {
+          icon: /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(FormatListNumbered_default, { fontSize: "small" }),
+          name: "Total number of steps",
+          value: scenario.steps.length
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(
+        BaseInfoRowView,
+        {
+          icon: /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(BuildOutlined_default, { fontSize: "small" }),
+          name: "Total number of action types",
+          value: scenario.actions.length
+        }
+      )
     ] }) });
   };
 
-  // src/Components/Tables/Agent/Elements/ActionCoverageTable.tsx
-  var import_jsx_runtime104 = __toESM(require_jsx_runtime());
-  var ActionCoverageTable = ({ actions }) => {
-    const { sortedItems, orderBy, setOrderBy, orderDirection, setOrderDirection } = useTableSorting({ items: actions });
-    return /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(
-      BaseTable,
-      {
-        containerSx: { mt: 3 },
-        header: /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(
-          ActionCoverageTableHeader,
-          {
-            orderBy,
-            setOrderBy,
-            orderDirection,
-            setOrderDirection
+  // src/Views/Agent/Scenarios/AgentScenarioDetailsStepsView.tsx
+  var import_react31 = __toESM(require_react());
+
+  // node_modules/@mui/x-tree-view/TreeItem/TreeItem.js
+  var React178 = __toESM(require_react());
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/useForkRef/useForkRef.js
+  var React168 = __toESM(require_react(), 1);
+  function useForkRef3(...refs) {
+    const cleanupRef = React168.useRef(void 0);
+    const refEffect = React168.useCallback((instance2) => {
+      const cleanups = refs.map((ref) => {
+        if (ref == null) {
+          return null;
+        }
+        if (typeof ref === "function") {
+          const refCallback = ref;
+          const refCleanup = refCallback(instance2);
+          return typeof refCleanup === "function" ? refCleanup : () => {
+            refCallback(null);
+          };
+        }
+        ref.current = instance2;
+        return () => {
+          ref.current = null;
+        };
+      });
+      return () => {
+        cleanups.forEach((refCleanup) => refCleanup == null ? void 0 : refCleanup());
+      };
+    }, refs);
+    return React168.useMemo(() => {
+      if (refs.every((ref) => ref == null)) {
+        return null;
+      }
+      return (value) => {
+        if (cleanupRef.current) {
+          cleanupRef.current();
+          cleanupRef.current = void 0;
+        }
+        if (value != null) {
+          cleanupRef.current = refEffect(value);
+        }
+      };
+    }, refs);
+  }
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/composeClasses/composeClasses.js
+  function composeClasses3(slots, getUtilityClass, classes = void 0) {
+    const output = {};
+    for (const slotName in slots) {
+      const slot = slots[slotName];
+      let buffer = "";
+      let start3 = true;
+      for (let i = 0; i < slot.length; i += 1) {
+        const value = slot[i];
+        if (value) {
+          buffer += (start3 === true ? "" : " ") + getUtilityClass(value);
+          start3 = false;
+          if (classes && classes[value]) {
+            buffer += " " + classes[value];
           }
-        ),
-        children: sortedItems.map((action, index) => /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(ActionCoverageTableRow, { action }, index))
+        }
+      }
+      output[slotName] = buffer;
+    }
+    return output;
+  }
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/extractEventHandlers/extractEventHandlers.js
+  function extractEventHandlers3(object, excludeKeys = []) {
+    if (object === void 0) {
+      return {};
+    }
+    const result = {};
+    Object.keys(object).filter((prop) => prop.match(/^on[A-Z]/) && typeof object[prop] === "function" && !excludeKeys.includes(prop)).forEach((prop) => {
+      result[prop] = object[prop];
+    });
+    return result;
+  }
+  var extractEventHandlers_default3 = extractEventHandlers3;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/resolveComponentProps/resolveComponentProps.js
+  function resolveComponentProps3(componentProps, ownerState, slotState) {
+    if (typeof componentProps === "function") {
+      return componentProps(ownerState, slotState);
+    }
+    return componentProps;
+  }
+  var resolveComponentProps_default3 = resolveComponentProps3;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/isHostComponent/isHostComponent.js
+  function isHostComponent4(element) {
+    return typeof element === "string";
+  }
+  var isHostComponent_default4 = isHostComponent4;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/appendOwnerState/appendOwnerState.js
+  function appendOwnerState3(elementType, otherProps, ownerState) {
+    if (elementType === void 0 || isHostComponent_default4(elementType)) {
+      return otherProps;
+    }
+    return __spreadProps(__spreadValues({}, otherProps), {
+      ownerState: __spreadValues(__spreadValues({}, otherProps.ownerState), ownerState)
+    });
+  }
+  var appendOwnerState_default3 = appendOwnerState3;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/omitEventHandlers/omitEventHandlers.js
+  function omitEventHandlers3(object) {
+    if (object === void 0) {
+      return {};
+    }
+    const result = {};
+    Object.keys(object).filter((prop) => !(prop.match(/^on[A-Z]/) && typeof object[prop] === "function")).forEach((prop) => {
+      result[prop] = object[prop];
+    });
+    return result;
+  }
+  var omitEventHandlers_default3 = omitEventHandlers3;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/mergeSlotProps/mergeSlotProps.js
+  function mergeSlotProps4(parameters) {
+    const {
+      getSlotProps,
+      additionalProps,
+      externalSlotProps,
+      externalForwardedProps,
+      className
+    } = parameters;
+    if (!getSlotProps) {
+      const joinedClasses2 = clsx_default(additionalProps == null ? void 0 : additionalProps.className, className, externalForwardedProps == null ? void 0 : externalForwardedProps.className, externalSlotProps == null ? void 0 : externalSlotProps.className);
+      const mergedStyle2 = __spreadValues(__spreadValues(__spreadValues({}, additionalProps == null ? void 0 : additionalProps.style), externalForwardedProps == null ? void 0 : externalForwardedProps.style), externalSlotProps == null ? void 0 : externalSlotProps.style);
+      const props2 = __spreadValues(__spreadValues(__spreadValues({}, additionalProps), externalForwardedProps), externalSlotProps);
+      if (joinedClasses2.length > 0) {
+        props2.className = joinedClasses2;
+      }
+      if (Object.keys(mergedStyle2).length > 0) {
+        props2.style = mergedStyle2;
+      }
+      return {
+        props: props2,
+        internalRef: void 0
+      };
+    }
+    const eventHandlers = extractEventHandlers_default3(__spreadValues(__spreadValues({}, externalForwardedProps), externalSlotProps));
+    const componentsPropsWithoutEventHandlers = omitEventHandlers_default3(externalSlotProps);
+    const otherPropsWithoutEventHandlers = omitEventHandlers_default3(externalForwardedProps);
+    const internalSlotProps = getSlotProps(eventHandlers);
+    const joinedClasses = clsx_default(internalSlotProps == null ? void 0 : internalSlotProps.className, additionalProps == null ? void 0 : additionalProps.className, className, externalForwardedProps == null ? void 0 : externalForwardedProps.className, externalSlotProps == null ? void 0 : externalSlotProps.className);
+    const mergedStyle = __spreadValues(__spreadValues(__spreadValues(__spreadValues({}, internalSlotProps == null ? void 0 : internalSlotProps.style), additionalProps == null ? void 0 : additionalProps.style), externalForwardedProps == null ? void 0 : externalForwardedProps.style), externalSlotProps == null ? void 0 : externalSlotProps.style);
+    const props = __spreadValues(__spreadValues(__spreadValues(__spreadValues({}, internalSlotProps), additionalProps), otherPropsWithoutEventHandlers), componentsPropsWithoutEventHandlers);
+    if (joinedClasses.length > 0) {
+      props.className = joinedClasses;
+    }
+    if (Object.keys(mergedStyle).length > 0) {
+      props.style = mergedStyle;
+    }
+    return {
+      props,
+      internalRef: internalSlotProps.ref
+    };
+  }
+  var mergeSlotProps_default3 = mergeSlotProps4;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/useSlotProps/useSlotProps.js
+  function useSlotProps3(parameters) {
+    var _b;
+    const _a = parameters, {
+      elementType,
+      externalSlotProps,
+      ownerState,
+      skipResolvingSlotProps = false
+    } = _a, other = __objRest(_a, [
+      "elementType",
+      "externalSlotProps",
+      "ownerState",
+      "skipResolvingSlotProps"
+    ]);
+    const resolvedComponentsProps = skipResolvingSlotProps ? {} : resolveComponentProps_default3(externalSlotProps, ownerState);
+    const {
+      props: mergedProps,
+      internalRef
+    } = mergeSlotProps_default3(__spreadProps(__spreadValues({}, other), {
+      externalSlotProps: resolvedComponentsProps
+    }));
+    const ref = useForkRef3(internalRef, resolvedComponentsProps == null ? void 0 : resolvedComponentsProps.ref, (_b = parameters.additionalProps) == null ? void 0 : _b.ref);
+    const props = appendOwnerState_default3(elementType, __spreadProps(__spreadValues({}, mergedProps), {
+      ref
+    }), ownerState);
+    return props;
+  }
+  var useSlotProps_default3 = useSlotProps3;
+
+  // node_modules/@mui/x-tree-view/internals/zero-styled/index.js
+  function createUseThemeProps(name) {
+    return useThemeProps2;
+  }
+
+  // node_modules/@mui/x-tree-view/TreeItem/TreeItemContent.js
+  var React175 = __toESM(require_react());
+
+  // node_modules/@mui/x-tree-view/internals/TreeViewProvider/TreeViewProvider.js
+  var React170 = __toESM(require_react());
+
+  // node_modules/@mui/x-tree-view/internals/TreeViewProvider/TreeViewContext.js
+  var React169 = __toESM(require_react());
+  var TreeViewContext = /* @__PURE__ */ React169.createContext(null);
+  if (false) {
+    TreeViewContext.displayName = "TreeViewContext";
+  }
+
+  // node_modules/@mui/x-tree-view/internals/TreeViewProvider/TreeViewProvider.js
+  var import_jsx_runtime146 = __toESM(require_jsx_runtime());
+  function TreeViewProvider(props) {
+    const {
+      value,
+      children
+    } = props;
+    return /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(TreeViewContext.Provider, {
+      value,
+      children: value.wrapRoot({
+        children,
+        instance: value.instance
+      })
+    });
+  }
+
+  // node_modules/@mui/x-tree-view/internals/TreeViewProvider/useTreeViewContext.js
+  var React171 = __toESM(require_react());
+  var useTreeViewContext = () => {
+    const context = React171.useContext(TreeViewContext);
+    if (context == null) {
+      throw new Error(["MUI X: Could not find the Tree View context.", "It looks like you rendered your component outside of a SimpleTreeView or RichTreeView parent component.", "This can also happen if you are bundling multiple versions of the Tree View."].join("\n"));
+    }
+    return context;
+  };
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewLabel/useTreeViewLabel.js
+  var React173 = __toESM(require_react());
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewLabel/useTreeViewLabel.itemPlugin.js
+  var React172 = __toESM(require_react());
+  var useTreeViewLabelItemPlugin = ({
+    props
+  }) => {
+    const {
+      instance: instance2
+    } = useTreeViewContext();
+    const {
+      label,
+      itemId
+    } = props;
+    const [labelInputValue, setLabelInputValue] = React172.useState(label);
+    const isItemBeingEdited = instance2.isItemBeingEdited(itemId);
+    React172.useEffect(() => {
+      if (!isItemBeingEdited) {
+        setLabelInputValue(label);
+      }
+    }, [isItemBeingEdited, label]);
+    return {
+      propsEnhancers: {
+        labelInput: ({
+          externalEventHandlers,
+          interactions
+        }) => {
+          const editable = instance2.isItemEditable(itemId);
+          if (!editable) {
+            return {};
+          }
+          const handleKeydown = (event) => {
+            var _a;
+            (_a = externalEventHandlers.onKeyDown) == null ? void 0 : _a.call(externalEventHandlers, event);
+            if (event.defaultMuiPrevented) {
+              return;
+            }
+            const target = event.target;
+            if (event.key === "Enter" && target.value) {
+              interactions.handleSaveItemLabel(event, target.value);
+            } else if (event.key === "Escape") {
+              interactions.handleCancelItemLabelEditing(event);
+            }
+          };
+          const handleBlur = (event) => {
+            var _a;
+            (_a = externalEventHandlers.onBlur) == null ? void 0 : _a.call(externalEventHandlers, event);
+            if (event.defaultMuiPrevented) {
+              return;
+            }
+            if (event.target.value) {
+              interactions.handleSaveItemLabel(event, event.target.value);
+            }
+          };
+          const handleInputChange = (event) => {
+            var _a;
+            (_a = externalEventHandlers.onChange) == null ? void 0 : _a.call(externalEventHandlers, event);
+            setLabelInputValue(event.target.value);
+          };
+          return {
+            value: labelInputValue != null ? labelInputValue : "",
+            "data-element": "labelInput",
+            onChange: handleInputChange,
+            onKeyDown: handleKeydown,
+            onBlur: handleBlur,
+            autoFocus: true,
+            type: "text"
+          };
+        }
+      }
+    };
+  };
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewLabel/useTreeViewLabel.js
+  var useTreeViewLabel = ({
+    instance: instance2,
+    state,
+    setState,
+    params
+  }) => {
+    const editedItemRef = React173.useRef(state.editedItemId);
+    const isItemBeingEditedRef = (itemId) => editedItemRef.current === itemId;
+    const setEditedItemId = (editedItemId) => {
+      setState((prevState) => _extends({}, prevState, {
+        editedItemId
+      }));
+      editedItemRef.current = editedItemId;
+    };
+    const isItemBeingEdited = (itemId) => itemId === state.editedItemId;
+    const isTreeViewEditable = Boolean(params.isItemEditable);
+    const isItemEditable = (itemId) => {
+      if (itemId == null || !isTreeViewEditable) {
+        return false;
+      }
+      const item = instance2.getItem(itemId);
+      if (!item) {
+        return false;
+      }
+      return typeof params.isItemEditable === "function" ? params.isItemEditable(item) : Boolean(params.isItemEditable);
+    };
+    const updateItemLabel = (itemId, label) => {
+      if (!label) {
+        throw new Error(["MUI X: The Tree View component requires all items to have a `label` property.", "The label of an item cannot be empty.", itemId].join("\n"));
+      }
+      setState((prevState) => {
+        const item = prevState.items.itemMetaMap[itemId];
+        if (item.label !== label) {
+          return _extends({}, prevState, {
+            items: _extends({}, prevState.items, {
+              itemMetaMap: _extends({}, prevState.items.itemMetaMap, {
+                [itemId]: _extends({}, item, {
+                  label
+                })
+              })
+            })
+          });
+        }
+        return prevState;
+      });
+      if (params.onItemLabelChange) {
+        params.onItemLabelChange(itemId, label);
+      }
+    };
+    return {
+      instance: {
+        setEditedItemId,
+        isItemBeingEdited,
+        updateItemLabel,
+        isItemEditable,
+        isTreeViewEditable,
+        isItemBeingEditedRef
+      },
+      publicAPI: {
+        updateItemLabel
+      }
+    };
+  };
+  useTreeViewLabel.itemPlugin = useTreeViewLabelItemPlugin;
+  useTreeViewLabel.getDefaultizedParams = ({
+    params,
+    experimentalFeatures
+  }) => {
+    var _a;
+    const canUseFeature = experimentalFeatures == null ? void 0 : experimentalFeatures.labelEditing;
+    if (false) {
+      if (params.isItemEditable && !canUseFeature) {
+        warnOnce(["MUI X: The label editing feature requires the `labelEditing` experimental feature to be enabled.", "You can do it by passing `experimentalFeatures={{ labelEditing: true}}` to the Rich Tree View Pro component.", "Check the documentation for more details: https://mui.com/x/react-tree-view/rich-tree-view/editing/"]);
+      }
+    }
+    return _extends({}, params, {
+      isItemEditable: canUseFeature ? (_a = params.isItemEditable) != null ? _a : false : false
+    });
+  };
+  useTreeViewLabel.getInitialState = () => ({
+    editedItemId: null
+  });
+  useTreeViewLabel.params = {
+    onItemLabelChange: true,
+    isItemEditable: true
+  };
+
+  // node_modules/@mui/x-tree-view/internals/utils/plugins.js
+  var hasPlugin = (instance2, plugin5) => {
+    const plugins = instance2.getAvailablePlugins();
+    return plugins.has(plugin5);
+  };
+
+  // node_modules/@mui/x-tree-view/TreeItem/useTreeItemState.js
+  function useTreeItemState(itemId) {
+    const {
+      instance: instance2,
+      items: {
+        onItemClick
+      },
+      selection: {
+        multiSelect,
+        checkboxSelection,
+        disableSelection
+      },
+      expansion: {
+        expansionTrigger
+      }
+    } = useTreeViewContext();
+    const expandable = instance2.isItemExpandable(itemId);
+    const expanded = instance2.isItemExpanded(itemId);
+    const focused = instance2.isItemFocused(itemId);
+    const selected = instance2.isItemSelected(itemId);
+    const disabled = instance2.isItemDisabled(itemId);
+    const editing = (instance2 == null ? void 0 : instance2.isItemBeingEdited) ? instance2 == null ? void 0 : instance2.isItemBeingEdited(itemId) : false;
+    const editable = instance2.isItemEditable ? instance2.isItemEditable(itemId) : false;
+    const handleExpansion = (event) => {
+      if (!disabled) {
+        if (!focused) {
+          instance2.focusItem(event, itemId);
+        }
+        const multiple = multiSelect && (event.shiftKey || event.ctrlKey || event.metaKey);
+        if (expandable && !(multiple && instance2.isItemExpanded(itemId))) {
+          instance2.toggleItemExpansion(event, itemId);
+        }
+      }
+    };
+    const handleSelection = (event) => {
+      if (!disabled) {
+        if (!focused) {
+          instance2.focusItem(event, itemId);
+        }
+        const multiple = multiSelect && (event.shiftKey || event.ctrlKey || event.metaKey);
+        if (multiple) {
+          if (event.shiftKey) {
+            instance2.expandSelectionRange(event, itemId);
+          } else {
+            instance2.selectItem({
+              event,
+              itemId,
+              keepExistingSelection: true
+            });
+          }
+        } else {
+          instance2.selectItem({
+            event,
+            itemId,
+            shouldBeSelected: true
+          });
+        }
+      }
+    };
+    const handleCheckboxSelection = (event) => {
+      if (disableSelection || disabled) {
+        return;
+      }
+      const hasShift = event.nativeEvent.shiftKey;
+      if (multiSelect && hasShift) {
+        instance2.expandSelectionRange(event, itemId);
+      } else {
+        instance2.selectItem({
+          event,
+          itemId,
+          keepExistingSelection: multiSelect,
+          shouldBeSelected: event.target.checked
+        });
+      }
+    };
+    const preventSelection = (event) => {
+      if (event.shiftKey || event.ctrlKey || event.metaKey || disabled) {
+        event.preventDefault();
+      }
+    };
+    const toggleItemEditing = () => {
+      if (!hasPlugin(instance2, useTreeViewLabel)) {
+        return;
+      }
+      if (instance2.isItemEditable(itemId)) {
+        if (instance2.isItemBeingEdited(itemId)) {
+          instance2.setEditedItemId(null);
+        } else {
+          instance2.setEditedItemId(itemId);
+        }
+      }
+    };
+    const handleSaveItemLabel = (event, label) => {
+      if (!hasPlugin(instance2, useTreeViewLabel)) {
+        return;
+      }
+      if (instance2.isItemBeingEditedRef(itemId)) {
+        instance2.updateItemLabel(itemId, label);
+        toggleItemEditing();
+        instance2.focusItem(event, itemId);
+      }
+    };
+    const handleCancelItemLabelEditing = (event) => {
+      if (!hasPlugin(instance2, useTreeViewLabel)) {
+        return;
+      }
+      if (instance2.isItemBeingEditedRef(itemId)) {
+        toggleItemEditing();
+        instance2.focusItem(event, itemId);
+      }
+    };
+    return {
+      disabled,
+      expanded,
+      selected,
+      focused,
+      editable,
+      editing,
+      disableSelection,
+      checkboxSelection,
+      handleExpansion,
+      handleSelection,
+      handleCheckboxSelection,
+      handleContentClick: onItemClick,
+      preventSelection,
+      expansionTrigger,
+      toggleItemEditing,
+      handleSaveItemLabel,
+      handleCancelItemLabelEditing
+    };
+  }
+
+  // node_modules/@mui/x-tree-view/TreeItem2DragAndDropOverlay/TreeItem2DragAndDropOverlay.js
+  var React174 = __toESM(require_react());
+  var import_jsx_runtime147 = __toESM(require_jsx_runtime());
+  var TreeItem2DragAndDropOverlayRoot = styled_default2("div", {
+    name: "MuiTreeItem2DragAndDropOverlay",
+    slot: "Root",
+    overridesResolver: (props, styles4) => styles4.root,
+    shouldForwardProp: (prop) => shouldForwardProp(prop) && prop !== "action"
+  })(({
+    theme
+  }) => ({
+    position: "absolute",
+    left: 0,
+    display: "flex",
+    top: 0,
+    bottom: 0,
+    right: 0,
+    pointerEvents: "none",
+    variants: [{
+      props: {
+        action: "make-child"
+      },
+      style: {
+        marginLeft: "calc(var(--TreeView-indentMultiplier) * var(--TreeView-itemDepth))",
+        borderRadius: theme.shape.borderRadius,
+        backgroundColor: theme.vars ? `rgba(${theme.vars.palette.primary.darkChannel} / ${theme.vars.palette.action.focusOpacity})` : alpha(theme.palette.primary.dark, theme.palette.action.focusOpacity)
+      }
+    }, {
+      props: {
+        action: "reorder-above"
+      },
+      style: {
+        marginLeft: "calc(var(--TreeView-indentMultiplier) * var(--TreeView-itemDepth))",
+        borderTop: `1px solid ${(theme.vars || theme).palette.action.active}`
+      }
+    }, {
+      props: {
+        action: "reorder-below"
+      },
+      style: {
+        marginLeft: "calc(var(--TreeView-indentMultiplier) * var(--TreeView-itemDepth))",
+        borderBottom: `1px solid ${(theme.vars || theme).palette.action.active}`
+      }
+    }, {
+      props: {
+        action: "move-to-parent"
+      },
+      style: {
+        marginLeft: "calc(var(--TreeView-indentMultiplier) * calc(var(--TreeView-itemDepth) - 1))",
+        borderBottom: `1px solid ${(theme.vars || theme).palette.action.active}`
+      }
+    }]
+  }));
+  function TreeItem2DragAndDropOverlay(props) {
+    if (props.action == null) {
+      return null;
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(TreeItem2DragAndDropOverlayRoot, _extends({}, props));
+  }
+  false ? TreeItem2DragAndDropOverlay.propTypes = {
+    // ----------------------------- Warning --------------------------------
+    // | These PropTypes are generated from the TypeScript type definitions |
+    // | To update them edit the TypeScript types and run "pnpm proptypes"  |
+    // ----------------------------------------------------------------------
+    action: import_prop_types.default.oneOf(["make-child", "move-to-parent", "reorder-above", "reorder-below"]),
+    style: import_prop_types.default.object
+  } : void 0;
+
+  // node_modules/@mui/x-tree-view/TreeItem2LabelInput/TreeItem2LabelInput.js
+  var TreeItem2LabelInput = styled_default2("input", {
+    name: "MuiTreeItem2",
+    slot: "LabelInput",
+    overridesResolver: (props, styles4) => styles4.labelInput
+  })(({
+    theme
+  }) => _extends({}, theme.typography.body1, {
+    width: "100%",
+    backgroundColor: theme.palette.background.paper,
+    borderRadius: theme.shape.borderRadius,
+    border: "none",
+    padding: "0 2px",
+    boxSizing: "border-box",
+    "&:focus": {
+      outline: `1px solid ${theme.palette.primary.main}`
+    }
+  }));
+
+  // node_modules/@mui/x-tree-view/TreeItem/TreeItemContent.js
+  var import_jsx_runtime148 = __toESM(require_jsx_runtime());
+  var _excluded15 = ["classes", "className", "displayIcon", "expansionIcon", "icon", "label", "itemId", "onClick", "onMouseDown", "dragAndDropOverlayProps", "labelInputProps"];
+  var TreeItemContent = /* @__PURE__ */ React175.forwardRef(function TreeItemContent2(props, ref) {
+    const {
+      classes,
+      className,
+      displayIcon,
+      expansionIcon,
+      icon: iconProp,
+      label,
+      itemId,
+      onClick,
+      onMouseDown,
+      dragAndDropOverlayProps,
+      labelInputProps
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded15);
+    const {
+      disabled,
+      expanded,
+      selected,
+      focused,
+      editing,
+      editable,
+      disableSelection,
+      checkboxSelection,
+      handleExpansion,
+      handleSelection,
+      handleCheckboxSelection,
+      handleContentClick,
+      preventSelection,
+      expansionTrigger,
+      toggleItemEditing
+    } = useTreeItemState(itemId);
+    const icon = iconProp || expansionIcon || displayIcon;
+    const checkboxRef = React175.useRef(null);
+    const handleMouseDown = (event) => {
+      preventSelection(event);
+      if (onMouseDown) {
+        onMouseDown(event);
+      }
+    };
+    const handleClick = (event) => {
+      var _a;
+      handleContentClick == null ? void 0 : handleContentClick(event, itemId);
+      if ((_a = checkboxRef.current) == null ? void 0 : _a.contains(event.target)) {
+        return;
+      }
+      if (expansionTrigger === "content") {
+        handleExpansion(event);
+      }
+      if (!checkboxSelection) {
+        handleSelection(event);
+      }
+      if (onClick) {
+        onClick(event);
+      }
+    };
+    const handleLabelDoubleClick = (event) => {
+      if (event.defaultMuiPrevented) {
+        return;
+      }
+      toggleItemEditing();
+    };
+    return (
+      /* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions -- Key event is handled by the TreeView */
+      /* @__PURE__ */ (0, import_jsx_runtime148.jsxs)("div", _extends({}, other, {
+        className: clsx_default(classes.root, className, expanded && classes.expanded, selected && classes.selected, focused && classes.focused, disabled && classes.disabled, editing && classes.editing, editable && classes.editable),
+        onClick: handleClick,
+        onMouseDown: handleMouseDown,
+        ref,
+        children: [/* @__PURE__ */ (0, import_jsx_runtime148.jsx)("div", {
+          className: classes.iconContainer,
+          children: icon
+        }), checkboxSelection && /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(Checkbox_default, {
+          className: classes.checkbox,
+          checked: selected,
+          onChange: handleCheckboxSelection,
+          disabled: disabled || disableSelection,
+          ref: checkboxRef,
+          tabIndex: -1
+        }), editing ? /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(TreeItem2LabelInput, _extends({}, labelInputProps, {
+          className: classes.labelInput
+        })) : /* @__PURE__ */ (0, import_jsx_runtime148.jsx)("div", _extends({
+          className: classes.label
+        }, editable && {
+          onDoubleClick: handleLabelDoubleClick
+        }, {
+          children: label
+        })), dragAndDropOverlayProps && /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(TreeItem2DragAndDropOverlay, _extends({}, dragAndDropOverlayProps))]
+      }))
+    );
+  });
+  false ? TreeItemContent.propTypes = {
+    // ----------------------------- Warning --------------------------------
+    // | These PropTypes are generated from the TypeScript type definitions |
+    // | To update them edit the TypeScript types and run "pnpm proptypes"  |
+    // ----------------------------------------------------------------------
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object.isRequired,
+    className: import_prop_types.default.string,
+    /**
+     * The icon to display next to the Tree Item's label. Either a parent or end icon.
+     */
+    displayIcon: import_prop_types.default.node,
+    dragAndDropOverlayProps: import_prop_types.default.shape({
+      action: import_prop_types.default.oneOf(["make-child", "move-to-parent", "reorder-above", "reorder-below"]),
+      style: import_prop_types.default.object
+    }),
+    /**
+     * The icon to display next to the Tree Item's label. Either an expansion or collapse icon.
+     */
+    expansionIcon: import_prop_types.default.node,
+    /**
+     * The icon to display next to the Tree Item's label.
+     */
+    icon: import_prop_types.default.node,
+    /**
+     * The id of the item.
+     */
+    itemId: import_prop_types.default.string.isRequired,
+    /**
+     * The Tree Item label.
+     */
+    label: import_prop_types.default.node,
+    labelInputProps: import_prop_types.default.shape({
+      autoFocus: import_prop_types.default.oneOf([true]),
+      "data-element": import_prop_types.default.oneOf(["labelInput"]),
+      onBlur: import_prop_types.default.func,
+      onChange: import_prop_types.default.func,
+      onKeyDown: import_prop_types.default.func,
+      type: import_prop_types.default.oneOf(["text"]),
+      value: import_prop_types.default.string
+    })
+  } : void 0;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/ClassNameGenerator/ClassNameGenerator.js
+  var defaultGenerator3 = (componentName) => componentName;
+  var createClassNameGenerator3 = () => {
+    let generate = defaultGenerator3;
+    return {
+      configure(generator) {
+        generate = generator;
+      },
+      generate(componentName) {
+        return generate(componentName);
+      },
+      reset() {
+        generate = defaultGenerator3;
+      }
+    };
+  };
+  var ClassNameGenerator3 = createClassNameGenerator3();
+  var ClassNameGenerator_default3 = ClassNameGenerator3;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/generateUtilityClass/generateUtilityClass.js
+  var globalStateClasses3 = {
+    active: "active",
+    checked: "checked",
+    completed: "completed",
+    disabled: "disabled",
+    error: "error",
+    expanded: "expanded",
+    focused: "focused",
+    focusVisible: "focusVisible",
+    open: "open",
+    readOnly: "readOnly",
+    required: "required",
+    selected: "selected"
+  };
+  function generateUtilityClass3(componentName, slot, globalStatePrefix = "Mui") {
+    const globalStateClass = globalStateClasses3[slot];
+    return globalStateClass ? `${globalStatePrefix}-${globalStateClass}` : `${ClassNameGenerator_default3.generate(componentName)}-${slot}`;
+  }
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/generateUtilityClasses/generateUtilityClasses.js
+  function generateUtilityClasses3(componentName, slots, globalStatePrefix = "Mui") {
+    const result = {};
+    slots.forEach((slot) => {
+      result[slot] = generateUtilityClass3(componentName, slot, globalStatePrefix);
+    });
+    return result;
+  }
+
+  // node_modules/@mui/x-tree-view/TreeItem/treeItemClasses.js
+  function getTreeItemUtilityClass(slot) {
+    return generateUtilityClass3("MuiTreeItem", slot);
+  }
+  var treeItemClasses = generateUtilityClasses3("MuiTreeItem", ["root", "groupTransition", "content", "expanded", "selected", "focused", "disabled", "iconContainer", "label", "checkbox", "labelInput", "editable", "editing", "dragAndDropOverlay"]);
+
+  // node_modules/@mui/x-tree-view/icons/icons.js
+  var React176 = __toESM(require_react());
+  var import_jsx_runtime149 = __toESM(require_jsx_runtime());
+  var TreeViewExpandIcon = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime149.jsx)("path", {
+    d: "M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+  }), "TreeViewExpandIcon");
+  var TreeViewCollapseIcon = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime149.jsx)("path", {
+    d: "M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+  }), "TreeViewCollapseIcon");
+
+  // node_modules/@mui/x-tree-view/TreeItem2Provider/TreeItem2Provider.js
+  var import_prop_types = __toESM(require_prop_types());
+  function TreeItem2Provider(props) {
+    const {
+      children,
+      itemId
+    } = props;
+    const {
+      wrapItem,
+      instance: instance2
+    } = useTreeViewContext();
+    return wrapItem({
+      children,
+      itemId,
+      instance: instance2
+    });
+  }
+  TreeItem2Provider.propTypes = {
+    // ----------------------------- Warning --------------------------------
+    // | These PropTypes are generated from the TypeScript type definitions |
+    // | To update them edit the TypeScript types and run "pnpm proptypes"  |
+    // ----------------------------------------------------------------------
+    children: import_prop_types.default.node,
+    itemId: import_prop_types.default.string.isRequired
+  };
+
+  // node_modules/@mui/x-tree-view/internals/TreeViewItemDepthContext/TreeViewItemDepthContext.js
+  var React177 = __toESM(require_react());
+  var TreeViewItemDepthContext = /* @__PURE__ */ React177.createContext(() => -1);
+  if (false) {
+    TreeViewItemDepthContext.displayName = "TreeViewItemDepthContext";
+  }
+
+  // node_modules/@mui/x-tree-view/internals/utils/tree.js
+  var getLastNavigableItemInArray = (instance2, items) => {
+    let itemIndex = items.length - 1;
+    while (itemIndex >= 0 && !instance2.isItemNavigable(items[itemIndex])) {
+      itemIndex -= 1;
+    }
+    if (itemIndex === -1) {
+      return void 0;
+    }
+    return items[itemIndex];
+  };
+  var getPreviousNavigableItem = (instance2, itemId) => {
+    const itemMeta = instance2.getItemMeta(itemId);
+    const siblings = instance2.getItemOrderedChildrenIds(itemMeta.parentId);
+    const itemIndex = instance2.getItemIndex(itemId);
+    if (itemIndex === 0) {
+      return itemMeta.parentId;
+    }
+    let previousNavigableSiblingIndex = itemIndex - 1;
+    while (!instance2.isItemNavigable(siblings[previousNavigableSiblingIndex]) && previousNavigableSiblingIndex >= 0) {
+      previousNavigableSiblingIndex -= 1;
+    }
+    if (previousNavigableSiblingIndex === -1) {
+      if (itemMeta.parentId == null) {
+        return null;
+      }
+      return getPreviousNavigableItem(instance2, itemMeta.parentId);
+    }
+    let currentItemId = siblings[previousNavigableSiblingIndex];
+    let lastNavigableChild = getLastNavigableItemInArray(instance2, instance2.getItemOrderedChildrenIds(currentItemId));
+    while (instance2.isItemExpanded(currentItemId) && lastNavigableChild != null) {
+      currentItemId = lastNavigableChild;
+      lastNavigableChild = instance2.getItemOrderedChildrenIds(currentItemId).find(instance2.isItemNavigable);
+    }
+    return currentItemId;
+  };
+  var getNextNavigableItem = (instance2, itemId) => {
+    if (instance2.isItemExpanded(itemId)) {
+      const firstNavigableChild = instance2.getItemOrderedChildrenIds(itemId).find(instance2.isItemNavigable);
+      if (firstNavigableChild != null) {
+        return firstNavigableChild;
+      }
+    }
+    let itemMeta = instance2.getItemMeta(itemId);
+    while (itemMeta != null) {
+      const siblings = instance2.getItemOrderedChildrenIds(itemMeta.parentId);
+      const currentItemIndex = instance2.getItemIndex(itemMeta.id);
+      if (currentItemIndex < siblings.length - 1) {
+        let nextItemIndex = currentItemIndex + 1;
+        while (!instance2.isItemNavigable(siblings[nextItemIndex]) && nextItemIndex < siblings.length - 1) {
+          nextItemIndex += 1;
+        }
+        if (instance2.isItemNavigable(siblings[nextItemIndex])) {
+          return siblings[nextItemIndex];
+        }
+      }
+      itemMeta = instance2.getItemMeta(itemMeta.parentId);
+    }
+    return null;
+  };
+  var getLastNavigableItem = (instance2) => {
+    let itemId = null;
+    while (itemId == null || instance2.isItemExpanded(itemId)) {
+      const children = instance2.getItemOrderedChildrenIds(itemId);
+      const lastNavigableChild = getLastNavigableItemInArray(instance2, children);
+      if (lastNavigableChild == null) {
+        return itemId;
+      }
+      itemId = lastNavigableChild;
+    }
+    return itemId;
+  };
+  var getFirstNavigableItem = (instance2) => instance2.getItemOrderedChildrenIds(null).find(instance2.isItemNavigable);
+  var findOrderInTremauxTree = (instance2, itemAId, itemBId) => {
+    if (itemAId === itemBId) {
+      return [itemAId, itemBId];
+    }
+    const itemMetaA = instance2.getItemMeta(itemAId);
+    const itemMetaB = instance2.getItemMeta(itemBId);
+    if (itemMetaA.parentId === itemMetaB.id || itemMetaB.parentId === itemMetaA.id) {
+      return itemMetaB.parentId === itemMetaA.id ? [itemMetaA.id, itemMetaB.id] : [itemMetaB.id, itemMetaA.id];
+    }
+    const aFamily = [itemMetaA.id];
+    const bFamily = [itemMetaB.id];
+    let aAncestor = itemMetaA.parentId;
+    let bAncestor = itemMetaB.parentId;
+    let aAncestorIsCommon = bFamily.indexOf(aAncestor) !== -1;
+    let bAncestorIsCommon = aFamily.indexOf(bAncestor) !== -1;
+    let continueA = true;
+    let continueB = true;
+    while (!bAncestorIsCommon && !aAncestorIsCommon) {
+      if (continueA) {
+        aFamily.push(aAncestor);
+        aAncestorIsCommon = bFamily.indexOf(aAncestor) !== -1;
+        continueA = aAncestor !== null;
+        if (!aAncestorIsCommon && continueA) {
+          aAncestor = instance2.getItemMeta(aAncestor).parentId;
+        }
+      }
+      if (continueB && !aAncestorIsCommon) {
+        bFamily.push(bAncestor);
+        bAncestorIsCommon = aFamily.indexOf(bAncestor) !== -1;
+        continueB = bAncestor !== null;
+        if (!bAncestorIsCommon && continueB) {
+          bAncestor = instance2.getItemMeta(bAncestor).parentId;
+        }
+      }
+    }
+    const commonAncestor = aAncestorIsCommon ? aAncestor : bAncestor;
+    const ancestorFamily = instance2.getItemOrderedChildrenIds(commonAncestor);
+    const aSide = aFamily[aFamily.indexOf(commonAncestor) - 1];
+    const bSide = bFamily[bFamily.indexOf(commonAncestor) - 1];
+    return ancestorFamily.indexOf(aSide) < ancestorFamily.indexOf(bSide) ? [itemAId, itemBId] : [itemBId, itemAId];
+  };
+  var getNonDisabledItemsInRange = (instance2, itemAId, itemBId) => {
+    const getNextItem = (itemId) => {
+      if (instance2.isItemExpandable(itemId) && instance2.isItemExpanded(itemId)) {
+        return instance2.getItemOrderedChildrenIds(itemId)[0];
+      }
+      let itemMeta = instance2.getItemMeta(itemId);
+      while (itemMeta != null) {
+        const siblings = instance2.getItemOrderedChildrenIds(itemMeta.parentId);
+        const currentItemIndex = instance2.getItemIndex(itemMeta.id);
+        if (currentItemIndex < siblings.length - 1) {
+          return siblings[currentItemIndex + 1];
+        }
+        itemMeta = instance2.getItemMeta(itemMeta.parentId);
+      }
+      throw new Error("Invalid range");
+    };
+    const [first, last] = findOrderInTremauxTree(instance2, itemAId, itemBId);
+    const items = [first];
+    let current = first;
+    while (current !== last) {
+      current = getNextItem(current);
+      if (!instance2.isItemDisabled(current)) {
+        items.push(current);
+      }
+    }
+    return items;
+  };
+  var getAllNavigableItems = (instance2) => {
+    let item = getFirstNavigableItem(instance2);
+    const navigableItems = [];
+    while (item != null) {
+      navigableItems.push(item);
+      item = getNextNavigableItem(instance2, item);
+    }
+    return navigableItems;
+  };
+  var isTargetInDescendants = (target, itemRoot) => {
+    return itemRoot !== target.closest('*[role="treeitem"]');
+  };
+
+  // node_modules/@mui/x-tree-view/internals/corePlugins/useTreeViewId/useTreeViewId.utils.js
+  var globalTreeViewDefaultId = 0;
+  var createTreeViewDefaultId = () => {
+    globalTreeViewDefaultId += 1;
+    return `mui-tree-view-${globalTreeViewDefaultId}`;
+  };
+  var generateTreeItemIdAttribute = ({
+    id,
+    treeId = "",
+    itemId
+  }) => {
+    if (id != null) {
+      return id;
+    }
+    return `${treeId}-${itemId}`;
+  };
+
+  // node_modules/@mui/x-tree-view/TreeItem/TreeItem.js
+  var import_jsx_runtime150 = __toESM(require_jsx_runtime());
+  var _excluded16 = ["children", "className", "slots", "slotProps", "ContentComponent", "ContentProps", "itemId", "id", "label", "onClick", "onMouseDown", "onFocus", "onBlur", "onKeyDown"];
+  var _excluded24 = ["ownerState"];
+  var _excluded32 = ["ownerState"];
+  var _excluded42 = ["ownerState"];
+  var useThemeProps3 = createUseThemeProps("MuiTreeItem");
+  var useUtilityClasses46 = (ownerState) => {
+    const {
+      classes
+    } = ownerState;
+    const slots = {
+      root: ["root"],
+      content: ["content"],
+      expanded: ["expanded"],
+      selected: ["selected"],
+      focused: ["focused"],
+      disabled: ["disabled"],
+      iconContainer: ["iconContainer"],
+      checkbox: ["checkbox"],
+      label: ["label"],
+      labelInput: ["labelInput"],
+      editing: ["editing"],
+      editable: ["editable"],
+      groupTransition: ["groupTransition"]
+    };
+    return composeClasses3(slots, getTreeItemUtilityClass, classes);
+  };
+  var TreeItemRoot = styled_default2("li", {
+    name: "MuiTreeItem",
+    slot: "Root",
+    overridesResolver: (props, styles4) => styles4.root
+  })({
+    listStyle: "none",
+    margin: 0,
+    padding: 0,
+    outline: 0
+  });
+  var StyledTreeItemContent = styled_default2(TreeItemContent, {
+    name: "MuiTreeItem",
+    slot: "Content",
+    overridesResolver: (props, styles4) => {
+      return [styles4.content, styles4.iconContainer && {
+        [`& .${treeItemClasses.iconContainer}`]: styles4.iconContainer
+      }, styles4.label && {
+        [`& .${treeItemClasses.label}`]: styles4.label
+      }];
+    },
+    shouldForwardProp: (prop) => shouldForwardProp(prop) && prop !== "indentationAtItemLevel"
+  })(({
+    theme
+  }) => ({
+    padding: theme.spacing(0.5, 1),
+    borderRadius: theme.shape.borderRadius,
+    width: "100%",
+    boxSizing: "border-box",
+    // prevent width + padding to overflow
+    position: "relative",
+    display: "flex",
+    alignItems: "center",
+    gap: theme.spacing(1),
+    cursor: "pointer",
+    WebkitTapHighlightColor: "transparent",
+    "&:hover": {
+      backgroundColor: (theme.vars || theme).palette.action.hover,
+      // Reset on touch devices, it doesn't add specificity
+      "@media (hover: none)": {
+        backgroundColor: "transparent"
+      }
+    },
+    [`&.${treeItemClasses.disabled}`]: {
+      opacity: (theme.vars || theme).palette.action.disabledOpacity,
+      backgroundColor: "transparent"
+    },
+    [`&.${treeItemClasses.focused}`]: {
+      backgroundColor: (theme.vars || theme).palette.action.focus
+    },
+    [`&.${treeItemClasses.selected}`]: {
+      backgroundColor: theme.vars ? `rgba(${theme.vars.palette.primary.mainChannel} / ${theme.vars.palette.action.selectedOpacity})` : alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity),
+      "&:hover": {
+        backgroundColor: theme.vars ? `rgba(${theme.vars.palette.primary.mainChannel} / calc(${theme.vars.palette.action.selectedOpacity} + ${theme.vars.palette.action.hoverOpacity}))` : alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity + theme.palette.action.hoverOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        "@media (hover: none)": {
+          backgroundColor: theme.vars ? `rgba(${theme.vars.palette.primary.mainChannel} / ${theme.vars.palette.action.selectedOpacity})` : alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity)
+        }
+      },
+      [`&.${treeItemClasses.focused}`]: {
+        backgroundColor: theme.vars ? `rgba(${theme.vars.palette.primary.mainChannel} / calc(${theme.vars.palette.action.selectedOpacity} + ${theme.vars.palette.action.focusOpacity}))` : alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity + theme.palette.action.focusOpacity)
+      }
+    },
+    [`& .${treeItemClasses.iconContainer}`]: {
+      width: 16,
+      display: "flex",
+      flexShrink: 0,
+      justifyContent: "center",
+      "& svg": {
+        fontSize: 18
+      }
+    },
+    [`& .${treeItemClasses.label}`]: _extends({
+      width: "100%",
+      boxSizing: "border-box",
+      // prevent width + padding to overflow
+      // fixes overflow - see https://github.com/mui/material-ui/issues/27372
+      minWidth: 0,
+      position: "relative"
+    }, theme.typography.body1),
+    [`& .${treeItemClasses.checkbox}`]: {
+      padding: 0
+    },
+    variants: [{
+      props: {
+        indentationAtItemLevel: true
+      },
+      style: {
+        paddingLeft: `calc(${theme.spacing(1)} + var(--TreeView-itemChildrenIndentation) * var(--TreeView-itemDepth))`
+      }
+    }]
+  }));
+  var TreeItemGroup = styled_default2(Collapse_default, {
+    name: "MuiTreeItem",
+    slot: "GroupTransition",
+    overridesResolver: (props, styles4) => styles4.groupTransition,
+    shouldForwardProp: (prop) => shouldForwardProp(prop) && prop !== "indentationAtItemLevel"
+  })({
+    margin: 0,
+    padding: 0,
+    paddingLeft: "var(--TreeView-itemChildrenIndentation)",
+    variants: [{
+      props: {
+        indentationAtItemLevel: true
+      },
+      style: {
+        paddingLeft: 0
+      }
+    }]
+  });
+  var TreeItem = /* @__PURE__ */ React178.forwardRef(function TreeItem2(inProps, inRef) {
+    var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n;
+    const {
+      icons: contextIcons,
+      runItemPlugins,
+      items: {
+        disabledItemsFocusable,
+        indentationAtItemLevel
+      },
+      selection: {
+        disableSelection
+      },
+      expansion: {
+        expansionTrigger
+      },
+      treeId,
+      instance: instance2
+    } = useTreeViewContext();
+    const depthContext = React178.useContext(TreeViewItemDepthContext);
+    const props = useThemeProps3({
+      props: inProps,
+      name: "MuiTreeItem"
+    });
+    const {
+      children,
+      className,
+      slots: inSlots,
+      slotProps: inSlotProps,
+      ContentComponent = TreeItemContent,
+      ContentProps,
+      itemId,
+      id,
+      label,
+      onClick,
+      onMouseDown,
+      onBlur,
+      onKeyDown
+    } = props, other = _objectWithoutPropertiesLoose(props, _excluded16);
+    const {
+      expanded,
+      focused,
+      selected,
+      disabled,
+      editing,
+      handleExpansion,
+      handleCancelItemLabelEditing,
+      handleSaveItemLabel
+    } = useTreeItemState(itemId);
+    if (false) {
+      if (props.ContentComponent) {
+        warnOnce(["MUI X: The ContentComponent prop of the TreeItem component is deprecated and will be removed in the next major release.", "You can use the new TreeItem2 component or the new useTreeItem2 hook to customize the rendering of the content.", "For more detail, see https://mui.com/x/react-tree-view/tree-item-customization/."]);
+      }
+      if (props.ContentProps) {
+        warnOnce(["MUI X: The ContentProps prop of the TreeItem component is deprecated and will be removed in the next major release.", "You can use the new TreeItem2 component or the new useTreeItem2 hook to customize the rendering of the content.", "For more detail, see https://mui.com/x/react-tree-view/tree-item-customization/."]);
+      }
+    }
+    const {
+      contentRef,
+      rootRef,
+      propsEnhancers
+    } = runItemPlugins(props);
+    const rootRefObject = React178.useRef(null);
+    const contentRefObject = React178.useRef(null);
+    const handleRootRef = useForkRef3(inRef, rootRef, rootRefObject);
+    const handleContentRef = useForkRef3(ContentProps == null ? void 0 : ContentProps.ref, contentRef, contentRefObject);
+    const slots = {
+      expandIcon: (_b = (_a = inSlots == null ? void 0 : inSlots.expandIcon) != null ? _a : contextIcons.slots.expandIcon) != null ? _b : TreeViewExpandIcon,
+      collapseIcon: (_d = (_c = inSlots == null ? void 0 : inSlots.collapseIcon) != null ? _c : contextIcons.slots.collapseIcon) != null ? _d : TreeViewCollapseIcon,
+      endIcon: (_e = inSlots == null ? void 0 : inSlots.endIcon) != null ? _e : contextIcons.slots.endIcon,
+      icon: inSlots == null ? void 0 : inSlots.icon,
+      groupTransition: inSlots == null ? void 0 : inSlots.groupTransition
+    };
+    const isExpandable = (reactChildren) => {
+      if (Array.isArray(reactChildren)) {
+        return reactChildren.length > 0 && reactChildren.some(isExpandable);
+      }
+      return Boolean(reactChildren);
+    };
+    const expandable = isExpandable(children);
+    const ownerState = _extends({}, props, {
+      expanded,
+      focused,
+      selected,
+      disabled,
+      indentationAtItemLevel
+    });
+    const classes = useUtilityClasses46(ownerState);
+    const GroupTransition = (_f = slots.groupTransition) != null ? _f : void 0;
+    const groupTransitionProps = useSlotProps_default3({
+      elementType: GroupTransition,
+      ownerState: {},
+      externalSlotProps: inSlotProps == null ? void 0 : inSlotProps.groupTransition,
+      additionalProps: _extends({
+        unmountOnExit: true,
+        in: expanded,
+        component: "ul",
+        role: "group"
+      }, indentationAtItemLevel ? {
+        indentationAtItemLevel: true
+      } : {}),
+      className: classes.groupTransition
+    });
+    const handleIconContainerClick = (event) => {
+      if (expansionTrigger === "iconContainer") {
+        handleExpansion(event);
+      }
+    };
+    const ExpansionIcon = expanded ? slots.collapseIcon : slots.expandIcon;
+    const _useSlotProps = useSlotProps_default3({
+      elementType: ExpansionIcon,
+      ownerState: {},
+      externalSlotProps: (tempOwnerState) => {
+        if (expanded) {
+          return _extends({}, resolveComponentProps_default3(contextIcons.slotProps.collapseIcon, tempOwnerState), resolveComponentProps_default3(inSlotProps == null ? void 0 : inSlotProps.collapseIcon, tempOwnerState));
+        }
+        return _extends({}, resolveComponentProps_default3(contextIcons.slotProps.expandIcon, tempOwnerState), resolveComponentProps_default3(inSlotProps == null ? void 0 : inSlotProps.expandIcon, tempOwnerState));
+      },
+      additionalProps: {
+        onClick: handleIconContainerClick
+      }
+    }), expansionIconProps = _objectWithoutPropertiesLoose(_useSlotProps, _excluded24);
+    const expansionIcon = expandable && !!ExpansionIcon ? /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(ExpansionIcon, _extends({}, expansionIconProps)) : null;
+    const DisplayIcon = expandable ? void 0 : slots.endIcon;
+    const _useSlotProps2 = useSlotProps_default3({
+      elementType: DisplayIcon,
+      ownerState: {},
+      externalSlotProps: (tempOwnerState) => {
+        if (expandable) {
+          return {};
+        }
+        return _extends({}, resolveComponentProps_default3(contextIcons.slotProps.endIcon, tempOwnerState), resolveComponentProps_default3(inSlotProps == null ? void 0 : inSlotProps.endIcon, tempOwnerState));
+      }
+    }), displayIconProps = _objectWithoutPropertiesLoose(_useSlotProps2, _excluded32);
+    const displayIcon = DisplayIcon ? /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(DisplayIcon, _extends({}, displayIconProps)) : null;
+    const Icon = slots.icon;
+    const _useSlotProps3 = useSlotProps_default3({
+      elementType: Icon,
+      ownerState: {},
+      externalSlotProps: inSlotProps == null ? void 0 : inSlotProps.icon
+    }), iconProps = _objectWithoutPropertiesLoose(_useSlotProps3, _excluded42);
+    const icon = Icon ? /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(Icon, _extends({}, iconProps)) : null;
+    let ariaSelected;
+    if (selected) {
+      ariaSelected = true;
+    } else if (disableSelection || disabled) {
+      ariaSelected = void 0;
+    } else {
+      ariaSelected = false;
+    }
+    function handleFocus(event) {
+      const canBeFocused = !disabled || disabledItemsFocusable;
+      if (!focused && canBeFocused && event.currentTarget === event.target) {
+        instance2.focusItem(event, itemId);
+      }
+    }
+    function handleBlur(event) {
+      var _a2, _b2, _c2, _d2;
+      onBlur == null ? void 0 : onBlur(event);
+      if (editing || // we can exit the editing state by clicking outside the input (within the Tree Item) or by pressing Enter or Escape -> we don't want to remove the focused item from the state in these cases
+      // we can also exit the editing state by clicking on the root itself -> want to remove the focused item from the state in this case
+      event.relatedTarget && isTargetInDescendants(event.relatedTarget, rootRefObject.current) && (event.target && ((_b2 = (_a2 = event.target) == null ? void 0 : _a2.dataset) == null ? void 0 : _b2.element) === "labelInput" && isTargetInDescendants(event.target, rootRefObject.current) || ((_d2 = (_c2 = event.relatedTarget) == null ? void 0 : _c2.dataset) == null ? void 0 : _d2.element) === "labelInput")) {
+        return;
+      }
+      instance2.removeFocusedItem();
+    }
+    const handleKeyDown = (event) => {
+      var _a2, _b2;
+      onKeyDown == null ? void 0 : onKeyDown(event);
+      if (((_b2 = (_a2 = event.target) == null ? void 0 : _a2.dataset) == null ? void 0 : _b2.element) === "labelInput") {
+        return;
+      }
+      instance2.handleItemKeyDown(event, itemId);
+    };
+    const idAttribute = generateTreeItemIdAttribute({
+      itemId,
+      treeId,
+      id
+    });
+    const tabIndex = instance2.canItemBeTabbed(itemId) ? 0 : -1;
+    const sharedPropsEnhancerParams = {
+      rootRefObject,
+      contentRefObject,
+      interactions: {
+        handleSaveItemLabel,
+        handleCancelItemLabelEditing
+      }
+    };
+    const enhancedRootProps = (_h = (_g = propsEnhancers.root) == null ? void 0 : _g.call(propsEnhancers, _extends({}, sharedPropsEnhancerParams, {
+      externalEventHandlers: extractEventHandlers_default3(other)
+    }))) != null ? _h : {};
+    const enhancedContentProps = (_j = (_i = propsEnhancers.content) == null ? void 0 : _i.call(propsEnhancers, _extends({}, sharedPropsEnhancerParams, {
+      externalEventHandlers: extractEventHandlers_default3(ContentProps)
+    }))) != null ? _j : {};
+    const enhancedDragAndDropOverlayProps = (_l = (_k = propsEnhancers.dragAndDropOverlay) == null ? void 0 : _k.call(propsEnhancers, _extends({}, sharedPropsEnhancerParams, {
+      externalEventHandlers: {}
+    }))) != null ? _l : {};
+    const enhancedLabelInputProps = (_n = (_m = propsEnhancers.labelInput) == null ? void 0 : _m.call(propsEnhancers, _extends({}, sharedPropsEnhancerParams, {
+      externalEventHandlers: {}
+    }))) != null ? _n : {};
+    return /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(TreeItem2Provider, {
+      itemId,
+      children: /* @__PURE__ */ (0, import_jsx_runtime150.jsxs)(TreeItemRoot, _extends({
+        className: clsx_default(classes.root, className),
+        role: "treeitem",
+        "aria-expanded": expandable ? expanded : void 0,
+        "aria-selected": ariaSelected,
+        "aria-disabled": disabled || void 0,
+        id: idAttribute,
+        tabIndex
+      }, other, {
+        ownerState,
+        onFocus: handleFocus,
+        onBlur: handleBlur,
+        onKeyDown: handleKeyDown,
+        ref: handleRootRef,
+        style: indentationAtItemLevel ? _extends({}, other.style, {
+          "--TreeView-itemDepth": typeof depthContext === "function" ? depthContext(itemId) : depthContext
+        }) : other.style
+      }, enhancedRootProps, {
+        children: [/* @__PURE__ */ (0, import_jsx_runtime150.jsx)(StyledTreeItemContent, _extends({
+          as: ContentComponent,
+          classes: {
+            root: classes.content,
+            expanded: classes.expanded,
+            selected: classes.selected,
+            focused: classes.focused,
+            disabled: classes.disabled,
+            editable: classes.editable,
+            editing: classes.editing,
+            iconContainer: classes.iconContainer,
+            label: classes.label,
+            labelInput: classes.labelInput,
+            checkbox: classes.checkbox
+          },
+          label,
+          itemId,
+          onClick,
+          onMouseDown,
+          icon,
+          expansionIcon,
+          displayIcon,
+          ownerState
+        }, ContentProps, enhancedContentProps, enhancedDragAndDropOverlayProps.action == null ? {} : {
+          dragAndDropOverlayProps: enhancedDragAndDropOverlayProps
+        }, enhancedLabelInputProps.value == null ? {} : {
+          labelInputProps: enhancedLabelInputProps
+        }, {
+          ref: handleContentRef
+        })), children && /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(TreeItemGroup, _extends({
+          as: GroupTransition
+        }, groupTransitionProps, {
+          children
+        }))]
+      }))
+    });
+  });
+  false ? TreeItem.propTypes = {
+    // ----------------------------- Warning --------------------------------
+    // | These PropTypes are generated from the TypeScript type definitions |
+    // | To update them edit the TypeScript types and run "pnpm proptypes"  |
+    // ----------------------------------------------------------------------
+    /**
+     * The content of the component.
+     */
+    children: import_prop_types.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    className: import_prop_types.default.string,
+    /**
+     * The component used to render the content of the item.
+     * @deprecated Consider using the `<TreeItem2 />` component or the `useTreeItem2` hook instead. For more details, see https://mui.com/x/react-tree-view/tree-item-customization/.
+     * @default TreeItemContent
+     */
+    ContentComponent: elementTypeAcceptingRef_default,
+    /**
+     * Props applied to ContentComponent.
+     * @deprecated Consider using the `<TreeItem2 />` component or the `useTreeItem2` hook instead. For more details, see https://mui.com/x/react-tree-view/tree-item-customization/.
+     */
+    ContentProps: import_prop_types.default.object,
+    /**
+     * If `true`, the item is disabled.
+     * @default false
+     */
+    disabled: import_prop_types.default.bool,
+    /**
+     * The id of the item.
+     */
+    itemId: import_prop_types.default.string.isRequired,
+    /**
+     * The Tree Item label.
+     */
+    label: import_prop_types.default.node,
+    /**
+     * This prop isn't supported.
+     * Use the `onItemFocus` callback on the tree if you need to monitor a item's focus.
+     */
+    onFocus: unsupportedProp,
+    /**
+     * Callback fired when a key of the keyboard is pressed on the item.
+     */
+    onKeyDown: import_prop_types.default.func,
+    /**
+     * The props used for each component slot.
+     * @default {}
+     */
+    slotProps: import_prop_types.default.object,
+    /**
+     * Overridable component slots.
+     * @default {}
+     */
+    slots: import_prop_types.default.object,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object])
+  } : void 0;
+
+  // src/Components/TreeView/BaseTreeItem.tsx
+  var BaseTreeItem = styled_default2(TreeItem)(({ theme }) => ({
+    [`& .${treeItemClasses.content}`]: {
+      padding: theme.spacing(0.5, 1),
+      margin: theme.spacing(0.2, 0)
+    },
+    [`& .${treeItemClasses.iconContainer}`]: {
+      "& .close": {
+        opacity: 0.3
+      }
+    },
+    [`& .${treeItemClasses.groupTransition}`]: {
+      marginLeft: 15,
+      paddingLeft: 18,
+      borderLeft: `1px dashed ${alpha(theme.palette.text.primary, 0.4)}`
+    }
+  }));
+
+  // src/Components/Views/TitleView.tsx
+  var import_jsx_runtime151 = __toESM(require_jsx_runtime());
+  var TitleView = (props) => {
+    const { sx, icon, title, value, action, allowCopy } = props;
+    const onCopy = async (event) => {
+      if (!value) return;
+      event.stopPropagation();
+      await navigator.clipboard.writeText(value);
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime151.jsxs)(Box_default, { sx: __spreadValues({ display: "flex", alignItems: "center" }, sx), children: [
+      icon,
+      /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(Typography_default, { children: title }),
+      /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(Box_default, { sx: { flexGrow: 1 } }),
+      action,
+      allowCopy && /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(CopyButton, { sx: { ml: 1 }, onCopy })
+    ] });
+  };
+
+  // node_modules/@mui/icons-material/esm/DataObject.js
+  var import_jsx_runtime152 = __toESM(require_jsx_runtime());
+  var DataObject_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime152.jsx)("path", {
+    d: "M4 7v2c0 .55-.45 1-1 1H2v4h1c.55 0 1 .45 1 1v2c0 1.65 1.35 3 3 3h3v-2H7c-.55 0-1-.45-1-1v-2c0-1.3-.84-2.42-2-2.83v-.34C5.16 11.42 6 10.3 6 9V7c0-.55.45-1 1-1h3V4H7C5.35 4 4 5.35 4 7m17 3c-.55 0-1-.45-1-1V7c0-1.65-1.35-3-3-3h-3v2h3c.55 0 1 .45 1 1v2c0 1.3.84 2.42 2 2.83v.34c-1.16.41-2 1.52-2 2.83v2c0 .55-.45 1-1 1h-3v2h3c1.65 0 3-1.35 3-3v-2c0-.55.45-1 1-1h1v-4z"
+  }), "DataObject");
+
+  // src/Components/TreeView/Scenarios/ScenarioStepsTreeViewSelectorTypeItem.tsx
+  var import_jsx_runtime153 = __toESM(require_jsx_runtime());
+  var ScenarioStepsTreeViewSelectorTypeItem = ({ index, selectorType }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(
+      BaseTreeItem,
+      {
+        itemId: `${index}-selector-type`,
+        label: /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(
+          TitleView,
+          {
+            icon: /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(DataObject_default, { fontSize: "small", sx: { mr: 1.5 } }),
+            title: `Selector type: ${selectorType}`,
+            value: selectorType,
+            allowCopy: true
+          }
+        )
       }
     );
   };
 
-  // src/Views/Agent/Elements/ElementDetailsView.tsx
-  var import_jsx_runtime105 = __toESM(require_jsx_runtime());
-  var ElementDetailsView = ({ element }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime105.jsxs)(Box_default, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime105.jsxs)(WidgetInfoRowsView, { containerSx: { mt: 0 }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime105.jsx)(BaseInfoRowView, { name: "Selector", value: element.selector }),
-        /* @__PURE__ */ (0, import_jsx_runtime105.jsx)(BaseInfoRowView, { name: "Selector type", value: element.selectorType })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime105.jsx)(ActionCoverageTable, { actions: element.actions }),
-      /* @__PURE__ */ (0, import_jsx_runtime105.jsx)(ElementHistoryChartView, { history: element.history })
+  // node_modules/@mui/icons-material/esm/AdsClick.js
+  var import_jsx_runtime154 = __toESM(require_jsx_runtime());
+  var AdsClick_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime154.jsx)("path", {
+    d: "M11.71 17.99C8.53 17.84 6 15.22 6 12c0-3.31 2.69-6 6-6 3.22 0 5.84 2.53 5.99 5.71l-2.1-.63C15.48 9.31 13.89 8 12 8c-2.21 0-4 1.79-4 4 0 1.89 1.31 3.48 3.08 3.89zM22 12c0 .3-.01.6-.04.9l-1.97-.59c.01-.1.01-.21.01-.31 0-4.42-3.58-8-8-8s-8 3.58-8 8 3.58 8 8 8c.1 0 .21 0 .31-.01l.59 1.97c-.3.03-.6.04-.9.04-5.52 0-10-4.48-10-10S6.48 2 12 2s10 4.48 10 10m-3.77 4.26L22 15l-10-3 3 10 1.26-3.77 4.27 4.27 1.98-1.98z"
+  }), "AdsClick");
+
+  // src/Components/TreeView/Scenarios/ScenarioStepsTreeViewSelectorItem.tsx
+  var import_jsx_runtime155 = __toESM(require_jsx_runtime());
+  var ScenarioStepsTreeViewSelectorItem = ({ index, selector }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime155.jsx)(
+      BaseTreeItem,
+      {
+        itemId: `${index}-selector`,
+        label: /* @__PURE__ */ (0, import_jsx_runtime155.jsx)(
+          TitleView,
+          {
+            icon: /* @__PURE__ */ (0, import_jsx_runtime155.jsx)(AdsClick_default, { fontSize: "small", sx: { mr: 1.5 } }),
+            title: `Selector: ${selector}`,
+            value: selector,
+            allowCopy: true
+          }
+        )
+      }
+    );
+  };
+
+  // src/Components/TreeView/Scenarios/ScenarioStepsTreeViewActionItem.tsx
+  var import_jsx_runtime156 = __toESM(require_jsx_runtime());
+  var ScenarioStepsTreeViewActionItem = ({ index, action }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime156.jsx)(
+      BaseTreeItem,
+      {
+        itemId: `${index}-actions`,
+        label: /* @__PURE__ */ (0, import_jsx_runtime156.jsx)(
+          TitleView,
+          {
+            icon: MAP_ACTION_TYPE_TO_ICON[action],
+            title: `Action: ${normalizeActionType(action)}`,
+            value: action,
+            allowCopy: true
+          }
+        )
+      }
+    );
+  };
+
+  // src/Components/TreeView/Scenarios/ScenarioStepsTreeViewItemTitle.tsx
+  var import_jsx_runtime157 = __toESM(require_jsx_runtime());
+  var ScenarioStepsTreeViewItemTitle = ({ step, index, action }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(
+      TitleView,
+      {
+        icon: MAP_ACTION_TYPE_TO_ICON[step.actionType],
+        title: /* @__PURE__ */ (0, import_jsx_runtime157.jsxs)(Typography_default, { children: [
+          index + 1,
+          ". ",
+          /* @__PURE__ */ (0, import_jsx_runtime157.jsx)("b", { children: normalizeActionType(step.actionType) }),
+          ": ",
+          step.selector
+        ] }),
+        action
+      }
+    );
+  };
+
+  // src/Components/TreeView/Agent/Scenarios/AgentScenarioStepsTreeViewItem.tsx
+  var import_jsx_runtime158 = __toESM(require_jsx_runtime());
+  var AgentScenarioStepsTreeViewItem = ({ step, index }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime158.jsxs)(BaseTreeItem, { itemId: `${index}`, label: /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(ScenarioStepsTreeViewItemTitle, { step, index }), children: [
+      /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(ScenarioStepsTreeViewActionItem, { index, action: step.actionType }),
+      /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(ScenarioStepsTreeViewSelectorTypeItem, { index, selectorType: step.selectorType }),
+      /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(ScenarioStepsTreeViewSelectorItem, { index, selector: step.selector })
     ] });
   };
 
-  // src/Components/Modals/Agent/Elements/ElementDetailsModal.tsx
-  var import_jsx_runtime106 = __toESM(require_jsx_runtime());
-  var ElementDetailsModal = ({ sx, modal, setModal, element }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime106.jsx)(BaseModal, { sx, title: "Element details", modal, setModal, maxWidth: "md", children: /* @__PURE__ */ (0, import_jsx_runtime106.jsx)(ElementDetailsView, { element }) });
+  // node_modules/@mui/x-tree-view/SimpleTreeView/SimpleTreeView.js
+  var React193 = __toESM(require_react());
+
+  // node_modules/@mui/x-tree-view/SimpleTreeView/simpleTreeViewClasses.js
+  function getSimpleTreeViewUtilityClass(slot) {
+    return generateUtilityClass3("MuiSimpleTreeView", slot);
+  }
+  var simpleTreeViewClasses = generateUtilityClasses3("MuiSimpleTreeView", ["root"]);
+
+  // node_modules/@mui/x-tree-view/internals/useTreeView/useTreeView.js
+  var React182 = __toESM(require_react());
+
+  // node_modules/@mui/x-tree-view/internals/useTreeView/useTreeViewModels.js
+  var React179 = __toESM(require_react());
+  var useTreeViewModels = (plugins, props) => {
+    const modelsRef = React179.useRef({});
+    const [modelsState, setModelsState] = React179.useState(() => {
+      const initialState = {};
+      plugins.forEach((plugin5) => {
+        if (plugin5.models) {
+          Object.entries(plugin5.models).forEach(([modelName, modelInitializer]) => {
+            modelsRef.current[modelName] = {
+              isControlled: props[modelName] !== void 0,
+              getDefaultValue: modelInitializer.getDefaultValue
+            };
+            initialState[modelName] = modelInitializer.getDefaultValue(props);
+          });
+        }
+      });
+      return initialState;
+    });
+    const models = Object.fromEntries(Object.entries(modelsRef.current).map(([modelName, model]) => {
+      var _a;
+      const value = (_a = props[modelName]) != null ? _a : modelsState[modelName];
+      return [modelName, {
+        value,
+        setControlledValue: (newValue) => {
+          if (!model.isControlled) {
+            setModelsState((prevState) => _extends({}, prevState, {
+              [modelName]: newValue
+            }));
+          }
+        }
+      }];
+    }));
+    if (false) {
+      Object.entries(modelsRef.current).forEach(([modelName, model]) => {
+        const controlled = props[modelName];
+        const newDefaultValue = model.getDefaultValue(props);
+        React179.useEffect(() => {
+          if (model.isControlled !== (controlled !== void 0)) {
+            console.error([`MUI X: A component is changing the ${model.isControlled ? "" : "un"}controlled ${modelName} state of TreeView to be ${model.isControlled ? "un" : ""}controlled.`, "Elements should not switch from uncontrolled to controlled (or vice versa).", `Decide between using a controlled or uncontrolled ${modelName} element for the lifetime of the component.`, "The nature of the state is determined during the first render. It's considered controlled if the value is not `undefined`.", "More info: https://fb.me/react-controlled-components"].join("\n"));
+          }
+        }, [controlled]);
+        const {
+          current: defaultValue
+        } = React179.useRef(newDefaultValue);
+        React179.useEffect(() => {
+          if (!model.isControlled && defaultValue !== newDefaultValue) {
+            console.error([`MUI X: A component is changing the default ${modelName} state of an uncontrolled TreeView after being initialized. To suppress this warning opt to use a controlled TreeView.`].join("\n"));
+          }
+        }, [JSON.stringify(newDefaultValue)]);
+      });
+    }
+    return models;
   };
 
-  // src/Components/Badges/Agent/Elements/ElementBadge.tsx
-  var import_react31 = __toESM(require_react());
-  var import_jsx_runtime107 = __toESM(require_jsx_runtime());
-  var ElementBadge = ({ actions, settings }) => {
-    const content = (0, import_react31.useMemo)(() => {
+  // node_modules/@mui/x-tree-view/internals/corePlugins/useTreeViewInstanceEvents/useTreeViewInstanceEvents.js
+  var React180 = __toESM(require_react());
+
+  // node_modules/@mui/x-internals/esm/EventManager/EventManager.js
+  var EventManager = class {
+    constructor() {
+      this.maxListeners = 20;
+      this.warnOnce = false;
+      this.events = {};
+    }
+    on(eventName, listener, options = {}) {
+      let collection = this.events[eventName];
+      if (!collection) {
+        collection = {
+          highPriority: /* @__PURE__ */ new Map(),
+          regular: /* @__PURE__ */ new Map()
+        };
+        this.events[eventName] = collection;
+      }
+      if (options.isFirst) {
+        collection.highPriority.set(listener, true);
+      } else {
+        collection.regular.set(listener, true);
+      }
+      if (false) {
+        const collectionSize = collection.highPriority.size + collection.regular.size;
+        if (collectionSize > this.maxListeners && !this.warnOnce) {
+          this.warnOnce = true;
+          console.warn([`Possible EventEmitter memory leak detected. ${collectionSize} ${eventName} listeners added.`].join("\n"));
+        }
+      }
+    }
+    removeListener(eventName, listener) {
+      if (this.events[eventName]) {
+        this.events[eventName].regular.delete(listener);
+        this.events[eventName].highPriority.delete(listener);
+      }
+    }
+    removeAllListeners() {
+      this.events = {};
+    }
+    emit(eventName, ...args) {
+      const collection = this.events[eventName];
+      if (!collection) {
+        return;
+      }
+      const highPriorityListeners = Array.from(collection.highPriority.keys());
+      const regularListeners = Array.from(collection.regular.keys());
+      for (let i = highPriorityListeners.length - 1; i >= 0; i -= 1) {
+        const listener = highPriorityListeners[i];
+        if (collection.highPriority.has(listener)) {
+          listener.apply(this, args);
+        }
+      }
+      for (let i = 0; i < regularListeners.length; i += 1) {
+        const listener = regularListeners[i];
+        if (collection.regular.has(listener)) {
+          listener.apply(this, args);
+        }
+      }
+    }
+    once(eventName, listener) {
+      const that = this;
+      this.on(eventName, function oneTimeListener(...args) {
+        that.removeListener(eventName, oneTimeListener);
+        listener.apply(that, args);
+      });
+    }
+  };
+
+  // node_modules/@mui/x-tree-view/internals/corePlugins/useTreeViewInstanceEvents/useTreeViewInstanceEvents.js
+  var isSyntheticEvent = (event) => {
+    return event.isPropagationStopped !== void 0;
+  };
+  var useTreeViewInstanceEvents = () => {
+    const [eventManager] = React180.useState(() => new EventManager());
+    const publishEvent = React180.useCallback((...args) => {
+      const [name, params, event = {}] = args;
+      event.defaultMuiPrevented = false;
+      if (isSyntheticEvent(event) && event.isPropagationStopped()) {
+        return;
+      }
+      eventManager.emit(name, params, event);
+    }, [eventManager]);
+    const subscribeEvent = React180.useCallback((event, handler) => {
+      eventManager.on(event, handler);
+      return () => {
+        eventManager.removeListener(event, handler);
+      };
+    }, [eventManager]);
+    return {
+      instance: {
+        $$publishEvent: publishEvent,
+        $$subscribeEvent: subscribeEvent
+      }
+    };
+  };
+  useTreeViewInstanceEvents.params = {};
+
+  // node_modules/@mui/x-tree-view/internals/corePlugins/useTreeViewOptionalPlugins/useTreeViewOptionalPlugins.js
+  var useTreeViewOptionalPlugins = ({
+    plugins
+  }) => {
+    const pluginSet = new Set(plugins);
+    const getAvailablePlugins = () => pluginSet;
+    return {
+      instance: {
+        getAvailablePlugins
+      }
+    };
+  };
+  useTreeViewOptionalPlugins.params = {};
+
+  // node_modules/@mui/x-tree-view/internals/corePlugins/useTreeViewId/useTreeViewId.js
+  var React181 = __toESM(require_react());
+  var useTreeViewId = ({
+    params,
+    state,
+    setState
+  }) => {
+    var _a;
+    React181.useEffect(() => {
+      setState((prevState) => {
+        var _a2;
+        if (prevState.id.treeId === params.id && prevState.id.treeId !== void 0) {
+          return prevState;
+        }
+        return _extends({}, prevState, {
+          id: _extends({}, prevState.id, {
+            treeId: (_a2 = params.id) != null ? _a2 : createTreeViewDefaultId()
+          })
+        });
+      });
+    }, [setState, params.id]);
+    const treeId = (_a = params.id) != null ? _a : state.id.treeId;
+    return {
+      getRootProps: () => ({
+        id: treeId
+      }),
+      contextValue: {
+        treeId
+      }
+    };
+  };
+  useTreeViewId.params = {
+    id: true
+  };
+  useTreeViewId.getInitialState = ({
+    id
+  }) => ({
+    id: {
+      treeId: id != null ? id : void 0
+    }
+  });
+
+  // node_modules/@mui/x-tree-view/internals/corePlugins/corePlugins.js
+  var TREE_VIEW_CORE_PLUGINS = [useTreeViewInstanceEvents, useTreeViewOptionalPlugins, useTreeViewId];
+
+  // node_modules/@mui/x-tree-view/internals/useTreeView/extractPluginParamsFromProps.js
+  var _excluded17 = ["slots", "slotProps", "apiRef", "experimentalFeatures"];
+  var extractPluginParamsFromProps = (_ref) => {
+    let {
+      props: {
+        slots,
+        slotProps,
+        apiRef,
+        experimentalFeatures: inExperimentalFeatures
+      },
+      plugins
+    } = _ref, props = _objectWithoutPropertiesLoose(_ref.props, _excluded17);
+    const paramsLookup = {};
+    plugins.forEach((plugin5) => {
+      Object.assign(paramsLookup, plugin5.params);
+    });
+    const pluginParams = {};
+    const forwardedProps = {};
+    Object.keys(props).forEach((propName) => {
+      const prop = props[propName];
+      if (paramsLookup[propName]) {
+        pluginParams[propName] = prop;
+      } else {
+        forwardedProps[propName] = prop;
+      }
+    });
+    const experimentalFeatures = inExperimentalFeatures != null ? inExperimentalFeatures : {};
+    const defaultizedPluginParams = plugins.reduce((acc, plugin5) => {
+      if (plugin5.getDefaultizedParams) {
+        return plugin5.getDefaultizedParams({
+          params: acc,
+          experimentalFeatures
+        });
+      }
+      return acc;
+    }, pluginParams);
+    return {
+      apiRef,
+      forwardedProps,
+      pluginParams: defaultizedPluginParams,
+      slots: slots != null ? slots : {},
+      slotProps: slotProps != null ? slotProps : {},
+      experimentalFeatures
+    };
+  };
+
+  // node_modules/@mui/x-tree-view/internals/useTreeView/useTreeViewBuildContext.js
+  var useTreeViewBuildContext = ({
+    plugins,
+    instance: instance2,
+    publicAPI,
+    rootRef
+  }) => {
+    const runItemPlugins = (itemPluginProps) => {
+      let finalRootRef = null;
+      let finalContentRef = null;
+      const pluginPropEnhancers = [];
+      const pluginPropEnhancersNames = {};
+      plugins.forEach((plugin5) => {
+        if (!plugin5.itemPlugin) {
+          return;
+        }
+        const itemPluginResponse = plugin5.itemPlugin({
+          props: itemPluginProps,
+          rootRef: finalRootRef,
+          contentRef: finalContentRef
+        });
+        if (itemPluginResponse == null ? void 0 : itemPluginResponse.rootRef) {
+          finalRootRef = itemPluginResponse.rootRef;
+        }
+        if (itemPluginResponse == null ? void 0 : itemPluginResponse.contentRef) {
+          finalContentRef = itemPluginResponse.contentRef;
+        }
+        if (itemPluginResponse == null ? void 0 : itemPluginResponse.propsEnhancers) {
+          pluginPropEnhancers.push(itemPluginResponse.propsEnhancers);
+          Object.keys(itemPluginResponse.propsEnhancers).forEach((propsEnhancerName) => {
+            pluginPropEnhancersNames[propsEnhancerName] = true;
+          });
+        }
+      });
+      const resolvePropsEnhancer = (currentSlotName) => (currentSlotParams) => {
+        const enhancedProps = {};
+        pluginPropEnhancers.forEach((propsEnhancersForCurrentPlugin) => {
+          const propsEnhancerForCurrentPluginAndSlot = propsEnhancersForCurrentPlugin[currentSlotName];
+          if (propsEnhancerForCurrentPluginAndSlot != null) {
+            Object.assign(enhancedProps, propsEnhancerForCurrentPluginAndSlot(currentSlotParams));
+          }
+        });
+        return enhancedProps;
+      };
+      const propsEnhancers = Object.fromEntries(Object.keys(pluginPropEnhancersNames).map((propEnhancerName) => [propEnhancerName, resolvePropsEnhancer(propEnhancerName)]));
+      return {
+        contentRef: finalContentRef,
+        rootRef: finalRootRef,
+        propsEnhancers
+      };
+    };
+    const wrapItem = ({
+      itemId,
+      children
+    }) => {
+      let finalChildren = children;
+      for (let i = plugins.length - 1; i >= 0; i -= 1) {
+        const plugin5 = plugins[i];
+        if (plugin5.wrapItem) {
+          finalChildren = plugin5.wrapItem({
+            itemId,
+            children: finalChildren,
+            instance: instance2
+          });
+        }
+      }
+      return finalChildren;
+    };
+    const wrapRoot = ({
+      children
+    }) => {
+      let finalChildren = children;
+      for (let i = plugins.length - 1; i >= 0; i -= 1) {
+        const plugin5 = plugins[i];
+        if (plugin5.wrapRoot) {
+          finalChildren = plugin5.wrapRoot({
+            children: finalChildren,
+            instance: instance2
+          });
+        }
+      }
+      return finalChildren;
+    };
+    return {
+      runItemPlugins,
+      wrapItem,
+      wrapRoot,
+      instance: instance2,
+      rootRef,
+      publicAPI
+    };
+  };
+
+  // node_modules/@mui/x-tree-view/internals/useTreeView/useTreeView.js
+  function useTreeViewApiInitialization(inputApiRef) {
+    const fallbackPublicApiRef = React182.useRef({});
+    if (inputApiRef) {
+      if (inputApiRef.current == null) {
+        inputApiRef.current = {};
+      }
+      return inputApiRef.current;
+    }
+    return fallbackPublicApiRef.current;
+  }
+  var useTreeView = ({
+    plugins: inPlugins,
+    rootRef,
+    props
+  }) => {
+    const plugins = [...TREE_VIEW_CORE_PLUGINS, ...inPlugins];
+    const {
+      pluginParams,
+      forwardedProps,
+      apiRef,
+      experimentalFeatures,
+      slots,
+      slotProps
+    } = extractPluginParamsFromProps({
+      plugins,
+      props
+    });
+    const models = useTreeViewModels(plugins, pluginParams);
+    const instanceRef = React182.useRef({});
+    const instance2 = instanceRef.current;
+    const publicAPI = useTreeViewApiInitialization(apiRef);
+    const innerRootRef = React182.useRef(null);
+    const handleRootRef = useForkRef3(innerRootRef, rootRef);
+    const contextValue = useTreeViewBuildContext({
+      plugins,
+      instance: instance2,
+      publicAPI,
+      rootRef: innerRootRef
+    });
+    const [state, setState] = React182.useState(() => {
+      const temp = {};
+      plugins.forEach((plugin5) => {
+        if (plugin5.getInitialState) {
+          Object.assign(temp, plugin5.getInitialState(pluginParams));
+        }
+      });
+      return temp;
+    });
+    const rootPropsGetters = [];
+    const runPlugin = (plugin5) => {
+      const pluginResponse = plugin5({
+        instance: instance2,
+        params: pluginParams,
+        slots,
+        slotProps,
+        experimentalFeatures,
+        state,
+        setState,
+        rootRef: innerRootRef,
+        models,
+        plugins
+      });
+      if (pluginResponse.getRootProps) {
+        rootPropsGetters.push(pluginResponse.getRootProps);
+      }
+      if (pluginResponse.publicAPI) {
+        Object.assign(publicAPI, pluginResponse.publicAPI);
+      }
+      if (pluginResponse.instance) {
+        Object.assign(instance2, pluginResponse.instance);
+      }
+      if (pluginResponse.contextValue) {
+        Object.assign(contextValue, pluginResponse.contextValue);
+      }
+    };
+    plugins.forEach(runPlugin);
+    const getRootProps = (otherHandlers = {}) => {
+      const rootProps = _extends({
+        role: "tree"
+      }, forwardedProps, otherHandlers, {
+        ref: handleRootRef
+      });
+      rootPropsGetters.forEach((rootPropsGetter) => {
+        Object.assign(rootProps, rootPropsGetter(otherHandlers));
+      });
+      return rootProps;
+    };
+    return {
+      getRootProps,
+      rootRef: handleRootRef,
+      contextValue,
+      instance: instance2
+    };
+  };
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewItems/useTreeViewItems.js
+  var React183 = __toESM(require_react());
+
+  // node_modules/@mui/x-tree-view/internals/utils/publishTreeViewEvent.js
+  var publishTreeViewEvent = (instance2, eventName, params) => {
+    instance2.$$publishEvent(eventName, params);
+  };
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewItems/useTreeViewItems.utils.js
+  var TREE_VIEW_ROOT_PARENT_ID = "__TREE_VIEW_ROOT_PARENT_ID__";
+  var buildSiblingIndexes = (siblings) => {
+    const siblingsIndexLookup = {};
+    siblings.forEach((childId, index) => {
+      siblingsIndexLookup[childId] = index;
+    });
+    return siblingsIndexLookup;
+  };
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewItems/useTreeViewItems.js
+  var import_jsx_runtime159 = __toESM(require_jsx_runtime());
+  var _excluded18 = ["children"];
+  var updateItemsState = ({
+    items,
+    isItemDisabled,
+    getItemLabel,
+    getItemId
+  }) => {
+    const itemMetaMap = {};
+    const itemMap = {};
+    const itemOrderedChildrenIds = {
+      [TREE_VIEW_ROOT_PARENT_ID]: []
+    };
+    const processItem = (item, depth, parentId) => {
+      var _a, _b;
+      const id = getItemId ? getItemId(item) : item.id;
+      if (id == null) {
+        throw new Error(["MUI X: The Tree View component requires all items to have a unique `id` property.", "Alternatively, you can use the `getItemId` prop to specify a custom id for each item.", "An item was provided without id in the `items` prop:", JSON.stringify(item)].join("\n"));
+      }
+      if (itemMetaMap[id] != null) {
+        throw new Error(["MUI X: The Tree View component requires all items to have a unique `id` property.", "Alternatively, you can use the `getItemId` prop to specify a custom id for each item.", `Two items were provided with the same id in the \`items\` prop: "${id}"`].join("\n"));
+      }
+      const label = getItemLabel ? getItemLabel(item) : item.label;
+      if (label == null) {
+        throw new Error(["MUI X: The Tree View component requires all items to have a `label` property.", "Alternatively, you can use the `getItemLabel` prop to specify a custom label for each item.", "An item was provided without label in the `items` prop:", JSON.stringify(item)].join("\n"));
+      }
+      itemMetaMap[id] = {
+        id,
+        label,
+        parentId,
+        idAttribute: void 0,
+        expandable: !!((_a = item.children) == null ? void 0 : _a.length),
+        disabled: isItemDisabled ? isItemDisabled(item) : false,
+        depth
+      };
+      itemMap[id] = item;
+      const parentIdWithDefault = parentId != null ? parentId : TREE_VIEW_ROOT_PARENT_ID;
+      if (!itemOrderedChildrenIds[parentIdWithDefault]) {
+        itemOrderedChildrenIds[parentIdWithDefault] = [];
+      }
+      itemOrderedChildrenIds[parentIdWithDefault].push(id);
+      (_b = item.children) == null ? void 0 : _b.forEach((child) => processItem(child, depth + 1, id));
+    };
+    items.forEach((item) => processItem(item, 0, null));
+    const itemChildrenIndexes = {};
+    Object.keys(itemOrderedChildrenIds).forEach((parentId) => {
+      itemChildrenIndexes[parentId] = buildSiblingIndexes(itemOrderedChildrenIds[parentId]);
+    });
+    return {
+      itemMetaMap,
+      itemMap,
+      itemOrderedChildrenIds,
+      itemChildrenIndexes
+    };
+  };
+  var useTreeViewItems = ({
+    instance: instance2,
+    params,
+    state,
+    setState,
+    experimentalFeatures
+  }) => {
+    var _a;
+    const getItemMeta = React183.useCallback((itemId) => state.items.itemMetaMap[itemId], [state.items.itemMetaMap]);
+    const getItem = React183.useCallback((itemId) => state.items.itemMap[itemId], [state.items.itemMap]);
+    const getItemTree = React183.useCallback(() => {
+      const getItemFromItemId = (id) => {
+        const _state$items$itemMap$ = state.items.itemMap[id], item = _objectWithoutPropertiesLoose(_state$items$itemMap$, _excluded18);
+        const newChildren = state.items.itemOrderedChildrenIds[id];
+        if (newChildren) {
+          item.children = newChildren.map(getItemFromItemId);
+        }
+        return item;
+      };
+      return state.items.itemOrderedChildrenIds[TREE_VIEW_ROOT_PARENT_ID].map(getItemFromItemId);
+    }, [state.items.itemMap, state.items.itemOrderedChildrenIds]);
+    const isItemDisabled = React183.useCallback((itemId) => {
+      if (itemId == null) {
+        return false;
+      }
+      let itemMeta = instance2.getItemMeta(itemId);
+      if (!itemMeta) {
+        return false;
+      }
+      if (itemMeta.disabled) {
+        return true;
+      }
+      while (itemMeta.parentId != null) {
+        itemMeta = instance2.getItemMeta(itemMeta.parentId);
+        if (itemMeta.disabled) {
+          return true;
+        }
+      }
+      return false;
+    }, [instance2]);
+    const getItemIndex = React183.useCallback((itemId) => {
+      var _a2;
+      const parentId = (_a2 = instance2.getItemMeta(itemId).parentId) != null ? _a2 : TREE_VIEW_ROOT_PARENT_ID;
+      return state.items.itemChildrenIndexes[parentId][itemId];
+    }, [instance2, state.items.itemChildrenIndexes]);
+    const getItemOrderedChildrenIds = React183.useCallback((itemId) => {
+      var _a2;
+      return (_a2 = state.items.itemOrderedChildrenIds[itemId != null ? itemId : TREE_VIEW_ROOT_PARENT_ID]) != null ? _a2 : [];
+    }, [state.items.itemOrderedChildrenIds]);
+    const getItemDOMElement = (itemId) => {
+      const itemMeta = instance2.getItemMeta(itemId);
+      if (itemMeta == null) {
+        return null;
+      }
+      return document.getElementById(generateTreeItemIdAttribute({
+        treeId: state.id.treeId,
+        itemId,
+        id: itemMeta.idAttribute
+      }));
+    };
+    const isItemNavigable = (itemId) => {
+      if (params.disabledItemsFocusable) {
+        return true;
+      }
+      return !instance2.isItemDisabled(itemId);
+    };
+    const areItemUpdatesPreventedRef = React183.useRef(false);
+    const preventItemUpdates = React183.useCallback(() => {
+      areItemUpdatesPreventedRef.current = true;
+    }, []);
+    const areItemUpdatesPrevented = React183.useCallback(() => areItemUpdatesPreventedRef.current, []);
+    React183.useEffect(() => {
+      if (instance2.areItemUpdatesPrevented()) {
+        return;
+      }
+      setState((prevState) => {
+        const newState = updateItemsState({
+          items: params.items,
+          isItemDisabled: params.isItemDisabled,
+          getItemId: params.getItemId,
+          getItemLabel: params.getItemLabel
+        });
+        Object.values(prevState.items.itemMetaMap).forEach((item) => {
+          if (!newState.itemMetaMap[item.id]) {
+            publishTreeViewEvent(instance2, "removeItem", {
+              id: item.id
+            });
+          }
+        });
+        return _extends({}, prevState, {
+          items: newState
+        });
+      });
+    }, [instance2, setState, params.items, params.isItemDisabled, params.getItemId, params.getItemLabel]);
+    const getItemsToRender = () => {
+      const getPropsFromItemId = (id) => {
+        var _a2;
+        const item = state.items.itemMetaMap[id];
+        return {
+          label: item.label,
+          itemId: item.id,
+          id: item.idAttribute,
+          children: (_a2 = state.items.itemOrderedChildrenIds[id]) == null ? void 0 : _a2.map(getPropsFromItemId)
+        };
+      };
+      return state.items.itemOrderedChildrenIds[TREE_VIEW_ROOT_PARENT_ID].map(getPropsFromItemId);
+    };
+    return {
+      getRootProps: () => ({
+        style: {
+          "--TreeView-itemChildrenIndentation": typeof params.itemChildrenIndentation === "number" ? `${params.itemChildrenIndentation}px` : params.itemChildrenIndentation
+        }
+      }),
+      publicAPI: {
+        getItem,
+        getItemDOMElement,
+        getItemTree,
+        getItemOrderedChildrenIds
+      },
+      instance: {
+        getItemMeta,
+        getItem,
+        getItemTree,
+        getItemsToRender,
+        getItemIndex,
+        getItemDOMElement,
+        getItemOrderedChildrenIds,
+        isItemDisabled,
+        isItemNavigable,
+        preventItemUpdates,
+        areItemUpdatesPrevented
+      },
+      contextValue: {
+        items: {
+          onItemClick: params.onItemClick,
+          disabledItemsFocusable: params.disabledItemsFocusable,
+          indentationAtItemLevel: (_a = experimentalFeatures.indentationAtItemLevel) != null ? _a : false
+        }
+      }
+    };
+  };
+  useTreeViewItems.getInitialState = (params) => ({
+    items: updateItemsState({
+      items: params.items,
+      isItemDisabled: params.isItemDisabled,
+      getItemId: params.getItemId,
+      getItemLabel: params.getItemLabel
+    })
+  });
+  useTreeViewItems.getDefaultizedParams = ({
+    params
+  }) => {
+    var _a, _b;
+    return _extends({}, params, {
+      disabledItemsFocusable: (_a = params.disabledItemsFocusable) != null ? _a : false,
+      itemChildrenIndentation: (_b = params.itemChildrenIndentation) != null ? _b : "12px"
+    });
+  };
+  useTreeViewItems.wrapRoot = ({
+    children,
+    instance: instance2
+  }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(TreeViewItemDepthContext.Provider, {
+      value: (itemId) => {
+        var _a, _b;
+        return (_b = (_a = instance2.getItemMeta(itemId)) == null ? void 0 : _a.depth) != null ? _b : 0;
+      },
+      children
+    });
+  };
+  useTreeViewItems.params = {
+    disabledItemsFocusable: true,
+    items: true,
+    isItemDisabled: true,
+    getItemLabel: true,
+    getItemId: true,
+    onItemClick: true,
+    itemChildrenIndentation: true
+  };
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewExpansion/useTreeViewExpansion.js
+  var React186 = __toESM(require_react());
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/useEventCallback/useEventCallback.js
+  var React185 = __toESM(require_react(), 1);
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/useEnhancedEffect/useEnhancedEffect.js
+  var React184 = __toESM(require_react(), 1);
+  var useEnhancedEffect3 = typeof window !== "undefined" ? React184.useLayoutEffect : React184.useEffect;
+  var useEnhancedEffect_default4 = useEnhancedEffect3;
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/useEventCallback/useEventCallback.js
+  function useEventCallback2(fn2) {
+    const ref = React185.useRef(fn2);
+    useEnhancedEffect_default4(() => {
+      ref.current = fn2;
+    });
+    return React185.useRef((...args) => (
+      // @ts-expect-error hide `this`
+      (0, ref.current)(...args)
+    )).current;
+  }
+  var useEventCallback_default3 = useEventCallback2;
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewExpansion/useTreeViewExpansion.js
+  var useTreeViewExpansion = ({
+    instance: instance2,
+    params,
+    models
+  }) => {
+    const expandedItemsMap = React186.useMemo(() => {
+      const temp = /* @__PURE__ */ new Map();
+      models.expandedItems.value.forEach((id) => {
+        temp.set(id, true);
+      });
+      return temp;
+    }, [models.expandedItems.value]);
+    const setExpandedItems = (event, value) => {
+      var _a;
+      (_a = params.onExpandedItemsChange) == null ? void 0 : _a.call(params, event, value);
+      models.expandedItems.setControlledValue(value);
+    };
+    const isItemExpanded = React186.useCallback((itemId) => expandedItemsMap.has(itemId), [expandedItemsMap]);
+    const isItemExpandable2 = React186.useCallback((itemId) => {
+      var _a;
+      return !!((_a = instance2.getItemMeta(itemId)) == null ? void 0 : _a.expandable);
+    }, [instance2]);
+    const toggleItemExpansion = useEventCallback_default3((event, itemId) => {
+      const isExpandedBefore = instance2.isItemExpanded(itemId);
+      instance2.setItemExpansion(event, itemId, !isExpandedBefore);
+    });
+    const setItemExpansion = useEventCallback_default3((event, itemId, isExpanded) => {
+      const isExpandedBefore = instance2.isItemExpanded(itemId);
+      if (isExpandedBefore === isExpanded) {
+        return;
+      }
+      let newExpanded;
+      if (isExpanded) {
+        newExpanded = [itemId].concat(models.expandedItems.value);
+      } else {
+        newExpanded = models.expandedItems.value.filter((id) => id !== itemId);
+      }
+      if (params.onItemExpansionToggle) {
+        params.onItemExpansionToggle(event, itemId, isExpanded);
+      }
+      setExpandedItems(event, newExpanded);
+    });
+    const expandAllSiblings = (event, itemId) => {
+      const itemMeta = instance2.getItemMeta(itemId);
+      const siblings = instance2.getItemOrderedChildrenIds(itemMeta.parentId);
+      const diff = siblings.filter((child) => instance2.isItemExpandable(child) && !instance2.isItemExpanded(child));
+      const newExpanded = models.expandedItems.value.concat(diff);
+      if (diff.length > 0) {
+        if (params.onItemExpansionToggle) {
+          diff.forEach((newlyExpandedItemId) => {
+            params.onItemExpansionToggle(event, newlyExpandedItemId, true);
+          });
+        }
+        setExpandedItems(event, newExpanded);
+      }
+    };
+    const expansionTrigger = React186.useMemo(() => {
+      if (params.expansionTrigger) {
+        return params.expansionTrigger;
+      }
+      if (instance2.isTreeViewEditable) {
+        return "iconContainer";
+      }
+      return "content";
+    }, [params.expansionTrigger, instance2.isTreeViewEditable]);
+    return {
+      publicAPI: {
+        setItemExpansion
+      },
+      instance: {
+        isItemExpanded,
+        isItemExpandable: isItemExpandable2,
+        setItemExpansion,
+        toggleItemExpansion,
+        expandAllSiblings
+      },
+      contextValue: {
+        expansion: {
+          expansionTrigger
+        }
+      }
+    };
+  };
+  useTreeViewExpansion.models = {
+    expandedItems: {
+      getDefaultValue: (params) => params.defaultExpandedItems
+    }
+  };
+  var DEFAULT_EXPANDED_ITEMS = [];
+  useTreeViewExpansion.getDefaultizedParams = ({
+    params
+  }) => {
+    var _a;
+    return _extends({}, params, {
+      defaultExpandedItems: (_a = params.defaultExpandedItems) != null ? _a : DEFAULT_EXPANDED_ITEMS
+    });
+  };
+  useTreeViewExpansion.params = {
+    expandedItems: true,
+    defaultExpandedItems: true,
+    onExpandedItemsChange: true,
+    onItemExpansionToggle: true,
+    expansionTrigger: true
+  };
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewSelection/useTreeViewSelection.js
+  var React187 = __toESM(require_react());
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewSelection/useTreeViewSelection.utils.js
+  var convertSelectedItemsToArray = (model) => {
+    if (Array.isArray(model)) {
+      return model;
+    }
+    if (model != null) {
+      return [model];
+    }
+    return [];
+  };
+  var getLookupFromArray = (array) => {
+    const lookup = {};
+    array.forEach((itemId) => {
+      lookup[itemId] = true;
+    });
+    return lookup;
+  };
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewSelection/useTreeViewSelection.js
+  var useTreeViewSelection = ({
+    instance: instance2,
+    params,
+    models
+  }) => {
+    const lastSelectedItem = React187.useRef(null);
+    const lastSelectedRange = React187.useRef({});
+    const selectedItemsMap = React187.useMemo(() => {
+      const temp = /* @__PURE__ */ new Map();
+      if (Array.isArray(models.selectedItems.value)) {
+        models.selectedItems.value.forEach((id) => {
+          temp.set(id, true);
+        });
+      } else if (models.selectedItems.value != null) {
+        temp.set(models.selectedItems.value, true);
+      }
+      return temp;
+    }, [models.selectedItems.value]);
+    const setSelectedItems = (event, newSelectedItems) => {
+      if (params.onItemSelectionToggle) {
+        if (params.multiSelect) {
+          const addedItems = newSelectedItems.filter((itemId) => !instance2.isItemSelected(itemId));
+          const removedItems = models.selectedItems.value.filter((itemId) => !newSelectedItems.includes(itemId));
+          addedItems.forEach((itemId) => {
+            params.onItemSelectionToggle(event, itemId, true);
+          });
+          removedItems.forEach((itemId) => {
+            params.onItemSelectionToggle(event, itemId, false);
+          });
+        } else if (newSelectedItems !== models.selectedItems.value) {
+          if (models.selectedItems.value != null) {
+            params.onItemSelectionToggle(event, models.selectedItems.value, false);
+          }
+          if (newSelectedItems != null) {
+            params.onItemSelectionToggle(event, newSelectedItems, true);
+          }
+        }
+      }
+      if (params.onSelectedItemsChange) {
+        params.onSelectedItemsChange(event, newSelectedItems);
+      }
+      models.selectedItems.setControlledValue(newSelectedItems);
+    };
+    const isItemSelected = (itemId) => selectedItemsMap.has(itemId);
+    const selectItem = ({
+      event,
+      itemId,
+      keepExistingSelection = false,
+      shouldBeSelected
+    }) => {
+      if (params.disableSelection) {
+        return;
+      }
+      let newSelected;
+      if (keepExistingSelection) {
+        const cleanSelectedItems = convertSelectedItemsToArray(models.selectedItems.value);
+        const isSelectedBefore = instance2.isItemSelected(itemId);
+        if (isSelectedBefore && (shouldBeSelected === false || shouldBeSelected == null)) {
+          newSelected = cleanSelectedItems.filter((id) => id !== itemId);
+        } else if (!isSelectedBefore && (shouldBeSelected === true || shouldBeSelected == null)) {
+          newSelected = [itemId].concat(cleanSelectedItems);
+        } else {
+          newSelected = cleanSelectedItems;
+        }
+      } else {
+        if (shouldBeSelected === false || shouldBeSelected == null && instance2.isItemSelected(itemId)) {
+          newSelected = params.multiSelect ? [] : null;
+        } else {
+          newSelected = params.multiSelect ? [itemId] : itemId;
+        }
+      }
+      setSelectedItems(event, newSelected);
+      lastSelectedItem.current = itemId;
+      lastSelectedRange.current = {};
+    };
+    const selectRange = (event, [start3, end2]) => {
+      if (params.disableSelection || !params.multiSelect) {
+        return;
+      }
+      let newSelectedItems = convertSelectedItemsToArray(models.selectedItems.value).slice();
+      if (Object.keys(lastSelectedRange.current).length > 0) {
+        newSelectedItems = newSelectedItems.filter((id) => !lastSelectedRange.current[id]);
+      }
+      const selectedItemsLookup = getLookupFromArray(newSelectedItems);
+      const range2 = getNonDisabledItemsInRange(instance2, start3, end2);
+      const itemsToAddToModel = range2.filter((id) => !selectedItemsLookup[id]);
+      newSelectedItems = newSelectedItems.concat(itemsToAddToModel);
+      setSelectedItems(event, newSelectedItems);
+      lastSelectedRange.current = getLookupFromArray(range2);
+    };
+    const expandSelectionRange = (event, itemId) => {
+      if (lastSelectedItem.current != null) {
+        const [start3, end2] = findOrderInTremauxTree(instance2, itemId, lastSelectedItem.current);
+        selectRange(event, [start3, end2]);
+      }
+    };
+    const selectRangeFromStartToItem = (event, itemId) => {
+      selectRange(event, [getFirstNavigableItem(instance2), itemId]);
+    };
+    const selectRangeFromItemToEnd = (event, itemId) => {
+      selectRange(event, [itemId, getLastNavigableItem(instance2)]);
+    };
+    const selectAllNavigableItems = (event) => {
+      if (params.disableSelection || !params.multiSelect) {
+        return;
+      }
+      const navigableItems = getAllNavigableItems(instance2);
+      setSelectedItems(event, navigableItems);
+      lastSelectedRange.current = getLookupFromArray(navigableItems);
+    };
+    const selectItemFromArrowNavigation = (event, currentItem, nextItem) => {
+      if (params.disableSelection || !params.multiSelect) {
+        return;
+      }
+      let newSelectedItems = convertSelectedItemsToArray(models.selectedItems.value).slice();
+      if (Object.keys(lastSelectedRange.current).length === 0) {
+        newSelectedItems.push(nextItem);
+        lastSelectedRange.current = {
+          [currentItem]: true,
+          [nextItem]: true
+        };
+      } else {
+        if (!lastSelectedRange.current[currentItem]) {
+          lastSelectedRange.current = {};
+        }
+        if (lastSelectedRange.current[nextItem]) {
+          newSelectedItems = newSelectedItems.filter((id) => id !== currentItem);
+          delete lastSelectedRange.current[currentItem];
+        } else {
+          newSelectedItems.push(nextItem);
+          lastSelectedRange.current[nextItem] = true;
+        }
+      }
+      setSelectedItems(event, newSelectedItems);
+    };
+    return {
+      getRootProps: () => ({
+        "aria-multiselectable": params.multiSelect
+      }),
+      publicAPI: {
+        selectItem
+      },
+      instance: {
+        isItemSelected,
+        selectItem,
+        selectAllNavigableItems,
+        expandSelectionRange,
+        selectRangeFromStartToItem,
+        selectRangeFromItemToEnd,
+        selectItemFromArrowNavigation
+      },
+      contextValue: {
+        selection: {
+          multiSelect: params.multiSelect,
+          checkboxSelection: params.checkboxSelection,
+          disableSelection: params.disableSelection
+        }
+      }
+    };
+  };
+  useTreeViewSelection.models = {
+    selectedItems: {
+      getDefaultValue: (params) => params.defaultSelectedItems
+    }
+  };
+  var DEFAULT_SELECTED_ITEMS = [];
+  useTreeViewSelection.getDefaultizedParams = ({
+    params
+  }) => {
+    var _a, _b, _c, _d;
+    return _extends({}, params, {
+      disableSelection: (_a = params.disableSelection) != null ? _a : false,
+      multiSelect: (_b = params.multiSelect) != null ? _b : false,
+      checkboxSelection: (_c = params.checkboxSelection) != null ? _c : false,
+      defaultSelectedItems: (_d = params.defaultSelectedItems) != null ? _d : params.multiSelect ? DEFAULT_SELECTED_ITEMS : null
+    });
+  };
+  useTreeViewSelection.params = {
+    disableSelection: true,
+    multiSelect: true,
+    checkboxSelection: true,
+    defaultSelectedItems: true,
+    selectedItems: true,
+    onSelectedItemsChange: true,
+    onItemSelectionToggle: true
+  };
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewFocus/useTreeViewFocus.js
+  var React189 = __toESM(require_react());
+
+  // node_modules/@mui/x-tree-view/node_modules/@mui/utils/esm/ownerDocument/ownerDocument.js
+  function ownerDocument3(node2) {
+    return node2 && node2.ownerDocument || document;
+  }
+
+  // node_modules/@mui/x-tree-view/internals/hooks/useInstanceEventHandler.js
+  var React188 = __toESM(require_react());
+
+  // node_modules/@mui/x-tree-view/internals/utils/cleanupTracking/TimerBasedCleanupTracking.js
+  var CLEANUP_TIMER_LOOP_MILLIS = 1e3;
+  var TimerBasedCleanupTracking = class {
+    constructor(timeout2 = CLEANUP_TIMER_LOOP_MILLIS) {
+      this.timeouts = /* @__PURE__ */ new Map();
+      this.cleanupTimeout = CLEANUP_TIMER_LOOP_MILLIS;
+      this.cleanupTimeout = timeout2;
+    }
+    register(object, unsubscribe, unregisterToken) {
+      if (!this.timeouts) {
+        this.timeouts = /* @__PURE__ */ new Map();
+      }
+      const timeout2 = setTimeout(() => {
+        if (typeof unsubscribe === "function") {
+          unsubscribe();
+        }
+        this.timeouts.delete(unregisterToken.cleanupToken);
+      }, this.cleanupTimeout);
+      this.timeouts.set(unregisterToken.cleanupToken, timeout2);
+    }
+    unregister(unregisterToken) {
+      const timeout2 = this.timeouts.get(unregisterToken.cleanupToken);
+      if (timeout2) {
+        this.timeouts.delete(unregisterToken.cleanupToken);
+        clearTimeout(timeout2);
+      }
+    }
+    reset() {
+      if (this.timeouts) {
+        this.timeouts.forEach((value, key) => {
+          this.unregister({
+            cleanupToken: key
+          });
+        });
+        this.timeouts = void 0;
+      }
+    }
+  };
+
+  // node_modules/@mui/x-tree-view/internals/utils/cleanupTracking/FinalizationRegistryBasedCleanupTracking.js
+  var FinalizationRegistryBasedCleanupTracking = class {
+    constructor() {
+      this.registry = new FinalizationRegistry((unsubscribe) => {
+        if (typeof unsubscribe === "function") {
+          unsubscribe();
+        }
+      });
+    }
+    register(object, unsubscribe, unregisterToken) {
+      this.registry.register(object, unsubscribe, unregisterToken);
+    }
+    unregister(unregisterToken) {
+      this.registry.unregister(unregisterToken);
+    }
+    // eslint-disable-next-line class-methods-use-this
+    reset() {
+    }
+  };
+
+  // node_modules/@mui/x-tree-view/internals/hooks/useInstanceEventHandler.js
+  var ObjectToBeRetainedByReact = class {
+  };
+  function createUseInstanceEventHandler(registryContainer2) {
+    let cleanupTokensCounter = 0;
+    return function useInstanceEventHandler2(instance2, eventName, handler) {
+      if (registryContainer2.registry === null) {
+        registryContainer2.registry = typeof FinalizationRegistry !== "undefined" ? new FinalizationRegistryBasedCleanupTracking() : new TimerBasedCleanupTracking();
+      }
+      const [objectRetainedByReact] = React188.useState(new ObjectToBeRetainedByReact());
+      const subscription = React188.useRef(null);
+      const handlerRef = React188.useRef(void 0);
+      handlerRef.current = handler;
+      const cleanupTokenRef = React188.useRef(null);
+      if (!subscription.current && handlerRef.current) {
+        const enhancedHandler = (params, event) => {
+          var _a;
+          if (!event.defaultMuiPrevented) {
+            (_a = handlerRef.current) == null ? void 0 : _a.call(handlerRef, params, event);
+          }
+        };
+        subscription.current = instance2.$$subscribeEvent(eventName, enhancedHandler);
+        cleanupTokensCounter += 1;
+        cleanupTokenRef.current = {
+          cleanupToken: cleanupTokensCounter
+        };
+        registryContainer2.registry.register(
+          objectRetainedByReact,
+          // The callback below will be called once this reference stops being retained
+          () => {
+            var _a;
+            (_a = subscription.current) == null ? void 0 : _a.call(subscription);
+            subscription.current = null;
+            cleanupTokenRef.current = null;
+          },
+          cleanupTokenRef.current
+        );
+      } else if (!handlerRef.current && subscription.current) {
+        subscription.current();
+        subscription.current = null;
+        if (cleanupTokenRef.current) {
+          registryContainer2.registry.unregister(cleanupTokenRef.current);
+          cleanupTokenRef.current = null;
+        }
+      }
+      React188.useEffect(() => {
+        if (!subscription.current && handlerRef.current) {
+          const enhancedHandler = (params, event) => {
+            var _a;
+            if (!event.defaultMuiPrevented) {
+              (_a = handlerRef.current) == null ? void 0 : _a.call(handlerRef, params, event);
+            }
+          };
+          subscription.current = instance2.$$subscribeEvent(eventName, enhancedHandler);
+        }
+        if (cleanupTokenRef.current && registryContainer2.registry) {
+          registryContainer2.registry.unregister(cleanupTokenRef.current);
+          cleanupTokenRef.current = null;
+        }
+        return () => {
+          var _a;
+          (_a = subscription.current) == null ? void 0 : _a.call(subscription);
+          subscription.current = null;
+        };
+      }, [instance2, eventName]);
+    };
+  }
+  var registryContainer = {
+    registry: null
+  };
+  var useInstanceEventHandler = createUseInstanceEventHandler(registryContainer);
+
+  // node_modules/@mui/x-tree-view/internals/utils/utils.js
+  var getActiveElement = (root2 = document) => {
+    const activeEl = root2.activeElement;
+    if (!activeEl) {
+      return null;
+    }
+    if (activeEl.shadowRoot) {
+      return getActiveElement(activeEl.shadowRoot);
+    }
+    return activeEl;
+  };
+  function escapeOperandAttributeSelector(operand) {
+    return operand.replace(/["\\]/g, "\\$&");
+  }
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewFocus/useTreeViewFocus.js
+  var useDefaultFocusableItemId = (instance2, selectedItems) => {
+    let tabbableItemId = convertSelectedItemsToArray(selectedItems).find((itemId) => {
+      if (!instance2.isItemNavigable(itemId)) {
+        return false;
+      }
+      const itemMeta = instance2.getItemMeta(itemId);
+      return itemMeta && (itemMeta.parentId == null || instance2.isItemExpanded(itemMeta.parentId));
+    });
+    if (tabbableItemId == null) {
+      tabbableItemId = getFirstNavigableItem(instance2);
+    }
+    return tabbableItemId;
+  };
+  var useTreeViewFocus = ({
+    instance: instance2,
+    params,
+    state,
+    setState,
+    models,
+    rootRef
+  }) => {
+    const defaultFocusableItemId = useDefaultFocusableItemId(instance2, models.selectedItems.value);
+    const setFocusedItemId = useEventCallback_default3((itemId) => {
+      const cleanItemId = typeof itemId === "function" ? itemId(state.focusedItemId) : itemId;
+      if (state.focusedItemId !== cleanItemId) {
+        setState((prevState) => _extends({}, prevState, {
+          focusedItemId: cleanItemId
+        }));
+      }
+    });
+    const isTreeViewFocused = React189.useCallback(() => !!rootRef.current && rootRef.current.contains(getActiveElement(ownerDocument3(rootRef.current))), [rootRef]);
+    const isItemFocused = React189.useCallback((itemId) => state.focusedItemId === itemId && isTreeViewFocused(), [state.focusedItemId, isTreeViewFocused]);
+    const isItemVisible = (itemId) => {
+      const itemMeta = instance2.getItemMeta(itemId);
+      return itemMeta && (itemMeta.parentId == null || instance2.isItemExpanded(itemMeta.parentId));
+    };
+    const innerFocusItem = (event, itemId) => {
+      const itemElement = instance2.getItemDOMElement(itemId);
+      if (itemElement) {
+        itemElement.focus();
+      }
+      setFocusedItemId(itemId);
+      if (params.onItemFocus) {
+        params.onItemFocus(event, itemId);
+      }
+    };
+    const focusItem = useEventCallback_default3((event, itemId) => {
+      if (isItemVisible(itemId)) {
+        innerFocusItem(event, itemId);
+      }
+    });
+    const removeFocusedItem = useEventCallback_default3(() => {
+      if (state.focusedItemId == null) {
+        return;
+      }
+      const itemMeta = instance2.getItemMeta(state.focusedItemId);
+      if (itemMeta) {
+        const itemElement = instance2.getItemDOMElement(state.focusedItemId);
+        if (itemElement) {
+          itemElement.blur();
+        }
+      }
+      setFocusedItemId(null);
+    });
+    const canItemBeTabbed = (itemId) => itemId === defaultFocusableItemId;
+    useInstanceEventHandler(instance2, "removeItem", ({
+      id
+    }) => {
+      if (state.focusedItemId === id) {
+        innerFocusItem(null, defaultFocusableItemId);
+      }
+    });
+    const createRootHandleFocus = (otherHandlers) => (event) => {
+      var _a;
+      (_a = otherHandlers.onFocus) == null ? void 0 : _a.call(otherHandlers, event);
+      if (event.defaultMuiPrevented) {
+        return;
+      }
+      if (event.target === event.currentTarget) {
+        innerFocusItem(event, defaultFocusableItemId);
+      }
+    };
+    return {
+      getRootProps: (otherHandlers) => ({
+        onFocus: createRootHandleFocus(otherHandlers)
+      }),
+      publicAPI: {
+        focusItem
+      },
+      instance: {
+        isItemFocused,
+        canItemBeTabbed,
+        focusItem,
+        removeFocusedItem
+      }
+    };
+  };
+  useTreeViewFocus.getInitialState = () => ({
+    focusedItemId: null
+  });
+  useTreeViewFocus.params = {
+    onItemFocus: true
+  };
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewKeyboardNavigation/useTreeViewKeyboardNavigation.js
+  var React190 = __toESM(require_react());
+  function isPrintableKey(string) {
+    return !!string && string.length === 1 && !!string.match(/\S/);
+  }
+  var useTreeViewKeyboardNavigation = ({
+    instance: instance2,
+    params,
+    state
+  }) => {
+    const isRtl = useRtl();
+    const firstCharMap = React190.useRef({});
+    const updateFirstCharMap = useEventCallback_default3((callback) => {
+      firstCharMap.current = callback(firstCharMap.current);
+    });
+    React190.useEffect(() => {
+      if (instance2.areItemUpdatesPrevented()) {
+        return;
+      }
+      const newFirstCharMap = {};
+      const processItem = (item) => {
+        newFirstCharMap[item.id] = item.label.substring(0, 1).toLowerCase();
+      };
+      Object.values(state.items.itemMetaMap).forEach(processItem);
+      firstCharMap.current = newFirstCharMap;
+    }, [state.items.itemMetaMap, params.getItemId, instance2]);
+    const getFirstMatchingItem = (itemId, query) => {
+      const cleanQuery = query.toLowerCase();
+      const getNextItem = (itemIdToCheck) => {
+        const nextItemId = getNextNavigableItem(instance2, itemIdToCheck);
+        if (nextItemId === null) {
+          return getFirstNavigableItem(instance2);
+        }
+        return nextItemId;
+      };
+      let matchingItemId = null;
+      let currentItemId = getNextItem(itemId);
+      const checkedItems = {};
+      while (matchingItemId == null && !checkedItems[currentItemId]) {
+        if (firstCharMap.current[currentItemId] === cleanQuery) {
+          matchingItemId = currentItemId;
+        } else {
+          checkedItems[currentItemId] = true;
+          currentItemId = getNextItem(currentItemId);
+        }
+      }
+      return matchingItemId;
+    };
+    const canToggleItemSelection = (itemId) => !params.disableSelection && !instance2.isItemDisabled(itemId);
+    const canToggleItemExpansion = (itemId) => {
+      return !instance2.isItemDisabled(itemId) && instance2.isItemExpandable(itemId);
+    };
+    const handleItemKeyDown = (event, itemId) => {
+      if (event.defaultMuiPrevented) {
+        return;
+      }
+      if (event.altKey || isTargetInDescendants(event.target, event.currentTarget)) {
+        return;
+      }
+      const ctrlPressed = event.ctrlKey || event.metaKey;
+      const key = event.key;
+      switch (true) {
+        // Select the item when pressing "Space"
+        case (key === " " && canToggleItemSelection(itemId)): {
+          event.preventDefault();
+          if (params.multiSelect && event.shiftKey) {
+            instance2.expandSelectionRange(event, itemId);
+          } else {
+            instance2.selectItem({
+              event,
+              itemId,
+              keepExistingSelection: params.multiSelect,
+              shouldBeSelected: params.multiSelect ? void 0 : true
+            });
+          }
+          break;
+        }
+        // If the focused item has children, we expand it.
+        // If the focused item has no children, we select it.
+        case key === "Enter": {
+          if (hasPlugin(instance2, useTreeViewLabel) && instance2.isItemEditable(itemId) && !instance2.isItemBeingEdited(itemId)) {
+            instance2.setEditedItemId(itemId);
+          } else if (canToggleItemExpansion(itemId)) {
+            instance2.toggleItemExpansion(event, itemId);
+            event.preventDefault();
+          } else if (canToggleItemSelection(itemId)) {
+            if (params.multiSelect) {
+              event.preventDefault();
+              instance2.selectItem({
+                event,
+                itemId,
+                keepExistingSelection: true
+              });
+            } else if (!instance2.isItemSelected(itemId)) {
+              instance2.selectItem({
+                event,
+                itemId
+              });
+              event.preventDefault();
+            }
+          }
+          break;
+        }
+        // Focus the next focusable item
+        case key === "ArrowDown": {
+          const nextItem = getNextNavigableItem(instance2, itemId);
+          if (nextItem) {
+            event.preventDefault();
+            instance2.focusItem(event, nextItem);
+            if (params.multiSelect && event.shiftKey && canToggleItemSelection(nextItem)) {
+              instance2.selectItemFromArrowNavigation(event, itemId, nextItem);
+            }
+          }
+          break;
+        }
+        // Focuses the previous focusable item
+        case key === "ArrowUp": {
+          const previousItem = getPreviousNavigableItem(instance2, itemId);
+          if (previousItem) {
+            event.preventDefault();
+            instance2.focusItem(event, previousItem);
+            if (params.multiSelect && event.shiftKey && canToggleItemSelection(previousItem)) {
+              instance2.selectItemFromArrowNavigation(event, itemId, previousItem);
+            }
+          }
+          break;
+        }
+        // If the focused item is expanded, we move the focus to its first child
+        // If the focused item is collapsed and has children, we expand it
+        case (key === "ArrowRight" && !isRtl || key === "ArrowLeft" && isRtl): {
+          if (ctrlPressed) {
+            return;
+          }
+          if (instance2.isItemExpanded(itemId)) {
+            const nextItemId = getNextNavigableItem(instance2, itemId);
+            if (nextItemId) {
+              instance2.focusItem(event, nextItemId);
+              event.preventDefault();
+            }
+          } else if (canToggleItemExpansion(itemId)) {
+            instance2.toggleItemExpansion(event, itemId);
+            event.preventDefault();
+          }
+          break;
+        }
+        // If the focused item is expanded, we collapse it
+        // If the focused item is collapsed and has a parent, we move the focus to this parent
+        case (key === "ArrowLeft" && !isRtl || key === "ArrowRight" && isRtl): {
+          if (ctrlPressed) {
+            return;
+          }
+          if (canToggleItemExpansion(itemId) && instance2.isItemExpanded(itemId)) {
+            instance2.toggleItemExpansion(event, itemId);
+            event.preventDefault();
+          } else {
+            const parent = instance2.getItemMeta(itemId).parentId;
+            if (parent) {
+              instance2.focusItem(event, parent);
+              event.preventDefault();
+            }
+          }
+          break;
+        }
+        // Focuses the first item in the tree
+        case key === "Home": {
+          if (canToggleItemSelection(itemId) && params.multiSelect && ctrlPressed && event.shiftKey) {
+            instance2.selectRangeFromStartToItem(event, itemId);
+          } else {
+            instance2.focusItem(event, getFirstNavigableItem(instance2));
+          }
+          event.preventDefault();
+          break;
+        }
+        // Focuses the last item in the tree
+        case key === "End": {
+          if (canToggleItemSelection(itemId) && params.multiSelect && ctrlPressed && event.shiftKey) {
+            instance2.selectRangeFromItemToEnd(event, itemId);
+          } else {
+            instance2.focusItem(event, getLastNavigableItem(instance2));
+          }
+          event.preventDefault();
+          break;
+        }
+        // Expand all siblings that are at the same level as the focused item
+        case key === "*": {
+          instance2.expandAllSiblings(event, itemId);
+          event.preventDefault();
+          break;
+        }
+        // Multi select behavior when pressing Ctrl + a
+        // Selects all the items
+        case (String.fromCharCode(event.keyCode) === "A" && ctrlPressed && params.multiSelect && !params.disableSelection): {
+          instance2.selectAllNavigableItems(event);
+          event.preventDefault();
+          break;
+        }
+        // Type-ahead
+        // TODO: Support typing multiple characters
+        case (!ctrlPressed && !event.shiftKey && isPrintableKey(key)): {
+          const matchingItem = getFirstMatchingItem(itemId, key);
+          if (matchingItem != null) {
+            instance2.focusItem(event, matchingItem);
+            event.preventDefault();
+          }
+          break;
+        }
+      }
+    };
+    return {
+      instance: {
+        updateFirstCharMap,
+        handleItemKeyDown
+      }
+    };
+  };
+  useTreeViewKeyboardNavigation.params = {};
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewIcons/useTreeViewIcons.js
+  var useTreeViewIcons = ({
+    slots,
+    slotProps
+  }) => {
+    return {
+      contextValue: {
+        icons: {
+          slots: {
+            collapseIcon: slots.collapseIcon,
+            expandIcon: slots.expandIcon,
+            endIcon: slots.endIcon
+          },
+          slotProps: {
+            collapseIcon: slotProps.collapseIcon,
+            expandIcon: slotProps.expandIcon,
+            endIcon: slotProps.endIcon
+          }
+        }
+      }
+    };
+  };
+  useTreeViewIcons.params = {};
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewJSXItems/useTreeViewJSXItems.js
+  var React192 = __toESM(require_react());
+
+  // node_modules/@mui/x-tree-view/internals/TreeViewProvider/TreeViewChildrenItemProvider.js
+  var React191 = __toESM(require_react());
+  var import_jsx_runtime160 = __toESM(require_jsx_runtime());
+  var TreeViewChildrenItemContext = /* @__PURE__ */ React191.createContext(null);
+  if (false) {
+    TreeViewChildrenItemContext.displayName = "TreeViewChildrenItemContext";
+  }
+  function TreeViewChildrenItemProvider(props) {
+    const {
+      children,
+      itemId = null
+    } = props;
+    const {
+      instance: instance2,
+      treeId,
+      rootRef
+    } = useTreeViewContext();
+    const childrenIdAttrToIdRef = React191.useRef(/* @__PURE__ */ new Map());
+    React191.useEffect(() => {
+      var _a;
+      if (!rootRef.current) {
+        return;
+      }
+      let idAttr = null;
+      if (itemId == null) {
+        idAttr = rootRef.current.id;
+      } else {
+        const itemMeta = instance2.getItemMeta(itemId);
+        if (itemMeta !== void 0) {
+          idAttr = generateTreeItemIdAttribute({
+            itemId,
+            treeId,
+            id: itemMeta.idAttribute
+          });
+        }
+      }
+      if (idAttr == null) {
+        return;
+      }
+      const previousChildrenIds = (_a = instance2.getItemOrderedChildrenIds(itemId != null ? itemId : null)) != null ? _a : [];
+      const escapedIdAttr = escapeOperandAttributeSelector(idAttr);
+      const childrenElements = rootRef.current.querySelectorAll(`${itemId == null ? "" : `*[id="${escapedIdAttr}"] `}[role="treeitem"]:not(*[id="${escapedIdAttr}"] [role="treeitem"] [role="treeitem"])`);
+      const childrenIds = Array.from(childrenElements).map((child) => childrenIdAttrToIdRef.current.get(child.id));
+      const hasChanged = childrenIds.length !== previousChildrenIds.length || childrenIds.some((childId, index) => childId !== previousChildrenIds[index]);
+      if (hasChanged) {
+        instance2.setJSXItemsOrderedChildrenIds(itemId != null ? itemId : null, childrenIds);
+      }
+    });
+    const value = React191.useMemo(() => ({
+      registerChild: (childIdAttribute, childItemId) => childrenIdAttrToIdRef.current.set(childIdAttribute, childItemId),
+      unregisterChild: (childIdAttribute) => childrenIdAttrToIdRef.current.delete(childIdAttribute),
+      parentId: itemId
+    }), [itemId]);
+    return /* @__PURE__ */ (0, import_jsx_runtime160.jsx)(TreeViewChildrenItemContext.Provider, {
+      value,
+      children
+    });
+  }
+  false ? TreeViewChildrenItemProvider.propTypes = {
+    children: import_prop_types.default.node,
+    id: import_prop_types.default.string
+  } : void 0;
+
+  // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewJSXItems/useTreeViewJSXItems.js
+  var import_jsx_runtime161 = __toESM(require_jsx_runtime());
+  var useTreeViewJSXItems = ({
+    instance: instance2,
+    setState
+  }) => {
+    instance2.preventItemUpdates();
+    const insertJSXItem = useEventCallback_default3((item) => {
+      setState((prevState) => {
+        if (prevState.items.itemMetaMap[item.id] != null) {
+          throw new Error(["MUI X: The Tree View component requires all items to have a unique `id` property.", "Alternatively, you can use the `getItemId` prop to specify a custom id for each item.", `Two items were provided with the same id in the \`items\` prop: "${item.id}"`].join("\n"));
+        }
+        return _extends({}, prevState, {
+          items: _extends({}, prevState.items, {
+            itemMetaMap: _extends({}, prevState.items.itemMetaMap, {
+              [item.id]: item
+            }),
+            // For Simple Tree View, we don't have a proper `item` object, so we create a very basic one.
+            itemMap: _extends({}, prevState.items.itemMap, {
+              [item.id]: {
+                id: item.id,
+                label: item.label
+              }
+            })
+          })
+        });
+      });
+      return () => {
+        setState((prevState) => {
+          const newItemMetaMap = _extends({}, prevState.items.itemMetaMap);
+          const newItemMap = _extends({}, prevState.items.itemMap);
+          delete newItemMetaMap[item.id];
+          delete newItemMap[item.id];
+          return _extends({}, prevState, {
+            items: _extends({}, prevState.items, {
+              itemMetaMap: newItemMetaMap,
+              itemMap: newItemMap
+            })
+          });
+        });
+        publishTreeViewEvent(instance2, "removeItem", {
+          id: item.id
+        });
+      };
+    });
+    const setJSXItemsOrderedChildrenIds = (parentId, orderedChildrenIds) => {
+      const parentIdWithDefault = parentId != null ? parentId : TREE_VIEW_ROOT_PARENT_ID;
+      setState((prevState) => _extends({}, prevState, {
+        items: _extends({}, prevState.items, {
+          itemOrderedChildrenIds: _extends({}, prevState.items.itemOrderedChildrenIds, {
+            [parentIdWithDefault]: orderedChildrenIds
+          }),
+          itemChildrenIndexes: _extends({}, prevState.items.itemChildrenIndexes, {
+            [parentIdWithDefault]: buildSiblingIndexes(orderedChildrenIds)
+          })
+        })
+      }));
+    };
+    const mapFirstCharFromJSX = useEventCallback_default3((itemId, firstChar) => {
+      instance2.updateFirstCharMap((firstCharMap) => {
+        firstCharMap[itemId] = firstChar;
+        return firstCharMap;
+      });
+      return () => {
+        instance2.updateFirstCharMap((firstCharMap) => {
+          const newMap = _extends({}, firstCharMap);
+          delete newMap[itemId];
+          return newMap;
+        });
+      };
+    });
+    return {
+      instance: {
+        insertJSXItem,
+        setJSXItemsOrderedChildrenIds,
+        mapFirstCharFromJSX
+      }
+    };
+  };
+  var isItemExpandable = (reactChildren) => {
+    if (Array.isArray(reactChildren)) {
+      return reactChildren.length > 0 && reactChildren.some(isItemExpandable);
+    }
+    return Boolean(reactChildren);
+  };
+  var useTreeViewJSXItemsItemPlugin = ({
+    props,
+    rootRef,
+    contentRef
+  }) => {
+    const {
+      instance: instance2,
+      treeId
+    } = useTreeViewContext();
+    const {
+      children,
+      disabled = false,
+      label,
+      itemId,
+      id
+    } = props;
+    const parentContext = React192.useContext(TreeViewChildrenItemContext);
+    if (parentContext == null) {
+      throw new Error(["MUI X: Could not find the Tree View Children Item context.", "It looks like you rendered your component outside of a SimpleTreeView parent component.", "This can also happen if you are bundling multiple versions of the Tree View."].join("\n"));
+    }
+    const {
+      registerChild,
+      unregisterChild,
+      parentId
+    } = parentContext;
+    const expandable = isItemExpandable(children);
+    const pluginContentRef = React192.useRef(null);
+    const handleContentRef = useForkRef3(pluginContentRef, contentRef);
+    useEnhancedEffect_default4(() => {
+      const idAttribute = generateTreeItemIdAttribute({
+        itemId,
+        treeId,
+        id
+      });
+      registerChild(idAttribute, itemId);
+      return () => {
+        unregisterChild(idAttribute);
+      };
+    }, [registerChild, unregisterChild, itemId, id, treeId]);
+    React192.useEffect(() => {
+      return instance2.insertJSXItem({
+        id: itemId,
+        idAttribute: id,
+        parentId,
+        expandable,
+        disabled
+      });
+    }, [instance2, parentId, itemId, expandable, disabled, id]);
+    React192.useEffect(() => {
+      var _a, _b;
+      if (label) {
+        return instance2.mapFirstCharFromJSX(itemId, ((_b = (_a = pluginContentRef.current) == null ? void 0 : _a.textContent) != null ? _b : "").substring(0, 1).toLowerCase());
+      }
+      return void 0;
+    }, [instance2, itemId, label]);
+    return {
+      contentRef: handleContentRef,
+      rootRef
+    };
+  };
+  useTreeViewJSXItems.itemPlugin = useTreeViewJSXItemsItemPlugin;
+  useTreeViewJSXItems.wrapItem = ({
+    children,
+    itemId
+  }) => {
+    const depthContext = React192.useContext(TreeViewItemDepthContext);
+    return /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(TreeViewChildrenItemProvider, {
+      itemId,
+      children: /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(TreeViewItemDepthContext.Provider, {
+        value: depthContext + 1,
+        children
+      })
+    });
+  };
+  useTreeViewJSXItems.wrapRoot = ({
+    children
+  }) => /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(TreeViewChildrenItemProvider, {
+    children: /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(TreeViewItemDepthContext.Provider, {
+      value: 0,
+      children
+    })
+  });
+  useTreeViewJSXItems.params = {};
+
+  // node_modules/@mui/x-tree-view/SimpleTreeView/SimpleTreeView.plugins.js
+  var SIMPLE_TREE_VIEW_PLUGINS = [useTreeViewItems, useTreeViewExpansion, useTreeViewSelection, useTreeViewFocus, useTreeViewKeyboardNavigation, useTreeViewIcons, useTreeViewJSXItems];
+
+  // node_modules/@mui/x-tree-view/SimpleTreeView/SimpleTreeView.js
+  var import_jsx_runtime162 = __toESM(require_jsx_runtime());
+  var useThemeProps4 = createUseThemeProps("MuiSimpleTreeView");
+  var useUtilityClasses47 = (ownerState) => {
+    const {
+      classes
+    } = ownerState;
+    const slots = {
+      root: ["root"]
+    };
+    return composeClasses3(slots, getSimpleTreeViewUtilityClass, classes);
+  };
+  var SimpleTreeViewRoot = styled_default2("ul", {
+    name: "MuiSimpleTreeView",
+    slot: "Root",
+    overridesResolver: (props, styles4) => styles4.root
+  })({
+    padding: 0,
+    margin: 0,
+    listStyle: "none",
+    outline: 0,
+    position: "relative"
+  });
+  var EMPTY_ITEMS = [];
+  var SimpleTreeView = /* @__PURE__ */ React193.forwardRef(function SimpleTreeView2(inProps, ref) {
+    var _a;
+    const props = useThemeProps4({
+      props: inProps,
+      name: "MuiSimpleTreeView"
+    });
+    const ownerState = props;
+    if (false) {
+      if (props.items != null) {
+        warnOnce(["MUI X: The Simple Tree View component does not support the `items` prop.", "If you want to add items, you need to pass them as JSX children.", "Check the documentation for more details: https://mui.com/x/react-tree-view/simple-tree-view/items/."]);
+      }
+    }
+    const {
+      getRootProps,
+      contextValue
+    } = useTreeView({
+      plugins: SIMPLE_TREE_VIEW_PLUGINS,
+      rootRef: ref,
+      props: _extends({}, props, {
+        items: EMPTY_ITEMS
+      })
+    });
+    const {
+      slots,
+      slotProps
+    } = props;
+    const classes = useUtilityClasses47(props);
+    const Root2 = (_a = slots == null ? void 0 : slots.root) != null ? _a : SimpleTreeViewRoot;
+    const rootProps = useSlotProps_default3({
+      elementType: Root2,
+      externalSlotProps: slotProps == null ? void 0 : slotProps.root,
+      className: classes.root,
+      getSlotProps: getRootProps,
+      ownerState
+    });
+    return /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(TreeViewProvider, {
+      value: contextValue,
+      children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Root2, _extends({}, rootProps))
+    });
+  });
+  false ? SimpleTreeView.propTypes = {
+    // ----------------------------- Warning --------------------------------
+    // | These PropTypes are generated from the TypeScript type definitions |
+    // | To update them edit the TypeScript types and run "pnpm proptypes"  |
+    // ----------------------------------------------------------------------
+    /**
+     * The ref object that allows Tree View manipulation. Can be instantiated with `useTreeViewApiRef()`.
+     */
+    apiRef: import_prop_types.default.shape({
+      current: import_prop_types.default.shape({
+        focusItem: import_prop_types.default.func.isRequired,
+        getItem: import_prop_types.default.func.isRequired,
+        getItemDOMElement: import_prop_types.default.func.isRequired,
+        getItemOrderedChildrenIds: import_prop_types.default.func.isRequired,
+        getItemTree: import_prop_types.default.func.isRequired,
+        selectItem: import_prop_types.default.func.isRequired,
+        setItemExpansion: import_prop_types.default.func.isRequired
+      })
+    }),
+    /**
+     * If `true`, the Tree View renders a checkbox at the left of its label that allows selecting it.
+     * @default false
+     */
+    checkboxSelection: import_prop_types.default.bool,
+    /**
+     * The content of the component.
+     */
+    children: import_prop_types.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types.default.object,
+    className: import_prop_types.default.string,
+    /**
+     * Expanded item ids.
+     * Used when the item's expansion is not controlled.
+     * @default []
+     */
+    defaultExpandedItems: import_prop_types.default.arrayOf(import_prop_types.default.string),
+    /**
+     * Selected item ids. (Uncontrolled)
+     * When `multiSelect` is true this takes an array of strings; when false (default) a string.
+     * @default []
+     */
+    defaultSelectedItems: import_prop_types.default.any,
+    /**
+     * If `true`, will allow focus on disabled items.
+     * @default false
+     */
+    disabledItemsFocusable: import_prop_types.default.bool,
+    /**
+     * If `true` selection is disabled.
+     * @default false
+     */
+    disableSelection: import_prop_types.default.bool,
+    /**
+     * Expanded item ids.
+     * Used when the item's expansion is controlled.
+     */
+    expandedItems: import_prop_types.default.arrayOf(import_prop_types.default.string),
+    /**
+     * The slot that triggers the item's expansion when clicked.
+     * @default 'content'
+     */
+    expansionTrigger: import_prop_types.default.oneOf(["content", "iconContainer"]),
+    /**
+     * Unstable features, breaking changes might be introduced.
+     * For each feature, if the flag is not explicitly set to `true`,
+     * the feature will be fully disabled and any property / method call will not have any effect.
+     */
+    experimentalFeatures: import_prop_types.default.shape({
+      indentationAtItemLevel: import_prop_types.default.bool
+    }),
+    /**
+     * This prop is used to help implement the accessibility logic.
+     * If you don't provide this prop. It falls back to a randomly generated id.
+     */
+    id: import_prop_types.default.string,
+    /**
+     * Horizontal indentation between an item and its children.
+     * Examples: 24, "24px", "2rem", "2em".
+     * @default 12px
+     */
+    itemChildrenIndentation: import_prop_types.default.oneOfType([import_prop_types.default.number, import_prop_types.default.string]),
+    /**
+     * If `true`, `ctrl` and `shift` will trigger multiselect.
+     * @default false
+     */
+    multiSelect: import_prop_types.default.bool,
+    /**
+     * Callback fired when Tree Items are expanded/collapsed.
+     * @param {React.SyntheticEvent} event The DOM event that triggered the change.
+     * @param {array} itemIds The ids of the expanded items.
+     */
+    onExpandedItemsChange: import_prop_types.default.func,
+    /**
+     * Callback fired when the `content` slot of a given Tree Item is clicked.
+     * @param {React.MouseEvent} event The DOM event that triggered the change.
+     * @param {string} itemId The id of the focused item.
+     */
+    onItemClick: import_prop_types.default.func,
+    /**
+     * Callback fired when a Tree Item is expanded or collapsed.
+     * @param {React.SyntheticEvent} event The DOM event that triggered the change.
+     * @param {array} itemId The itemId of the modified item.
+     * @param {array} isExpanded `true` if the item has just been expanded, `false` if it has just been collapsed.
+     */
+    onItemExpansionToggle: import_prop_types.default.func,
+    /**
+     * Callback fired when a given Tree Item is focused.
+     * @param {React.SyntheticEvent | null} event The DOM event that triggered the change. **Warning**: This is a generic event not a focus event.
+     * @param {string} itemId The id of the focused item.
+     */
+    onItemFocus: import_prop_types.default.func,
+    /**
+     * Callback fired when a Tree Item is selected or deselected.
+     * @param {React.SyntheticEvent} event The DOM event that triggered the change.
+     * @param {array} itemId The itemId of the modified item.
+     * @param {array} isSelected `true` if the item has just been selected, `false` if it has just been deselected.
+     */
+    onItemSelectionToggle: import_prop_types.default.func,
+    /**
+     * Callback fired when Tree Items are selected/deselected.
+     * @param {React.SyntheticEvent} event The DOM event that triggered the change.
+     * @param {string[] | string} itemIds The ids of the selected items.
+     * When `multiSelect` is `true`, this is an array of strings; when false (default) a string.
+     */
+    onSelectedItemsChange: import_prop_types.default.func,
+    /**
+     * Selected item ids. (Controlled)
+     * When `multiSelect` is true this takes an array of strings; when false (default) a string.
+     */
+    selectedItems: import_prop_types.default.any,
+    /**
+     * The props used for each component slot.
+     */
+    slotProps: import_prop_types.default.object,
+    /**
+     * Overridable component slots.
+     */
+    slots: import_prop_types.default.object,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types.default.oneOfType([import_prop_types.default.arrayOf(import_prop_types.default.oneOfType([import_prop_types.default.func, import_prop_types.default.object, import_prop_types.default.bool])), import_prop_types.default.func, import_prop_types.default.object])
+  } : void 0;
+
+  // node_modules/@mui/icons-material/esm/IndeterminateCheckBoxRounded.js
+  var import_jsx_runtime163 = __toESM(require_jsx_runtime());
+  var IndeterminateCheckBoxRounded_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime163.jsx)("path", {
+    d: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-3 10H8c-.55 0-1-.45-1-1s.45-1 1-1h8c.55 0 1 .45 1 1s-.45 1-1 1"
+  }), "IndeterminateCheckBoxRounded");
+
+  // node_modules/@mui/icons-material/esm/AddBoxRounded.js
+  var import_jsx_runtime164 = __toESM(require_jsx_runtime());
+  var AddBoxRounded_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime164.jsx)("path", {
+    d: "M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-3 10h-3v3c0 .55-.45 1-1 1s-1-.45-1-1v-3H8c-.55 0-1-.45-1-1s.45-1 1-1h3V8c0-.55.45-1 1-1s1 .45 1 1v3h3c.55 0 1 .45 1 1s-.45 1-1 1"
+  }), "AddBoxRounded");
+
+  // src/Components/TreeView/BaseTreeView.tsx
+  var import_jsx_runtime165 = __toESM(require_jsx_runtime());
+  var ExpandIcon = (props) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime165.jsx)(AddBoxRounded_default, __spreadProps(__spreadValues({}, props), { sx: { opacity: 0.8 } }));
+  };
+  var CollapseIcon = (props) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime165.jsx)(IndeterminateCheckBoxRounded_default, __spreadProps(__spreadValues({}, props), { sx: { opacity: 0.8 } }));
+  };
+  var BaseTreeView = ({ sx, children }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime165.jsx)(SimpleTreeView, { sx, slots: { expandIcon: ExpandIcon, collapseIcon: CollapseIcon }, children });
+  };
+
+  // src/Services/Scenarios.ts
+  var sortScenarioSteps = (a, b) => a.timestamp - b.timestamp;
+
+  // src/Components/TreeView/Agent/Scenarios/AgentScenarioStepsTreeView.tsx
+  var import_jsx_runtime166 = __toESM(require_jsx_runtime());
+  var AgentScenarioStepsTreeView = ({ steps: steps2 }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime166.jsx)(BaseTreeView, { sx: { mt: 2 }, children: [...steps2].sort(sortScenarioSteps).map((step, index) => /* @__PURE__ */ (0, import_jsx_runtime166.jsx)(AgentScenarioStepsTreeViewItem, { step, index }, index)) });
+  };
+
+  // src/Components/TextFields/BaseTextField.tsx
+  var import_jsx_runtime167 = __toESM(require_jsx_runtime());
+  var BaseTextField = (props) => {
+    const { value, onChange, label, placeholder, sx, endAdornment, startAdornment } = props;
+    const onInternalChange = (event) => {
+      onChange(event.target.value);
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime167.jsxs)(FormControl_default, { sx, size: "small", variant: "outlined", fullWidth: true, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime167.jsx)(InputLabel_default, { children: label }),
+      /* @__PURE__ */ (0, import_jsx_runtime167.jsx)(
+        OutlinedInput_default,
+        {
+          endAdornment,
+          startAdornment,
+          value,
+          label,
+          onChange: onInternalChange,
+          placeholder
+        }
+      )
+    ] });
+  };
+
+  // node_modules/@mui/icons-material/esm/Search.js
+  var import_jsx_runtime168 = __toESM(require_jsx_runtime());
+  var Search_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime168.jsx)("path", {
+    d: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"
+  }), "Search");
+
+  // src/Components/TextFields/SearchTextField.tsx
+  var import_jsx_runtime169 = __toESM(require_jsx_runtime());
+  var SearchTextField = (props) => {
+    const { sx, search, setSearch, placeholder } = props;
+    const onClear = () => setSearch("");
+    return /* @__PURE__ */ (0, import_jsx_runtime169.jsx)(
+      BaseTextField,
+      {
+        sx,
+        value: search,
+        label: "Search",
+        onChange: setSearch,
+        placeholder,
+        endAdornment: search.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime169.jsx)(InputAdornment_default, { position: "end", children: /* @__PURE__ */ (0, import_jsx_runtime169.jsx)(IconButton_default, { size: "small", edge: "end", onClick: onClear, children: /* @__PURE__ */ (0, import_jsx_runtime169.jsx)(Close_default, { fontSize: "small" }) }) }),
+        startAdornment: /* @__PURE__ */ (0, import_jsx_runtime169.jsx)(InputAdornment_default, { position: "start", children: /* @__PURE__ */ (0, import_jsx_runtime169.jsx)(Search_default, { fontSize: "small" }) })
+      }
+    );
+  };
+
+  // src/Views/Agent/Scenarios/AgentScenarioDetailsStepsView.tsx
+  var import_jsx_runtime170 = __toESM(require_jsx_runtime());
+  var AgentScenarioDetailsStepsView = ({ steps: steps2 }) => {
+    const [search, setSearch] = (0, import_react31.useState)("");
+    const filteredSteps = (0, import_react31.useMemo)(
+      () => steps2.filter((step) => step.selector.toLowerCase().includes(search.toLowerCase())),
+      [search, steps2]
+    );
+    return /* @__PURE__ */ (0, import_jsx_runtime170.jsxs)(BoxView, { title: "Steps", children: [
+      steps2.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime170.jsx)(SearchTextField, { sx: { mt: 3 }, search, setSearch, placeholder: "Search by selector" }),
+      steps2.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime170.jsx)(EmptyView, { title: "Empty steps", description: "There is not steps logged for this scenario" }),
+      /* @__PURE__ */ (0, import_jsx_runtime170.jsx)(AgentScenarioStepsTreeView, { steps: filteredSteps })
+    ] });
+  };
+
+  // src/Views/Agent/Scenarios/AgentScenarioDetailsView.tsx
+  var import_jsx_runtime171 = __toESM(require_jsx_runtime());
+  var AgentScenarioDetailsView = ({ scenario }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime171.jsxs)(Box_default, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime171.jsx)(ScenarioDetailsInfoView, { sx: { mt: 0 }, scenario }),
+      /* @__PURE__ */ (0, import_jsx_runtime171.jsx)(AgentScenarioDetailsStepsView, { steps: scenario.steps }),
+      /* @__PURE__ */ (0, import_jsx_runtime171.jsx)(ActionCoverageTable, { actions: scenario.actions }),
+      /* @__PURE__ */ (0, import_jsx_runtime171.jsx)(ScenarioHistoryChartView, { history: scenario.history })
+    ] });
+  };
+
+  // src/Components/Modals/Agent/Scenarios/AgentScenarioDetailsModal.tsx
+  var import_jsx_runtime172 = __toESM(require_jsx_runtime());
+  var AgentScenarioDetailsModal = ({ modal, setModal, scenario }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime172.jsx)(BaseModal, { sx: { zIndex: 1900 }, title: "Scenario details", modal, setModal, maxWidth: "md", children: /* @__PURE__ */ (0, import_jsx_runtime172.jsx)(AgentScenarioDetailsView, { scenario }) });
+  };
+
+  // src/Views/Agent/Scenarios/AgentScenariosView.tsx
+  var import_jsx_runtime173 = __toESM(require_jsx_runtime());
+  var AgentScenariosView = ({ scenarios }) => {
+    const [search, setSearch] = (0, import_react32.useState)("");
+    const [scenario, setScenario] = (0, import_react32.useState)(null);
+    const [scenarioDetailsModal, setScenarioDetailsModal] = (0, import_react32.useState)(false);
+    const filteredScenarios = (0, import_react32.useMemo)(
+      () => scenarios.filter((scenario2) => scenario2.name.toLowerCase().includes(search.toLowerCase())),
+      [search, scenarios]
+    );
+    const onScenarioDetails = (scenario2) => {
+      setScenario(scenario2);
+      setScenarioDetailsModal(true);
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime173.jsxs)(BoxView, { title: "Scenarios", children: [
+      scenarios.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(SearchTextField, { sx: { mt: 3 }, search, setSearch, placeholder: "Search by scenario name" }),
+      scenarios.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(EmptyView, { title: "Empty scenarios", description: "There is no scenarios registered" }),
+      /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(List_default, { dense: true, children: filteredScenarios.map((scenario2, index) => /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(AgentScenarioListItem, { scenario: scenario2, onScenarioDetails }, index)) }),
+      scenario && /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(
+        AgentScenarioDetailsModal,
+        {
+          modal: scenarioDetailsModal,
+          setModal: setScenarioDetailsModal,
+          scenario
+        }
+      )
+    ] });
+  };
+
+  // src/Views/Agent/Elements/AgentElementCoverageDetailsInfoView.tsx
+  var import_jsx_runtime174 = __toESM(require_jsx_runtime());
+  var AgentElementCoverageDetailsInfoView = ({ element }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(BoxView, { title: "Base info", containerSx: { mt: 0 }, children: /* @__PURE__ */ (0, import_jsx_runtime174.jsxs)(WidgetInfoRowsView, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(BaseInfoRowView, { icon: /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(AdsClick_default, { fontSize: "small" }), name: "Selector", value: element.selector }),
+      /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(
+        BaseInfoRowView,
+        {
+          icon: /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(DataObject_default, { fontSize: "small" }),
+          name: "Selector type",
+          value: element.selectorType
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(
+        BaseInfoRowView,
+        {
+          icon: /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(FormatListNumbered_default, { fontSize: "small" }),
+          name: "Total number of scenarios",
+          value: element.scenarios.length
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(
+        BaseInfoRowView,
+        {
+          icon: /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(BuildOutlined_default, { fontSize: "small" }),
+          name: "Total number of action types",
+          value: element.actions.length
+        }
+      )
+    ] }) });
+  };
+
+  // src/Views/Agent/Elements/AgentElementCoverageDetailsView.tsx
+  var import_jsx_runtime175 = __toESM(require_jsx_runtime());
+  var AgentElementCoverageDetailsView = ({ element }) => {
+    const { state } = useAgentInitialState();
+    const scenarios = (0, import_react33.useMemo)(
+      () => {
+        var _a;
+        return (_a = state.scenarios) == null ? void 0 : _a.filter((scenario) => element.scenarios.includes(scenario.name));
+      },
+      [element.scenarios]
+    );
+    return /* @__PURE__ */ (0, import_jsx_runtime175.jsxs)(Box_default, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime175.jsx)(AgentElementCoverageDetailsInfoView, { element }),
+      /* @__PURE__ */ (0, import_jsx_runtime175.jsx)(ActionCoverageTable, { actions: element.actions }),
+      /* @__PURE__ */ (0, import_jsx_runtime175.jsx)(AgentScenariosView, { scenarios: scenarios || [] })
+    ] });
+  };
+
+  // src/Components/Modals/Agent/Elements/AgentElementCoverageDetailsModal.tsx
+  var import_jsx_runtime176 = __toESM(require_jsx_runtime());
+  var AgentElementCoverageDetailsModal = ({ modal, setModal, element }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime176.jsx)(BaseModal, { sx: { zIndex: 1900 }, title: "Element details", modal, setModal, maxWidth: "md", children: /* @__PURE__ */ (0, import_jsx_runtime176.jsx)(AgentElementCoverageDetailsView, { element }) });
+  };
+
+  // src/Components/Badges/Agent/AgentElementCoverageBadge.tsx
+  var import_react34 = __toESM(require_react());
+  var import_jsx_runtime177 = __toESM(require_jsx_runtime());
+  var AgentElementCoverageBadge = ({ element, settings }) => {
+    const content = (0, import_react34.useMemo)(() => {
       switch (settings == null ? void 0 : settings.badgeContentType) {
         case "TOTAL_NUMBER_OF_ACTIONS" /* TotalNumberOfActions */:
-          return actions.reduce((total, action) => total + action.count, 0);
+          return element.actions.reduce((total, action) => total + action.count, 0);
+        case "TOTAL_NUMBER_OF_SCENARIOS" /* TotalNumberOfScenarios */:
+          return element.scenarios.length;
         case "TOTAL_NUMBER_OF_ACTION_TYPES" /* TotalNumberOfActionTypes */:
-          return actions.length;
+          return element.actions.length;
         default:
           return 0;
       }
-    }, [actions, settings == null ? void 0 : settings.badgeContentType]);
-    return /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(Badge_default, { color: settings == null ? void 0 : settings.badgeColor, badgeContent: content });
+    }, [element, settings == null ? void 0 : settings.badgeContentType]);
+    return /* @__PURE__ */ (0, import_jsx_runtime177.jsx)(Badge_default, { color: settings == null ? void 0 : settings.badgeColor, badgeContent: content });
   };
 
-  // src/Views/Agent/Elements/ElementView.tsx
-  var import_jsx_runtime108 = __toESM(require_jsx_runtime());
-  var ElementView = ({ element }) => {
+  // src/Components/Tooltips/Agent/Elements/AgentElementCoverageTooltip.tsx
+  var import_react35 = __toESM(require_react());
+
+  // src/Components/Tooltips/BaseTooltip.tsx
+  var import_jsx_runtime178 = __toESM(require_jsx_runtime());
+  var Tooltip3 = styled_default2((_a) => {
+    var _b = _a, { className, children } = _b, props = __objRest(_b, ["className", "children"]);
+    return /* @__PURE__ */ (0, import_jsx_runtime178.jsx)(Tooltip_default, __spreadProps(__spreadValues({}, props), { classes: { popper: className }, children }));
+  })({
+    [`& .${tooltipClasses_default.tooltip}`]: {
+      maxWidth: "none"
+    }
+  });
+  var BaseTooltip = ({ open, title, children }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime178.jsx)(
+      Tooltip3,
+      {
+        sx: {
+          [`& .${tooltipClasses_default.tooltip}`]: {
+            maxWidth: "none"
+          }
+        },
+        open,
+        title,
+        arrow: true,
+        slotProps: {
+          popper: {
+            modifiers: [
+              {
+                name: "zIndex",
+                enabled: true,
+                phase: "write",
+                fn: ({ state }) => {
+                  state.elements.popper.style.zIndex = "1800";
+                }
+              }
+            ]
+          }
+        },
+        children
+      }
+    );
+  };
+
+  // src/Components/Tooltips/Agent/Elements/AgentElementCoverageTooltip.tsx
+  var import_jsx_runtime179 = __toESM(require_jsx_runtime());
+  var AgentElementCoverageTooltip = ({ element, children }) => {
+    const { state } = useAgentInitialState();
+    const elementHighlight = state.elementHighlight;
+    const showTooltip = (0, import_react35.useMemo)(
+      () => (elementHighlight == null ? void 0 : elementHighlight.selector) == element.selector && elementHighlight.selectorType && element.selectorType,
+      [element, elementHighlight]
+    );
+    return elementHighlight && showTooltip ? /* @__PURE__ */ (0, import_jsx_runtime179.jsx)(
+      BaseTooltip,
+      {
+        open: true,
+        title: /* @__PURE__ */ (0, import_jsx_runtime179.jsx)(TitleView, { icon: MAP_ACTION_TYPE_TO_ICON[elementHighlight.actionType], title: elementHighlight.selector }),
+        children
+      }
+    ) : children;
+  };
+
+  // src/Views/Agent/Elements/AgentElementCoverageView.tsx
+  var import_jsx_runtime180 = __toESM(require_jsx_runtime());
+  var AgentElementCoverageView = ({ element }) => {
     const { state } = useAgentInitialState();
     const { node: node2 } = useElement({ type: element.selectorType, value: element.selector, settings: state.settings });
-    const [elementDetailsModal, setElementDetailsModal] = (0, import_react32.useState)(false);
+    const [elementDetailsModal, setElementDetailsModal] = (0, import_react36.useState)(false);
     if (!node2) return null;
     const onElementDetails = () => setElementDetailsModal(true);
-    return /* @__PURE__ */ (0, import_jsx_runtime108.jsxs)(BasePopper, { anchor: node2, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime108.jsx)(IconButton_default, { onClick: onElementDetails, children: /* @__PURE__ */ (0, import_jsx_runtime108.jsx)(ElementBadge, { actions: element.actions, settings: state.settings }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime108.jsx)(
-        ElementDetailsModal,
+    return /* @__PURE__ */ (0, import_jsx_runtime180.jsxs)(BasePopper, { anchor: node2, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime180.jsx)(AgentElementCoverageTooltip, { element, children: /* @__PURE__ */ (0, import_jsx_runtime180.jsx)(IconButton_default, { onClick: onElementDetails, children: /* @__PURE__ */ (0, import_jsx_runtime180.jsx)(AgentElementCoverageBadge, { element, settings: state.settings }) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime180.jsx)(
+        AgentElementCoverageDetailsModal,
         {
-          sx: { zIndex: 1900 },
           modal: elementDetailsModal,
           setModal: setElementDetailsModal,
           element
@@ -48571,20 +58753,20 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     ] });
   };
 
-  // src/Views/Agent/Elements/ElementsView.tsx
-  var import_jsx_runtime109 = __toESM(require_jsx_runtime());
-  var ElementsView = () => {
+  // src/Views/Agent/Elements/AgentElementsCoverageView.tsx
+  var import_jsx_runtime181 = __toESM(require_jsx_runtime());
+  var AgentElementsCoverageView = () => {
     var _a;
     const { state } = useAgentInitialState();
-    return /* @__PURE__ */ (0, import_jsx_runtime109.jsx)(import_react33.Fragment, { children: (_a = state == null ? void 0 : state.elements) == null ? void 0 : _a.map((element, index) => /* @__PURE__ */ (0, import_jsx_runtime109.jsx)(ElementView, { element }, index)) });
+    return /* @__PURE__ */ (0, import_jsx_runtime181.jsx)(import_react37.Fragment, { children: (_a = state == null ? void 0 : state.elements) == null ? void 0 : _a.map((element, index) => /* @__PURE__ */ (0, import_jsx_runtime181.jsx)(AgentElementCoverageView, { element }, index)) });
   };
 
-  // src/Providers/AgentThemeProvider.tsx
-  var import_react35 = __toESM(require_react());
+  // src/Providers/Agent/AgentThemeProvider.tsx
+  var import_react39 = __toESM(require_react());
 
-  // src/Providers/ThemeProvider.tsx
-  var import_react34 = __toESM(require_react());
-  var import_jsx_runtime110 = __toESM(require_jsx_runtime());
+  // src/Providers/Core/ThemeProvider.tsx
+  var import_react38 = __toESM(require_react());
+  var import_jsx_runtime182 = __toESM(require_jsx_runtime());
   var darkTheme = createTheme2({
     palette: { mode: "dark" /* Dark */ },
     components: { MuiPaper: { defaultProps: { elevation: 5 } } }
@@ -48593,23 +58775,23 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     palette: { mode: "light" /* Light */ },
     components: { MuiPaper: { defaultProps: { elevation: 2 } } }
   });
-  var ThemeContext3 = (0, import_react34.createContext)(null);
+  var ThemeContext3 = (0, import_react38.createContext)(null);
 
-  // src/Providers/AgentThemeProvider.tsx
-  var import_jsx_runtime111 = __toESM(require_jsx_runtime());
-  var AgentThemeContext = (0, import_react35.createContext)(null);
+  // src/Providers/Agent/AgentThemeProvider.tsx
+  var import_jsx_runtime183 = __toESM(require_jsx_runtime());
+  var AgentThemeContext = (0, import_react39.createContext)(null);
   var AgentThemeProvider = ({ children }) => {
     const { state } = useAgentInitialState();
-    return /* @__PURE__ */ (0, import_jsx_runtime111.jsx)(AgentThemeContext.Provider, { value: null, children: /* @__PURE__ */ (0, import_jsx_runtime111.jsx)(ThemeProvider4, { theme: state.themeMode === "light" /* Light */ ? lightTheme : darkTheme, children }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime183.jsx)(AgentThemeContext.Provider, { value: null, children: /* @__PURE__ */ (0, import_jsx_runtime183.jsx)(ThemeProvider4, { theme: state.themeMode === "light" /* Light */ ? lightTheme : darkTheme, children }) });
   };
 
   // src/agent.index.tsx
-  var import_jsx_runtime112 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime184 = __toESM(require_jsx_runtime());
   var IndexAgent = () => {
-    return /* @__PURE__ */ (0, import_jsx_runtime112.jsx)(AgentInitialStateProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime112.jsx)(AgentThemeProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime112.jsx)(ElementsView, {}) }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime184.jsx)(AgentInitialStateProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime184.jsx)(AgentThemeProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime184.jsx)(AgentElementsCoverageView, {}) }) });
   };
   document.addEventListener("DOMContentLoaded", () => {
-    watchFrameRoot(() => /* @__PURE__ */ (0, import_jsx_runtime112.jsx)(IndexAgent, {}));
+    watchFrameRoot(() => /* @__PURE__ */ (0, import_jsx_runtime184.jsx)(IndexAgent, {}));
   });
 })();
 /*! Bundled license information:

@@ -18524,7 +18524,7 @@ var agent = (() => {
   var getOrCreateFrameRoot = () => {
     if (!container) {
       container = document.createElement("div");
-      container.id = "ui-coverage-agent-root";
+      container.id = "ui-coverage-scenario-agent-root";
       container.style.position = "absolute";
       container.style.top = "0";
       container.style.left = "0";
