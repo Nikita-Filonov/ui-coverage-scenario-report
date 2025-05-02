@@ -9,6 +9,7 @@ import { useAgentFilters } from '../../Providers/Agent/AgentFiltersProvider';
 import { ActionType } from '../../Models/Core/Actions';
 import { SelectorType } from '../../Models/Core/Selector';
 import { useAgentControls } from '../../Providers/Agent/AgentControlsProvider';
+import { SettingsManager } from '../Config';
 
 type BuildAgentElementCoverageProps = {
   scenarios: ScenarioCoverage[];
@@ -94,7 +95,14 @@ export const useAgentStateBuilder = () => {
     elements = filterAgentElementCoverageByActions({ elements, actions: filters.actions });
     elements = filterAgentElementCoverageBySelectorTypes({ elements, selectorTypes: filters.selectorTypes });
 
-    return { settings, elements, themeMode, scenarios: state.scenarios, elementHighlight };
+    return {
+      type: SettingsManager.agentType,
+      settings,
+      elements,
+      themeMode,
+      scenarios: state.scenarios,
+      elementHighlight
+    };
   };
 
   const agentState: AgentState = useMemo(buildState, [
@@ -106,7 +114,14 @@ export const useAgentStateBuilder = () => {
   ]);
 
   const emptyAgentState: AgentState = useMemo(
-    () => ({ settings, elements: [], themeMode, scenarios: [], elementHighlight: null }),
+    () => ({
+      type: SettingsManager.agentType,
+      settings,
+      elements: [],
+      themeMode,
+      scenarios: [],
+      elementHighlight: null
+    }),
     [settings, themeMode]
   );
 

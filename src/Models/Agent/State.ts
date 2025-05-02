@@ -4,6 +4,7 @@ import { AgentElementCoverage, AgentElementHighlight } from './Element';
 import { ScenarioCoverage } from '../Coverage/State';
 
 export interface AgentState {
+  type?: string;
   settings?: AgentSettings;
   elements?: AgentElementCoverage[];
   scenarios?: ScenarioCoverage[];
