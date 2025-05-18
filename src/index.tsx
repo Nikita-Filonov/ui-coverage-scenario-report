@@ -8,7 +8,7 @@ import { AppToolbarView } from './Components/Toolbar/AppToolbarView';
 import { ThemeProvider } from './Providers/Core/ThemeProvider';
 import { AppCoverageHistoryView } from './Views/Coverage/History/AppCoverageHistoryView';
 import { FrameView } from './Views/Frame/FrameView';
-import { FrameLayoutSettingsProvider } from './Providers/Frame/FrameLayoutSettingsProvider';
+import { PagesView } from './Views/Pages/PagesView';
 
 const IndexRoute = () => {
   return (
@@ -16,9 +16,8 @@ const IndexRoute = () => {
       <AppToolbarView />
       <AppConfigView />
       <AppCoverageHistoryView />
-      <FrameLayoutSettingsProvider>
-        <FrameView />
-      </FrameLayoutSettingsProvider>
+      <PagesView />
+      <FrameView />
     </MainLayout>
   );
 };

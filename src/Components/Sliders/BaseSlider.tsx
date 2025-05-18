@@ -7,9 +7,10 @@ type Props = {
   max: number;
   value: number;
   setValue: (value: number) => void;
+  formatLabel: (value: number) => string;
 };
 
-export const BaseSlider: FC<Props> = ({ min, max, value, setValue }) => {
+export const BaseSlider: FC<Props> = ({ min, max, value, setValue, formatLabel }) => {
   const onChange = (_: Event, newValue: number | number[]) => !Array.isArray(newValue) && setValue(newValue);
 
   const onMin = () => setValue(min);
@@ -22,7 +23,7 @@ export const BaseSlider: FC<Props> = ({ min, max, value, setValue }) => {
         marks
         step={10}
         value={value}
-        valueLabelFormat={(value) => `${value}%`}
+        valueLabelFormat={formatLabel}
         valueLabelDisplay="auto"
         min={min}
         max={max}
@@ -30,10 +31,10 @@ export const BaseSlider: FC<Props> = ({ min, max, value, setValue }) => {
       />
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Typography variant="body2" onClick={onMin} sx={{ cursor: 'pointer' }}>
-          {min}% min
+          {formatLabel(min)} min
         </Typography>
         <Typography variant="body2" onClick={onMax} sx={{ cursor: 'pointer' }}>
-          {max}% max
+          {formatLabel(max)} max
         </Typography>
       </Box>
     </Box>

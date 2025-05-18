@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { useRef } from 'react';
-import { AgentToolbarView } from '../../Components/Toolbar/AgentToolbarView';
+import { AgentToolbarView } from '../../Components/Toolbar/Agent/AgentToolbarView';
 import { AgentFrameView } from '../../Components/Frames/Agent/AgentFrameView';
 
 export const AgentLayoutView = () => {

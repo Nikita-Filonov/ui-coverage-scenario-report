@@ -17,7 +17,27 @@ export interface ScenarioCoverage {
   history: ScenarioHistory[];
 }
 
+export interface PageCoverageNode {
+  url: string;
+  page: string;
+  priority: number;
+  scenarios: string[];
+}
+
+export interface PageCoverageEdge {
+  count: number;
+  toPage: string;
+  fromPage: string;
+  scenarios: string[];
+}
+
+export interface PagesCoverage {
+  nodes: PageCoverageNode[];
+  edges: PageCoverageEdge[];
+}
+
 export interface AppCoverageState {
+  pages: PagesCoverage;
   history: AppHistory[];
   scenarios: ScenarioCoverage[];
 }

@@ -1,9 +1,12 @@
+const APP = 'UI_COVERAGE_SCENARIO_REPORT';
+
 export enum StorageKey {
-  ThemeMode = 'UI_COVERAGE_SCENARIO_REPORT_THEME_MODE',
-  AgentFilters = 'UI_COVERAGE_SCENARIO_REPORT_AGENT_FILTERS',
-  AgentSettings = 'UI_COVERAGE_SCENARIO_REPORT_AGENT_SETTINGS',
-  FrameLayoutSettings = 'UI_COVERAGE_SCENARIO_REPORT_FRAME_LAYOUT_SETTINGS',
-  ScenarioStepsFilters = 'UI_COVERAGE_SCENARIO_REPORT_SCENARIO_STEPS_FILTERS'
+  ThemeMode = `${APP}_THEME_MODE`,
+  AgentFilters = `${APP}_AGENT_FILTERS`,
+  AgentSettings = `${APP}_AGENT_SETTINGS`,
+  PagesSettings = `${APP}_PAGES_SETTINGS`,
+  FrameLayoutSettings = `${APP}_FRAME_LAYOUT_SETTINGS`,
+  ScenarioStepsFilters = `${APP}_SCENARIO_STEPS_FILTERS`
 }
 
 type LoadFromStorageProps<T> = {

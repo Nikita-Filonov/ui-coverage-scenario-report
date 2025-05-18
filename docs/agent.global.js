@@ -42272,40 +42272,49 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     );
   };
 
-  // src/Views/Agent/Scenarios/AgentScenariosView.tsx
-  var import_react32 = __toESM(require_react());
+  // src/Components/Views/BaseInfoRowView.tsx
+  var import_react13 = __toESM(require_react());
 
-  // node_modules/@mui/icons-material/esm/DescriptionOutlined.js
+  // node_modules/@mui/icons-material/esm/ContentCopy.js
   var import_jsx_runtime95 = __toESM(require_jsx_runtime());
-  var DescriptionOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime95.jsx)("path", {
-    d: "M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8zm4 18H6V4h7v5h5z"
-  }), "DescriptionOutlined");
+  var ContentCopy_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime95.jsx)("path", {
+    d: "M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2m0 16H8V7h11z"
+  }), "ContentCopy");
 
-  // src/Components/ListItems/BaseListItem.tsx
+  // src/Components/Buttons/CopyButton.tsx
   var import_jsx_runtime96 = __toESM(require_jsx_runtime());
-  var BaseListItem = (props) => {
-    const { menu, icon, dense = false, label, compact, title, subtitle, selected, onClick } = props;
-    return /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(ListItem_default, { dense, secondaryAction: menu, divider: true, disableGutters: true, children: /* @__PURE__ */ (0, import_jsx_runtime96.jsxs)(ListItemButton_default, { selected, dense: true, onClick, disableGutters: compact, children: [
-      icon && /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(ListItemIcon_default, { children: icon }),
-      /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(ListItemText_default, { sx: { wordBreak: "break-word", whiteSpace: "normal" }, primary: title, secondary: subtitle }),
-      label
-    ] }) });
+  var CopyButton = ({ sx, onCopy }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(IconButton_default, { size: "small", sx, onClick: onCopy, children: /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(ContentCopy_default, { fontSize: "small" }) });
   };
 
-  // src/Components/ListItems/Agent/Scenarios/AgentScenarioListItem.tsx
+  // src/Components/Views/BaseInfoRowView.tsx
   var import_jsx_runtime97 = __toESM(require_jsx_runtime());
-  var AgentScenarioListItem = (props) => {
-    const { scenario, onScenarioDetails } = props;
-    const onDetails = () => onScenarioDetails(scenario);
-    return /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
-      BaseListItem,
-      {
-        icon: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(DescriptionOutlined_default, { fontSize: "small" }),
-        dense: true,
-        title: scenario.name,
-        onClick: onDetails
-      }
-    );
+  var BaseInfoRowView = (props) => {
+    const { name, icon, value, allowCopy = true, component = false, containerSx } = props;
+    const internalValue = (0, import_react13.useMemo)(() => value || "unknown", [value]);
+    const onCopy = async () => {
+      await navigator.clipboard.writeText(String(value));
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)(Box_default, { sx: __spreadValues({ display: "flex", alignItems: "center" }, containerSx), children: [
+      icon && /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(Box_default, { sx: { mr: 1, display: "flex", alignItems: "center" }, children: icon }),
+      /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)(Typography_default, { sx: { display: "flex", alignItems: "center", wordBreak: "break-word", whiteSpace: "normal" }, children: [
+        name,
+        ": ",
+        component ? component : internalValue
+      ] }),
+      Boolean(value) && allowCopy && /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(Box_default, { sx: { display: "flex" }, children: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(CopyButton, { sx: { ml: 1 }, onCopy }) })
+    ] });
+  };
+
+  // src/Components/Views/WidgetInfoRowsView.tsx
+  var import_react14 = __toESM(require_react());
+  var import_jsx_runtime98 = __toESM(require_jsx_runtime());
+  var WidgetInfoRowsView = (props) => {
+    const { children, containerSx } = props;
+    return /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Grid2_default, { container: true, spacing: 1, sx: __spreadValues({ mt: 2 }, containerSx), children: import_react14.Children.map(
+      children,
+      (child, index) => child && /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Grid2_default, { size: { xs: 12 }, children: child }, index)
+    ) });
   };
 
   // src/Services/Views.ts
@@ -42324,28 +42333,168 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }));
 
   // src/Components/Views/BoxView.tsx
-  var import_jsx_runtime98 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime99 = __toESM(require_jsx_runtime());
   var BoxView = ({ title, actions, children, containerSx }) => {
     const getMarginRight = (index) => getActionMarginRight({ index, actions, margin: 1 });
-    return /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(Box_default, { sx: __spreadValues({ mt: 3 }, containerSx), children: [
-      /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(Grid2_default, { container: true, sx: { display: "flex", alignItems: "center" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Grid2_default, { sx: { flexGrow: 1 }, children: title && /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Typography_default, { fontWeight: "bold", children: title }) }),
-        actions == null ? void 0 : actions.map((action, index) => /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Grid2_default, { children: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(IconButton_default, { sx: { mr: getMarginRight(index) }, size: "small", onClick: action.onClick, children: /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(ToolbarBadge, { badgeContent: action.badgeContent, color: "primary", children: action.icon }) }, index) }, index))
+    return /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(Box_default, { sx: __spreadValues({ mt: 3 }, containerSx), children: [
+      /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(Grid2_default, { container: true, sx: { display: "flex", alignItems: "center" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(Grid2_default, { sx: { flexGrow: 1 }, children: title && /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(Typography_default, { fontWeight: "bold", children: title }) }),
+        actions == null ? void 0 : actions.map((action, index) => /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(Grid2_default, { children: /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(IconButton_default, { sx: { mr: getMarginRight(index) }, size: "small", onClick: action.onClick, children: /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(ToolbarBadge, { badgeContent: action.badgeContent, color: "primary", children: action.icon }) }, index) }, index))
       ] }),
       children
     ] });
   };
 
+  // node_modules/@mui/icons-material/esm/AdsClick.js
+  var import_jsx_runtime100 = __toESM(require_jsx_runtime());
+  var AdsClick_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime100.jsx)("path", {
+    d: "M11.71 17.99C8.53 17.84 6 15.22 6 12c0-3.31 2.69-6 6-6 3.22 0 5.84 2.53 5.99 5.71l-2.1-.63C15.48 9.31 13.89 8 12 8c-2.21 0-4 1.79-4 4 0 1.89 1.31 3.48 3.08 3.89zM22 12c0 .3-.01.6-.04.9l-1.97-.59c.01-.1.01-.21.01-.31 0-4.42-3.58-8-8-8s-8 3.58-8 8 3.58 8 8 8c.1 0 .21 0 .31-.01l.59 1.97c-.3.03-.6.04-.9.04-5.52 0-10-4.48-10-10S6.48 2 12 2s10 4.48 10 10m-3.77 4.26L22 15l-10-3 3 10 1.26-3.77 4.27 4.27 1.98-1.98z"
+  }), "AdsClick");
+
+  // node_modules/@mui/icons-material/esm/DataObject.js
+  var import_jsx_runtime101 = __toESM(require_jsx_runtime());
+  var DataObject_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime101.jsx)("path", {
+    d: "M4 7v2c0 .55-.45 1-1 1H2v4h1c.55 0 1 .45 1 1v2c0 1.65 1.35 3 3 3h3v-2H7c-.55 0-1-.45-1-1v-2c0-1.3-.84-2.42-2-2.83v-.34C5.16 11.42 6 10.3 6 9V7c0-.55.45-1 1-1h3V4H7C5.35 4 4 5.35 4 7m17 3c-.55 0-1-.45-1-1V7c0-1.65-1.35-3-3-3h-3v2h3c.55 0 1 .45 1 1v2c0 1.3.84 2.42 2 2.83v.34c-1.16.41-2 1.52-2 2.83v2c0 .55-.45 1-1 1h-3v2h3c1.65 0 3-1.35 3-3v-2c0-.55.45-1 1-1h1v-4z"
+  }), "DataObject");
+
+  // node_modules/@mui/icons-material/esm/BuildOutlined.js
+  var import_jsx_runtime102 = __toESM(require_jsx_runtime());
+  var BuildOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime102.jsx)("path", {
+    d: "m22.61 18.99-9.08-9.08c.93-2.34.45-5.1-1.44-7C9.79.61 6.21.4 3.66 2.26L7.5 6.11 6.08 7.52 2.25 3.69C.39 6.23.6 9.82 2.9 12.11c1.86 1.86 4.57 2.35 6.89 1.48l9.11 9.11c.39.39 1.02.39 1.41 0l2.3-2.3c.4-.38.4-1.01 0-1.41m-3 1.6-9.46-9.46c-.61.45-1.29.72-2 .82-1.36.2-2.79-.21-3.83-1.25C3.37 9.76 2.93 8.5 3 7.26l3.09 3.09 4.24-4.24-3.09-3.09c1.24-.07 2.49.37 3.44 1.31 1.08 1.08 1.49 2.57 1.24 3.96-.12.71-.42 1.37-.88 1.96l9.45 9.45z"
+  }), "BuildOutlined");
+
+  // node_modules/@mui/icons-material/esm/FormatListNumbered.js
+  var import_jsx_runtime103 = __toESM(require_jsx_runtime());
+  var FormatListNumbered_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime103.jsx)("path", {
+    d: "M2 17h2v.5H3v1h1v.5H2v1h3v-4H2zm1-9h1V4H2v1h1zm-1 3h1.8L2 13.1v.9h3v-1H3.2L5 10.9V10H2zm5-6v2h14V5zm0 14h14v-2H7zm0-6h14v-2H7z"
+  }), "FormatListNumbered");
+
+  // src/Views/Agent/Elements/AgentElementCoverageDetailsInfoView.tsx
+  var import_jsx_runtime104 = __toESM(require_jsx_runtime());
+  var AgentElementCoverageDetailsInfoView = ({ element }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(BoxView, { title: "Base info", containerSx: { mt: 0 }, children: /* @__PURE__ */ (0, import_jsx_runtime104.jsxs)(WidgetInfoRowsView, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(BaseInfoRowView, { icon: /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(AdsClick_default, { fontSize: "small" }), name: "Selector", value: element.selector }),
+      /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(
+        BaseInfoRowView,
+        {
+          icon: /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(DataObject_default, { fontSize: "small" }),
+          name: "Selector type",
+          value: element.selectorType
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(
+        BaseInfoRowView,
+        {
+          icon: /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(FormatListNumbered_default, { fontSize: "small" }),
+          name: "Total number of scenarios",
+          value: element.scenarios.length
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(
+        BaseInfoRowView,
+        {
+          icon: /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(BuildOutlined_default, { fontSize: "small" }),
+          name: "Total number of action types",
+          value: element.actions.length
+        }
+      )
+    ] }) });
+  };
+
+  // src/Views/Scenarios/SimpleScenariosView.tsx
+  var import_react32 = __toESM(require_react());
+
+  // node_modules/@mui/icons-material/esm/DescriptionOutlined.js
+  var import_jsx_runtime105 = __toESM(require_jsx_runtime());
+  var DescriptionOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime105.jsx)("path", {
+    d: "M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8zm4 18H6V4h7v5h5z"
+  }), "DescriptionOutlined");
+
+  // src/Components/ListItems/BaseListItem.tsx
+  var import_jsx_runtime106 = __toESM(require_jsx_runtime());
+  var BaseListItem = (props) => {
+    const { menu, icon, dense = false, label, compact, title, subtitle, selected, onClick } = props;
+    return /* @__PURE__ */ (0, import_jsx_runtime106.jsx)(ListItem_default, { dense, secondaryAction: menu, divider: true, disableGutters: true, children: /* @__PURE__ */ (0, import_jsx_runtime106.jsxs)(ListItemButton_default, { selected, dense: true, onClick, disableGutters: compact, children: [
+      icon && /* @__PURE__ */ (0, import_jsx_runtime106.jsx)(ListItemIcon_default, { children: icon }),
+      /* @__PURE__ */ (0, import_jsx_runtime106.jsx)(ListItemText_default, { sx: { wordBreak: "break-word", whiteSpace: "normal" }, primary: title, secondary: subtitle }),
+      label
+    ] }) });
+  };
+
+  // src/Components/ListItems/Scenarios/SimpleScenarioListItem.tsx
+  var import_jsx_runtime107 = __toESM(require_jsx_runtime());
+  var SimpleScenarioListItem = (props) => {
+    const { scenario, onScenarioDetails } = props;
+    const onDetails = () => onScenarioDetails(scenario);
+    return /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(
+      BaseListItem,
+      {
+        icon: /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(DescriptionOutlined_default, { fontSize: "small" }),
+        dense: true,
+        title: scenario.name,
+        onClick: onDetails
+      }
+    );
+  };
+
+  // src/Components/TextFields/BaseTextField.tsx
+  var import_jsx_runtime108 = __toESM(require_jsx_runtime());
+  var BaseTextField = (props) => {
+    const { value, onChange, label, placeholder, sx, endAdornment, startAdornment } = props;
+    const onInternalChange = (event) => {
+      onChange(event.target.value);
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime108.jsxs)(FormControl_default, { sx, size: "small", variant: "outlined", fullWidth: true, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime108.jsx)(InputLabel_default, { children: label }),
+      /* @__PURE__ */ (0, import_jsx_runtime108.jsx)(
+        OutlinedInput_default,
+        {
+          endAdornment,
+          startAdornment,
+          value,
+          label,
+          onChange: onInternalChange,
+          placeholder
+        }
+      )
+    ] });
+  };
+
+  // node_modules/@mui/icons-material/esm/Search.js
+  var import_jsx_runtime109 = __toESM(require_jsx_runtime());
+  var Search_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime109.jsx)("path", {
+    d: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"
+  }), "Search");
+
+  // src/Components/TextFields/SearchTextField.tsx
+  var import_jsx_runtime110 = __toESM(require_jsx_runtime());
+  var SearchTextField = (props) => {
+    const { sx, search, setSearch, placeholder } = props;
+    const onClear = () => setSearch("");
+    return /* @__PURE__ */ (0, import_jsx_runtime110.jsx)(
+      BaseTextField,
+      {
+        sx,
+        value: search,
+        label: "Search",
+        onChange: setSearch,
+        placeholder,
+        endAdornment: search.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime110.jsx)(InputAdornment_default, { position: "end", children: /* @__PURE__ */ (0, import_jsx_runtime110.jsx)(IconButton_default, { size: "small", edge: "end", onClick: onClear, children: /* @__PURE__ */ (0, import_jsx_runtime110.jsx)(Close_default, { fontSize: "small" }) }) }),
+        startAdornment: /* @__PURE__ */ (0, import_jsx_runtime110.jsx)(InputAdornment_default, { position: "start", children: /* @__PURE__ */ (0, import_jsx_runtime110.jsx)(Search_default, { fontSize: "small" }) })
+      }
+    );
+  };
+
   // node_modules/@mui/icons-material/esm/FolderOpenOutlined.js
-  var import_jsx_runtime99 = __toESM(require_jsx_runtime());
-  var FolderOpenOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime99.jsx)("path", {
+  var import_jsx_runtime111 = __toESM(require_jsx_runtime());
+  var FolderOpenOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime111.jsx)("path", {
     d: "M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2m0 12H4V8h16z"
   }), "FolderOpenOutlined");
 
   // src/Components/Views/EmptyView.tsx
-  var import_jsx_runtime100 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime112 = __toESM(require_jsx_runtime());
   var EmptyView = ({ title, description, containerSx }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime112.jsxs)(
       Box_default,
       {
         sx: __spreadValues({
@@ -42356,16 +42505,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           alignItems: "center"
         }, containerSx),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(FolderOpenOutlined_default, { fontSize: "large" }),
-          /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(Typography_default, { sx: { mt: 2 }, variant: "h6", children: title }),
-          /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(Typography_default, { children: description })
+          /* @__PURE__ */ (0, import_jsx_runtime112.jsx)(FolderOpenOutlined_default, { fontSize: "large" }),
+          /* @__PURE__ */ (0, import_jsx_runtime112.jsx)(Typography_default, { sx: { mt: 2 }, variant: "h6", children: title }),
+          /* @__PURE__ */ (0, import_jsx_runtime112.jsx)(Typography_default, { children: description })
         ]
       }
     );
   };
 
   // src/Components/Charts/Coverage/History/ScenarioHistoryChartView.tsx
-  var import_react28 = __toESM(require_react());
+  var import_react30 = __toESM(require_react());
 
   // node_modules/@mui/x-charts/BarChart/BarPlot.js
   var React142 = __toESM(require_react());
@@ -42529,14 +42678,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@react-spring/shared/dist/react-spring_shared.modern.mjs
-  var import_react13 = __toESM(require_react(), 1);
-  var import_react14 = __toESM(require_react(), 1);
   var import_react15 = __toESM(require_react(), 1);
   var import_react16 = __toESM(require_react(), 1);
   var import_react17 = __toESM(require_react(), 1);
   var import_react18 = __toESM(require_react(), 1);
   var import_react19 = __toESM(require_react(), 1);
   var import_react20 = __toESM(require_react(), 1);
+  var import_react21 = __toESM(require_react(), 1);
+  var import_react22 = __toESM(require_react(), 1);
   var __defProp2 = Object.defineProperty;
   var __export = (target, all) => {
     for (var name in all)
@@ -43297,9 +43446,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return is.str(value) && (value[0] == "#" || /\d/.test(value) || // Do not identify a CSS variable as an AnimatedString if its SSR
     !isSSR() && cssVariableRegex.test(value) || value in (colors || {}));
   }
-  var useIsomorphicLayoutEffect = isSSR() ? import_react16.useEffect : import_react16.useLayoutEffect;
+  var useIsomorphicLayoutEffect = isSSR() ? import_react18.useEffect : import_react18.useLayoutEffect;
   var useIsMounted = () => {
-    const isMounted = (0, import_react15.useRef)(false);
+    const isMounted = (0, import_react17.useRef)(false);
     useIsomorphicLayoutEffect(() => {
       isMounted.current = true;
       return () => {
@@ -43309,7 +43458,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return isMounted;
   };
   function useForceUpdate() {
-    const update3 = (0, import_react14.useState)()[1];
+    const update3 = (0, import_react16.useState)()[1];
     const isMounted = useIsMounted();
     return () => {
       if (isMounted.current) {
@@ -43318,13 +43467,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     };
   }
   function useMemoOne(getResult, inputs) {
-    const [initial] = (0, import_react17.useState)(
+    const [initial] = (0, import_react19.useState)(
       () => ({
         inputs,
         result: getResult()
       })
     );
-    const committed = (0, import_react17.useRef)();
+    const committed = (0, import_react19.useRef)();
     const prevCache = committed.current;
     let cache = prevCache;
     if (cache) {
@@ -43340,7 +43489,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     } else {
       cache = initial;
     }
-    (0, import_react17.useEffect)(() => {
+    (0, import_react19.useEffect)(() => {
       committed.current = cache;
       if (prevCache == initial) {
         initial.inputs = initial.result = void 0;
@@ -43359,22 +43508,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     return true;
   }
-  var useOnce = (effect4) => (0, import_react18.useEffect)(effect4, emptyDeps);
+  var useOnce = (effect4) => (0, import_react20.useEffect)(effect4, emptyDeps);
   var emptyDeps = [];
   function usePrev(value) {
-    const prevRef = (0, import_react19.useRef)();
-    (0, import_react19.useEffect)(() => {
+    const prevRef = (0, import_react21.useRef)();
+    (0, import_react21.useEffect)(() => {
       prevRef.current = value;
     });
     return prevRef.current;
   }
 
   // node_modules/@react-spring/core/dist/react-spring_core.modern.mjs
-  var import_react22 = __toESM(require_react(), 1);
+  var import_react24 = __toESM(require_react(), 1);
 
   // node_modules/@react-spring/animated/dist/react-spring_animated.modern.mjs
   var React105 = __toESM(require_react(), 1);
-  var import_react21 = __toESM(require_react(), 1);
+  var import_react23 = __toESM(require_react(), 1);
   var $node = Symbol.for("Animated:node");
   var isAnimated = (value) => !!value && value[$node] === value;
   var getAnimated = (owner) => owner && owner[$node];
@@ -43561,10 +43710,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       // re-rendered on every animation frame.
       !is.fun(Component) || Component.prototype && Component.prototype.isReactComponent
     );
-    return (0, import_react21.forwardRef)((givenProps, givenRef) => {
-      const instanceRef = (0, import_react21.useRef)(null);
+    return (0, import_react23.forwardRef)((givenProps, givenRef) => {
+      const instanceRef = (0, import_react23.useRef)(null);
       const ref = hasInstance && // eslint-disable-next-line react-hooks/rules-of-hooks
-      (0, import_react21.useCallback)(
+      (0, import_react23.useCallback)(
         (value) => {
           instanceRef.current = updateRef(givenRef, value);
         },
@@ -43583,7 +43732,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }
       };
       const observer = new PropsObserver(callback, deps);
-      const observerRef = (0, import_react21.useRef)();
+      const observerRef = (0, import_react23.useRef)();
       useIsomorphicLayoutEffect(() => {
         observerRef.current = observer;
         each(deps, (dep) => addFluidObserver(dep, observer));
@@ -43597,7 +43746,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }
         };
       });
-      (0, import_react21.useEffect)(callback, []);
+      (0, import_react23.useEffect)(callback, []);
       useOnce(() => () => {
         const observer2 = observerRef.current;
         each(observer2.deps, (dep) => removeFluidObserver(dep, observer2));
@@ -43672,11 +43821,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@react-spring/core/dist/react-spring_core.modern.mjs
   var React106 = __toESM(require_react(), 1);
-  var import_react23 = __toESM(require_react(), 1);
-  var import_react24 = __toESM(require_react(), 1);
-  var React210 = __toESM(require_react(), 1);
   var import_react25 = __toESM(require_react(), 1);
   var import_react26 = __toESM(require_react(), 1);
+  var React210 = __toESM(require_react(), 1);
+  var import_react27 = __toESM(require_react(), 1);
+  var import_react28 = __toESM(require_react(), 1);
   function callProp(value, ...args) {
     return is.fun(value) ? value(...args) : value;
   }
@@ -45138,7 +45287,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     } = _b, props = __objRest(_b, [
       "children"
     ]);
-    const inherited = (0, import_react23.useContext)(ctx);
+    const inherited = (0, import_react25.useContext)(ctx);
     const pause = props.pause || !!inherited.pause, immediate = props.immediate || !!inherited.immediate;
     props = useMemoOne(() => ({ pause, immediate }), [pause, immediate]);
     const { Provider } = ctx;
@@ -45237,13 +45386,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       ref: propsRef,
       config: propsConfig
     } = propsFn ? propsFn() : props;
-    const ref = (0, import_react25.useMemo)(
+    const ref = (0, import_react27.useMemo)(
       () => propsFn || arguments.length == 3 ? SpringRef() : void 0,
       []
     );
     const items = toArray(data);
     const transitions = [];
-    const usedTransitions = (0, import_react25.useRef)(null);
+    const usedTransitions = (0, import_react27.useRef)(null);
     const prevTransitions = reset ? null : usedTransitions.current;
     useIsomorphicLayoutEffect(() => {
       usedTransitions.current = transitions;
@@ -45314,8 +45463,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const forceUpdate = useForceUpdate();
     const defaultProps4 = getDefaultProps(props);
     const changes = /* @__PURE__ */ new Map();
-    const exitingTransitions = (0, import_react25.useRef)(/* @__PURE__ */ new Map());
-    const forceChange = (0, import_react25.useRef)(false);
+    const exitingTransitions = (0, import_react27.useRef)(/* @__PURE__ */ new Map());
+    const forceChange = (0, import_react27.useRef)(false);
     each(transitions, (t, i) => {
       const key = t.key;
       const prevPhase = t.phase;
@@ -45402,7 +45551,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         changes.set(t, { phase, springs, payload });
       }
     });
-    const context = (0, import_react25.useContext)(SpringContext);
+    const context = (0, import_react27.useContext)(SpringContext);
     const prevContext = usePrev(context);
     const hasContext = context !== prevContext && hasProps(context);
     useIsomorphicLayoutEffect(() => {
@@ -48759,7 +48908,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var useChartDimensions_default = useChartDimensions;
 
   // node_modules/@mui/x-charts/context/DrawingProvider.js
-  var import_jsx_runtime101 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime113 = __toESM(require_jsx_runtime());
   var DrawingContext = /* @__PURE__ */ React110.createContext({
     top: 0,
     left: 0,
@@ -48818,9 +48967,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       isInitialized: true,
       data: svgRef
     }), [svgRef]);
-    return /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(SvgContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime113.jsx)(SvgContext.Provider, {
       value: refValue,
-      children: /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(DrawingContext.Provider, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime113.jsx)(DrawingContext.Provider, {
         value,
         children
       })
@@ -49892,7 +50041,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/context/PluginProvider/PluginProvider.js
-  var import_jsx_runtime102 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime114 = __toESM(require_jsx_runtime());
   function PluginProvider(props) {
     const {
       children,
@@ -49902,7 +50051,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       isInitialized: true,
       data: mergePlugins(plugins)
     }), [plugins]);
-    return /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(PluginContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime114.jsx)(PluginContext.Provider, {
       value: formattedSeries,
       children
     });
@@ -49973,7 +50122,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/context/SeriesProvider/SeriesProvider.js
-  var import_jsx_runtime103 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime115 = __toESM(require_jsx_runtime());
   function SeriesProvider(props) {
     const {
       series,
@@ -49992,7 +50141,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         dataset
       })
     }), [series, colors3, theme.palette.mode, seriesFormatters, dataset]);
-    return /* @__PURE__ */ (0, import_jsx_runtime103.jsx)(SeriesContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime115.jsx)(SeriesContext.Provider, {
       value: formattedSeries,
       children
     });
@@ -50030,7 +50179,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/context/CartesianProvider/CartesianProvider.js
-  var import_jsx_runtime104 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime116 = __toESM(require_jsx_runtime());
   function CartesianProvider(props) {
     const {
       xAxis,
@@ -50064,7 +50213,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         yAxisIds: yValues.axisIds
       }
     }), [xValues, yValues]);
-    return /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(CartesianContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime116.jsx)(CartesianContext.Provider, {
       value,
       children
     });
@@ -50323,7 +50472,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@mui/x-charts/context/InteractionProvider.js
   var React125 = __toESM(require_react());
-  var import_jsx_runtime105 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime117 = __toESM(require_jsx_runtime());
   var InteractionContext = /* @__PURE__ */ React125.createContext({
     item: null,
     axis: {
@@ -50390,7 +50539,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const value = React125.useMemo(() => _extends({}, data, {
       dispatch
     }), [data]);
-    return /* @__PURE__ */ (0, import_jsx_runtime105.jsx)(InteractionContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime117.jsx)(InteractionContext.Provider, {
       value,
       children
     });
@@ -50482,7 +50631,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/x-charts/context/HighlightedProvider/HighlightedProvider.js
-  var import_jsx_runtime106 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime118 = __toESM(require_jsx_runtime());
   var _excluded = ["highlighted", "faded"];
   var mergeDeprecatedOptions = (options) => {
     const _ref = options != null ? options : {}, {
@@ -50539,7 +50688,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }
       };
     }, [highlightedItem, highlightScope, setHighlightedItem, onHighlightChange]);
-    return /* @__PURE__ */ (0, import_jsx_runtime106.jsx)(HighlightedContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime118.jsx)(HighlightedContext.Provider, {
       value: providerValue,
       children
     });
@@ -50597,7 +50746,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@mui/x-charts/context/ZAxisContextProvider.js
   var React130 = __toESM(require_react());
-  var import_jsx_runtime107 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime119 = __toESM(require_jsx_runtime());
   var ZAxisContext = /* @__PURE__ */ React130.createContext({
     zAxis: {},
     zAxisIds: []
@@ -50646,7 +50795,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }) => id)
       };
     }, [zAxis]);
-    return /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(ZAxisContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(ZAxisContext.Provider, {
       value,
       children
     });
@@ -50736,7 +50885,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/x-charts/BarChart/BarElement.js
-  var import_jsx_runtime108 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime120 = __toESM(require_jsx_runtime());
   var _excluded2 = ["id", "dataIndex", "classes", "color", "slots", "slotProps", "style", "onClick"];
   function getBarElementUtilityClass(slot) {
     return generateUtilityClass2("MuiBarElement", slot);
@@ -50810,7 +50959,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       className: classes.root,
       ownerState
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime108.jsx)(Bar, _extends({}, barProps));
+    return /* @__PURE__ */ (0, import_jsx_runtime120.jsx)(Bar, _extends({}, barProps));
   }
   false ? BarElement.propTypes = {
     // ----------------------------- Warning --------------------------------
@@ -50895,13 +51044,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/x-charts/BarChart/BarClipPath.js
-  var import_jsx_runtime109 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime121 = __toESM(require_jsx_runtime());
   var _excluded3 = ["style", "maskId"];
   var buildInset = (corners) => `inset(0px round ${corners.topLeft}px ${corners.topRight}px ${corners.bottomRight}px ${corners.bottomLeft}px)`;
   function BarClipRect(props) {
     var _a, _b;
     const radiusData = props.ownerState;
-    return /* @__PURE__ */ (0, import_jsx_runtime109.jsx)(animated.rect, {
+    return /* @__PURE__ */ (0, import_jsx_runtime121.jsx)(animated.rect, {
       style: _extends({}, props.style, {
         clipPath: (props.ownerState.layout === "vertical" ? (_a = props.style) == null ? void 0 : _a.height : (_b = props.style) == null ? void 0 : _b.width).to((value) => buildInset({
           topLeft: Math.min(value, getRadius("top-left", radiusData)),
@@ -50920,9 +51069,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (!props.borderRadius || props.borderRadius <= 0) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime109.jsx)("clipPath", {
+    return /* @__PURE__ */ (0, import_jsx_runtime121.jsx)("clipPath", {
       id: maskId,
-      children: /* @__PURE__ */ (0, import_jsx_runtime109.jsx)(BarClipRect, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime121.jsx)(BarClipRect, {
         ownerState: rest,
         style: style4
       })
@@ -50980,7 +51129,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@mui/x-charts/BarChart/BarLabel/BarLabel.js
   var React136 = __toESM(require_react());
-  var import_jsx_runtime110 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime122 = __toESM(require_jsx_runtime());
   var _excluded4 = ["seriesId", "dataIndex", "color", "isFaded", "isHighlighted", "classes"];
   var BarLabelComponent = styled_default2(animated.text, {
     name: "MuiBarLabel",
@@ -51013,7 +51162,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       name: "MuiBarLabel"
     });
     const otherProps = _objectWithoutPropertiesLoose(props, _excluded4);
-    return /* @__PURE__ */ (0, import_jsx_runtime110.jsx)(BarLabelComponent, _extends({}, otherProps));
+    return /* @__PURE__ */ (0, import_jsx_runtime122.jsx)(BarLabelComponent, _extends({}, otherProps));
   }
   false ? BarLabel.propTypes = {
     // ----------------------------- Warning --------------------------------
@@ -51028,7 +51177,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/BarChart/BarLabel/BarLabelItem.js
-  var import_jsx_runtime111 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime123 = __toESM(require_jsx_runtime());
   var _excluded5 = ["seriesId", "classes", "color", "style", "dataIndex", "barLabel", "slots", "slotProps", "height", "width", "value"];
   var _excluded22 = ["ownerState"];
   function BarLabelItem(props) {
@@ -51088,7 +51237,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (!formattedLabelText) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime111.jsx)(Component, _extends({}, barLabelProps, barLabelOwnerState, {
+    return /* @__PURE__ */ (0, import_jsx_runtime123.jsx)(Component, _extends({}, barLabelProps, barLabelOwnerState, {
       children: formattedLabelText
     }));
   }
@@ -51134,7 +51283,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/BarChart/BarLabel/BarLabelPlot.js
-  var import_jsx_runtime112 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime124 = __toESM(require_jsx_runtime());
   var _excluded6 = ["bars", "skipAnimation"];
   var leaveStyle = ({
     layout,
@@ -51179,7 +51328,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       update: enterStyle,
       immediate: skipAnimation2
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime112.jsx)(React138.Fragment, {
+    return /* @__PURE__ */ (0, import_jsx_runtime124.jsx)(React138.Fragment, {
       children: barLabelTransition((style4, {
         seriesId,
         dataIndex,
@@ -51187,7 +51336,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         value,
         width: width2,
         height: height2
-      }) => /* @__PURE__ */ (0, import_jsx_runtime112.jsx)(BarLabelItem, _extends({
+      }) => /* @__PURE__ */ (0, import_jsx_runtime124.jsx)(BarLabelItem, _extends({
         seriesId,
         dataIndex,
         value,
@@ -51241,7 +51390,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@mui/x-charts/context/AnimationProvider/AnimationProvider.js
   var React140 = __toESM(require_react());
-  var import_jsx_runtime113 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime125 = __toESM(require_jsx_runtime());
   function AnimationProvider(props) {
     const {
       children,
@@ -51277,7 +51426,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         skipAnimation: inSkipAnimation || skipAnimation2
       }
     }), [skipAnimation2, inSkipAnimation]);
-    return /* @__PURE__ */ (0, import_jsx_runtime113.jsx)(AnimationContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime125.jsx)(AnimationContext.Provider, {
       value,
       children
     });
@@ -51297,7 +51446,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/BarChart/BarPlot.js
-  var import_jsx_runtime114 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime126 = __toESM(require_jsx_runtime());
   var _excluded7 = ["skipAnimation", "onItemClick", "borderRadius", "barLabel"];
   function getBandSize({
     bandWidth: W,
@@ -51476,14 +51625,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       update: enterStyle2,
       immediate: skipAnimation2
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime114.jsxs)(React142.Fragment, {
+    return /* @__PURE__ */ (0, import_jsx_runtime126.jsxs)(React142.Fragment, {
       children: [!withoutBorderRadius && maskTransition((style4, {
         id,
         hasPositive,
         hasNegative,
         layout
       }) => {
-        return /* @__PURE__ */ (0, import_jsx_runtime114.jsx)(BarClipPath, {
+        return /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(BarClipPath, {
           maskId: id,
           borderRadius: borderRadius2,
           hasNegative,
@@ -51497,7 +51646,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         color: color3,
         maskId
       }) => {
-        const barElement = /* @__PURE__ */ (0, import_jsx_runtime114.jsx)(BarElement, _extends({
+        const barElement = /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(BarElement, _extends({
           id: seriesId,
           dataIndex,
           color: color3
@@ -51514,11 +51663,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         if (withoutBorderRadius) {
           return barElement;
         }
-        return /* @__PURE__ */ (0, import_jsx_runtime114.jsx)("g", {
+        return /* @__PURE__ */ (0, import_jsx_runtime126.jsx)("g", {
           clipPath: `url(#${maskId})`,
           children: barElement
         });
-      }), barLabel && /* @__PURE__ */ (0, import_jsx_runtime114.jsx)(BarLabelPlot, _extends({
+      }), barLabel && /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(BarLabelPlot, _extends({
         bars: completedData,
         skipAnimation: skipAnimation2,
         barLabel
@@ -51726,7 +51875,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/x-charts/ChartsSurface/ChartsSurface.js
-  var import_jsx_runtime115 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime127 = __toESM(require_jsx_runtime());
   var _excluded8 = ["children", "width", "height", "viewBox", "disableAxisListener", "className", "title", "desc"];
   var ChartChartsSurfaceStyles = styled_default2("svg", {
     name: "MuiChartsSurface",
@@ -51758,16 +51907,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       y: 0
     }, viewBox);
     useAxisEvents(disableAxisListener);
-    return /* @__PURE__ */ (0, import_jsx_runtime115.jsxs)(ChartChartsSurfaceStyles, _extends({
+    return /* @__PURE__ */ (0, import_jsx_runtime127.jsxs)(ChartChartsSurfaceStyles, _extends({
       width: width2,
       height: height2,
       viewBox: `${svgView.x} ${svgView.y} ${svgView.width} ${svgView.height}`,
       ref,
       className
     }, other, {
-      children: [/* @__PURE__ */ (0, import_jsx_runtime115.jsx)("title", {
+      children: [/* @__PURE__ */ (0, import_jsx_runtime127.jsx)("title", {
         children: title
-      }), /* @__PURE__ */ (0, import_jsx_runtime115.jsx)("desc", {
+      }), /* @__PURE__ */ (0, import_jsx_runtime127.jsx)("desc", {
         children: desc
       }), children]
     }));
@@ -51809,7 +51958,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@mui/x-charts/internals/components/ChartsAxesGradients/ChartsPiecewiseGradient.js
   var React145 = __toESM(require_react());
-  var import_jsx_runtime116 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime128 = __toESM(require_jsx_runtime());
   function ChartsPiecewiseGradient(props) {
     const {
       isReversed,
@@ -51822,7 +51971,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (size <= 0) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime116.jsx)("linearGradient", {
+    return /* @__PURE__ */ (0, import_jsx_runtime128.jsx)("linearGradient", {
       id: gradientId,
       x1: "0",
       x2: "0",
@@ -51836,12 +51985,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           return null;
         }
         const offset2 = isReversed ? 1 - x / size : x / size;
-        return /* @__PURE__ */ (0, import_jsx_runtime116.jsxs)(React145.Fragment, {
-          children: [/* @__PURE__ */ (0, import_jsx_runtime116.jsx)("stop", {
+        return /* @__PURE__ */ (0, import_jsx_runtime128.jsxs)(React145.Fragment, {
+          children: [/* @__PURE__ */ (0, import_jsx_runtime128.jsx)("stop", {
             offset: offset2,
             stopColor: colorMap.colors[index],
             stopOpacity: 1
-          }), /* @__PURE__ */ (0, import_jsx_runtime116.jsx)("stop", {
+          }), /* @__PURE__ */ (0, import_jsx_runtime128.jsx)("stop", {
             offset: offset2,
             stopColor: colorMap.colors[index + 1],
             stopOpacity: 1
@@ -51853,7 +52002,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@mui/x-charts/internals/components/ChartsAxesGradients/ChartsContinuousGradient.js
   var React146 = __toESM(require_react());
-  var import_jsx_runtime117 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime129 = __toESM(require_jsx_runtime());
   var PX_PRECISION = 10;
   function ChartsContinuousGradient(props) {
     var _a, _b;
@@ -51875,7 +52024,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const interpolator = typeof extremValues[0] === "number" ? number_default(extremValues[0], extremValues[1]) : date_default(extremValues[0], extremValues[1]);
     const numberOfPoints = Math.round((Math.max(...extremPositions) - Math.min(...extremPositions)) / PX_PRECISION);
     const keyPrefix = `${extremValues[0]}-${extremValues[1]}-`;
-    return /* @__PURE__ */ (0, import_jsx_runtime117.jsx)("linearGradient", {
+    return /* @__PURE__ */ (0, import_jsx_runtime129.jsx)("linearGradient", {
       id: gradientId,
       x1: "0",
       x2: "0",
@@ -51899,7 +52048,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         if (color3 === null) {
           return null;
         }
-        return /* @__PURE__ */ (0, import_jsx_runtime117.jsx)("stop", {
+        return /* @__PURE__ */ (0, import_jsx_runtime129.jsx)("stop", {
           offset: offset2,
           stopColor: color3,
           stopOpacity: 1
@@ -51909,7 +52058,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/internals/components/ChartsAxesGradients/ChartsAxesGradients.js
-  var import_jsx_runtime118 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime130 = __toESM(require_jsx_runtime());
   function useChartGradient() {
     const {
       chartId
@@ -51934,7 +52083,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       yAxisIds,
       yAxis
     } = useCartesianContext();
-    return /* @__PURE__ */ (0, import_jsx_runtime118.jsxs)("defs", {
+    return /* @__PURE__ */ (0, import_jsx_runtime130.jsxs)("defs", {
       children: [yAxisIds.filter((axisId) => yAxis[axisId].colorMap !== void 0).map((axisId) => {
         const gradientId = getGradientId(axisId, "y");
         const {
@@ -51944,7 +52093,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           reverse
         } = yAxis[axisId];
         if ((colorMap == null ? void 0 : colorMap.type) === "piecewise") {
-          return /* @__PURE__ */ (0, import_jsx_runtime118.jsx)(ChartsPiecewiseGradient, {
+          return /* @__PURE__ */ (0, import_jsx_runtime130.jsx)(ChartsPiecewiseGradient, {
             isReversed: !reverse,
             scale,
             colorMap,
@@ -51954,7 +52103,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }, gradientId);
         }
         if ((colorMap == null ? void 0 : colorMap.type) === "continuous") {
-          return /* @__PURE__ */ (0, import_jsx_runtime118.jsx)(ChartsContinuousGradient, {
+          return /* @__PURE__ */ (0, import_jsx_runtime130.jsx)(ChartsContinuousGradient, {
             isReversed: !reverse,
             scale,
             colorScale,
@@ -51974,7 +52123,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           colorScale
         } = xAxis[axisId];
         if ((colorMap == null ? void 0 : colorMap.type) === "piecewise") {
-          return /* @__PURE__ */ (0, import_jsx_runtime118.jsx)(ChartsPiecewiseGradient, {
+          return /* @__PURE__ */ (0, import_jsx_runtime130.jsx)(ChartsPiecewiseGradient, {
             isReversed: reverse,
             scale,
             colorMap,
@@ -51984,7 +52133,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           }, gradientId);
         }
         if ((colorMap == null ? void 0 : colorMap.type) === "continuous") {
-          return /* @__PURE__ */ (0, import_jsx_runtime118.jsx)(ChartsContinuousGradient, {
+          return /* @__PURE__ */ (0, import_jsx_runtime130.jsx)(ChartsContinuousGradient, {
             isReversed: reverse,
             scale,
             colorScale,
@@ -52114,7 +52263,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/x-charts/ChartContainer/ChartContainer.js
-  var import_jsx_runtime119 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime131 = __toESM(require_jsx_runtime());
   var ChartContainer = /* @__PURE__ */ React150.forwardRef(function ChartContainer2(props, ref) {
     const {
       children,
@@ -52127,15 +52276,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       pluginProviderProps,
       animationProviderProps
     } = useChartContainerProps(props, ref);
-    return /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(DrawingProvider, _extends({}, drawingProviderProps, {
-      children: /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(PluginProvider, _extends({}, pluginProviderProps, {
-        children: /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(SeriesProvider, _extends({}, seriesProviderProps, {
-          children: /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(CartesianProvider, _extends({}, cartesianProviderProps, {
-            children: /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(ZAxisContextProvider, _extends({}, zAxisContextProps, {
-              children: /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(InteractionProvider, {
-                children: /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(HighlightedProvider, _extends({}, highlightedProviderProps, {
-                  children: /* @__PURE__ */ (0, import_jsx_runtime119.jsxs)(ChartsSurface, _extends({}, chartsSurfaceProps, {
-                    children: [/* @__PURE__ */ (0, import_jsx_runtime119.jsx)(ChartsAxesGradients, {}), /* @__PURE__ */ (0, import_jsx_runtime119.jsx)(AnimationProvider, _extends({}, animationProviderProps, {
+    return /* @__PURE__ */ (0, import_jsx_runtime131.jsx)(DrawingProvider, _extends({}, drawingProviderProps, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime131.jsx)(PluginProvider, _extends({}, pluginProviderProps, {
+        children: /* @__PURE__ */ (0, import_jsx_runtime131.jsx)(SeriesProvider, _extends({}, seriesProviderProps, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime131.jsx)(CartesianProvider, _extends({}, cartesianProviderProps, {
+            children: /* @__PURE__ */ (0, import_jsx_runtime131.jsx)(ZAxisContextProvider, _extends({}, zAxisContextProps, {
+              children: /* @__PURE__ */ (0, import_jsx_runtime131.jsx)(InteractionProvider, {
+                children: /* @__PURE__ */ (0, import_jsx_runtime131.jsx)(HighlightedProvider, _extends({}, highlightedProviderProps, {
+                  children: /* @__PURE__ */ (0, import_jsx_runtime131.jsxs)(ChartsSurface, _extends({}, chartsSurfaceProps, {
+                    children: [/* @__PURE__ */ (0, import_jsx_runtime131.jsx)(ChartsAxesGradients, {}), /* @__PURE__ */ (0, import_jsx_runtime131.jsx)(AnimationProvider, _extends({}, animationProviderProps, {
                       children
                     }))]
                   }))
@@ -52559,15 +52708,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/x-charts/ResponsiveChartContainer/ResponsiveChartContainer.js
-  var import_jsx_runtime120 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime132 = __toESM(require_jsx_runtime());
   var ResponsiveChartContainer = /* @__PURE__ */ React153.forwardRef(function ResponsiveChartContainer2(props, ref) {
     const {
       hasIntrinsicSize,
       chartContainerProps,
       resizableChartContainerProps
     } = useResponsiveChartContainerProps(props, ref);
-    return /* @__PURE__ */ (0, import_jsx_runtime120.jsx)(ResizableContainer, _extends({}, resizableChartContainerProps, {
-      children: hasIntrinsicSize ? /* @__PURE__ */ (0, import_jsx_runtime120.jsx)(ChartContainer, _extends({}, chartContainerProps)) : null
+    return /* @__PURE__ */ (0, import_jsx_runtime132.jsx)(ResizableContainer, _extends({}, resizableChartContainerProps, {
+      children: hasIntrinsicSize ? /* @__PURE__ */ (0, import_jsx_runtime132.jsx)(ChartContainer, _extends({}, chartContainerProps)) : null
     }));
   });
   false ? ResponsiveChartContainer.propTypes = {
@@ -52939,7 +53088,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/ChartsText/ChartsText.js
-  var import_jsx_runtime121 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime133 = __toESM(require_jsx_runtime());
   var _excluded11 = ["x", "y", "style", "text", "ownerState"];
   var _excluded23 = ["angle", "textAnchor", "dominantBaseline"];
   function ChartsText(props) {
@@ -52975,14 +53124,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (angle) {
       transforms.push(`rotate(${angle}, ${x}, ${y})`);
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime121.jsx)("text", _extends({}, textProps, {
+    return /* @__PURE__ */ (0, import_jsx_runtime133.jsx)("text", _extends({}, textProps, {
       transform: transforms.length > 0 ? transforms.join(" ") : void 0,
       x,
       y,
       textAnchor,
       dominantBaseline,
       style: style4,
-      children: wordsByLines.map((line2, index) => /* @__PURE__ */ (0, import_jsx_runtime121.jsx)("tspan", {
+      children: wordsByLines.map((line2, index) => /* @__PURE__ */ (0, import_jsx_runtime133.jsx)("tspan", {
         x,
         dy: `${index === 0 ? startDy : wordsByLines[0].height}px`,
         dominantBaseline,
@@ -53056,7 +53205,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/ChartsXAxis/ChartsXAxis.js
-  var import_jsx_runtime122 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime134 = __toESM(require_jsx_runtime());
   var _excluded12 = ["scale", "tickNumber", "reverse"];
   var useUtilityClasses41 = (ownerState) => {
     const {
@@ -53236,11 +53385,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (ordinalAxis && domain.length === 0 || !ordinalAxis && domain.some(isInfinity)) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime122.jsxs)(XAxisRoot, {
+    return /* @__PURE__ */ (0, import_jsx_runtime134.jsxs)(XAxisRoot, {
       transform: `translate(0, ${position2 === "bottom" ? top2 + height2 : top2})`,
       className: classes.root,
       sx,
-      children: [!disableLine && /* @__PURE__ */ (0, import_jsx_runtime122.jsx)(Line, _extends({
+      children: [!disableLine && /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(Line, _extends({
         x1: left2,
         x2: left2 + width2,
         className: classes.line
@@ -53264,22 +53413,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }, {
           direction: "x"
         });
-        return /* @__PURE__ */ (0, import_jsx_runtime122.jsxs)("g", {
+        return /* @__PURE__ */ (0, import_jsx_runtime134.jsxs)("g", {
           transform: `translate(${offset2}, 0)`,
           className: classes.tickContainer,
-          children: [!disableTicks && showTick && /* @__PURE__ */ (0, import_jsx_runtime122.jsx)(Tick, _extends({
+          children: [!disableTicks && showTick && /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(Tick, _extends({
             y2: positionSign * tickSize,
             className: classes.tick
-          }, slotProps == null ? void 0 : slotProps.axisTick)), formattedValue !== void 0 && !skipLabel && showTickLabel && /* @__PURE__ */ (0, import_jsx_runtime122.jsx)(TickLabel, _extends({
+          }, slotProps == null ? void 0 : slotProps.axisTick)), formattedValue !== void 0 && !skipLabel && showTickLabel && /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(TickLabel, _extends({
             x: xTickLabel,
             y: yTickLabel
           }, axisTickLabelProps, {
             text: formattedValue.toString()
           }))]
         }, index);
-      }), label && /* @__PURE__ */ (0, import_jsx_runtime122.jsx)("g", {
+      }), label && /* @__PURE__ */ (0, import_jsx_runtime134.jsx)("g", {
         className: classes.label,
-        children: /* @__PURE__ */ (0, import_jsx_runtime122.jsx)(Label, _extends({}, labelRefPoint, axisLabelProps, {
+        children: /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(Label, _extends({}, labelRefPoint, axisLabelProps, {
           text: label
         }))
       })]
@@ -53413,7 +53562,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@mui/x-charts/ChartsYAxis/ChartsYAxis.js
   var React157 = __toESM(require_react());
-  var import_jsx_runtime123 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime135 = __toESM(require_jsx_runtime());
   var _excluded13 = ["scale", "tickNumber"];
   var useUtilityClasses42 = (ownerState) => {
     const {
@@ -53547,11 +53696,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (ordinalAxis && domain.length === 0 || !ordinalAxis && domain.some(isInfinity)) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime123.jsxs)(YAxisRoot, {
+    return /* @__PURE__ */ (0, import_jsx_runtime135.jsxs)(YAxisRoot, {
       transform: `translate(${position2 === "right" ? left2 + width2 : left2}, 0)`,
       className: classes.root,
       sx,
-      children: [!disableLine && /* @__PURE__ */ (0, import_jsx_runtime123.jsx)(Line, _extends({
+      children: [!disableLine && /* @__PURE__ */ (0, import_jsx_runtime135.jsx)(Line, _extends({
         y1: top2,
         y2: top2 + height2,
         className: classes.line
@@ -53573,21 +53722,21 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         if (!showLabel) {
           return null;
         }
-        return /* @__PURE__ */ (0, import_jsx_runtime123.jsxs)("g", {
+        return /* @__PURE__ */ (0, import_jsx_runtime135.jsxs)("g", {
           transform: `translate(0, ${offset2})`,
           className: classes.tickContainer,
-          children: [!disableTicks && /* @__PURE__ */ (0, import_jsx_runtime123.jsx)(Tick, _extends({
+          children: [!disableTicks && /* @__PURE__ */ (0, import_jsx_runtime135.jsx)(Tick, _extends({
             x2: positionSign * tickSize,
             className: classes.tick
-          }, slotProps == null ? void 0 : slotProps.axisTick)), formattedValue !== void 0 && !skipLabel && /* @__PURE__ */ (0, import_jsx_runtime123.jsx)(TickLabel, _extends({
+          }, slotProps == null ? void 0 : slotProps.axisTick)), formattedValue !== void 0 && !skipLabel && /* @__PURE__ */ (0, import_jsx_runtime135.jsx)(TickLabel, _extends({
             x: xTickLabel,
             y: yTickLabel,
             text: formattedValue.toString()
           }, axisTickLabelProps))]
         }, index);
-      }), label && /* @__PURE__ */ (0, import_jsx_runtime123.jsx)("g", {
+      }), label && /* @__PURE__ */ (0, import_jsx_runtime135.jsx)("g", {
         className: classes.label,
-        children: /* @__PURE__ */ (0, import_jsx_runtime123.jsx)(Label, _extends({}, labelRefPoint, axisLabelProps, {
+        children: /* @__PURE__ */ (0, import_jsx_runtime135.jsx)(Label, _extends({}, labelRefPoint, axisLabelProps, {
           text: label
         }))
       })]
@@ -53903,7 +54052,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }));
 
   // node_modules/@mui/x-charts/ChartsTooltip/DefaultChartsItemTooltipContent.js
-  var import_jsx_runtime124 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime136 = __toESM(require_jsx_runtime());
   function DefaultChartsItemTooltipContent(props) {
     var _a;
     const {
@@ -53932,24 +54081,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const formattedValue = (_a = series.valueFormatter) == null ? void 0 : _a.call(series, value, {
       dataIndex: itemData.dataIndex
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime124.jsx)(ChartsTooltipPaper, {
+    return /* @__PURE__ */ (0, import_jsx_runtime136.jsx)(ChartsTooltipPaper, {
       sx,
       className: classes.paper,
-      children: /* @__PURE__ */ (0, import_jsx_runtime124.jsx)(ChartsTooltipTable, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime136.jsx)(ChartsTooltipTable, {
         className: classes.table,
-        children: /* @__PURE__ */ (0, import_jsx_runtime124.jsx)("tbody", {
-          children: /* @__PURE__ */ (0, import_jsx_runtime124.jsxs)(ChartsTooltipRow, {
+        children: /* @__PURE__ */ (0, import_jsx_runtime136.jsx)("tbody", {
+          children: /* @__PURE__ */ (0, import_jsx_runtime136.jsxs)(ChartsTooltipRow, {
             className: classes.row,
-            children: [/* @__PURE__ */ (0, import_jsx_runtime124.jsx)(ChartsTooltipCell, {
+            children: [/* @__PURE__ */ (0, import_jsx_runtime136.jsx)(ChartsTooltipCell, {
               className: clsx_default(classes.markCell, classes.cell),
-              children: /* @__PURE__ */ (0, import_jsx_runtime124.jsx)(ChartsTooltipMark, {
+              children: /* @__PURE__ */ (0, import_jsx_runtime136.jsx)(ChartsTooltipMark, {
                 color: color3,
                 className: classes.mark
               })
-            }), /* @__PURE__ */ (0, import_jsx_runtime124.jsx)(ChartsTooltipCell, {
+            }), /* @__PURE__ */ (0, import_jsx_runtime136.jsx)(ChartsTooltipCell, {
               className: clsx_default(classes.labelCell, classes.cell),
               children: displayedLabel
-            }), /* @__PURE__ */ (0, import_jsx_runtime124.jsx)(ChartsTooltipCell, {
+            }), /* @__PURE__ */ (0, import_jsx_runtime136.jsx)(ChartsTooltipCell, {
               className: clsx_default(classes.valueCell, classes.cell),
               children: formattedValue
             })]
@@ -53989,7 +54138,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/ChartsTooltip/ChartsItemTooltipContent.js
-  var import_jsx_runtime125 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime137 = __toESM(require_jsx_runtime());
   function ChartsItemTooltipContent(props) {
     var _a, _b, _c, _d, _e, _f, _g, _h;
     const {
@@ -54028,7 +54177,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       },
       ownerState: {}
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime125.jsx)(Content, _extends({}, chartTooltipContentProps));
+    return /* @__PURE__ */ (0, import_jsx_runtime137.jsx)(Content, _extends({}, chartTooltipContentProps));
   }
 
   // node_modules/@mui/x-charts/ChartsTooltip/ChartsAxisTooltipContent.js
@@ -54068,7 +54217,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/ChartsTooltip/DefaultChartsAxisTooltipContent.js
-  var import_jsx_runtime126 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime138 = __toESM(require_jsx_runtime());
   function DefaultChartsAxisTooltipContent(props) {
     var _a;
     const {
@@ -54083,23 +54232,23 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       return null;
     }
     const axisFormatter = (_a = axis.valueFormatter) != null ? _a : (v) => axis.scaleType === "utc" ? utcFormatter(v) : v.toLocaleString();
-    return /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(ChartsTooltipPaper, {
+    return /* @__PURE__ */ (0, import_jsx_runtime138.jsx)(ChartsTooltipPaper, {
       sx,
       className: classes.paper,
-      children: /* @__PURE__ */ (0, import_jsx_runtime126.jsxs)(ChartsTooltipTable, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime138.jsxs)(ChartsTooltipTable, {
         className: classes.table,
-        children: [axisValue != null && !axis.hideTooltip && /* @__PURE__ */ (0, import_jsx_runtime126.jsx)("thead", {
-          children: /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(ChartsTooltipRow, {
-            children: /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(ChartsTooltipCell, {
+        children: [axisValue != null && !axis.hideTooltip && /* @__PURE__ */ (0, import_jsx_runtime138.jsx)("thead", {
+          children: /* @__PURE__ */ (0, import_jsx_runtime138.jsx)(ChartsTooltipRow, {
+            children: /* @__PURE__ */ (0, import_jsx_runtime138.jsx)(ChartsTooltipCell, {
               colSpan: 3,
-              children: /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(Typography_default, {
+              children: /* @__PURE__ */ (0, import_jsx_runtime138.jsx)(Typography_default, {
                 children: axisFormatter(axisValue, {
                   location: "tooltip"
                 })
               })
             })
           })
-        }), /* @__PURE__ */ (0, import_jsx_runtime126.jsx)("tbody", {
+        }), /* @__PURE__ */ (0, import_jsx_runtime138.jsx)("tbody", {
           children: series.filter(isCartesianSeries).map(({
             id,
             label,
@@ -54116,22 +54265,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             }
             const formattedLabel = getLabel(label, "tooltip");
             const color3 = getColor5(dataIndex);
-            return /* @__PURE__ */ (0, import_jsx_runtime126.jsxs)(ChartsTooltipRow, {
+            return /* @__PURE__ */ (0, import_jsx_runtime138.jsxs)(ChartsTooltipRow, {
               className: classes.row,
-              children: [/* @__PURE__ */ (0, import_jsx_runtime126.jsx)(ChartsTooltipCell, {
+              children: [/* @__PURE__ */ (0, import_jsx_runtime138.jsx)(ChartsTooltipCell, {
                 className: clsx_default(classes.markCell, classes.cell),
-                children: color3 && /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(ChartsTooltipMark, {
+                children: color3 && /* @__PURE__ */ (0, import_jsx_runtime138.jsx)(ChartsTooltipMark, {
                   color: color3,
                   className: classes.mark
                 })
-              }), /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(ChartsTooltipCell, {
+              }), /* @__PURE__ */ (0, import_jsx_runtime138.jsx)(ChartsTooltipCell, {
                 className: clsx_default(classes.labelCell, classes.cell),
-                children: formattedLabel ? /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(Typography_default, {
+                children: formattedLabel ? /* @__PURE__ */ (0, import_jsx_runtime138.jsx)(Typography_default, {
                   children: formattedLabel
                 }) : null
-              }), /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(ChartsTooltipCell, {
+              }), /* @__PURE__ */ (0, import_jsx_runtime138.jsx)(ChartsTooltipCell, {
                 className: clsx_default(classes.valueCell, classes.cell),
-                children: /* @__PURE__ */ (0, import_jsx_runtime126.jsx)(Typography_default, {
+                children: /* @__PURE__ */ (0, import_jsx_runtime138.jsx)(Typography_default, {
                   children: formattedValue
                 })
               })]
@@ -54183,7 +54332,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-charts/ChartsTooltip/ChartsAxisTooltipContent.js
-  var import_jsx_runtime127 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime139 = __toESM(require_jsx_runtime());
   function ChartsAxisTooltipContent(props) {
     const {
       content,
@@ -54249,11 +54398,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       },
       ownerState: {}
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime127.jsx)(Content, _extends({}, chartTooltipContentProps));
+    return /* @__PURE__ */ (0, import_jsx_runtime139.jsx)(Content, _extends({}, chartTooltipContentProps));
   }
 
   // node_modules/@mui/x-charts/ChartsTooltip/ChartsTooltip.js
-  var import_jsx_runtime128 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime140 = __toESM(require_jsx_runtime());
   var useUtilityClasses43 = (ownerState) => {
     const {
       classes
@@ -54325,10 +54474,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (trigger === "none") {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime128.jsx)(NoSsr_default, {
-      children: popperOpen && /* @__PURE__ */ (0, import_jsx_runtime128.jsx)(PopperComponent, _extends({}, popperProps, {
+    return /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(NoSsr_default, {
+      children: popperOpen && /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(PopperComponent, _extends({}, popperProps, {
         className: classes.root,
-        children: trigger === "item" ? /* @__PURE__ */ (0, import_jsx_runtime128.jsx)(ChartsItemTooltipContent, {
+        children: trigger === "item" ? /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(ChartsItemTooltipContent, {
           itemData: displayedData,
           content: (_b = slots == null ? void 0 : slots.itemContent) != null ? _b : itemContent,
           contentProps: slotProps == null ? void 0 : slotProps.itemContent,
@@ -54336,7 +54485,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             mx: 2
           },
           classes
-        }) : /* @__PURE__ */ (0, import_jsx_runtime128.jsx)(ChartsAxisTooltipContent, {
+        }) : /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(ChartsAxisTooltipContent, {
           axisData: displayedData,
           content: (_c = slots == null ? void 0 : slots.axisContent) != null ? _c : axisContent,
           contentProps: slotProps == null ? void 0 : slotProps.axisContent,
@@ -54389,7 +54538,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@mui/x-charts/ChartsAxisHighlight/ChartsAxisHighlight.js
   var React164 = __toESM(require_react());
-  var import_jsx_runtime129 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime141 = __toESM(require_jsx_runtime());
   function getAxisHighlightUtilityClass(slot) {
     return generateUtilityClass2("MuiChartsAxisHighlight", slot);
   }
@@ -54462,8 +54611,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         console.error([`MUI X: The position value provided for the axis is not valid for the current scale.`, `This probably means something is wrong with the data passed to the chart.`, `The ChartsAxisHighlight component will not be displayed.`].join("\n"));
       }
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime129.jsxs)(React164.Fragment, {
-      children: [isBandScaleX && xScale(axisX.value) !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime129.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime141.jsxs)(React164.Fragment, {
+      children: [isBandScaleX && xScale(axisX.value) !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime141.jsx)(
         ChartsAxisHighlightPath,
         {
           d: `M ${xScale(axisX.value) - (xScale.step() - xScale.bandwidth()) / 2} ${yScale.range()[0]} l ${xScale.step()} 0 l 0 ${yScale.range()[1] - yScale.range()[0]} l ${-xScale.step()} 0 Z`,
@@ -54472,20 +54621,20 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
             axisHighlight: "band"
           }
         }
-      ), isBandScaleY && yScale(axisY.value) !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime129.jsx)(ChartsAxisHighlightPath, {
+      ), isBandScaleY && yScale(axisY.value) !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime141.jsx)(ChartsAxisHighlightPath, {
         d: `M ${xScale.range()[0]} ${// @ts-expect-error, yScale value is checked in the statement above
         yScale(axisY.value) - (yScale.step() - yScale.bandwidth()) / 2} l 0 ${yScale.step()} l ${xScale.range()[1] - xScale.range()[0]} 0 l 0 ${-yScale.step()} Z`,
         className: classes.root,
         ownerState: {
           axisHighlight: "band"
         }
-      }), xAxisHighlight === "line" && axis.x !== null && /* @__PURE__ */ (0, import_jsx_runtime129.jsx)(ChartsAxisHighlightPath, {
+      }), xAxisHighlight === "line" && axis.x !== null && /* @__PURE__ */ (0, import_jsx_runtime141.jsx)(ChartsAxisHighlightPath, {
         d: `M ${getXPosition(axis.x.value)} ${yScale.range()[0]} L ${getXPosition(axis.x.value)} ${yScale.range()[1]}`,
         className: classes.root,
         ownerState: {
           axisHighlight: "line"
         }
-      }), yAxisHighlight === "line" && axis.y !== null && /* @__PURE__ */ (0, import_jsx_runtime129.jsx)(ChartsAxisHighlightPath, {
+      }), yAxisHighlight === "line" && axis.y !== null && /* @__PURE__ */ (0, import_jsx_runtime141.jsx)(ChartsAxisHighlightPath, {
         d: `M ${xScale.range()[0]} ${getYPosition(axis.y.value)} L ${xScale.range()[1]} ${getYPosition(axis.y.value)}`,
         className: classes.root,
         ownerState: {
@@ -54536,7 +54685,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@mui/x-charts/ChartsGrid/ChartsVerticalGrid.js
   var React165 = __toESM(require_react());
-  var import_jsx_runtime130 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime142 = __toESM(require_jsx_runtime());
   function ChartsGridVertical(props) {
     const {
       axis,
@@ -54553,11 +54702,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       tickNumber,
       tickInterval
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime130.jsx)(React165.Fragment, {
+    return /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(React165.Fragment, {
       children: xTicks.map(({
         value,
         offset: offset2
-      }) => /* @__PURE__ */ (0, import_jsx_runtime130.jsx)(GridLine, {
+      }) => /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(GridLine, {
         y1: drawingArea.top,
         y2: drawingArea.top + drawingArea.height,
         x1: offset2,
@@ -54569,7 +54718,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@mui/x-charts/ChartsGrid/ChartsHorizontalGrid.js
   var React166 = __toESM(require_react());
-  var import_jsx_runtime131 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime143 = __toESM(require_jsx_runtime());
   function ChartsGridHorizontal(props) {
     const {
       axis,
@@ -54586,11 +54735,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       tickNumber,
       tickInterval
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime131.jsx)(React166.Fragment, {
+    return /* @__PURE__ */ (0, import_jsx_runtime143.jsx)(React166.Fragment, {
       children: yTicks.map(({
         value,
         offset: offset2
-      }) => /* @__PURE__ */ (0, import_jsx_runtime131.jsx)(GridLine, {
+      }) => /* @__PURE__ */ (0, import_jsx_runtime143.jsx)(GridLine, {
         y1: offset2,
         y2: offset2,
         x1: drawingArea.left,
@@ -54601,7 +54750,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-charts/ChartsGrid/ChartsGrid.js
-  var import_jsx_runtime132 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime144 = __toESM(require_jsx_runtime());
   var _excluded14 = ["vertical", "horizontal"];
   var useUtilityClasses45 = ({
     classes
@@ -54632,13 +54781,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const classes = useUtilityClasses45(props);
     const horizontalAxis = yAxis[yAxisIds[0]];
     const verticalAxis = xAxis[xAxisIds[0]];
-    return /* @__PURE__ */ (0, import_jsx_runtime132.jsxs)(GridRoot, _extends({}, other, {
+    return /* @__PURE__ */ (0, import_jsx_runtime144.jsxs)(GridRoot, _extends({}, other, {
       className: classes.root,
-      children: [vertical && /* @__PURE__ */ (0, import_jsx_runtime132.jsx)(ChartsGridVertical, {
+      children: [vertical && /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(ChartsGridVertical, {
         axis: verticalAxis,
         drawingArea,
         classes
-      }), horizontal && /* @__PURE__ */ (0, import_jsx_runtime132.jsx)(ChartsGridHorizontal, {
+      }), horizontal && /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(ChartsGridHorizontal, {
         axis: horizontalAxis,
         drawingArea,
         classes
@@ -54665,22 +54814,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // src/Components/Charts/BaseBarChart.tsx
-  var import_react27 = __toESM(require_react());
+  var import_react29 = __toESM(require_react());
 
   // src/Components/Charts/BaseBarChartLegend.tsx
-  var import_jsx_runtime133 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime145 = __toESM(require_jsx_runtime());
   var BaseBarChartLegend = ({ yAxis }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime133.jsx)(Stack_default, { spacing: 2, direction: "row", flexWrap: "wrap", justifyContent: "center", children: yAxis.map((axis, index) => /* @__PURE__ */ (0, import_jsx_runtime133.jsxs)(Box_default, { display: "flex", alignItems: "center", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime133.jsx)(Box_default, { sx: { width: 12, height: 12, bgcolor: axis.color, borderRadius: "2px", mr: 1 } }),
-      /* @__PURE__ */ (0, import_jsx_runtime133.jsx)(Typography_default, { variant: "body2", children: axis.label })
+    return /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(Stack_default, { spacing: 2, direction: "row", flexWrap: "wrap", justifyContent: "center", children: yAxis.map((axis, index) => /* @__PURE__ */ (0, import_jsx_runtime145.jsxs)(Box_default, { display: "flex", alignItems: "center", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(Box_default, { sx: { width: 12, height: 12, bgcolor: axis.color, borderRadius: "2px", mr: 1 } }),
+      /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(Typography_default, { variant: "body2", children: axis.label })
     ] }, index)) });
   };
 
   // src/Components/Charts/BaseBarChart.tsx
-  var import_jsx_runtime134 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime146 = __toESM(require_jsx_runtime());
   var BaseBarChart = ({ xAxis, yAxis, dataset }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime134.jsxs)(import_react27.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(Box_default, { sx: { height: 300 }, children: /* @__PURE__ */ (0, import_jsx_runtime134.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime146.jsxs)(import_react29.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(Box_default, { sx: { height: 300 }, children: /* @__PURE__ */ (0, import_jsx_runtime146.jsxs)(
         ResponsiveChartContainer,
         {
           xAxis,
@@ -54688,25 +54837,25 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           series: yAxis.map((axis) => __spreadProps(__spreadValues({}, axis), { type: "bar" })),
           dataset,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(BarPlot, {}),
-            /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(ChartsGrid, { vertical: true, horizontal: true }),
-            /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(ChartsXAxis, {}),
-            /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(ChartsYAxis, {}),
-            /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(ChartsTooltip, { slotProps: { popper: { sx: { zIndex: 2e3 } } } }),
-            /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(ChartsAxisHighlight, { x: "band" })
+            /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(BarPlot, {}),
+            /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(ChartsGrid, { vertical: true, horizontal: true }),
+            /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(ChartsXAxis, {}),
+            /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(ChartsYAxis, {}),
+            /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(ChartsTooltip, { slotProps: { popper: { sx: { zIndex: 2e3 } } } }),
+            /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(ChartsAxisHighlight, { x: "band" })
           ]
         }
       ) }),
-      /* @__PURE__ */ (0, import_jsx_runtime134.jsx)(BaseBarChartLegend, { yAxis })
+      /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(BaseBarChartLegend, { yAxis })
     ] });
   };
 
   // src/Components/Charts/BaseChartView.tsx
-  var import_jsx_runtime135 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime147 = __toESM(require_jsx_runtime());
   var BaseChartView = ({ title, children, childrenSx, containerSx }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime135.jsxs)(Paper_default, { sx: __spreadValues({ width: "100%", p: 2, mt: 3 }, containerSx), children: [
-      /* @__PURE__ */ (0, import_jsx_runtime135.jsx)(Box_default, { sx: { display: "flex", alignItems: "center" }, children: /* @__PURE__ */ (0, import_jsx_runtime135.jsx)(Typography_default, { sx: { mr: 2 }, variant: "h6", children: title }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime135.jsx)(Box_default, { sx: __spreadValues({ height: "100%" }, childrenSx), children })
+    return /* @__PURE__ */ (0, import_jsx_runtime147.jsxs)(Paper_default, { sx: __spreadValues({ width: "100%", p: 2, mt: 3 }, containerSx), children: [
+      /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(Box_default, { sx: { display: "flex", alignItems: "center" }, children: /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(Typography_default, { sx: { mr: 2 }, variant: "h6", children: title }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(Box_default, { sx: __spreadValues({ height: "100%" }, childrenSx), children })
     ] });
   };
 
@@ -54715,10 +54864,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var dateTimeValueFormatter = (value) => (0, import_dayjs2.default)(value).format(SettingsManager.apiDateTimeFormat);
 
   // src/Components/Charts/Coverage/History/ScenarioHistoryChartView.tsx
-  var import_jsx_runtime136 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime148 = __toESM(require_jsx_runtime());
   var ScenarioHistoryChartView = ({ history: history2 }) => {
-    const chartData = (0, import_react28.useMemo)(() => history2.map(getActionsChartData), [history2]);
-    return /* @__PURE__ */ (0, import_jsx_runtime136.jsx)(BaseChartView, { title: "Scenario history", children: /* @__PURE__ */ (0, import_jsx_runtime136.jsx)(
+    const chartData = (0, import_react30.useMemo)(() => history2.map(getActionsChartData), [history2]);
+    return /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(BaseChartView, { title: "Scenario history", children: /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(
       BaseBarChart,
       {
         xAxis: [{ dataKey: "createdAt", scaleType: "band", valueFormatter: dateTimeValueFormatter }],
@@ -54733,95 +54882,38 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     ) });
   };
 
-  // src/Components/Views/BaseInfoRowView.tsx
-  var import_react29 = __toESM(require_react());
-
-  // node_modules/@mui/icons-material/esm/ContentCopy.js
-  var import_jsx_runtime137 = __toESM(require_jsx_runtime());
-  var ContentCopy_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime137.jsx)("path", {
-    d: "M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2m0 16H8V7h11z"
-  }), "ContentCopy");
-
-  // src/Components/Buttons/CopyButton.tsx
-  var import_jsx_runtime138 = __toESM(require_jsx_runtime());
-  var CopyButton = ({ sx, onCopy }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime138.jsx)(IconButton_default, { size: "small", sx, onClick: onCopy, children: /* @__PURE__ */ (0, import_jsx_runtime138.jsx)(ContentCopy_default, { fontSize: "small" }) });
-  };
-
-  // src/Components/Views/BaseInfoRowView.tsx
-  var import_jsx_runtime139 = __toESM(require_jsx_runtime());
-  var BaseInfoRowView = (props) => {
-    const { name, icon, value, allowCopy = true, component = false, containerSx } = props;
-    const internalValue = (0, import_react29.useMemo)(() => value || "unknown", [value]);
-    const onCopy = async () => {
-      await navigator.clipboard.writeText(String(value));
-    };
-    return /* @__PURE__ */ (0, import_jsx_runtime139.jsxs)(Box_default, { sx: __spreadValues({ display: "flex", alignItems: "center" }, containerSx), children: [
-      icon && /* @__PURE__ */ (0, import_jsx_runtime139.jsx)(Box_default, { sx: { mr: 1, display: "flex", alignItems: "center" }, children: icon }),
-      /* @__PURE__ */ (0, import_jsx_runtime139.jsxs)(Typography_default, { sx: { display: "flex", alignItems: "center", wordBreak: "break-word", whiteSpace: "normal" }, children: [
-        name,
-        ": ",
-        component ? component : internalValue
-      ] }),
-      Boolean(value) && allowCopy && /* @__PURE__ */ (0, import_jsx_runtime139.jsx)(Box_default, { sx: { display: "flex" }, children: /* @__PURE__ */ (0, import_jsx_runtime139.jsx)(CopyButton, { sx: { ml: 1 }, onCopy }) })
-    ] });
-  };
-
-  // src/Components/Views/WidgetInfoRowsView.tsx
-  var import_react30 = __toESM(require_react());
-  var import_jsx_runtime140 = __toESM(require_jsx_runtime());
-  var WidgetInfoRowsView = (props) => {
-    const { children, containerSx } = props;
-    return /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(Grid2_default, { container: true, spacing: 1, sx: __spreadValues({ mt: 2 }, containerSx), children: import_react30.Children.map(
-      children,
-      (child, index) => child && /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(Grid2_default, { size: { xs: 12 }, children: child }, index)
-    ) });
-  };
-
   // node_modules/@mui/icons-material/esm/InsertLink.js
-  var import_jsx_runtime141 = __toESM(require_jsx_runtime());
-  var InsertLink_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime141.jsx)("path", {
+  var import_jsx_runtime149 = __toESM(require_jsx_runtime());
+  var InsertLink_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime149.jsx)("path", {
     d: "M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1M8 13h8v-2H8zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5"
   }), "InsertLink");
 
-  // node_modules/@mui/icons-material/esm/BuildOutlined.js
-  var import_jsx_runtime142 = __toESM(require_jsx_runtime());
-  var BuildOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime142.jsx)("path", {
-    d: "m22.61 18.99-9.08-9.08c.93-2.34.45-5.1-1.44-7C9.79.61 6.21.4 3.66 2.26L7.5 6.11 6.08 7.52 2.25 3.69C.39 6.23.6 9.82 2.9 12.11c1.86 1.86 4.57 2.35 6.89 1.48l9.11 9.11c.39.39 1.02.39 1.41 0l2.3-2.3c.4-.38.4-1.01 0-1.41m-3 1.6-9.46-9.46c-.61.45-1.29.72-2 .82-1.36.2-2.79-.21-3.83-1.25C3.37 9.76 2.93 8.5 3 7.26l3.09 3.09 4.24-4.24-3.09-3.09c1.24-.07 2.49.37 3.44 1.31 1.08 1.08 1.49 2.57 1.24 3.96-.12.71-.42 1.37-.88 1.96l9.45 9.45z"
-  }), "BuildOutlined");
-
   // node_modules/@mui/icons-material/esm/ArticleOutlined.js
-  var import_jsx_runtime143 = __toESM(require_jsx_runtime());
-  var ArticleOutlined_default = createSvgIcon([/* @__PURE__ */ (0, import_jsx_runtime143.jsx)("path", {
+  var import_jsx_runtime150 = __toESM(require_jsx_runtime());
+  var ArticleOutlined_default = createSvgIcon([/* @__PURE__ */ (0, import_jsx_runtime150.jsx)("path", {
     d: "M19 5v14H5V5zm0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2"
-  }, "0"), /* @__PURE__ */ (0, import_jsx_runtime143.jsx)("path", {
+  }, "0"), /* @__PURE__ */ (0, import_jsx_runtime150.jsx)("path", {
     d: "M14 17H7v-2h7zm3-4H7v-2h10zm0-4H7V7h10z"
   }, "1")], "ArticleOutlined");
 
-  // node_modules/@mui/icons-material/esm/FormatListNumbered.js
-  var import_jsx_runtime144 = __toESM(require_jsx_runtime());
-  var FormatListNumbered_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime144.jsx)("path", {
-    d: "M2 17h2v.5H3v1h1v.5H2v1h3v-4H2zm1-9h1V4H2v1h1zm-1 3h1.8L2 13.1v.9h3v-1H3.2L5 10.9V10H2zm5-6v2h14V5zm0 14h14v-2H7zm0-6h14v-2H7z"
-  }), "FormatListNumbered");
-
   // src/Views/Scenarios/Details/ScenarioDetailsInfoView.tsx
-  var import_jsx_runtime145 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime151 = __toESM(require_jsx_runtime());
   var ScenarioDetailsInfoView = ({ sx, scenario }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(BoxView, { containerSx: sx, title: "Base info", children: /* @__PURE__ */ (0, import_jsx_runtime145.jsxs)(WidgetInfoRowsView, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(BaseInfoRowView, { icon: /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(InsertLink_default, { fontSize: "small" }), name: "URL", value: scenario.url }),
-      /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(BaseInfoRowView, { icon: /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(ArticleOutlined_default, { fontSize: "small" }), name: "Name", value: scenario.name }),
-      /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(BoxView, { containerSx: sx, title: "Base info", children: /* @__PURE__ */ (0, import_jsx_runtime151.jsxs)(WidgetInfoRowsView, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(BaseInfoRowView, { icon: /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(InsertLink_default, { fontSize: "small" }), name: "URL", value: scenario.url }),
+      /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(BaseInfoRowView, { icon: /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(ArticleOutlined_default, { fontSize: "small" }), name: "Name", value: scenario.name }),
+      /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(
         BaseInfoRowView,
         {
-          icon: /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(FormatListNumbered_default, { fontSize: "small" }),
+          icon: /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(FormatListNumbered_default, { fontSize: "small" }),
           name: "Total number of steps",
           value: scenario.steps.length
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(
         BaseInfoRowView,
         {
-          icon: /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(BuildOutlined_default, { fontSize: "small" }),
+          icon: /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(BuildOutlined_default, { fontSize: "small" }),
           name: "Total number of action types",
           value: scenario.actions.length
         }
@@ -54829,7 +54921,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     ] }) });
   };
 
-  // src/Views/Agent/Scenarios/AgentScenarioDetailsStepsView.tsx
+  // src/Views/Scenarios/Details/SimpleScenarioDetailsStepsView.tsx
   var import_react31 = __toESM(require_react());
 
   // node_modules/@mui/x-tree-view/TreeItem/TreeItem.js
@@ -55042,13 +55134,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // node_modules/@mui/x-tree-view/internals/TreeViewProvider/TreeViewProvider.js
-  var import_jsx_runtime146 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime152 = __toESM(require_jsx_runtime());
   function TreeViewProvider(props) {
     const {
       value,
       children
     } = props;
-    return /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(TreeViewContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime152.jsx)(TreeViewContext.Provider, {
       value,
       children: value.wrapRoot({
         children,
@@ -55369,7 +55461,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@mui/x-tree-view/TreeItem2DragAndDropOverlay/TreeItem2DragAndDropOverlay.js
   var React174 = __toESM(require_react());
-  var import_jsx_runtime147 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime153 = __toESM(require_jsx_runtime());
   var TreeItem2DragAndDropOverlayRoot = styled_default2("div", {
     name: "MuiTreeItem2DragAndDropOverlay",
     slot: "Root",
@@ -55424,7 +55516,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     if (props.action == null) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(TreeItem2DragAndDropOverlayRoot, _extends({}, props));
+    return /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(TreeItem2DragAndDropOverlayRoot, _extends({}, props));
   }
   false ? TreeItem2DragAndDropOverlay.propTypes = {
     // ----------------------------- Warning --------------------------------
@@ -55455,7 +55547,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }));
 
   // node_modules/@mui/x-tree-view/TreeItem/TreeItemContent.js
-  var import_jsx_runtime148 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime154 = __toESM(require_jsx_runtime());
   var _excluded15 = ["classes", "className", "displayIcon", "expansionIcon", "icon", "label", "itemId", "onClick", "onMouseDown", "dragAndDropOverlayProps", "labelInputProps"];
   var TreeItemContent = /* @__PURE__ */ React175.forwardRef(function TreeItemContent2(props, ref) {
     const {
@@ -55520,30 +55612,30 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     };
     return (
       /* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions -- Key event is handled by the TreeView */
-      /* @__PURE__ */ (0, import_jsx_runtime148.jsxs)("div", _extends({}, other, {
+      /* @__PURE__ */ (0, import_jsx_runtime154.jsxs)("div", _extends({}, other, {
         className: clsx_default(classes.root, className, expanded && classes.expanded, selected && classes.selected, focused && classes.focused, disabled && classes.disabled, editing && classes.editing, editable && classes.editable),
         onClick: handleClick,
         onMouseDown: handleMouseDown,
         ref,
-        children: [/* @__PURE__ */ (0, import_jsx_runtime148.jsx)("div", {
+        children: [/* @__PURE__ */ (0, import_jsx_runtime154.jsx)("div", {
           className: classes.iconContainer,
           children: icon
-        }), checkboxSelection && /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(Checkbox_default, {
+        }), checkboxSelection && /* @__PURE__ */ (0, import_jsx_runtime154.jsx)(Checkbox_default, {
           className: classes.checkbox,
           checked: selected,
           onChange: handleCheckboxSelection,
           disabled: disabled || disableSelection,
           ref: checkboxRef,
           tabIndex: -1
-        }), editing ? /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(TreeItem2LabelInput, _extends({}, labelInputProps, {
+        }), editing ? /* @__PURE__ */ (0, import_jsx_runtime154.jsx)(TreeItem2LabelInput, _extends({}, labelInputProps, {
           className: classes.labelInput
-        })) : /* @__PURE__ */ (0, import_jsx_runtime148.jsx)("div", _extends({
+        })) : /* @__PURE__ */ (0, import_jsx_runtime154.jsx)("div", _extends({
           className: classes.label
         }, editable && {
           onDoubleClick: handleLabelDoubleClick
         }, {
           children: label
-        })), dragAndDropOverlayProps && /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(TreeItem2DragAndDropOverlay, _extends({}, dragAndDropOverlayProps))]
+        })), dragAndDropOverlayProps && /* @__PURE__ */ (0, import_jsx_runtime154.jsx)(TreeItem2DragAndDropOverlay, _extends({}, dragAndDropOverlayProps))]
       }))
     );
   });
@@ -55648,11 +55740,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@mui/x-tree-view/icons/icons.js
   var React176 = __toESM(require_react());
-  var import_jsx_runtime149 = __toESM(require_jsx_runtime());
-  var TreeViewExpandIcon = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime149.jsx)("path", {
+  var import_jsx_runtime155 = __toESM(require_jsx_runtime());
+  var TreeViewExpandIcon = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime155.jsx)("path", {
     d: "M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
   }), "TreeViewExpandIcon");
-  var TreeViewCollapseIcon = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime149.jsx)("path", {
+  var TreeViewCollapseIcon = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime155.jsx)("path", {
     d: "M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
   }), "TreeViewCollapseIcon");
 
@@ -55861,7 +55953,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/x-tree-view/TreeItem/TreeItem.js
-  var import_jsx_runtime150 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime156 = __toESM(require_jsx_runtime());
   var _excluded16 = ["children", "className", "slots", "slotProps", "ContentComponent", "ContentProps", "itemId", "id", "label", "onClick", "onMouseDown", "onFocus", "onBlur", "onKeyDown"];
   var _excluded24 = ["ownerState"];
   var _excluded32 = ["ownerState"];
@@ -56118,7 +56210,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         onClick: handleIconContainerClick
       }
     }), expansionIconProps = _objectWithoutPropertiesLoose(_useSlotProps, _excluded24);
-    const expansionIcon = expandable && !!ExpansionIcon ? /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(ExpansionIcon, _extends({}, expansionIconProps)) : null;
+    const expansionIcon = expandable && !!ExpansionIcon ? /* @__PURE__ */ (0, import_jsx_runtime156.jsx)(ExpansionIcon, _extends({}, expansionIconProps)) : null;
     const DisplayIcon = expandable ? void 0 : slots.endIcon;
     const _useSlotProps2 = useSlotProps_default3({
       elementType: DisplayIcon,
@@ -56130,14 +56222,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         return _extends({}, resolveComponentProps_default3(contextIcons.slotProps.endIcon, tempOwnerState), resolveComponentProps_default3(inSlotProps == null ? void 0 : inSlotProps.endIcon, tempOwnerState));
       }
     }), displayIconProps = _objectWithoutPropertiesLoose(_useSlotProps2, _excluded32);
-    const displayIcon = DisplayIcon ? /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(DisplayIcon, _extends({}, displayIconProps)) : null;
+    const displayIcon = DisplayIcon ? /* @__PURE__ */ (0, import_jsx_runtime156.jsx)(DisplayIcon, _extends({}, displayIconProps)) : null;
     const Icon = slots.icon;
     const _useSlotProps3 = useSlotProps_default3({
       elementType: Icon,
       ownerState: {},
       externalSlotProps: inSlotProps == null ? void 0 : inSlotProps.icon
     }), iconProps = _objectWithoutPropertiesLoose(_useSlotProps3, _excluded42);
-    const icon = Icon ? /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(Icon, _extends({}, iconProps)) : null;
+    const icon = Icon ? /* @__PURE__ */ (0, import_jsx_runtime156.jsx)(Icon, _extends({}, iconProps)) : null;
     let ariaSelected;
     if (selected) {
       ariaSelected = true;
@@ -56196,9 +56288,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const enhancedLabelInputProps = (_n = (_m = propsEnhancers.labelInput) == null ? void 0 : _m.call(propsEnhancers, _extends({}, sharedPropsEnhancerParams, {
       externalEventHandlers: {}
     }))) != null ? _n : {};
-    return /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(TreeItem2Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime156.jsx)(TreeItem2Provider, {
       itemId,
-      children: /* @__PURE__ */ (0, import_jsx_runtime150.jsxs)(TreeItemRoot, _extends({
+      children: /* @__PURE__ */ (0, import_jsx_runtime156.jsxs)(TreeItemRoot, _extends({
         className: clsx_default(classes.root, className),
         role: "treeitem",
         "aria-expanded": expandable ? expanded : void 0,
@@ -56216,7 +56308,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           "--TreeView-itemDepth": typeof depthContext === "function" ? depthContext(itemId) : depthContext
         }) : other.style
       }, enhancedRootProps, {
-        children: [/* @__PURE__ */ (0, import_jsx_runtime150.jsx)(StyledTreeItemContent, _extends({
+        children: [/* @__PURE__ */ (0, import_jsx_runtime156.jsx)(StyledTreeItemContent, _extends({
           as: ContentComponent,
           classes: {
             root: classes.content,
@@ -56245,7 +56337,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           labelInputProps: enhancedLabelInputProps
         }, {
           ref: handleContentRef
-        })), children && /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(TreeItemGroup, _extends({
+        })), children && /* @__PURE__ */ (0, import_jsx_runtime156.jsx)(TreeItemGroup, _extends({
           as: GroupTransition
         }, groupTransitionProps, {
           children
@@ -56335,40 +56427,34 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }));
 
   // src/Components/Views/TitleView.tsx
-  var import_jsx_runtime151 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime157 = __toESM(require_jsx_runtime());
   var TitleView = (props) => {
-    const { sx, icon, title, value, action, allowCopy } = props;
+    const { sx, icon, title, value, action, allowCopy, titleVariant } = props;
     const onCopy = async (event) => {
       if (!value) return;
       event.stopPropagation();
       await navigator.clipboard.writeText(value);
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime151.jsxs)(Box_default, { sx: __spreadValues({ display: "flex", alignItems: "center" }, sx), children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime157.jsxs)(Box_default, { sx: __spreadValues({ display: "flex", alignItems: "center" }, sx), children: [
       icon,
-      /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(Typography_default, { children: title }),
-      /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(Box_default, { sx: { flexGrow: 1 } }),
+      /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(Typography_default, { variant: titleVariant, children: title }),
+      /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(Box_default, { sx: { flexGrow: 1 } }),
       action,
-      allowCopy && /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(CopyButton, { sx: { ml: 1 }, onCopy })
+      allowCopy && /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(CopyButton, { sx: { ml: 1 }, onCopy })
     ] });
   };
 
-  // node_modules/@mui/icons-material/esm/DataObject.js
-  var import_jsx_runtime152 = __toESM(require_jsx_runtime());
-  var DataObject_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime152.jsx)("path", {
-    d: "M4 7v2c0 .55-.45 1-1 1H2v4h1c.55 0 1 .45 1 1v2c0 1.65 1.35 3 3 3h3v-2H7c-.55 0-1-.45-1-1v-2c0-1.3-.84-2.42-2-2.83v-.34C5.16 11.42 6 10.3 6 9V7c0-.55.45-1 1-1h3V4H7C5.35 4 4 5.35 4 7m17 3c-.55 0-1-.45-1-1V7c0-1.65-1.35-3-3-3h-3v2h3c.55 0 1 .45 1 1v2c0 1.3.84 2.42 2 2.83v.34c-1.16.41-2 1.52-2 2.83v2c0 .55-.45 1-1 1h-3v2h3c1.65 0 3-1.35 3-3v-2c0-.55.45-1 1-1h1v-4z"
-  }), "DataObject");
-
   // src/Components/TreeView/Scenarios/ScenarioStepsTreeViewSelectorTypeItem.tsx
-  var import_jsx_runtime153 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime158 = __toESM(require_jsx_runtime());
   var ScenarioStepsTreeViewSelectorTypeItem = ({ index, selectorType }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(
       BaseTreeItem,
       {
         itemId: `${index}-selector-type`,
-        label: /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(
+        label: /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(
           TitleView,
           {
-            icon: /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(DataObject_default, { fontSize: "small", sx: { mr: 1.5 } }),
+            icon: /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(DataObject_default, { fontSize: "small", sx: { mr: 1.5 } }),
             title: `Selector type: ${selectorType}`,
             value: selectorType,
             allowCopy: true
@@ -56378,23 +56464,17 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     );
   };
 
-  // node_modules/@mui/icons-material/esm/AdsClick.js
-  var import_jsx_runtime154 = __toESM(require_jsx_runtime());
-  var AdsClick_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime154.jsx)("path", {
-    d: "M11.71 17.99C8.53 17.84 6 15.22 6 12c0-3.31 2.69-6 6-6 3.22 0 5.84 2.53 5.99 5.71l-2.1-.63C15.48 9.31 13.89 8 12 8c-2.21 0-4 1.79-4 4 0 1.89 1.31 3.48 3.08 3.89zM22 12c0 .3-.01.6-.04.9l-1.97-.59c.01-.1.01-.21.01-.31 0-4.42-3.58-8-8-8s-8 3.58-8 8 3.58 8 8 8c.1 0 .21 0 .31-.01l.59 1.97c-.3.03-.6.04-.9.04-5.52 0-10-4.48-10-10S6.48 2 12 2s10 4.48 10 10m-3.77 4.26L22 15l-10-3 3 10 1.26-3.77 4.27 4.27 1.98-1.98z"
-  }), "AdsClick");
-
   // src/Components/TreeView/Scenarios/ScenarioStepsTreeViewSelectorItem.tsx
-  var import_jsx_runtime155 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime159 = __toESM(require_jsx_runtime());
   var ScenarioStepsTreeViewSelectorItem = ({ index, selector }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime155.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(
       BaseTreeItem,
       {
         itemId: `${index}-selector`,
-        label: /* @__PURE__ */ (0, import_jsx_runtime155.jsx)(
+        label: /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(
           TitleView,
           {
-            icon: /* @__PURE__ */ (0, import_jsx_runtime155.jsx)(AdsClick_default, { fontSize: "small", sx: { mr: 1.5 } }),
+            icon: /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(AdsClick_default, { fontSize: "small", sx: { mr: 1.5 } }),
             title: `Selector: ${selector}`,
             value: selector,
             allowCopy: true
@@ -56405,13 +56485,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // src/Components/TreeView/Scenarios/ScenarioStepsTreeViewActionItem.tsx
-  var import_jsx_runtime156 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime160 = __toESM(require_jsx_runtime());
   var ScenarioStepsTreeViewActionItem = ({ index, action }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime156.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime160.jsx)(
       BaseTreeItem,
       {
         itemId: `${index}-actions`,
-        label: /* @__PURE__ */ (0, import_jsx_runtime156.jsx)(
+        label: /* @__PURE__ */ (0, import_jsx_runtime160.jsx)(
           TitleView,
           {
             icon: MAP_ACTION_TYPE_TO_ICON[action],
@@ -56425,16 +56505,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // src/Components/TreeView/Scenarios/ScenarioStepsTreeViewItemTitle.tsx
-  var import_jsx_runtime157 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime161 = __toESM(require_jsx_runtime());
   var ScenarioStepsTreeViewItemTitle = ({ step, index, action }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(
       TitleView,
       {
         icon: MAP_ACTION_TYPE_TO_ICON[step.actionType],
-        title: /* @__PURE__ */ (0, import_jsx_runtime157.jsxs)(Typography_default, { children: [
+        title: /* @__PURE__ */ (0, import_jsx_runtime161.jsxs)(Typography_default, { children: [
           index + 1,
           ". ",
-          /* @__PURE__ */ (0, import_jsx_runtime157.jsx)("b", { children: normalizeActionType(step.actionType) }),
+          /* @__PURE__ */ (0, import_jsx_runtime161.jsx)("b", { children: normalizeActionType(step.actionType) }),
           ": ",
           step.selector
         ] }),
@@ -56443,13 +56523,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     );
   };
 
-  // src/Components/TreeView/Agent/Scenarios/AgentScenarioStepsTreeViewItem.tsx
-  var import_jsx_runtime158 = __toESM(require_jsx_runtime());
-  var AgentScenarioStepsTreeViewItem = ({ step, index }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime158.jsxs)(BaseTreeItem, { itemId: `${index}`, label: /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(ScenarioStepsTreeViewItemTitle, { step, index }), children: [
-      /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(ScenarioStepsTreeViewActionItem, { index, action: step.actionType }),
-      /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(ScenarioStepsTreeViewSelectorTypeItem, { index, selectorType: step.selectorType }),
-      /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(ScenarioStepsTreeViewSelectorItem, { index, selector: step.selector })
+  // src/Components/TreeView/Scenarios/SimpleScenarioStepsTreeViewItem.tsx
+  var import_jsx_runtime162 = __toESM(require_jsx_runtime());
+  var SimpleScenarioStepsTreeViewItem = ({ step, index }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime162.jsxs)(BaseTreeItem, { itemId: `${index}`, label: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(ScenarioStepsTreeViewItemTitle, { step, index }), children: [
+      /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(ScenarioStepsTreeViewActionItem, { index, action: step.actionType }),
+      /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(ScenarioStepsTreeViewSelectorTypeItem, { index, selectorType: step.selectorType }),
+      /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(ScenarioStepsTreeViewSelectorItem, { index, selector: step.selector })
     ] });
   };
 
@@ -56932,7 +57012,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewItems/useTreeViewItems.js
-  var import_jsx_runtime159 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime163 = __toESM(require_jsx_runtime());
   var _excluded18 = ["children"];
   var updateItemsState = ({
     items,
@@ -57149,7 +57229,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     children,
     instance: instance2
   }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(TreeViewItemDepthContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(TreeViewItemDepthContext.Provider, {
       value: (itemId) => {
         var _a, _b;
         return (_b = (_a = instance2.getItemMeta(itemId)) == null ? void 0 : _a.depth) != null ? _b : 0;
@@ -58014,7 +58094,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // node_modules/@mui/x-tree-view/internals/TreeViewProvider/TreeViewChildrenItemProvider.js
   var React191 = __toESM(require_react());
-  var import_jsx_runtime160 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime164 = __toESM(require_jsx_runtime());
   var TreeViewChildrenItemContext = /* @__PURE__ */ React191.createContext(null);
   if (false) {
     TreeViewChildrenItemContext.displayName = "TreeViewChildrenItemContext";
@@ -58065,7 +58145,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       unregisterChild: (childIdAttribute) => childrenIdAttrToIdRef.current.delete(childIdAttribute),
       parentId: itemId
     }), [itemId]);
-    return /* @__PURE__ */ (0, import_jsx_runtime160.jsx)(TreeViewChildrenItemContext.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(TreeViewChildrenItemContext.Provider, {
       value,
       children
     });
@@ -58076,7 +58156,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/x-tree-view/internals/plugins/useTreeViewJSXItems/useTreeViewJSXItems.js
-  var import_jsx_runtime161 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime165 = __toESM(require_jsx_runtime());
   var useTreeViewJSXItems = ({
     instance: instance2,
     setState
@@ -58226,9 +58306,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     itemId
   }) => {
     const depthContext = React192.useContext(TreeViewItemDepthContext);
-    return /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(TreeViewChildrenItemProvider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime165.jsx)(TreeViewChildrenItemProvider, {
       itemId,
-      children: /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(TreeViewItemDepthContext.Provider, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime165.jsx)(TreeViewItemDepthContext.Provider, {
         value: depthContext + 1,
         children
       })
@@ -58236,8 +58316,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
   useTreeViewJSXItems.wrapRoot = ({
     children
-  }) => /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(TreeViewChildrenItemProvider, {
-    children: /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(TreeViewItemDepthContext.Provider, {
+  }) => /* @__PURE__ */ (0, import_jsx_runtime165.jsx)(TreeViewChildrenItemProvider, {
+    children: /* @__PURE__ */ (0, import_jsx_runtime165.jsx)(TreeViewItemDepthContext.Provider, {
       value: 0,
       children
     })
@@ -58248,7 +58328,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var SIMPLE_TREE_VIEW_PLUGINS = [useTreeViewItems, useTreeViewExpansion, useTreeViewSelection, useTreeViewFocus, useTreeViewKeyboardNavigation, useTreeViewIcons, useTreeViewJSXItems];
 
   // node_modules/@mui/x-tree-view/SimpleTreeView/SimpleTreeView.js
-  var import_jsx_runtime162 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime166 = __toESM(require_jsx_runtime());
   var useThemeProps4 = createUseThemeProps("MuiSimpleTreeView");
   var useUtilityClasses47 = (ownerState) => {
     const {
@@ -58306,9 +58386,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       getSlotProps: getRootProps,
       ownerState
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(TreeViewProvider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime166.jsx)(TreeViewProvider, {
       value: contextValue,
-      children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Root2, _extends({}, rootProps))
+      children: /* @__PURE__ */ (0, import_jsx_runtime166.jsx)(Root2, _extends({}, rootProps))
     });
   });
   false ? SimpleTreeView.propTypes = {
@@ -58459,121 +58539,73 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
 
   // node_modules/@mui/icons-material/esm/IndeterminateCheckBoxRounded.js
-  var import_jsx_runtime163 = __toESM(require_jsx_runtime());
-  var IndeterminateCheckBoxRounded_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime163.jsx)("path", {
+  var import_jsx_runtime167 = __toESM(require_jsx_runtime());
+  var IndeterminateCheckBoxRounded_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime167.jsx)("path", {
     d: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-3 10H8c-.55 0-1-.45-1-1s.45-1 1-1h8c.55 0 1 .45 1 1s-.45 1-1 1"
   }), "IndeterminateCheckBoxRounded");
 
   // node_modules/@mui/icons-material/esm/AddBoxRounded.js
-  var import_jsx_runtime164 = __toESM(require_jsx_runtime());
-  var AddBoxRounded_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime164.jsx)("path", {
+  var import_jsx_runtime168 = __toESM(require_jsx_runtime());
+  var AddBoxRounded_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime168.jsx)("path", {
     d: "M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-3 10h-3v3c0 .55-.45 1-1 1s-1-.45-1-1v-3H8c-.55 0-1-.45-1-1s.45-1 1-1h3V8c0-.55.45-1 1-1s1 .45 1 1v3h3c.55 0 1 .45 1 1s-.45 1-1 1"
   }), "AddBoxRounded");
 
   // src/Components/TreeView/BaseTreeView.tsx
-  var import_jsx_runtime165 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime169 = __toESM(require_jsx_runtime());
   var ExpandIcon = (props) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime165.jsx)(AddBoxRounded_default, __spreadProps(__spreadValues({}, props), { sx: { opacity: 0.8 } }));
+    return /* @__PURE__ */ (0, import_jsx_runtime169.jsx)(AddBoxRounded_default, __spreadProps(__spreadValues({}, props), { sx: { opacity: 0.8 } }));
   };
   var CollapseIcon = (props) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime165.jsx)(IndeterminateCheckBoxRounded_default, __spreadProps(__spreadValues({}, props), { sx: { opacity: 0.8 } }));
+    return /* @__PURE__ */ (0, import_jsx_runtime169.jsx)(IndeterminateCheckBoxRounded_default, __spreadProps(__spreadValues({}, props), { sx: { opacity: 0.8 } }));
   };
   var BaseTreeView = ({ sx, children }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime165.jsx)(SimpleTreeView, { sx, slots: { expandIcon: ExpandIcon, collapseIcon: CollapseIcon }, children });
+    return /* @__PURE__ */ (0, import_jsx_runtime169.jsx)(SimpleTreeView, { sx, slots: { expandIcon: ExpandIcon, collapseIcon: CollapseIcon }, children });
   };
 
   // src/Services/Scenarios.ts
   var sortScenarioSteps = (a, b) => a.timestamp - b.timestamp;
 
-  // src/Components/TreeView/Agent/Scenarios/AgentScenarioStepsTreeView.tsx
-  var import_jsx_runtime166 = __toESM(require_jsx_runtime());
-  var AgentScenarioStepsTreeView = ({ steps: steps2 }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime166.jsx)(BaseTreeView, { sx: { mt: 2 }, children: [...steps2].sort(sortScenarioSteps).map((step, index) => /* @__PURE__ */ (0, import_jsx_runtime166.jsx)(AgentScenarioStepsTreeViewItem, { step, index }, index)) });
-  };
-
-  // src/Components/TextFields/BaseTextField.tsx
-  var import_jsx_runtime167 = __toESM(require_jsx_runtime());
-  var BaseTextField = (props) => {
-    const { value, onChange, label, placeholder, sx, endAdornment, startAdornment } = props;
-    const onInternalChange = (event) => {
-      onChange(event.target.value);
-    };
-    return /* @__PURE__ */ (0, import_jsx_runtime167.jsxs)(FormControl_default, { sx, size: "small", variant: "outlined", fullWidth: true, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime167.jsx)(InputLabel_default, { children: label }),
-      /* @__PURE__ */ (0, import_jsx_runtime167.jsx)(
-        OutlinedInput_default,
-        {
-          endAdornment,
-          startAdornment,
-          value,
-          label,
-          onChange: onInternalChange,
-          placeholder
-        }
-      )
-    ] });
-  };
-
-  // node_modules/@mui/icons-material/esm/Search.js
-  var import_jsx_runtime168 = __toESM(require_jsx_runtime());
-  var Search_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime168.jsx)("path", {
-    d: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"
-  }), "Search");
-
-  // src/Components/TextFields/SearchTextField.tsx
-  var import_jsx_runtime169 = __toESM(require_jsx_runtime());
-  var SearchTextField = (props) => {
-    const { sx, search, setSearch, placeholder } = props;
-    const onClear = () => setSearch("");
-    return /* @__PURE__ */ (0, import_jsx_runtime169.jsx)(
-      BaseTextField,
-      {
-        sx,
-        value: search,
-        label: "Search",
-        onChange: setSearch,
-        placeholder,
-        endAdornment: search.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime169.jsx)(InputAdornment_default, { position: "end", children: /* @__PURE__ */ (0, import_jsx_runtime169.jsx)(IconButton_default, { size: "small", edge: "end", onClick: onClear, children: /* @__PURE__ */ (0, import_jsx_runtime169.jsx)(Close_default, { fontSize: "small" }) }) }),
-        startAdornment: /* @__PURE__ */ (0, import_jsx_runtime169.jsx)(InputAdornment_default, { position: "start", children: /* @__PURE__ */ (0, import_jsx_runtime169.jsx)(Search_default, { fontSize: "small" }) })
-      }
-    );
-  };
-
-  // src/Views/Agent/Scenarios/AgentScenarioDetailsStepsView.tsx
+  // src/Components/TreeView/Scenarios/SimpleScenarioStepsTreeView.tsx
   var import_jsx_runtime170 = __toESM(require_jsx_runtime());
-  var AgentScenarioDetailsStepsView = ({ steps: steps2 }) => {
+  var SimpleScenarioStepsTreeView = ({ steps: steps2 }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime170.jsx)(BaseTreeView, { sx: { mt: 2 }, children: [...steps2].sort(sortScenarioSteps).map((step, index) => /* @__PURE__ */ (0, import_jsx_runtime170.jsx)(SimpleScenarioStepsTreeViewItem, { step, index }, index)) });
+  };
+
+  // src/Views/Scenarios/Details/SimpleScenarioDetailsStepsView.tsx
+  var import_jsx_runtime171 = __toESM(require_jsx_runtime());
+  var SimpleScenarioDetailsStepsView = ({ steps: steps2 }) => {
     const [search, setSearch] = (0, import_react31.useState)("");
     const filteredSteps = (0, import_react31.useMemo)(
       () => steps2.filter((step) => step.selector.toLowerCase().includes(search.toLowerCase())),
       [search, steps2]
     );
-    return /* @__PURE__ */ (0, import_jsx_runtime170.jsxs)(BoxView, { title: "Steps", children: [
-      steps2.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime170.jsx)(SearchTextField, { sx: { mt: 3 }, search, setSearch, placeholder: "Search by selector" }),
-      steps2.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime170.jsx)(EmptyView, { title: "Empty steps", description: "There is not steps logged for this scenario" }),
-      /* @__PURE__ */ (0, import_jsx_runtime170.jsx)(AgentScenarioStepsTreeView, { steps: filteredSteps })
+    return /* @__PURE__ */ (0, import_jsx_runtime171.jsxs)(BoxView, { title: "Steps", children: [
+      steps2.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime171.jsx)(SearchTextField, { sx: { mt: 3 }, search, setSearch, placeholder: "Search by selector" }),
+      steps2.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime171.jsx)(EmptyView, { title: "Empty steps", description: "There is not steps logged for this scenario" }),
+      /* @__PURE__ */ (0, import_jsx_runtime171.jsx)(SimpleScenarioStepsTreeView, { steps: filteredSteps })
     ] });
   };
 
-  // src/Views/Agent/Scenarios/AgentScenarioDetailsView.tsx
-  var import_jsx_runtime171 = __toESM(require_jsx_runtime());
-  var AgentScenarioDetailsView = ({ scenario }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime171.jsxs)(Box_default, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime171.jsx)(ScenarioDetailsInfoView, { sx: { mt: 0 }, scenario }),
-      /* @__PURE__ */ (0, import_jsx_runtime171.jsx)(AgentScenarioDetailsStepsView, { steps: scenario.steps }),
-      /* @__PURE__ */ (0, import_jsx_runtime171.jsx)(ActionCoverageTable, { actions: scenario.actions }),
-      /* @__PURE__ */ (0, import_jsx_runtime171.jsx)(ScenarioHistoryChartView, { history: scenario.history })
-    ] });
-  };
-
-  // src/Components/Modals/Agent/Scenarios/AgentScenarioDetailsModal.tsx
+  // src/Views/Scenarios/Details/SimpleScenarioDetailsView.tsx
   var import_jsx_runtime172 = __toESM(require_jsx_runtime());
-  var AgentScenarioDetailsModal = ({ modal, setModal, scenario }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime172.jsx)(BaseModal, { sx: { zIndex: 1900 }, title: "Scenario details", modal, setModal, maxWidth: "md", children: /* @__PURE__ */ (0, import_jsx_runtime172.jsx)(AgentScenarioDetailsView, { scenario }) });
+  var SimpleScenarioDetailsView = ({ scenario }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime172.jsxs)(Box_default, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime172.jsx)(ScenarioDetailsInfoView, { sx: { mt: 0 }, scenario }),
+      /* @__PURE__ */ (0, import_jsx_runtime172.jsx)(SimpleScenarioDetailsStepsView, { steps: scenario.steps }),
+      /* @__PURE__ */ (0, import_jsx_runtime172.jsx)(ActionCoverageTable, { actions: scenario.actions }),
+      /* @__PURE__ */ (0, import_jsx_runtime172.jsx)(ScenarioHistoryChartView, { history: scenario.history })
+    ] });
   };
 
-  // src/Views/Agent/Scenarios/AgentScenariosView.tsx
+  // src/Components/Modals/Scenarios/SimpleScenarioDetailsModal.tsx
   var import_jsx_runtime173 = __toESM(require_jsx_runtime());
-  var AgentScenariosView = ({ scenarios }) => {
+  var SimpleScenarioDetailsModal = ({ modal, setModal, scenario }) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(BaseModal, { sx: { zIndex: 1900 }, title: "Scenario details", modal, setModal, maxWidth: "md", children: /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(SimpleScenarioDetailsView, { scenario }) });
+  };
+
+  // src/Views/Scenarios/SimpleScenariosView.tsx
+  var import_jsx_runtime174 = __toESM(require_jsx_runtime());
+  var SimpleScenariosView = ({ scenarios }) => {
     const [search, setSearch] = (0, import_react32.useState)("");
     const [scenario, setScenario] = (0, import_react32.useState)(null);
     const [scenarioDetailsModal, setScenarioDetailsModal] = (0, import_react32.useState)(false);
@@ -58585,12 +58617,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       setScenario(scenario2);
       setScenarioDetailsModal(true);
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime173.jsxs)(BoxView, { title: "Scenarios", children: [
-      scenarios.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(SearchTextField, { sx: { mt: 3 }, search, setSearch, placeholder: "Search by scenario name" }),
-      scenarios.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(EmptyView, { title: "Empty scenarios", description: "There is no scenarios registered" }),
-      /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(List_default, { dense: true, children: filteredScenarios.map((scenario2, index) => /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(AgentScenarioListItem, { scenario: scenario2, onScenarioDetails }, index)) }),
-      scenario && /* @__PURE__ */ (0, import_jsx_runtime173.jsx)(
-        AgentScenarioDetailsModal,
+    return /* @__PURE__ */ (0, import_jsx_runtime174.jsxs)(BoxView, { title: "Scenarios", children: [
+      scenarios.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(SearchTextField, { sx: { mt: 3 }, search, setSearch, placeholder: "Search by scenario name" }),
+      scenarios.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(EmptyView, { title: "Empty scenarios", description: "There is no scenarios registered" }),
+      /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(List_default, { dense: true, children: filteredScenarios.map((scenario2, index) => /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(SimpleScenarioListItem, { scenario: scenario2, onScenarioDetails }, index)) }),
+      scenario && /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(
+        SimpleScenarioDetailsModal,
         {
           modal: scenarioDetailsModal,
           setModal: setScenarioDetailsModal,
@@ -58598,38 +58630,6 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }
       )
     ] });
-  };
-
-  // src/Views/Agent/Elements/AgentElementCoverageDetailsInfoView.tsx
-  var import_jsx_runtime174 = __toESM(require_jsx_runtime());
-  var AgentElementCoverageDetailsInfoView = ({ element }) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(BoxView, { title: "Base info", containerSx: { mt: 0 }, children: /* @__PURE__ */ (0, import_jsx_runtime174.jsxs)(WidgetInfoRowsView, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(BaseInfoRowView, { icon: /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(AdsClick_default, { fontSize: "small" }), name: "Selector", value: element.selector }),
-      /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(
-        BaseInfoRowView,
-        {
-          icon: /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(DataObject_default, { fontSize: "small" }),
-          name: "Selector type",
-          value: element.selectorType
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(
-        BaseInfoRowView,
-        {
-          icon: /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(FormatListNumbered_default, { fontSize: "small" }),
-          name: "Total number of scenarios",
-          value: element.scenarios.length
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(
-        BaseInfoRowView,
-        {
-          icon: /* @__PURE__ */ (0, import_jsx_runtime174.jsx)(BuildOutlined_default, { fontSize: "small" }),
-          name: "Total number of action types",
-          value: element.actions.length
-        }
-      )
-    ] }) });
   };
 
   // src/Views/Agent/Elements/AgentElementCoverageDetailsView.tsx
@@ -58641,12 +58641,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         var _a;
         return (_a = state.scenarios) == null ? void 0 : _a.filter((scenario) => element.scenarios.includes(scenario.name));
       },
-      [element.scenarios]
+      [state.scenarios, element.scenarios]
     );
     return /* @__PURE__ */ (0, import_jsx_runtime175.jsxs)(Box_default, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime175.jsx)(AgentElementCoverageDetailsInfoView, { element }),
       /* @__PURE__ */ (0, import_jsx_runtime175.jsx)(ActionCoverageTable, { actions: element.actions }),
-      /* @__PURE__ */ (0, import_jsx_runtime175.jsx)(AgentScenariosView, { scenarios: scenarios || [] })
+      /* @__PURE__ */ (0, import_jsx_runtime175.jsx)(SimpleScenariosView, { scenarios: scenarios || [] })
     ] });
   };
 
@@ -58772,6 +58772,20 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // src/Providers/Core/ThemeProvider.tsx
   var import_react38 = __toESM(require_react());
+
+  // src/Services/Storage.ts
+  var APP = "UI_COVERAGE_SCENARIO_REPORT";
+  var StorageKey = ((StorageKey2) => {
+    StorageKey2["ThemeMode"] = `${APP}_THEME_MODE`;
+    StorageKey2["AgentFilters"] = `${APP}_AGENT_FILTERS`;
+    StorageKey2["AgentSettings"] = `${APP}_AGENT_SETTINGS`;
+    StorageKey2["PagesSettings"] = `${APP}_PAGES_SETTINGS`;
+    StorageKey2["FrameLayoutSettings"] = `${APP}_FRAME_LAYOUT_SETTINGS`;
+    StorageKey2["ScenarioStepsFilters"] = `${APP}_SCENARIO_STEPS_FILTERS`;
+    return StorageKey2;
+  })(StorageKey || {});
+
+  // src/Providers/Core/ThemeProvider.tsx
   var import_jsx_runtime182 = __toESM(require_jsx_runtime());
   var darkTheme = createTheme2({
     palette: { mode: "dark" /* Dark */ },

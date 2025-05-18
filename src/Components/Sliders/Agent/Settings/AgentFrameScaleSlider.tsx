@@ -7,5 +7,5 @@ type Props = {
 };
 
 export const AgentFrameScaleSlider: FC<Props> = ({ scale, setScale }) => {
-  return <BaseSlider min={10} max={100} value={scale} setValue={setScale} />;
+  return <BaseSlider min={10} max={100} value={scale} setValue={setScale} formatLabel={(value) => `${value}%`} />;
 };

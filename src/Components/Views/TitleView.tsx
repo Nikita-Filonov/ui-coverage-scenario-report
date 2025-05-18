@@ -2,6 +2,7 @@ import { Box, Typography } from '@mui/material';
 import { FC, MouseEvent, ReactNode } from 'react';
 import { SxProps, Theme } from '@mui/system';
 import { CopyButton } from '../Buttons/CopyButton';
+import { Variant } from '@mui/material/styles/createTypography';
 
 type Props = {
   sx?: SxProps<Theme>;
@@ -10,10 +11,11 @@ type Props = {
   value?: string;
   action?: ReactNode;
   allowCopy?: boolean;
+  titleVariant?: Variant;
 };
 
 export const TitleView: FC<Props> = (props) => {
-  const { sx, icon, title, value, action, allowCopy } = props;
+  const { sx, icon, title, value, action, allowCopy, titleVariant } = props;
 
   const onCopy = async (event: MouseEvent<HTMLButtonElement>) => {
     if (!value) return;
@@ -25,7 +27,7 @@ export const TitleView: FC<Props> = (props) => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', ...sx }}>
       {icon}
-      <Typography>{title}</Typography>
+      <Typography variant={titleVariant}>{title}</Typography>
       <Box sx={{ flexGrow: 1 }} />
       {action}
       {allowCopy && <CopyButton sx={{ ml: 1 }} onCopy={onCopy} />}

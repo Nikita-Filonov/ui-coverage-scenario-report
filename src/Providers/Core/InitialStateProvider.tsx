@@ -12,6 +12,7 @@ const DEFAULT_APP_CONFIG: AppConfig = {
 };
 
 const DEFAULT_APP_COVERAGE_STATE: AppCoverageState = {
+  pages: { nodes: [], edges: [] },
   history: [],
   scenarios: []
 };
