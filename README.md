@@ -1,4 +1,4 @@
-# UI Coverage Report
+# UI Coverage Scenario Report
 
 You can see a report example [here](https://nikita-filonov.github.io/ui-coverage-scenario-tool/).
 
