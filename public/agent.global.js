@@ -18809,6 +18809,9 @@ var agent = (() => {
   };
 
   // src/Services/Frame/Element.ts
+  var isVisualElement = (node2) => {
+    return node2 instanceof HTMLElement || node2 instanceof SVGElement;
+  };
   var getElementByXpath = (selector) => {
     return document.evaluate(selector, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
   };
@@ -18827,7 +18830,7 @@ var agent = (() => {
       default:
         return null;
     }
-    return node2 instanceof HTMLElement ? node2 : null;
+    return isVisualElement(node2) ? node2 : null;
   };
   var MAP_COLOR_TO_BORDER_COLOR = {
     ["info" /* Info */]: blue_default["300"],

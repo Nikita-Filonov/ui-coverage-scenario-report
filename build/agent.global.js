@@ -18809,6 +18809,9 @@ var agent = (() => {
   };
 
   // src/Services/Frame/Element.ts
+  var isVisualElement = (node2) => {
+    return node2 instanceof HTMLElement || node2 instanceof SVGElement;
+  };
   var getElementByXpath = (selector) => {
     return document.evaluate(selector, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
   };
@@ -18827,7 +18830,7 @@ var agent = (() => {
       default:
         return null;
     }
-    return node2 instanceof HTMLElement ? node2 : null;
+    return isVisualElement(node2) ? node2 : null;
   };
   var MAP_COLOR_TO_BORDER_COLOR = {
     ["info" /* Info */]: blue_default["300"],
@@ -56429,7 +56432,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   // src/Components/Views/TitleView.tsx
   var import_jsx_runtime157 = __toESM(require_jsx_runtime());
   var TitleView = (props) => {
-    const { sx, icon, title, value, action, allowCopy } = props;
+    const { sx, icon, title, value, action, allowCopy, titleVariant } = props;
     const onCopy = async (event) => {
       if (!value) return;
       event.stopPropagation();
@@ -56437,7 +56440,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     };
     return /* @__PURE__ */ (0, import_jsx_runtime157.jsxs)(Box_default, { sx: __spreadValues({ display: "flex", alignItems: "center" }, sx), children: [
       icon,
-      /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(Typography_default, { children: title }),
+      /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(Typography_default, { variant: titleVariant, children: title }),
       /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(Box_default, { sx: { flexGrow: 1 } }),
       action,
       allowCopy && /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(CopyButton, { sx: { ml: 1 }, onCopy })
@@ -58779,7 +58782,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     StorageKey2["ThemeMode"] = `${APP}_THEME_MODE`;
     StorageKey2["AgentFilters"] = `${APP}_AGENT_FILTERS`;
     StorageKey2["AgentSettings"] = `${APP}_AGENT_SETTINGS`;
-    StorageKey2["PagesGraphSettings"] = `${APP}_PAGES_GRAPH_SETTINGS`;
+    StorageKey2["PagesSettings"] = `${APP}_PAGES_SETTINGS`;
     StorageKey2["FrameLayoutSettings"] = `${APP}_FRAME_LAYOUT_SETTINGS`;
     StorageKey2["ScenarioStepsFilters"] = `${APP}_SCENARIO_STEPS_FILTERS`;
     return StorageKey2;
