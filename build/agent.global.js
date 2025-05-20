@@ -58779,6 +58779,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   // src/Services/Storage.ts
   var APP = "UI_COVERAGE_SCENARIO_REPORT";
   var StorageKey = ((StorageKey2) => {
+    StorageKey2["Features"] = `${APP}_FEATURES`;
     StorageKey2["ThemeMode"] = `${APP}_THEME_MODE`;
     StorageKey2["AgentFilters"] = `${APP}_AGENT_FILTERS`;
     StorageKey2["AgentSettings"] = `${APP}_AGENT_SETTINGS`;
