@@ -9,15 +9,18 @@ import { ThemeProvider } from './Providers/Core/ThemeProvider';
 import { AppCoverageHistoryView } from './Views/Coverage/History/AppCoverageHistoryView';
 import { FrameView } from './Views/Frame/FrameView';
 import { PagesView } from './Views/Pages/PagesView';
+import { FeaturesProvider, useFeatures } from './Providers/Core/FeaturesProvider';
 
 const IndexRoute = () => {
+  const { features } = useFeatures();
+
   return (
     <MainLayout>
       <AppToolbarView />
-      <AppConfigView />
-      <AppCoverageHistoryView />
-      <PagesView />
-      <FrameView />
+      {features.configView && <AppConfigView />}
+      {features.coverageHistoryView && <AppCoverageHistoryView />}
+      {features.pagesView && <PagesView />}
+      {features.frameView && <FrameView />}
     </MainLayout>
   );
 };
@@ -26,9 +29,11 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-      <InitialStateProvider>
-        <IndexRoute />
-      </InitialStateProvider>
+      <FeaturesProvider>
+        <InitialStateProvider>
+          <IndexRoute />
+        </InitialStateProvider>
+      </FeaturesProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

@@ -1,6 +1,7 @@
 const APP = 'UI_COVERAGE_SCENARIO_REPORT';
 
 export enum StorageKey {
+  Features = `${APP}_FEATURES`,
   ThemeMode = `${APP}_THEME_MODE`,
   AgentFilters = `${APP}_AGENT_FILTERS`,
   AgentSettings = `${APP}_AGENT_SETTINGS`,
